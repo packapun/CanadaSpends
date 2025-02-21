@@ -74,8 +74,6 @@ class CSVIndexer:
                 storage_context=storage_context,
                 show_progress=True
             )
-
-            self.weaviate_client.close()
             
             from query_engine import QueryEngine
             return QueryEngine(index)
@@ -122,3 +120,8 @@ class CSVIndexer:
             documents.append(Document(text=content))
         
         return documents
+
+    def close(self):
+        """Close the Weaviate client connection."""
+        if self.weaviate_client:
+            self.weaviate_client.close()
