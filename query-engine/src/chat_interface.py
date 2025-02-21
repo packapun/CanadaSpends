@@ -75,14 +75,24 @@ async def main():
     console.clear()
     display_welcome()
     
-    indexer, query_engine = await initialize_engine()
-    console.print("\n[green]✓ Query engine ready![/green]\n")
-
+    indexer = None
     try:
+        indexer, query_engine = await initialize_engine()
+        console.print("\n[green]✓ Query engine ready![/green]\n")
         await chat_loop(query_engine)
+    except (KeyboardInterrupt, asyncio.CancelledError):
+        # Handle both keyboard interrupt and asyncio cancellation
+        pass
     finally:
-        indexer.close()
-        console.print("[dim]Connection closed.[/dim]")
+        if indexer:
+            indexer.close()
+            console.print("[dim]Connection closed.[/dim]")
+        # Exit cleanly without showing the asyncio cancellation traceback
+        sys.exit(0)
 
 if __name__ == "__main__":
-    asyncio.run(main()) 
+    try:
+        asyncio.run(main())
+    except KeyboardInterrupt:
+        # Handle any KeyboardInterrupt that bubbles up
+        sys.exit(0) 
