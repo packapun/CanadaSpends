@@ -21,7 +21,7 @@ services:
         aliases:
           - weaviate
 
-  llamaindex:
+  api:
     build: 
       context: .
       dockerfile: Dockerfile
@@ -44,7 +44,33 @@ services:
     networks:
       query-network:
         aliases:
-          - llamaindex
+          - api
+
+  chat:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    command: python src/chat_interface.py
+    volumes:
+      - ./csv-data:/app/data
+      - ./src:/app/src
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - COHERE_API_KEY=${COHERE_API_KEY}
+      - WEAVIATE_HOST=weaviate
+      - WEAVIATE_HTTP_PORT=8080
+      - WEAVIATE_GRPC_PORT=50051
+      - PYTHONPATH=${PYTHONPATH}
+      - WEAVIATE_GRPC_URL=weaviate:50051
+    depends_on:
+      - weaviate
+      - api
+    stdin_open: true  # docker run -i
+    tty: true        # docker run -t
+    networks:
+      query-network:
+        aliases:
+          - chat
 
 networks:
   query-network:

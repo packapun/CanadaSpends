@@ -17,4 +17,7 @@ COPY src/ ./src/
 # Create data directory
 RUN mkdir -p /app/data
 
-CMD ["python", "src/main.py"]
+# Set PYTHONPATH for module imports
+ENV PYTHONPATH=/app/src
+
+CMD ["python", "src/start.py"]
