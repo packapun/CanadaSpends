@@ -4,16 +4,22 @@ services:
   weaviate:  
     image: cr.weaviate.io/semitechnologies/weaviate:1.24.2  
     ports:  
-      - "8080:8080"  
+      - "8080:8080"  # HTTP Port
+      - "50051:50051" # GRPC Port
     environment:
       QUERY_DEFAULTS_LIMIT: 25  
-      AUTHENTICATION_ANONYMOUS_ACCESS_ENABLED: 'true'  
-      DEFAULT_VECTORIZER_MODULE: 'text2vec-openai'
-      ENABLE_MODULES: 'text2vec-openai'
+      AUTHENTICATION_ANONYMOUS_ACCESS_ENABLED: 'false'  
+      DEFAULT_VECTORIZER_MODULE: 'text2vec-cohere'
+      ENABLE_MODULES: 'text2vec-cohere'
       OPENAI_APIKEY: ${OPENAI_API_KEY}
+      COHERE_API_KEY: ${COHERE_API_KEY}
       CLUSTER_HOSTNAME: 'node1'
+      GRPC_PORT: 50051
+      PERSISTENCE_DATA_PATH: '/var/lib/weaviate'
     networks:
-      - query-network
+      query-network:
+        aliases:
+          - weaviate
 
   llamaindex:
     build: 
@@ -25,15 +31,20 @@ services:
       - ./src:/app/src
     environment:
       - OPENAI_API_KEY=${OPENAI_API_KEY}
-      - WEAVIATE_HOST=${WEAVIATE_HOST}
-      - WEAVIATE_PORT=${WEAVIATE_PORT}
+      - COHERE_API_KEY=${COHERE_API_KEY}
+      - WEAVIATE_HOST=weaviate
+      - WEAVIATE_HTTP_PORT=8080
+      - WEAVIATE_GRPC_PORT=50051
       - PYTHONPATH=${PYTHONPATH}
+      - WEAVIATE_GRPC_URL=weaviate:50051
     ports:
       - "8000:8000"
     depends_on:
       - weaviate
     networks:
-      - query-network
+      query-network:
+        aliases:
+          - llamaindex
 
 networks:
   query-network:

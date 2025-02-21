@@ -1,61 +1,59 @@
+from loguru import logger
 import os
 import pandas as pd
 from typing import Optional
-from llama_index.core import Document, VectorStoreIndex, StorageContext, Settings
+
+from llama_index.core import (
+    Document, 
+    VectorStoreIndex, 
+    StorageContext, 
+    Settings
+)
 from llama_index.vector_stores.weaviate import WeaviateVectorStore
-from llama_index.embeddings.openai import OpenAIEmbedding
+
 import weaviate
-from weaviate.embedded import EmbeddedOptions
-from weaviate.collections import Collection
-from weaviate.config import Config
-import openai
+from weaviate.classes.config import (
+    Configure,
+    DataType,
+    Property
+)
+from weaviate.classes.init import AdditionalConfig, Timeout
+
+
 
 class CSVIndexer:
     def __init__(self):
         # Initialize Weaviate client using v4 syntax
-        http_port = int(os.getenv('WEAVIATE_PORT'))
-        grpc_port = http_port + 1  # Use next port for gRPC
-        
-        self.weaviate_client = weaviate.WeaviateClient(
-            connection_params=weaviate.connect.ConnectionParams(
-                http={
-                    "host": os.getenv('WEAVIATE_HOST'),
-                    "port": http_port,
-                    "secure": False,
-                    "headers": {
-                        "X-OpenAI-Api-Key": os.getenv("OPENAI_API_KEY")
-                    }
-                },
-                grpc={
-                    "host": os.getenv('WEAVIATE_HOST'),
-                    "port": grpc_port,
-                    "secure": False
-                }
+        http_port = int(os.getenv('WEAVIATE_HTTP_PORT'))
+        grpc_port = int(os.getenv('WEAVIATE_GRPC_PORT'))
+
+        self.weaviate_client = weaviate.connect_to_custom(
+            http_host=os.getenv('WEAVIATE_HOST'),
+            http_port=http_port,
+            http_secure=False,
+            grpc_host=os.getenv('WEAVIATE_HOST'),
+            grpc_port=grpc_port,
+            grpc_secure=False,          
+            headers={
+                "X-Cohere-Api-Key": os.getenv("COHERE_API_KEY")
+            },
+            additional_config=AdditionalConfig(
+                timeout=Timeout(init=30, query=60, insert=120)  # Values in seconds
             )
         )
-        
-        # Initialize OpenAI client
-        openai.api_key = os.getenv("OPENAI_API_KEY")
-        
-        # Initialize OpenAI embedding model
-        self.embed_model = OpenAIEmbedding(
-            api_key=os.getenv("OPENAI_API_KEY"),
-            model="text-embedding-ada-002"
-        )
-        
-        # Configure global settings
-        Settings.embed_model = self.embed_model
-        Settings.chunk_size = 512
-        Settings.chunk_overlap = 20
+
+        logger.info(self.weaviate_client.is_ready())
 
     async def initialize_and_index(self, csv_path: str):
         try:
             # Read CSV file
             df = pd.read_csv(csv_path)
+
+            self.weaviate_client.connect()
             
             # Create a class in Weaviate if it doesn't exist
-            class_name = "CanadaSpends"
-            self._create_weaviate_schema(class_name)
+            collection_name = "CanadaSpends"
+            self._create_weaviate_schema(collection_name)
             
             # Convert DataFrame to documents
             documents = self._prepare_documents(df)
@@ -63,7 +61,7 @@ class CSVIndexer:
             # Create vector store
             vector_store = WeaviateVectorStore(
                 weaviate_client=self.weaviate_client,
-                index_name=class_name,
+                index_name=collection_name,
                 text_key="content"
             )
             
@@ -76,6 +74,8 @@ class CSVIndexer:
                 storage_context=storage_context,
                 show_progress=True
             )
+
+            self.weaviate_client.close()
             
             from query_engine import QueryEngine
             return QueryEngine(index)
@@ -83,29 +83,24 @@ class CSVIndexer:
             print(f"Error during initialization: {str(e)}")
             raise
 
-    def _create_weaviate_schema(self, class_name: str):
+    def _create_weaviate_schema(self, collection_name: str):
+
         # Delete if exists
         try:
-            self.weaviate_client.collections.delete(class_name)
+            self.weaviate_client.collections.delete(collection_name)
         except:
             pass
         
         # Create collection with v4 syntax
-        collection = Configure.new_collection(
-            name=class_name,
-            vectorizer_config=Configure.Vectorizer.text2vec_openai(),
+        self.weaviate_client.collections.create(
+            name=collection_name,
+            vectorizer_config=Configure.Vectorizer.text2vec_cohere(
+                model="embed-multilingual-v2.0"
+            ),
             properties=[
-                {
-                    "name": "content",
-                    "dataType": ["text"],
-                    "description": "The content of the document",
-                    "indexFilterable": True,
-                    "indexSearchable": True
-                }
+                Property(name="content", data_type=DataType.TEXT)
             ]
         )
-        
-        self.weaviate_client.collections.create(collection)
 
     def _prepare_documents(self, df: pd.DataFrame) -> list[Document]:
         documents = []
