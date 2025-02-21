@@ -3,10 +3,7 @@ from indexer import CSVIndexer
 import sys
 from rich.console import Console
 from rich.panel import Panel
-from rich.markdown import Markdown
 from rich.prompt import Prompt
-from rich import print
-from rich.spinner import Spinner
 
 console = Console()
 

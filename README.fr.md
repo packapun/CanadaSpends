@@ -1,6 +1,6 @@
 # CanadaSpends : Explorateur interactif des dépenses gouvernementales
 
-*[English](README.en.md) | [Français](README.fr.md)*
+*[English](README.en.md)*
 
 Un outil puissant pour explorer les données des dépenses du gouvernement fédéral canadien grâce à des requêtes en langage naturel. Posez des questions sur les dépenses gouvernementales en français et obtenez des réponses instantanées alimentées par l'IA.
 

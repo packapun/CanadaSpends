@@ -1,6 +1,6 @@
 # CanadaSpends: Interactive Government Spending Data Explorer
 
-*[English](README.en.md) | [Français](README.fr.md)*
+*[Français](README.fr.md)*
 
 A powerful tool for exploring Canadian federal government spending data through natural language queries. Ask questions about government spending in plain English and get instant, AI-powered insights.
 

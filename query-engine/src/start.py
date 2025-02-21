@@ -6,6 +6,7 @@ from rich.panel import Panel
 from rich.prompt import Prompt
 import sys
 import time
+from chat_interface import main
 
 console = Console()
 
@@ -25,7 +26,6 @@ def display_startup_message():
     console.print(Panel(welcome_text, title="Welcome", border_style="blue"))
 
 def run_api_server():
-    import uvicorn
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=False)
 
 def start_chat():
