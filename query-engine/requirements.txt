@@ -1,0 +1,12 @@
+llama-index-core
+llama-index-vector-stores-weaviate
+llama-index-embeddings-openai
+openai
+weaviate-client
+pandas
+fastapi
+uvicorn
+python-dotenv
+pydantic
+typing-inspect
+typing-extensions

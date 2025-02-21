@@ -1,0 +1,40 @@
+# docker-compose.yml  
+version: '3.4'  
+services:  
+  weaviate:  
+    image: cr.weaviate.io/semitechnologies/weaviate:1.24.2  
+    ports:  
+      - "8080:8080"  
+    environment:
+      QUERY_DEFAULTS_LIMIT: 25  
+      AUTHENTICATION_ANONYMOUS_ACCESS_ENABLED: 'true'  
+      DEFAULT_VECTORIZER_MODULE: 'text2vec-openai'
+      ENABLE_MODULES: 'text2vec-openai'
+      OPENAI_APIKEY: ${OPENAI_API_KEY}
+      CLUSTER_HOSTNAME: 'node1'
+    networks:
+      - query-network
+
+  llamaindex:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    command: python src/main.py
+    volumes:
+      - ./csv-data:/app/data
+      - ./src:/app/src
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - WEAVIATE_HOST=${WEAVIATE_HOST}
+      - WEAVIATE_PORT=${WEAVIATE_PORT}
+      - PYTHONPATH=${PYTHONPATH}
+    ports:
+      - "8000:8000"
+    depends_on:
+      - weaviate
+    networks:
+      - query-network
+
+networks:
+  query-network:
+    driver: bridge
