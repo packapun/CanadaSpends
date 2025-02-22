@@ -1,11 +1,16 @@
 import asyncio
-from indexer import CSVIndexer
+import aiohttp
 import sys
+import os
 from rich.console import Console
 from rich.panel import Panel
 from rich.prompt import Prompt
+from rich.text import Text
 
 console = Console()
+
+# Get API URL from environment variable or use default for Docker service
+API_URL = os.getenv('API_URL', 'http://api:8000')
 
 def display_welcome():
     welcome_text = """
@@ -17,24 +22,58 @@ def display_welcome():
     """
     console.print(Panel(welcome_text, title="Canada Spends Chat", border_style="blue"))
 
-async def initialize_engine():
-    with console.status("[bold blue]Initializing query engine...", spinner="dots"):
+async def check_api_health():
+    """Check if the API is running and ready."""
+    async with aiohttp.ClientSession() as session:
         try:
-            indexer = CSVIndexer()
-            csv_path = "/app/data/otpmopeom-apdtmacdpam-2024.csv"
-            query_engine = await indexer.initialize_and_index(csv_path)
-            return indexer, query_engine
-        except Exception as e:
-            console.print(f"[red]Error initializing query engine: {str(e)}")
-            sys.exit(1)
+            async with session.get(f"{API_URL}/health") as response:
+                if response.status == 200:
+                    data = await response.json()
+                    return data
+                return None
+        except aiohttp.ClientError:
+            return None
 
-async def process_query(query_engine, question: str):
+async def initialize_connection():
+    """Wait for API to be ready."""
+    with console.status("[bold blue]Waiting for API and index to initialize...", spinner="dots"):
+        for attempt in range(30):  # Try for 2 minutes (30 attempts * 4 seconds)
+            health_data = await check_api_health()
+            
+            if health_data:
+                status = health_data.get("status", "unknown")
+                message = health_data.get("message", "No status message")
+                
+                if status == "ready" and health_data.get("query_engine_ready"):
+                    return True
+                    
+                if status == "failed":
+                    console.print(f"\n[red]API initialization failed: {message}[/red]")
+                    return False
+                    
+                if attempt < 29:  # Don't show this message on the last attempt
+                    console.print(f"[dim]Status: {status} - {message} (attempt {attempt + 1}/30)[/dim]")
+            else:
+                if attempt < 29:
+                    console.print(f"[dim]Waiting for API to start (attempt {attempt + 1}/30)[/dim]")
+                    
+            await asyncio.sleep(4)
+        return False
+
+async def process_query(session: aiohttp.ClientSession, question: str):
     """Process a single query and display the response."""
     with console.status("[bold blue]Thinking...", spinner="dots"):
         try:
-            response = await query_engine.query(question)
-            console.print("\n[bold green]Canada Spends Chat[/bold green]")
-            console.print(Panel(str(response), border_style="green"))
+            async with session.get(f"{API_URL}/query", params={"question": question}) as response:
+                data = await response.json()
+                
+                if response.status != 200:
+                    error_msg = data.get("error", "Unknown error occurred")
+                    console.print(f"\n[red]Error: {error_msg}[/red]")
+                    return
+
+                console.print("\n[bold green]Canada Spends Chat[/bold green]")
+                console.print(Panel(data["answer"], border_style="green"))
         except Exception as e:
             console.print(f"\n[red]Error: {str(e)}[/red]")
 
@@ -50,49 +89,53 @@ def handle_command(command: str) -> bool:
         
     return False
 
-async def chat_loop(query_engine):
+async def chat_loop():
     """Main chat loop."""
-    while True:
-        try:
-            question = Prompt.ask("\n[bold blue]You[/bold blue]").strip()
-            
-            if not question:
-                continue
+    async with aiohttp.ClientSession() as session:
+        while True:
+            try:
+                question = Prompt.ask("\n[bold blue]You[/bold blue]").strip()
                 
-            if handle_command(question.lower()):
+                if not question:
+                    continue
+                    
+                if handle_command(question.lower()):
+                    break
+                    
+                await process_query(session, question)
+                    
+            except KeyboardInterrupt:
+                console.print("\n[yellow]Goodbye! Thanks for using Canada Spends Chat![/yellow]\n")
                 break
-                
-            await process_query(query_engine, question)
-                
-        except KeyboardInterrupt:
-            console.print("\n[yellow]Goodbye! Thanks for using Canada Spends Chat![/yellow]\n")
-            break
 
 async def main():
     console.clear()
     display_welcome()
     
-    indexer = None
+    # Check API connection
+    if not await initialize_connection():
+        console.print("\n[red]Error: Could not connect to the API service or the index is not ready.[/red]")
+        console.print("[dim]This could be because:[/dim]")
+        console.print("[dim]1. The API service is still initializing the index[/dim]")
+        console.print("[dim]2. The API service failed to start[/dim]")
+        console.print("[dim]3. There's a network connectivity issue[/dim]")
+        console.print("\n[dim]You can check the API service logs with:[/dim]")
+        console.print("[dim]docker compose logs api[/dim]\n")
+        sys.exit(1)
+    
+    console.print("\n[green]✓ Connected to query engine![/green]\n")
+    
     try:
-        indexer, query_engine = await initialize_engine()
-        console.print("\n[green]✓ Query engine ready![/green]\n")
-        await chat_loop(query_engine)
+        await chat_loop()
     except (KeyboardInterrupt, asyncio.CancelledError):
-        # Handle both keyboard interrupt and asyncio cancellation
-        console.print("\n[yellow]Initiating graceful shutdown...[/yellow]")
-        pass
+        console.print("\n[yellow]Goodbye! Thanks for using Canada Spends Chat![/yellow]\n")
+    except Exception as e:
+        console.print(f"\n[red]An error occurred: {str(e)}[/red]\n")
     finally:
-        if indexer:
-            console.print("[dim]Closing connections...[/dim]")
-            indexer.close()
-            console.print("[dim]Connection closed.[/dim]")
-            console.print("[green]✓ Shutdown complete[/green]")
-        # Exit cleanly without showing the asyncio cancellation traceback
         sys.exit(0)
 
 if __name__ == "__main__":
     try:
         asyncio.run(main())
     except KeyboardInterrupt:
-        # Handle any KeyboardInterrupt that bubbles up
         sys.exit(0) 

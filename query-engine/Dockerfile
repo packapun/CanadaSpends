@@ -19,5 +19,3 @@ RUN mkdir -p /app/data
 
 # Set PYTHONPATH for module imports
 ENV PYTHONPATH=/app/src
-
-CMD ["python", "src/start.py"]
