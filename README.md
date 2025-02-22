@@ -112,7 +112,7 @@ The system consists of three main components:
 
 The source code is organized in the following structure:
 
-```
+```text
 CanadaSpends/
 ├── query-engine/
 │   ├── src/

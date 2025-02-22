@@ -79,11 +79,14 @@ async def main():
         await chat_loop(query_engine)
     except (KeyboardInterrupt, asyncio.CancelledError):
         # Handle both keyboard interrupt and asyncio cancellation
+        console.print("\n[yellow]Initiating graceful shutdown...[/yellow]")
         pass
     finally:
         if indexer:
+            console.print("[dim]Closing connections...[/dim]")
             indexer.close()
             console.print("[dim]Connection closed.[/dim]")
+            console.print("[green]✓ Shutdown complete[/green]")
         # Exit cleanly without showing the asyncio cancellation traceback
         sys.exit(0)
 

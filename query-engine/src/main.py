@@ -1,12 +1,9 @@
-import os
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, HTTPException
 from dotenv import load_dotenv
-from typing import Optional
 import uvicorn
 
 from indexer import CSVIndexer
-from query_engine import QueryEngine
 
 # Load environment variables
 load_dotenv()
@@ -41,7 +38,7 @@ async def query_data(question: str):
         response = await query_engine.query(question)
         return {"question": question, "answer": response}
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        raise HTTPException(status_code=500, detail=str(e)) from e
 
 @app.get("/health")
 async def health_check():

@@ -1,13 +1,11 @@
 from loguru import logger
 import os
 import pandas as pd
-from typing import Optional
 
 from llama_index.core import (
     Document, 
     VectorStoreIndex, 
-    StorageContext, 
-    Settings
+    StorageContext
 )
 from llama_index.vector_stores.weaviate import WeaviateVectorStore
 
@@ -78,7 +76,7 @@ class CSVIndexer:
             from query_engine import QueryEngine
             return QueryEngine(index)
         except Exception as e:
-            print(f"Error during initialization: {str(e)}")
+            logger.error(f"Error during initialization: {str(e)}")
             raise
 
     def _create_weaviate_schema(self, collection_name: str):

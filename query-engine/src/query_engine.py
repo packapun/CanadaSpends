@@ -1,5 +1,4 @@
 from llama_index.core.indices import VectorStoreIndex
-from typing import Optional
 
 class QueryEngine:
     def __init__(self, index: VectorStoreIndex):
@@ -14,4 +13,4 @@ class QueryEngine:
             response = self.query_engine.query(question)
             return str(response)
         except Exception as e:
-            raise Exception(f"Error querying index: {str(e)}")
+            raise Exception(f"Error querying index: {str(e)}") from e
