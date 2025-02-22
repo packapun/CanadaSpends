@@ -101,7 +101,7 @@ class CSVIndexer:
         Returns:
             tuple: (csv_path, dictionary_path)
         """
-        base_path = os.path.join('query-engine', 'data', schema_name)
+        base_path = os.path.join('data', schema_name)
         if not os.path.exists(base_path):
             raise ValueError(f"Schema directory {schema_name} does not exist")
             
@@ -148,7 +148,7 @@ class CSVIndexer:
             self.weaviate_client.connect()
             
             # Create a class in Weaviate if it doesn't exist
-            collection_name = schema_name.replace('-', '_')
+            collection_name = schema_name.replace('-', '_').capitalize()
             self._create_weaviate_schema(collection_name)
             
             # Convert DataFrame to documents
@@ -243,7 +243,7 @@ class CSVIndexer:
             documents.append(Document(text=content))
             
             # Log progress periodically
-            if len(documents) % 100 == 0:
+            if len(documents) % 1000 == 0:
                 logger.info(f"Processed {len(documents)} documents")
         
         return documents
