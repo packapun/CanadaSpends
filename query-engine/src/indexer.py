@@ -1,6 +1,7 @@
 from loguru import logger
 import os
 import pandas as pd
+import xml.etree.ElementTree as ET
 
 from llama_index.core import (
     Document, 
@@ -17,6 +18,52 @@ from weaviate.classes.config import (
 )
 from weaviate.classes.init import AdditionalConfig, Timeout
 
+
+class DataDictionaryParser:
+    def __init__(self, xml_path: str):
+        """Initialize parser with path to data dictionary XML."""
+        self.field_definitions = {}
+        self._parse_xml(xml_path)
+    
+    def _parse_xml(self, xml_path: str):
+        """Parse the XML data dictionary and store field definitions."""
+        try:
+            tree = ET.parse(xml_path)
+            root = tree.getroot()
+            
+            for heading in root.findall('.//heading'):
+                label = heading.find('label')
+                if label is not None:
+                    # Handle both simple labels and language-specific labels
+                    if label.text:
+                        label_text = label.text
+                    else:
+                        # Try to get English label
+                        label_text = label.get('{http://www.w3.org/XML/1998/namespace}lang') or ''
+                    
+                    # Get English and French descriptions
+                    descriptions = heading.findall('description')
+                    en_desc = fr_desc = ""
+                    for desc in descriptions:
+                        if desc.get('{http://www.w3.org/XML/1998/namespace}lang') == 'en':
+                            en_desc = desc.text
+                        elif desc.get('{http://www.w3.org/XML/1998/namespace}lang') == 'fr':
+                            fr_desc = desc.text
+                    
+                    self.field_definitions[label_text] = {
+                        'en_description': en_desc or label_text,
+                        'fr_description': fr_desc or label_text
+                    }
+        except Exception as e:
+            logger.error(f"Error parsing data dictionary XML: {str(e)}")
+            raise
+    
+    def get_field_info(self, field_name: str) -> dict:
+        """Get the field information from the data dictionary."""
+        return self.field_definitions.get(field_name, {
+            'en_description': field_name,
+            'fr_description': field_name
+        })
 
 
 class CSVIndexer:
@@ -39,22 +86,74 @@ class CSVIndexer:
                 timeout=Timeout(init=30, query=60, insert=120)  # Values in seconds
             )
         )
-
+        
+        self.data_dictionary = None
         logger.info(self.weaviate_client.is_ready())
 
-    async def initialize_and_index(self, csv_path: str):
+    @staticmethod
+    def get_schema_files(schema_name: str) -> tuple[str, str]:
+        """
+        Get the CSV and data dictionary paths for a given schema.
+        
+        Args:
+            schema_name: Name of the schema (e.g. 'transfer_payments')
+            
+        Returns:
+            tuple: (csv_path, dictionary_path)
+        """
+        base_path = os.path.join('query-engine', 'data', schema_name)
+        if not os.path.exists(base_path):
+            raise ValueError(f"Schema directory {schema_name} does not exist")
+            
+        # Look for CSV and XML files
+        files = os.listdir(base_path)
+        csv_file = next((f for f in files if f.endswith('.csv')), None)
+        xml_file = next((f for f in files if f.endswith('.xml')), None)
+        
+        if not csv_file or not xml_file:
+            raise ValueError(f"Missing required files in {schema_name} directory. Need both CSV and XML files.")
+            
+        return (
+            os.path.join(base_path, csv_file),
+            os.path.join(base_path, xml_file)
+        )
+
+    def initialize_data_dictionary(self, xml_path: str):
+        """Initialize the data dictionary parser."""
         try:
+            self.data_dictionary = DataDictionaryParser(xml_path)
+            logger.info("Data dictionary initialized successfully")
+        except Exception as e:
+            logger.error(f"Failed to initialize data dictionary: {str(e)}")
+            self.data_dictionary = None
+
+    async def initialize_and_index(self, schema_name: str):
+        """
+        Initialize and index data for a specific schema.
+        
+        Args:
+            schema_name: Name of the schema directory (e.g. 'transfer_payments')
+        """
+        try:
+            # Get paths for the schema
+            csv_path, data_dict_path = self.get_schema_files(schema_name)
+            
+            # Initialize data dictionary
+            self.initialize_data_dictionary(data_dict_path)
+
             # Read CSV file
             df = pd.read_csv(csv_path)
+            logger.info(f"Loaded {len(df)} rows from {csv_path}")
 
             self.weaviate_client.connect()
             
             # Create a class in Weaviate if it doesn't exist
-            collection_name = "CanadaSpends"
+            collection_name = schema_name.replace('-', '_')
             self._create_weaviate_schema(collection_name)
             
             # Convert DataFrame to documents
             documents = self._prepare_documents(df)
+            logger.info(f"Created {len(documents)} documents")
             
             # Create vector store
             vector_store = WeaviateVectorStore(
@@ -99,23 +198,53 @@ class CSVIndexer:
         )
 
     def _prepare_documents(self, df: pd.DataFrame) -> list[Document]:
+        """
+        Prepare documents from DataFrame rows dynamically.
+        Handles any columns present in the data and uses data dictionary definitions.
+        """
         documents = []
         
         for _, row in df.iterrows():
-            # Create a structured text representation of the row
-            content = f"""
-            Department: {row['MINE']} ({row['MINF']})
-            Fiscal Year: {row['FSCL_YR']}
-            Description: {row['Description_EN']} ({row['Description_FR']})
-            Total Net Expenditure: {row['Ttl-min-net-exp_Ttl-dép-min-nettes']}
-            Consolidated Special Purpose Accounts: {row['Cons-spec-purpose-accnts_Cmpts-fins-dét-cons']}
-            Accrual and Other Adjustments: {row['Accrual-and-other-adjs_Redressements-courus-et-autres']}
-            Consolidated Crown Corps: {row["Cons-Crown-corps-and-other-ents_Socs-d'État-et-autres-ents-cons"]}
-            Tax Credits and Repayments: {row['Tax-credits-and-repayments_Crédits-et-remboursements-fiscaux']}
-            Internal Expenses: {row['Internal-expenses_Charges-internes']}
-            """
+            content_parts = []
             
+            # Process each column in the DataFrame
+            for col in df.columns:
+                value = row[col]
+                if pd.isna(value):  # Handle missing values
+                    continue
+                
+                # Get field information from data dictionary
+                field_info = (self.data_dictionary.get_field_info(col) 
+                            if self.data_dictionary else {'en_description': col})
+                
+                # Format the field value
+                if isinstance(value, (int, float)):
+                    formatted_value = f"{value:,}"
+                else:
+                    formatted_value = str(value).strip()
+                
+                # Skip empty values
+                if not formatted_value:
+                    continue
+                
+                # Add to content with both English and French descriptions when available
+                if (field_info.get('fr_description') and 
+                    field_info.get('fr_description') != field_info.get('en_description')):
+                    content_parts.append(
+                        f"{field_info['en_description']} ({field_info['fr_description']}): {formatted_value}"
+                    )
+                else:
+                    content_parts.append(
+                        f"{field_info['en_description']}: {formatted_value}"
+                    )
+            
+            # Join all parts with proper formatting
+            content = "\n".join(content_parts)
             documents.append(Document(text=content))
+            
+            # Log progress periodically
+            if len(documents) % 100 == 0:
+                logger.info(f"Processed {len(documents)} documents")
         
         return documents
 
