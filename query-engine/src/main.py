@@ -24,7 +24,7 @@ async def lifespan(app: FastAPI):
         
         indexer = CSVIndexer()
         indexing_status = {"status": "in_progress", "message": "Building index..."}
-        query_engine = await indexer.initialize_and_index('transfer_payments')
+        query_engine = await indexer.initialize_and_index('detailed-transfer-payments')
         
         indexing_status = {"status": "ready", "message": "Index is ready"}
         logger.info("Indexer initialization complete")
