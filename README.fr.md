@@ -19,8 +19,9 @@ Un outil puissant pour explorer les données des dépenses du gouvernement féd�
 
 ## Aperçu
 
-CanadaSpends rend les données des dépenses gouvernementales accessibles grâce à trois composants principaux :
+CanadaSpends rend les données des dépenses gouvernementales accessibles grâce à quatre composants principaux :
 - **Interface de chat interactive :** Posez des questions sur les données de dépenses en langage naturel
+- **Intégration Slack :** Interrogez les données de dépenses directement depuis Slack
 - **Traitement des données :** Analyse et nettoyage automatisés des sources de données gouvernementales
 - **Recherche vectorielle :** Recherche sémantique avancée propulsée par Weaviate et l'IA
 
@@ -33,6 +34,7 @@ CanadaSpends rend les données des dépenses gouvernementales accessibles grâce
 - 🎨 Formatage de texte enrichi pour une meilleure lisibilité
 - 🔄 Stockage persistant des données
 - 🐳 Déploiement facile avec Docker
+- 💻 Intégration Slack pour la collaboration d'équipe
 
 ## Pour commencer
 
@@ -40,6 +42,7 @@ CanadaSpends rend les données des dépenses gouvernementales accessibles grâce
 
 - Docker et Docker Compose
 - Clé API Cohere
+- Identifiants d'application Slack (pour l'intégration Slack)
 
 ### Installation
 
@@ -57,19 +60,22 @@ CanadaSpends rend les données des dépenses gouvernementales accessibles grâce
    WEAVIATE_HTTP_PORT=8080
    WEAVIATE_GRPC_PORT=50051
    PYTHONPATH=/app
+   SLACK_BOT_TOKEN=votre_token_bot_slack
+   SLACK_SIGNING_SECRET=votre_secret_signing_slack
    ```
 
 3. **Démarrer les services :**
    ```bash
    cd query-engine
    docker-compose up -d
-   docker-compose run --rm chat
+   docker-compose run --rm chat  # Optionnel : pour l'interface CLI
    ```
 
 Cela lance :
 - Base de données vectorielle Weaviate
 - Service API
 - Interface de chat interactive
+- Service Slackbot
 
 ## Utilisation de l'interface de chat
 
@@ -91,7 +97,7 @@ L'interface de chat offre un moyen intuitif d'explorer les données des dépense
 
 ## Architecture
 
-Le système se compose de trois composants principaux :
+Le système se compose de quatre composants principaux :
 
 1. **Base de données vectorielle (Weaviate)**
    - Stocke et indexe les données de dépenses
@@ -108,11 +114,17 @@ Le système se compose de trois composants principaux :
    - Formate les réponses pour une meilleure lisibilité
    - Gère les commandes utilisateur
 
+4. **Service Slackbot**
+   - Gère les abonnements aux événements Slack
+   - Traite les mentions et les messages
+   - Transmet les requêtes au service API
+   - Renvoie les réponses formatées à Slack
+
 ## Développement
 
 Le code source est organisé selon la structure suivante :
 
-```
+```text
 CanadaSpends/
 ├── query-engine/
 │   ├── src/
@@ -120,6 +132,9 @@ CanadaSpends/
 │   │   ├── query_engine.py    # Traitement des requêtes
 │   │   ├── indexer.py         # Indexation des données
 │   │   └── main.py           # Service API
+│   ├── slackbot/             # Intégration Slack
+│   │   └── src/
+│   │       └── index.ts      # Service Slackbot
 │   ├── csv-data/             # Répertoire de données
 │   └── docker-compose.yaml   # Configuration des services
 ```

@@ -19,8 +19,9 @@ A powerful tool for exploring Canadian federal government spending data through 
 
 ## Overview
 
-CanadaSpends makes government spending data accessible through three main components:
+CanadaSpends makes government spending data accessible through four main components:
 - **Interactive Chat Interface:** Ask questions about spending data in natural language
+- **Slack Integration:** Query spending data directly from Slack
 - **Data Processing:** Automated parsing and cleaning of government data sources
 - **Vector Search:** Advanced semantic search powered by Weaviate and AI embeddings
 
@@ -33,6 +34,7 @@ CanadaSpends makes government spending data accessible through three main compon
 - 🎨 Rich text formatting for better readability
 - 🔄 Persistent data storage
 - 🐳 Easy deployment with Docker
+- 💻 Slack integration for team collaboration
 
 ## Getting Started
 
@@ -40,6 +42,7 @@ CanadaSpends makes government spending data accessible through three main compon
 
 - Docker and Docker Compose
 - Cohere API key
+- Slack App credentials (for Slack integration)
 
 ### Installation
 
@@ -57,19 +60,22 @@ CanadaSpends makes government spending data accessible through three main compon
    WEAVIATE_HTTP_PORT=8080
    WEAVIATE_GRPC_PORT=50051
    PYTHONPATH=/app
+   SLACK_BOT_TOKEN=your_slack_bot_token
+   SLACK_SIGNING_SECRET=your_slack_signing_secret
    ```
 
 3. **Start the services:**
    ```bash
    cd query-engine
    docker-compose up -d
-   docker-compose run --rm chat
+   docker-compose run --rm chat  # Optional: for CLI interface
    ```
 
 This launches:
 - Weaviate vector database
 - API service
 - Interactive chat interface
+- Slackbot service
 
 ## Using the Chat Interface
 
@@ -91,7 +97,7 @@ The chat interface provides an intuitive way to explore government spending data
 
 ## Architecture
 
-The system consists of three main components:
+The system consists of four main components:
 
 1. **Vector Database (Weaviate)**
    - Stores and indexes spending data
@@ -108,6 +114,12 @@ The system consists of three main components:
    - Formats responses for readability
    - Handles user commands
 
+4. **Slackbot Service**
+   - Handles Slack event subscriptions
+   - Processes mentions and messages
+   - Forwards queries to API service
+   - Returns formatted responses to Slack
+
 ## Development
 
 The source code is organized in the following structure:
@@ -120,6 +132,9 @@ CanadaSpends/
 │   │   ├── query_engine.py    # Core query processing
 │   │   ├── indexer.py         # Data indexing
 │   │   └── main.py           # API service
+│   ├── slackbot/             # Slack integration
+│   │   └── src/
+│   │       └── index.ts      # Slackbot service
 │   ├── csv-data/             # Data directory
 │   └── docker-compose.yaml   # Service configuration
 ```
