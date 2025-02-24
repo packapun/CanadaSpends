@@ -96,6 +96,9 @@ resource "aws_instance" "canadaspends_server" {
     # Update system packages
     yum update -y
     
+    # Install Git
+    yum install -y git
+    
     # Install Docker
     amazon-linux-extras install docker -y
     service docker start
