@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - jharris1679/3-deploy-to-ec2
   workflow_dispatch:
 
 jobs:
