@@ -8,6 +8,13 @@ BRANCH="main"
 
 echo "Deploying main branch to server"
 
+# Check for permissions and fix if needed
+if [ ! -w "$APP_DIR" ]; then
+  echo "Need to fix permissions on $APP_DIR"
+  sudo mkdir -p "$APP_DIR"
+  sudo chown -R $(whoami):$(whoami) "$APP_DIR"
+fi
+
 # Create data directory if it doesn't exist
 mkdir -p $APP_DIR/data
 
@@ -30,9 +37,30 @@ if [ -d "$APP_DIR/.git" ]; then
   git fetch --all
   git reset --hard origin/main
 else
+  echo "Directory exists but is not a git repository..."
+  
+  # Check if directory has files other than those we expect
+  if [ "$(ls -A $APP_DIR | grep -v 'data' | grep -v '.env')" ]; then
+    echo "Directory contains unexpected files. Moving them to backup..."
+    mkdir -p $APP_DIR.bak
+    mv $APP_DIR/* $APP_DIR/.* $APP_DIR.bak/ 2>/dev/null || true
+  fi
+  
   echo "Cloning repository..."
   git clone $REPO_URL $APP_DIR
   cd $APP_DIR
+  
+  # Restore data directory if it existed
+  if [ -d "$APP_DIR.bak/data" ]; then
+    echo "Restoring data directory..."
+    cp -a $APP_DIR.bak/data/* $APP_DIR/data/ 2>/dev/null || true
+  fi
+  
+  # Restore .env file if it existed
+  if [ -f "$APP_DIR.bak/.env" ]; then
+    echo "Restoring .env file..."
+    cp $APP_DIR.bak/.env $APP_DIR/ 2>/dev/null || true
+  fi
 fi
 
 # Create an .env file from environment variables

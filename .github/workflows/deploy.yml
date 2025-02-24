@@ -31,8 +31,9 @@ jobs:
           
       - name: Copy deployment files to EC2
         run: |
-          # Create directory structure for Docker Compose and Nginx
-          ssh ec2-user@${{ env.SERVER }} "mkdir -p /opt/canadaspends/query-engine/nginx/conf.d /opt/canadaspends/query-engine/nginx/ssl /opt/canadaspends/query-engine/nginx/html"
+          # Create directory structure and ensure proper permissions
+          ssh ec2-user@${{ env.SERVER }} "sudo mkdir -p /opt/canadaspends /opt/canadaspends/query-engine/nginx/conf.d /opt/canadaspends/query-engine/nginx/ssl /opt/canadaspends/query-engine/nginx/html"
+          ssh ec2-user@${{ env.SERVER }} "sudo chown -R ec2-user:ec2-user /opt/canadaspends"
           
           # Copy modified docker-compose file
           scp terraform/files/docker-compose.prod.yaml ec2-user@${{ env.SERVER }}:/opt/canadaspends/query-engine/docker-compose.yaml
