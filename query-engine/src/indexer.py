@@ -135,8 +135,9 @@ class CSVIndexer:
         try:
             # Check if collection has data
             collection = self.weaviate_client.collections.get(collection_name)
-            count = len(collection)
-            return count > 0
+            num_docs = len(collection)
+            logger.info(f"Collection {collection_name} already exists with {num_docs} documents. Skipping indexing.")
+            return num_docs > 0
         except Exception as e:
             logger.error(f"Error checking collection existence: {str(e)}")
             return False
@@ -162,8 +163,6 @@ class CSVIndexer:
             
             # Check if collection already exists and has data
             if self._collection_exists_with_data(collection_name):
-                num_docs = len(self.weaviate_client.collections.get(collection_name))
-                logger.info(f"Collection {collection_name} already exists with {num_docs} documents. Skipping indexing.")
                 # Create vector store for existing collection
                 vector_store = WeaviateVectorStore(
                     weaviate_client=self.weaviate_client,
