@@ -79,6 +79,27 @@ services:
         aliases:
           - chat
 
+  slackbot:
+    build:
+      context: ./slackbot
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./slackbot/src:/app/slackbot/src
+    environment:
+      - SLACK_BOT_TOKEN=${SLACK_BOT_TOKEN}
+      - SLACK_SIGNING_SECRET=${SLACK_SIGNING_SECRET}
+      - API_URL=${API_URL}
+      - PORT=${PORT}
+    depends_on:
+      api:
+        condition: service_healthy
+    networks:
+      query-network:
+        aliases:
+          - slackbot
+
 networks:
   query-network:
     driver: bridge
