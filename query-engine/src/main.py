@@ -1,6 +1,7 @@
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import JSONResponse
+from pydantic import BaseModel
 from dotenv import load_dotenv
 import uvicorn
 from loguru import logger
@@ -9,6 +10,11 @@ from indexer import CSVIndexer
 
 # Load environment variables
 load_dotenv()
+
+# Define request model
+class QueryRequest(BaseModel):
+    query: str
+    source: str = "web"  # default to web if not specified
 
 # Global variables
 query_engine = None
@@ -50,20 +56,22 @@ app = FastAPI(
     lifespan=lifespan
 )
 
-@app.get("/query")
-async def query_data(question: str):
+@app.post("/query")
+async def query_data(request: QueryRequest):
     """
     Query the spending data with a natural language question.
-    Returns both the question and the answer.
+    Accepts a JSON body with the query and optional source.
     """
     if not query_engine:
         raise HTTPException(status_code=503, detail="Query engine not initialized")
     try:
-        response = await query_engine.query(question)
+        logger.info(f"Received query from {request.source}: {request.query}")
+        response = await query_engine.query(request.query)
         return JSONResponse({
             "status": "success",
-            "question": question,
-            "answer": str(response)
+            "question": request.query,
+            "response": str(response),  # Changed from 'answer' to 'response' to match Slack code
+            "source": request.source
         })
     except Exception as e:
         logger.error(f"Query error: {str(e)}")
@@ -72,7 +80,8 @@ async def query_data(question: str):
             content={
                 "status": "error",
                 "error": str(e),
-                "question": question
+                "question": request.query,
+                "source": request.source
             }
         )
 
