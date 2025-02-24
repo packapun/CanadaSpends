@@ -4,9 +4,9 @@ set -e
 # Configuration
 APP_DIR="/opt/canadaspends"
 REPO_URL="https://github.com/BuildCanada/CanadaSpends.git"
-BRANCH="main"
+BRANCH=${1:-main}  # Use first argument as branch, default to main
 
-echo "Deploying main branch to server"
+echo "Deploying $BRANCH branch to server"
 
 # Check for permissions and fix if needed
 if [ ! -w "$APP_DIR" ]; then
@@ -35,31 +35,30 @@ if [ -d "$APP_DIR/.git" ]; then
   echo "Updating existing repository..."
   cd $APP_DIR
   git fetch --all
-  git reset --hard origin/main
+  git reset --hard origin/$BRANCH
 else
-  echo "Directory exists but is not a git repository..."
+  echo "First-time repository setup..."
   
-  # Check if directory has files other than those we expect
-  if [ "$(ls -A $APP_DIR | grep -v 'data' | grep -v '.env')" ]; then
-    echo "Directory contains unexpected files. Moving them to backup..."
-    mkdir -p $APP_DIR.bak
-    mv $APP_DIR/* $APP_DIR/.* $APP_DIR.bak/ 2>/dev/null || true
+  # Preserve important files (just .env for now as data will be preserved separately)
+  if [ -f "$APP_DIR/.env" ]; then
+    echo "Preserving .env file..."
+    cp "$APP_DIR/.env" /tmp/canadaspends_env_backup
   fi
+  
+  # For first-time setup, we'll just clean the directory and clone fresh
+  echo "Cleaning directory for clean clone..."
+  shopt -s dotglob  # Include dotfiles in * expansion
+  rm -rf $APP_DIR/* 2>/dev/null || true
+  shopt -u dotglob  # Reset the option
   
   echo "Cloning repository..."
-  git clone $REPO_URL $APP_DIR
+  git clone -b $BRANCH $REPO_URL $APP_DIR
   cd $APP_DIR
   
-  # Restore data directory if it existed
-  if [ -d "$APP_DIR.bak/data" ]; then
-    echo "Restoring data directory..."
-    cp -a $APP_DIR.bak/data/* $APP_DIR/data/ 2>/dev/null || true
-  fi
-  
   # Restore .env file if it existed
-  if [ -f "$APP_DIR.bak/.env" ]; then
+  if [ -f "/tmp/canadaspends_env_backup" ]; then
     echo "Restoring .env file..."
-    cp $APP_DIR.bak/.env $APP_DIR/ 2>/dev/null || true
+    cp /tmp/canadaspends_env_backup $APP_DIR/.env
   fi
 fi
 
