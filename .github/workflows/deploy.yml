@@ -19,7 +19,7 @@ jobs:
       - name: Set environment variables
         id: vars
         run: |
-          echo "BRANCH=main" >> $GITHUB_ENV
+          echo "BRANCH=jharris1679/3-deploy-to-ec2" >> $GITHUB_ENV
           echo "ENVIRONMENT=development" >> $GITHUB_ENV
           echo "SERVER=${{ secrets.DEVELOPMENT_SERVER }}" >> $GITHUB_ENV
 
@@ -57,7 +57,7 @@ jobs:
           
       - name: Deploy application
         run: |
-          ssh ec2-user@${{ env.SERVER }} "cd /opt/canadaspends && ./deploy.sh main"
+          ssh ec2-user@${{ env.SERVER }} "cd /opt/canadaspends && ./deploy.sh jharris1679/3-deploy-to-ec2"
           
       - name: Check deployment status
         run: |
