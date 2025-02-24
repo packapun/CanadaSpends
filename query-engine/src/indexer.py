@@ -127,6 +127,21 @@ class CSVIndexer:
             logger.error(f"Failed to initialize data dictionary: {str(e)}")
             self.data_dictionary = None
 
+    def _collection_exists_with_data(self, collection_name: str) -> bool:
+        """Check if collection exists and has data in Weaviate."""
+        if not self.weaviate_client.collections.exists(collection_name):
+            return False
+        
+        try:
+            # Check if collection has data
+            collection = self.weaviate_client.collections.get(collection_name)
+            num_docs = len(collection)
+            logger.info(f"Collection {collection_name} already exists with {num_docs} documents. Skipping indexing.")
+            return num_docs > 0
+        except Exception as e:
+            logger.error(f"Error checking collection existence: {str(e)}")
+            return False
+
     async def initialize_and_index(self, schema_name: str):
         """
         Initialize and index data for a specific schema.
@@ -141,36 +156,50 @@ class CSVIndexer:
             # Initialize data dictionary
             self.initialize_data_dictionary(data_dict_path)
 
-            # Read CSV file
-            df = pd.read_csv(csv_path)
-            logger.info(f"Loaded {len(df)} rows from {csv_path}")
-
             self.weaviate_client.connect()
             
             # Create a class in Weaviate if it doesn't exist
             collection_name = schema_name.replace('-', '_').capitalize()
-            self._create_weaviate_schema(collection_name)
             
-            # Convert DataFrame to documents
-            documents = self._prepare_documents(df)
-            logger.info(f"Created {len(documents)} documents")
-            
-            # Create vector store
-            vector_store = WeaviateVectorStore(
-                weaviate_client=self.weaviate_client,
-                index_name=collection_name,
-                text_key="content"
-            )
-            
-            # Create storage context
-            storage_context = StorageContext.from_defaults(vector_store=vector_store)
-            
-            # Create index with explicit settings
-            index = VectorStoreIndex.from_documents(
-                documents,
-                storage_context=storage_context,
-                show_progress=True
-            )
+            # Check if collection already exists and has data
+            if self._collection_exists_with_data(collection_name):
+                # Create vector store for existing collection
+                vector_store = WeaviateVectorStore(
+                    weaviate_client=self.weaviate_client,
+                    index_name=collection_name,
+                    text_key="content"
+                )
+                storage_context = StorageContext.from_defaults(vector_store=vector_store)
+                index = VectorStoreIndex.from_vector_store(vector_store)
+            else:
+                logger.info(f"Collection {collection_name} does not exist or is empty. Creating and indexing...")
+                # Create new collection and index data
+                self._create_weaviate_schema(collection_name)
+                
+                # Read CSV file
+                df = pd.read_csv(csv_path)
+                logger.info(f"Loaded {len(df)} rows from {csv_path}")
+                
+                # Convert DataFrame to documents
+                documents = self._prepare_documents(df)
+                logger.info(f"Created {len(documents)} documents")
+                
+                # Create vector store
+                vector_store = WeaviateVectorStore(
+                    weaviate_client=self.weaviate_client,
+                    index_name=collection_name,
+                    text_key="content"
+                )
+                
+                # Create storage context
+                storage_context = StorageContext.from_defaults(vector_store=vector_store)
+                
+                # Create index with explicit settings
+                index = VectorStoreIndex.from_documents(
+                    documents,
+                    storage_context=storage_context,
+                    show_progress=True
+                )
             
             from query_engine import QueryEngine
             return QueryEngine(index)

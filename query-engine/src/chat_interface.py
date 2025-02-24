@@ -35,30 +35,20 @@ async def check_api_health():
             return None
 
 async def initialize_connection():
-    """Wait for API to be ready."""
-    with console.status("[bold blue]Waiting for API and index to initialize...", spinner="dots"):
-        for attempt in range(30):  # Try for 2 minutes (30 attempts * 4 seconds)
-            health_data = await check_api_health()
-            
-            if health_data:
-                status = health_data.get("status", "unknown")
-                message = health_data.get("message", "No status message")
-                
-                if status == "ready" and health_data.get("query_engine_ready"):
-                    return True
-                    
-                if status == "failed":
-                    console.print(f"\n[red]API initialization failed: {message}[/red]")
+    """Check if API is ready."""
+    with console.status("[bold blue]Connecting to API...", spinner="dots"):
+        try:
+            async with aiohttp.ClientSession() as session:
+                async with session.get(f"{API_URL}/health") as response:
+                    if response.status == 200:
+                        data = await response.json()
+                        if data.get("status") == "ready" and data.get("query_engine_ready"):
+                            return True
+                    console.print("\n[red]API is not ready[/red]")
                     return False
-                    
-                if attempt < 29:  # Don't show this message on the last attempt
-                    console.print(f"[dim]Status: {status} - {message} (attempt {attempt + 1}/30)[/dim]")
-            else:
-                if attempt < 29:
-                    console.print(f"[dim]Waiting for API to start (attempt {attempt + 1}/30)[/dim]")
-                    
-            await asyncio.sleep(4)
-        return False
+        except aiohttp.ClientError as e:
+            console.print(f"\n[red]Could not connect to API: {str(e)}[/red]")
+            return False
 
 async def process_query(session: aiohttp.ClientSession, question: str):
     """Process a single query and display the response."""
