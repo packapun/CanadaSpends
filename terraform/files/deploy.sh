@@ -8,6 +8,17 @@ BRANCH=${1:-main}  # Use first argument as branch, default to main
 
 echo "Deploying $BRANCH branch to server"
 
+# Load environment variables from .env file if it exists
+if [ -f "$APP_DIR/.env" ]; then
+  export $(grep -v '^#' $APP_DIR/.env | xargs)
+fi
+
+# Check if required environment variables are set
+if [ -z "$COHERE_API_KEY" ] || [ -z "$OPENAI_API_KEY" ]; then
+  echo "ERROR: Required API keys are not set!"
+  exit 1
+fi
+
 # Check for permissions and fix if needed
 if [ ! -w "$APP_DIR" ]; then
   echo "Need to fix permissions on $APP_DIR"
@@ -78,6 +89,13 @@ API_URL=http://api:8000
 PORT=3000
 ENVIRONMENT=development
 EOF
+
+# Ensure API keys are properly set for Docker Compose
+export OPENAI_API_KEY=${OPENAI_API_KEY}
+export COHERE_API_KEY=${COHERE_API_KEY}
+export SLACK_BOT_TOKEN=${SLACK_BOT_TOKEN}
+export SLACK_SIGNING_SECRET=${SLACK_SIGNING_SECRET}
+export ENVIRONMENT=development
 
 # Check if data directory has changed
 REINDEX_NEEDED=false

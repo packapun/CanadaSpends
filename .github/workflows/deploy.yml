@@ -57,7 +57,13 @@ jobs:
           
       - name: Deploy application
         run: |
-          ssh ec2-user@${{ env.SERVER }} "cd /opt/canadaspends && ./deploy.sh jharris1679/3-deploy-to-ec2"
+          ssh ec2-user@${{ env.SERVER }} "cd /opt/canadaspends && \
+            export OPENAI_API_KEY='${{ secrets.OPENAI_API_KEY }}' && \
+            export COHERE_API_KEY='${{ secrets.COHERE_API_KEY }}' && \
+            export SLACK_BOT_TOKEN='${{ secrets.SLACK_BOT_TOKEN }}' && \
+            export SLACK_SIGNING_SECRET='${{ secrets.SLACK_SIGNING_SECRET }}' && \
+            export ENVIRONMENT='development' && \
+            ./deploy.sh ${{ env.BRANCH }}"
           
       - name: Check deployment status
         run: |
