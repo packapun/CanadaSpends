@@ -243,52 +243,137 @@ class CSVIndexer:
 
     def _prepare_documents(self, df: pd.DataFrame) -> list[Document]:
         """
-        Prepare documents from DataFrame rows dynamically.
-        Handles any columns present in the data and uses data dictionary definitions.
+        Prepare separate English and French documents from DataFrame rows with enhanced natural language.
         """
         documents = []
         
-        for _, row in df.iterrows():
-            content_parts = []
+        # Define semantic column groupings
+        payment_context = ["FSCL_YR"]
+        department_info = ["MINC", "MINE", "MINF", "DepartmentNumber-Numéro-de-Ministère", "DEPT_EN_DESC", "DEPT_FR_DESC"] 
+        recipient_info = ["RCPNT_CLS_EN_DESC", "RCPNT_CLS_FR_DESC", "RCPNT_NML_EN_DESC", "RCPNT_NML_FR_DESC"]
+        location_info = ["CTY_EN_NM", "CTY_FR_NM", "PROVTER_EN", "PROVTER_FR", "CNTRY_EN_NM", "CNTRY_FR_NM"]
+        financial_info = ["TOT_CY_XPND_AMT", "AGRG_PYMT_AMT"]
+    
+        for idx, row in df.iterrows():
+            # Skip rows with zero payment amount
+            if row.get("AGRG_PYMT_AMT", 0) == 0:
+                continue
+                
+            # Prepare structured data for both languages
+            en_structured_data = {}
+            fr_structured_data = {}
             
             # Process each column in the DataFrame
             for col in df.columns:
                 value = row[col]
-                if pd.isna(value):  # Handle missing values
+                if pd.isna(value):
                     continue
                 
                 # Get field information from data dictionary
                 field_info = (self.data_dictionary.get_field_info(col) 
-                            if self.data_dictionary else {'en_description': col})
+                            if self.data_dictionary else {'en_description': col, 'fr_description': col})
                 
-                # Format the field value
-                if isinstance(value, (int, float)):
-                    formatted_value = f"{value:,}"
+                # Store the original value in structured data
+                col_lower = col.lower()
+                if '_en_' in col_lower or col_lower.endswith('_en'):
+                    en_structured_data[col] = value
+                elif '_fr_' in col_lower or col_lower.endswith('_fr'):
+                    fr_structured_data[col] = value
                 else:
-                    formatted_value = str(value).strip()
-                
-                # Skip empty values
-                if not formatted_value:
-                    continue
-                
-                # Add to content with both English and French descriptions when available
-                if (field_info.get('fr_description') and 
-                    field_info.get('fr_description') != field_info.get('en_description')):
-                    content_parts.append(
-                        f"{field_info['en_description']} ({field_info['fr_description']}): {formatted_value}"
-                    )
-                else:
-                    content_parts.append(
-                        f"{field_info['en_description']}: {formatted_value}"
-                    )
+                    en_structured_data[col] = value
+                    fr_structured_data[col] = value
+        
+            # Format values for narrative text - English
+            fiscal_year = en_structured_data.get("FSCL_YR", "")
+            dept_name = en_structured_data.get("DEPT_EN_DESC", "")
+            ministry_code = en_structured_data.get("MINC", "")
+            payment_amount = en_structured_data.get("AGRG_PYMT_AMT", 0)
+            recipient_name = en_structured_data.get("RCPNT_NML_EN_DESC", "")
+            recipient_class = en_structured_data.get("RCPNT_CLS_EN_DESC", "")
+            city = en_structured_data.get("CTY_EN_NM", "")
+            province = en_structured_data.get("PROVTER_EN", "")
+            country = en_structured_data.get("CNTRY_EN_NM", "")
             
-            # Join all parts with proper formatting
-            content = "\n".join(content_parts)
-            documents.append(Document(text=content))
+            # Format payment amount with commas
+            formatted_payment = f"${payment_amount:,}" if isinstance(payment_amount, (int, float)) else payment_amount
             
-            # Log progress periodically
-            if len(documents) % 1000 == 0:
-                logger.info(f"Processed {len(documents)} documents")
+            # Generate English narrative
+            en_content = f"In fiscal year {fiscal_year}, the Department of {dept_name} (ministry code {ministry_code}) " \
+                         f"made a payment of {formatted_payment} to {recipient_name}, categorized as {recipient_class}. "
+            
+            # Add location if available
+            location_parts = [part for part in [city, province, country] if part and part.strip()]
+            if location_parts:
+                en_content += f"This recipient is located in {', '.join(location_parts)}."
+            
+            # Format values for narrative text - French
+            fiscal_year_fr = fr_structured_data.get("FSCL_YR", "")
+            dept_name_fr = fr_structured_data.get("DEPT_FR_DESC", "")
+            ministry_code_fr = fr_structured_data.get("MINC", "")
+            payment_amount_fr = fr_structured_data.get("AGRG_PYMT_AMT", 0)
+            recipient_name_fr = fr_structured_data.get("RCPNT_NML_FR_DESC", "")
+            recipient_class_fr = fr_structured_data.get("RCPNT_CLS_FR_DESC", "")
+            city_fr = fr_structured_data.get("CTY_FR_NM", "")
+            province_fr = fr_structured_data.get("PROVTER_FR", "")
+            country_fr = fr_structured_data.get("CNTRY_FR_NM", "")
+            
+            # Format payment amount with commas
+            formatted_payment_fr = f"{payment_amount_fr:,}$" if isinstance(payment_amount_fr, (int, float)) else payment_amount_fr
+            
+            # Generate French narrative
+            fr_content = f"Pendant l'exercice financier {fiscal_year_fr}, le ministère de {dept_name_fr} " \
+                     f"(code du ministère {ministry_code_fr}) a effectué un paiement de {formatted_payment_fr} " \
+                     f"à {recipient_name_fr}, catégorisé comme {recipient_class_fr}. "
+            
+            # Add location if available
+            location_parts_fr = [part for part in [city_fr, province_fr, country_fr] if part and part.strip()]
+            if location_parts_fr:
+                fr_content += f"Ce bénéficiaire est situé à {', '.join(location_parts_fr)}."
+        
+            # Create metadata with typed fields for Weaviate
+            metadata = {
+                "row_id": idx,
+                "payment_type": "Transfer Payment",
+                "fiscal_year": fiscal_year,
+                "department_code": ministry_code,
+                "department_name": dept_name,
+                "recipient_name": recipient_name,
+                "recipient_type": recipient_class,
+                # Store numerical values in their native type
+                "payment_amount": payment_amount,
+                # Add geographical information for filtering
+                "city": city,
+                "province": province,
+                "country": country
+            }
+        
+            # Create documents with natural language and structured metadata
+            documents.append(Document(
+                text=en_content,
+                metadata={**metadata, "language": "en"}
+            ))
+        
+            # Create French document with French metadata
+            fr_metadata = {
+                "row_id": idx,
+                "payment_type": "Paiement de transfert",
+                "fiscal_year": fiscal_year_fr,
+                "department_code": ministry_code_fr,
+                "department_name": dept_name_fr,
+                "recipient_name": recipient_name_fr,
+                "recipient_type": recipient_class_fr,
+                # Store numerical values in their native type
+                "payment_amount": payment_amount_fr,
+                # Add geographical information for filtering
+                "city": city_fr,
+                "province": province_fr,
+                "country": country_fr
+            }
+                
+            documents.append(Document(
+                text=fr_content,
+                metadata={**fr_metadata, "language": "fr"}
+            ))
         
         return documents
 

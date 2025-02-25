@@ -54,7 +54,10 @@ async def process_query(session: aiohttp.ClientSession, question: str):
     """Process a single query and display the response."""
     with console.status("[bold blue]Thinking...", spinner="dots"):
         try:
-            async with session.get(f"{API_URL}/query", params={"question": question}) as response:
+            async with session.post(
+                f"{API_URL}/query", 
+                json={"query": question, "source": "cli"}
+            ) as response:
                 data = await response.json()
                 
                 if response.status != 200:
@@ -63,7 +66,7 @@ async def process_query(session: aiohttp.ClientSession, question: str):
                     return
 
                 console.print("\n[bold green]Canada Spends Chat[/bold green]")
-                console.print(Panel(data["answer"], border_style="green"))
+                console.print(Panel(data["response"], border_style="green"))
         except Exception as e:
             console.print(f"\n[red]Error: {str(e)}[/red]")
 

@@ -4,7 +4,7 @@ class QueryEngine:
     def __init__(self, index: VectorStoreIndex):
         self.index = index
         self.query_engine = index.as_query_engine(
-            similarity_top_k=5,
+            similarity_top_k=10,
             response_mode="no_text"
         )
 
