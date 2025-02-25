@@ -36,7 +36,7 @@ jobs:
           ssh ec2-user@${{ env.SERVER }} "sudo chown -R ec2-user:ec2-user /opt/canadaspends"
           
           # Copy modified docker-compose file
-          scp terraform/files/docker-compose.prod.yaml ec2-user@${{ env.SERVER }}:/opt/canadaspends/query-engine/docker-compose.yaml
+          scp terraform/files/docker-compose.remote.yaml ec2-user@${{ env.SERVER }}:/opt/canadaspends/query-engine/docker-compose.remote.yaml
           
           # Copy Nginx configuration
           scp terraform/files/nginx.conf ec2-user@${{ env.SERVER }}:/opt/canadaspends/query-engine/nginx/conf.d/default.conf
