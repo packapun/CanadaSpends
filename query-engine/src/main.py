@@ -1,5 +1,5 @@
 from contextlib import asynccontextmanager
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from dotenv import load_dotenv
@@ -11,10 +11,18 @@ from indexer import CSVIndexer
 # Load environment variables
 load_dotenv()
 
-# Define request model
+# Define request models
 class QueryRequest(BaseModel):
     query: str
     source: str = "web"  # default to web if not specified
+
+class SlackEvent(BaseModel):
+    type: str
+    challenge: str = None
+    event: dict = None
+    token: str = None
+    team_id: str = None
+    api_app_id: str = None
 
 # Global variables
 query_engine = None
@@ -83,6 +91,25 @@ async def query_data(request: QueryRequest):
                 "question": request.query,
                 "source": request.source
             }
+        )
+
+@app.post("/slack/events")
+async def slack_events(request: Request):
+    """Handle Slack events and verification challenges."""
+    try:
+        payload = await request.json()
+        logger.info(f"Received Slack event: {payload}")
+
+        # Handle URL verification challenge
+        if payload.get("type") == "url_verification":
+            logger.info("Responding to Slack verification challenge")
+            return {"challenge": payload.get("challenge")}
+    
+    except Exception as e:
+        logger.error(f"Error processing Slack event: {str(e)}")
+        return JSONResponse(
+            status_code=500,
+            content={"status": "error", "error": str(e)}
         )
 
 @app.get("/health")
