@@ -6,8 +6,8 @@
     <headings>
         <heading id="FY">
             <label>FSCL_YR</label>
-            <description xml:lang="en">Fiscal year.  If the value includes the suffix "-COMP" then the row provides comparative figures that have been reclassified and/or restated to allow for comparison to the subsequent year's values.</description>
-            <description xml:lang="fr">Exercice financier.  Si la valeur inclut le suffixe « -COMP », la ligne fournit des chiffres comparatifs qui ont été reclassés et/ou retraités pour permettre une comparaison avec les valeurs de l'année suivante.</description>
+            <description xml:lang="en">Fiscal year</description>
+            <description xml:lang="fr">Exercice financier</description>
             <data_pattern>^\d{4}[-/]\d{4}$</data_pattern>
         </heading>
         <heading id="FYC">
@@ -308,8 +308,8 @@
         <heading id="org4">
             <label xml:lang="en">MINE</label>
             <label xml:lang="fr">MINF</label>
-            <description xml:lang="en">Ministry of the Government of Canada.</description>
-            <description xml:lang="fr">Portefeuille ministériel du gouvernement du Canada.</description>
+            <description xml:lang="en">Ministry Name</description>
+            <description xml:lang="fr">Nom du portefeuille ministériel</description>
             <data_type>https://schema.org/GovernmentOrganization</data_type>
             <data_pattern>^.*$</data_pattern>
         </heading>
@@ -929,8 +929,8 @@
         <heading id="h82">
             <label xml:lang="en">RCPNT_NML_EN_DESC</label>
             <label xml:lang="fr">RCPNT_NML_FR_DESC</label>
-            <description xml:lang="en">Recipient name and location.</description>
-            <description xml:lang="fr">Nom et lieu du bénéficiaire.</description>
+            <description xml:lang="en">Recipient name</description>
+            <description xml:lang="fr">Nom du bénéficiaire</description>
         </heading>
         <heading id="type1">
             <label xml:lang="en">TYPE_EN</label>
@@ -997,8 +997,8 @@
         </heading>
         <heading id="h92">
             <label>AGRG_PYMT_AMT</label>
-            <description xml:lang="en">Aggregate Payments</description>
-            <description xml:lang="fr">Versements totalisant</description>
+            <description xml:lang="en">Payment amount in dollars</description>
+            <description xml:lang="fr">Montant du paiement en dollars</description>
             <data_type>https://schema.org/Integer</data_type>
             <data_pattern>^-?\d+(\.\d+)?$</data_pattern>
         </heading>
@@ -1080,8 +1080,8 @@
         </heading>
         <heading id="h105">
             <label>PROVTER_EN</label>
-            <description xml:lang="en">Province and Territory in English.</description>
-            <description xml:lang="fr">Province et Territoire en anglais.</description>
+            <description xml:lang="en">Province or Territory.</description>
+            <description xml:lang="fr">Province ou Territoire.</description>
         </heading>
 
         <heading id="h106">
@@ -1749,14 +1749,14 @@
         <heading id="h202">
             <label xml:lang="en">CNTRY_EN_NM</label>
             <label xml:lang="fr">CNTRY_FR_NM</label>
-            <description xml:lang="en">The name of the specific country in English.</description>
-            <description xml:lang="fr">Le nom du pays spécifique en français.</description>
+            <description xml:lang="en">Country name</description>
+            <description xml:lang="fr">Nom du pays</description>
         </heading>
         <heading id="h204">
             <label xml:lang="en">CTY_EN_NM</label>
             <label xml:lang="fr">CTY_FR_NM</label>
-            <description xml:lang="en">The name of the specific city in English.</description>
-            <description xml:lang="fr">Le nom de la ville spécifique en français.</description>
+            <description xml:lang="en">City name</description>
+            <description xml:lang="fr">Nom de la ville</description>
         </heading>
         <heading id="h205">
             <label>ATHRTY_TYPE</label>
