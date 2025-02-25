@@ -132,8 +132,8 @@ else
   cd $APP_DIR/query-engine
   
   # Complete teardown and rebuild of all services
-  docker-compose -f docker-compose.prod.yaml down --remove-orphans || true
-  docker-compose -f docker-compose.prod.yaml up -d
+  docker-compose -f docker-compose.remote.yaml down --remove-orphans || true
+  docker-compose -f docker-compose.remote.yaml up -d
 fi
 
 echo "Deployment completed successfully" 
