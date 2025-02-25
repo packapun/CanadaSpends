@@ -269,19 +269,19 @@ class CSVIndexer:
                 if pd.isna(value):
                     continue
                 
-            # Get field information from data dictionary
-            field_info = (self.data_dictionary.get_field_info(col) 
-                        if self.data_dictionary else {'en_description': col, 'fr_description': col})
-            
-            # Store the original value in structured data
-            col_lower = col.lower()
-            if '_en_' in col_lower or col_lower.endswith('_en'):
-                en_structured_data[col] = value
-            elif '_fr_' in col_lower or col_lower.endswith('_fr'):
-                fr_structured_data[col] = value
-            else:
-                en_structured_data[col] = value
-                fr_structured_data[col] = value
+                # Get field information from data dictionary
+                field_info = (self.data_dictionary.get_field_info(col) 
+                            if self.data_dictionary else {'en_description': col, 'fr_description': col})
+                
+                # Store the original value in structured data
+                col_lower = col.lower()
+                if '_en_' in col_lower or col_lower.endswith('_en'):
+                    en_structured_data[col] = value
+                elif '_fr_' in col_lower or col_lower.endswith('_fr'):
+                    fr_structured_data[col] = value
+                else:
+                    en_structured_data[col] = value
+                    fr_structured_data[col] = value
         
             # Format values for narrative text - English
             fiscal_year = en_structured_data.get("FSCL_YR", "")
