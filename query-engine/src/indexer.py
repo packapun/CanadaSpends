@@ -9,6 +9,7 @@ from llama_index.core import (
     StorageContext
 )
 from llama_index.vector_stores.weaviate import WeaviateVectorStore
+from llama_index.embeddings.cohere import CohereEmbedding
 
 import weaviate
 from weaviate.classes.config import (
@@ -161,6 +162,12 @@ class CSVIndexer:
             # Create a class in Weaviate if it doesn't exist
             collection_name = schema_name.replace('-', '_').capitalize()
             
+            # Create embedding model with Cohere
+            embed_model = CohereEmbedding(
+                cohere_api_key=os.getenv("COHERE_API_KEY"),
+                model_name="embed-multilingual-v2.0"
+            )
+            
             # Check if collection already exists and has data
             if self._collection_exists_with_data(collection_name):
                 # Create vector store for existing collection
@@ -170,7 +177,10 @@ class CSVIndexer:
                     text_key="content"
                 )
                 storage_context = StorageContext.from_defaults(vector_store=vector_store)
-                index = VectorStoreIndex.from_vector_store(vector_store)
+                index = VectorStoreIndex.from_vector_store(
+                    vector_store,
+                    embed_model=embed_model
+                )
             else:
                 logger.info(f"Collection {collection_name} does not exist or is empty. Creating and indexing...")
                 # Create new collection and index data
@@ -194,10 +204,11 @@ class CSVIndexer:
                 # Create storage context
                 storage_context = StorageContext.from_defaults(vector_store=vector_store)
                 
-                # Create index with explicit settings
+                # Create index with explicit settings and Cohere embeddings
                 index = VectorStoreIndex.from_documents(
                     documents,
                     storage_context=storage_context,
+                    embed_model=embed_model,
                     show_progress=True
                 )
             
