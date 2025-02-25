@@ -143,12 +143,13 @@ class CSVIndexer:
             logger.error(f"Error checking collection existence: {str(e)}")
             return False
 
-    async def initialize_and_index(self, schema_name: str):
+    async def initialize_and_index(self, schema_name: str, force_reindex: bool = False):
         """
         Initialize and index data for a specific schema.
         
         Args:
             schema_name: Name of the schema directory (e.g. 'transfer_payments')
+            force_reindex: If True, reindex data even if collection exists
         """
         try:
             # Get paths for the schema
@@ -168,8 +169,8 @@ class CSVIndexer:
                 model_name="embed-multilingual-v2.0"
             )
             
-            # Check if collection already exists and has data
-            if self._collection_exists_with_data(collection_name):
+            # Check if collection already exists and has data (unless force_reindex is True)
+            if not force_reindex and self._collection_exists_with_data(collection_name):
                 # Create vector store for existing collection
                 vector_store = WeaviateVectorStore(
                     weaviate_client=self.weaviate_client,
@@ -182,7 +183,10 @@ class CSVIndexer:
                     embed_model=embed_model
                 )
             else:
-                logger.info(f"Collection {collection_name} does not exist or is empty. Creating and indexing...")
+                if force_reindex:
+                    logger.info(f"Force reindexing collection {collection_name}")
+                else:
+                    logger.info(f"Collection {collection_name} does not exist or is empty. Creating and indexing...")
                 # Create new collection and index data
                 self._create_weaviate_schema(collection_name)
                 
