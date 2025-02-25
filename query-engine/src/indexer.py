@@ -166,7 +166,7 @@ class CSVIndexer:
             # Create embedding model with Cohere
             embed_model = CohereEmbedding(
                 cohere_api_key=os.getenv("COHERE_API_KEY"),
-                model_name="embed-multilingual-v2.0"
+                model_name="embed-multilingual-v3.0"
             )
             
             # Check if collection already exists and has data (unless force_reindex is True)
@@ -234,7 +234,7 @@ class CSVIndexer:
         self.weaviate_client.collections.create(
             name=collection_name,
             vectorizer_config=Configure.Vectorizer.text2vec_cohere(
-                model="embed-multilingual-v2.0"
+                model="embed-multilingual-v3.0"
             ),
             properties=[
                 Property(name="content", data_type=DataType.TEXT)
