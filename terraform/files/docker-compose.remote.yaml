@@ -83,7 +83,8 @@ services:
     image: nginx:latest
     ports:
       - "80:80"
-      - "443:443"
+      # Port 443 commented out until SSL is properly configured
+      # - "443:443"
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d
       - ./nginx/ssl:/etc/nginx/ssl
