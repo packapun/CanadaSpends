@@ -1,0 +1,72 @@
+name: Deploy CanadaSpends
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploy to EC2
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        
+      - name: Set environment variables
+        id: vars
+        run: |
+          echo "BRANCH=main" >> $GITHUB_ENV
+          echo "ENVIRONMENT=development" >> $GITHUB_ENV
+          echo "SERVER=${{ secrets.DEVELOPMENT_SERVER }}" >> $GITHUB_ENV
+
+      - name: Install SSH key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
+          
+      - name: Copy deployment files to EC2
+        run: |
+          # Create directory structure and ensure proper permissions
+          ssh ec2-user@${{ env.SERVER }} "sudo mkdir -p /opt/canadaspends /opt/canadaspends/query-engine/nginx/conf.d /opt/canadaspends/query-engine/nginx/ssl /opt/canadaspends/query-engine/nginx/html"
+          ssh ec2-user@${{ env.SERVER }} "sudo chown -R ec2-user:ec2-user /opt/canadaspends"
+          
+          # Copy modified docker-compose file
+          scp terraform/files/docker-compose.remote.yaml ec2-user@${{ env.SERVER }}:/opt/canadaspends/query-engine/docker-compose.remote.yaml
+          
+          # Copy Nginx configuration
+          scp terraform/files/nginx.conf ec2-user@${{ env.SERVER }}:/opt/canadaspends/query-engine/nginx/conf.d/default.conf
+          
+          # Copy deployment script
+          scp terraform/files/deploy.sh ec2-user@${{ env.SERVER }}:/opt/canadaspends/deploy.sh
+          ssh ec2-user@${{ env.SERVER }} "chmod +x /opt/canadaspends/deploy.sh"
+      
+      - name: Setup remote environment variables
+        run: |
+          ssh ec2-user@${{ env.SERVER }} "cat > /opt/canadaspends/.env << EOF
+          OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}
+          COHERE_API_KEY=${{ secrets.COHERE_API_KEY }}
+          SLACK_BOT_TOKEN=${{ secrets.SLACK_BOT_TOKEN }}
+          SLACK_SIGNING_SECRET=${{ secrets.SLACK_SIGNING_SECRET }}
+          ENVIRONMENT=development
+          EOF"
+          
+      - name: Deploy application
+        run: |
+          ssh ec2-user@${{ env.SERVER }} "cd /opt/canadaspends && \
+            export OPENAI_API_KEY='${{ secrets.OPENAI_API_KEY }}' && \
+            export COHERE_API_KEY='${{ secrets.COHERE_API_KEY }}' && \
+            export SLACK_BOT_TOKEN='${{ secrets.SLACK_BOT_TOKEN }}' && \
+            export SLACK_SIGNING_SECRET='${{ secrets.SLACK_SIGNING_SECRET }}' && \
+            export ENVIRONMENT='development' && \
+            ./deploy.sh ${{ env.BRANCH }}"
+          
+      - name: Check deployment status
+        run: |
+          # Wait for app to initialize (allow time for service health check)
+          sleep 30
+          ssh ec2-user@${{ env.SERVER }} "cd /opt/canadaspends/query-engine && docker-compose ps"
+          ssh ec2-user@${{ env.SERVER }} "cd /opt/canadaspends/query-engine && docker-compose logs api --tail 50"

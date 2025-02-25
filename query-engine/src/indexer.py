@@ -9,6 +9,7 @@ from llama_index.core import (
     StorageContext
 )
 from llama_index.vector_stores.weaviate import WeaviateVectorStore
+from llama_index.embeddings.cohere import CohereEmbedding
 
 import weaviate
 from weaviate.classes.config import (
@@ -142,12 +143,13 @@ class CSVIndexer:
             logger.error(f"Error checking collection existence: {str(e)}")
             return False
 
-    async def initialize_and_index(self, schema_name: str):
+    async def initialize_and_index(self, schema_name: str, force_reindex: bool = False):
         """
         Initialize and index data for a specific schema.
         
         Args:
             schema_name: Name of the schema directory (e.g. 'transfer_payments')
+            force_reindex: If True, reindex data even if collection exists
         """
         try:
             # Get paths for the schema
@@ -161,8 +163,14 @@ class CSVIndexer:
             # Create a class in Weaviate if it doesn't exist
             collection_name = schema_name.replace('-', '_').capitalize()
             
-            # Check if collection already exists and has data
-            if self._collection_exists_with_data(collection_name):
+            # Create embedding model with Cohere
+            embed_model = CohereEmbedding(
+                cohere_api_key=os.getenv("COHERE_API_KEY"),
+                model_name="embed-multilingual-v3.0"
+            )
+            
+            # Check if collection already exists and has data (unless force_reindex is True)
+            if not force_reindex and self._collection_exists_with_data(collection_name):
                 # Create vector store for existing collection
                 vector_store = WeaviateVectorStore(
                     weaviate_client=self.weaviate_client,
@@ -170,9 +178,15 @@ class CSVIndexer:
                     text_key="content"
                 )
                 storage_context = StorageContext.from_defaults(vector_store=vector_store)
-                index = VectorStoreIndex.from_vector_store(vector_store)
+                index = VectorStoreIndex.from_vector_store(
+                    vector_store,
+                    embed_model=embed_model
+                )
             else:
-                logger.info(f"Collection {collection_name} does not exist or is empty. Creating and indexing...")
+                if force_reindex:
+                    logger.info(f"Force reindexing collection {collection_name}")
+                else:
+                    logger.info(f"Collection {collection_name} does not exist or is empty. Creating and indexing...")
                 # Create new collection and index data
                 self._create_weaviate_schema(collection_name)
                 
@@ -194,10 +208,11 @@ class CSVIndexer:
                 # Create storage context
                 storage_context = StorageContext.from_defaults(vector_store=vector_store)
                 
-                # Create index with explicit settings
+                # Create index with explicit settings and Cohere embeddings
                 index = VectorStoreIndex.from_documents(
                     documents,
                     storage_context=storage_context,
+                    embed_model=embed_model,
                     show_progress=True
                 )
             
@@ -219,7 +234,7 @@ class CSVIndexer:
         self.weaviate_client.collections.create(
             name=collection_name,
             vectorizer_config=Configure.Vectorizer.text2vec_cohere(
-                model="embed-multilingual-v2.0"
+                model="embed-multilingual-v3.0"
             ),
             properties=[
                 Property(name="content", data_type=DataType.TEXT)

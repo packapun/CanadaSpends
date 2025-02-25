@@ -1,5 +1,5 @@
 from contextlib import asynccontextmanager
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from dotenv import load_dotenv
@@ -11,7 +11,7 @@ from indexer import CSVIndexer
 # Load environment variables
 load_dotenv()
 
-# Define request model
+# Define request models
 class QueryRequest(BaseModel):
     query: str
     source: str = "web"  # default to web if not specified
