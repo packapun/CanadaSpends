@@ -16,14 +16,6 @@ class QueryRequest(BaseModel):
     query: str
     source: str = "web"  # default to web if not specified
 
-class SlackEvent(BaseModel):
-    type: str
-    challenge: str = None
-    event: dict = None
-    token: str = None
-    team_id: str = None
-    api_app_id: str = None
-
 # Global variables
 query_engine = None
 indexing_status = {"status": "not_started", "message": "Initialization not started"}
@@ -96,6 +88,7 @@ async def query_data(request: QueryRequest):
 @app.post("/slack/events")
 async def slack_events(request: Request):
     """Handle Slack events and verification challenges."""
+    logger.info(f"Received Slack event: {request.body}")
     try:
         payload = await request.json()
         logger.info(f"Received Slack event: {payload}")
