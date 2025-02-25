@@ -85,26 +85,6 @@ async def query_data(request: QueryRequest):
             }
         )
 
-@app.post("/slack/events")
-async def slack_events(request: Request):
-    """Handle Slack events and verification challenges."""
-    logger.info(f"Received Slack event: {request.body}")
-    try:
-        payload = await request.json()
-        logger.info(f"Received Slack event: {payload}")
-
-        # Handle URL verification challenge
-        if payload.get("type") == "url_verification":
-            logger.info("Responding to Slack verification challenge")
-            return {"challenge": payload.get("challenge")}
-    
-    except Exception as e:
-        logger.error(f"Error processing Slack event: {str(e)}")
-        return JSONResponse(
-            status_code=500,
-            content={"status": "error", "error": str(e)}
-        )
-
 @app.get("/health")
 async def health_check():
     """Check if the API and query engine are healthy."""
