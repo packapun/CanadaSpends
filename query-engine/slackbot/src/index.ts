@@ -20,7 +20,6 @@ const API_URL = process.env.API_URL || 'http://api:8000';
 
 // Handle Slack's URL verification challenge and events
 app.post('/slack/events', async (req, res) => {
-  console.log('Received request:', req.body.event.text);
   
   if (req.body.type === 'url_verification') {
     res.json({ challenge: req.body.challenge });
