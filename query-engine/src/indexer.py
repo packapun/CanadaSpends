@@ -243,7 +243,8 @@ class CSVIndexer:
 
     def _prepare_documents(self, df: pd.DataFrame) -> list[Document]:
         """
-        Prepare separate English and French documents from DataFrame rows with enhanced natural language.
+        Prepare only English documents from DataFrame rows with enhanced natural language.
+        French documents are no longer included in the vector store.
         """
         documents = []
         
@@ -253,15 +254,14 @@ class CSVIndexer:
         recipient_info = ["RCPNT_CLS_EN_DESC", "RCPNT_CLS_FR_DESC", "RCPNT_NML_EN_DESC", "RCPNT_NML_FR_DESC"]
         location_info = ["CTY_EN_NM", "CTY_FR_NM", "PROVTER_EN", "PROVTER_FR", "CNTRY_EN_NM", "CNTRY_FR_NM"]
         financial_info = ["TOT_CY_XPND_AMT", "AGRG_PYMT_AMT"]
-    
+
         for idx, row in df.iterrows():
             # Skip rows with zero payment amount
             if row.get("AGRG_PYMT_AMT", 0) == 0:
                 continue
                 
-            # Prepare structured data for both languages
+            # Prepare structured data for English only
             en_structured_data = {}
-            fr_structured_data = {}
             
             # Process each column in the DataFrame
             for col in df.columns:
@@ -274,14 +274,7 @@ class CSVIndexer:
                             if self.data_dictionary else {'en_description': col, 'fr_description': col})
                 
                 # Store the original value in structured data
-                col_lower = col.lower()
-                if '_en_' in col_lower or col_lower.endswith('_en'):
-                    en_structured_data[col] = value
-                elif '_fr_' in col_lower or col_lower.endswith('_fr'):
-                    fr_structured_data[col] = value
-                else:
-                    en_structured_data[col] = value
-                    fr_structured_data[col] = value
+                en_structured_data[col] = value
         
             # Format values for narrative text - English
             fiscal_year = en_structured_data.get("FSCL_YR", "")
@@ -306,30 +299,6 @@ class CSVIndexer:
             if location_parts:
                 en_content += f"This recipient is located in {', '.join(location_parts)}."
             
-            # Format values for narrative text - French
-            fiscal_year_fr = fr_structured_data.get("FSCL_YR", "")
-            dept_name_fr = fr_structured_data.get("DEPT_FR_DESC", "")
-            ministry_code_fr = fr_structured_data.get("MINC", "")
-            payment_amount_fr = fr_structured_data.get("AGRG_PYMT_AMT", 0)
-            recipient_name_fr = fr_structured_data.get("RCPNT_NML_FR_DESC", "")
-            recipient_class_fr = fr_structured_data.get("RCPNT_CLS_FR_DESC", "")
-            city_fr = fr_structured_data.get("CTY_FR_NM", "")
-            province_fr = fr_structured_data.get("PROVTER_FR", "")
-            country_fr = fr_structured_data.get("CNTRY_FR_NM", "")
-            
-            # Format payment amount with commas
-            formatted_payment_fr = f"{payment_amount_fr:,}$" if isinstance(payment_amount_fr, (int, float)) else payment_amount_fr
-            
-            # Generate French narrative
-            fr_content = f"Pendant l'exercice financier {fiscal_year_fr}, le ministère de {dept_name_fr} " \
-                     f"(code du ministère {ministry_code_fr}) a effectué un paiement de {formatted_payment_fr} " \
-                     f"à {recipient_name_fr}, catégorisé comme {recipient_class_fr}. "
-            
-            # Add location if available
-            location_parts_fr = [part for part in [city_fr, province_fr, country_fr] if part and part.strip()]
-            if location_parts_fr:
-                fr_content += f"Ce bénéficiaire est situé à {', '.join(location_parts_fr)}."
-        
             # Create metadata with typed fields for Weaviate
             metadata = {
                 "row_id": idx,
@@ -347,32 +316,10 @@ class CSVIndexer:
                 "country": country
             }
         
-            # Create documents with natural language and structured metadata
+            # Create only English documents with natural language and structured metadata
             documents.append(Document(
                 text=en_content,
                 metadata={**metadata, "language": "en"}
-            ))
-        
-            # Create French document with French metadata
-            fr_metadata = {
-                "row_id": idx,
-                "payment_type": "Paiement de transfert",
-                "fiscal_year": fiscal_year_fr,
-                "department_code": ministry_code_fr,
-                "department_name": dept_name_fr,
-                "recipient_name": recipient_name_fr,
-                "recipient_type": recipient_class_fr,
-                # Store numerical values in their native type
-                "payment_amount": payment_amount_fr,
-                # Add geographical information for filtering
-                "city": city_fr,
-                "province": province_fr,
-                "country": country_fr
-            }
-                
-            documents.append(Document(
-                text=fr_content,
-                metadata={**fr_metadata, "language": "fr"}
             ))
         
         return documents
