@@ -1,5 +1,4 @@
 import csv
-from argparse import ArgumentError
 from glob import glob
 import sqlite3
 import os
@@ -178,9 +177,12 @@ def get_or_create_program(row, fiscal_year, payer_id):
 
 def create_payment(row, program_id, recipient_id):
     """Create payment record."""
-    if not program_id or not recipient_id:
-        raise ArgumentError("program_id and recipient_id must be passed in")
-    
+    if not program_id:
+        raise ValueError("program_id must be present")
+
+    if not recipient_id:
+        raise ValueError("recipient_id must be present")
+
     amount = row.get('AGRG_PYMT_AMT', '')
     
     # Skip if empty or not a number
@@ -216,30 +218,71 @@ def create_payment(row, program_id, recipient_id):
     
     return c.lastrowid
 
-def process_rows(reader, filename):
-    """Process a single row of CSV data."""
-    program_id = None
+def process_programs(reader, filename):
+    """First pass: Process rows to create programs only."""
     for row_number, row in enumerate(reader):
-
         fiscal_year = row.get('FSCL_YR', '') or extract_fiscal_year(filename)
 
         # Get or create the payer for this row
         payer_id = get_or_create_payer(row)
 
-        # If TOT_CY_XPND_AMT exists, this row defines a program
-        if int(row.get('TOT_CY_XPND_AMT')):
-            # Get or create the program
-            # TODO: VERIFY It's true that all the prgrams have the first row as the program.
-            #  or better yet, a function to get the program_id from a row
-            program_id = get_or_create_program(row, fiscal_year, payer_id)
-        else:
-            # This is not a program definition, so we don't process it for now
-            recipient_id = get_or_create_recipient(row)
-            create_payment(row, program_id, recipient_id)
+        # If TOT_CY_XPND_AMT exists and is non-zero, this row defines a program
+        try:
+            if row.get('TOT_CY_XPND_AMT') and float(row.get('TOT_CY_XPND_AMT')) != 0:
+                # Get or create the program
+                get_or_create_program(row, fiscal_year, payer_id)
+        except (ValueError, TypeError):
+            # Skip if TOT_CY_XPND_AMT is not a valid number
+            continue
 
         # Commit every 1000 rows to avoid large transactions
         if row_number % 1000 == 0:
             db.commit()
+
+def process_payments(reader, filename):
+    """Second pass: Process rows to create payments, with all programs already available."""
+    for row_number, row in enumerate(reader):
+        fiscal_year = row.get('FSCL_YR', '') or extract_fiscal_year(filename)
+        
+        # Get the payer for this row
+        payer_id = get_or_create_payer(row)
+        
+        # Get the program for this payment
+        program_name = row.get('RCPNT_CLS_EN_DESC')
+        if not program_name:
+            continue
+            
+        key = f"{payer_id}_{program_name}"
+        if key not in programs:
+            continue
+            
+        program_id = programs[key]
+        
+        # If this is a payment row (not a program definition)
+        try:
+            is_program_row = row.get('TOT_CY_XPND_AMT') and float(row.get('TOT_CY_XPND_AMT')) != 0
+            if not is_program_row:
+                recipient_id = get_or_create_recipient(row)
+                create_payment(row, program_id, recipient_id)
+        except (ValueError, TypeError):
+            # If TOT_CY_XPND_AMT is not a valid number, treat as payment row
+            recipient_id = get_or_create_recipient(row)
+            create_payment(row, program_id, recipient_id)
+            
+        # Commit every 1000 rows to avoid large transactions
+        if row_number % 1000 == 0:
+            db.commit()
+
+def process_rows(reader, filename):
+    """Process rows in two passes - first for programs, then for payments."""
+    # Store the CSV data to avoid reopening the file
+    rows = list(reader)
+    
+    # First pass: Process programs
+    process_programs(rows, filename)
+    
+    # Second pass: Process payments
+    process_payments(rows, filename)
 
 def process_file(filename):
     print(f"Processing file {filename}")

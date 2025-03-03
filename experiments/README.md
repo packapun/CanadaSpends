@@ -26,5 +26,8 @@ datasette publish vercel transfer_payments.sqlite \
 # TODO
 
  - [ ] Proper Sourcing
- - [ ] Proper Sourcing
- - 
+ - [ ] Add GeoData for better geo-mapping
+   - https://open.canada.ca/data/en/dataset/fe945388-1dd9-4a4a-9a1e-5c552579a28c
+   - Also would be nice to add shapes for provinces for heatmaps
+   - geocode-sqlite for any locations that don't have data
+ - [ ] use llm for embedding generation
