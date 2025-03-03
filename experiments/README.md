@@ -4,16 +4,27 @@
 All the following should be run in the experiments directory
 
 
-To generate the sqlite db:
-`python clean_csv.py`
-```
-datasette serve transfer_payments.sqlite
-```
+Run `python clean_csv.py` to generate the sqlite db
+
+Run `datasette serve transfer_payments.sqlite` to run datasette locally
+
+
+This exposes 
 
 
 ## Publishing
 
 ```
-datasette publish fly mydatabase.db --app="my-app" --install=datasette-vega
-
+datasette publish vercel transfer_payments.sqlite \
+        --project=canada-spends \
+        --vercel-json=vercel.json \
+        --public \
+        --install datasette-chatgpt-plugin 
 ```
+
+
+# TODO
+
+ - [ ] Proper Sourcing
+ - [ ] Proper Sourcing
+ - 
