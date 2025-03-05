@@ -39,7 +39,7 @@ if [ $START_RECORD -eq 0 ] || [ ! -f "$COOKIE_FILE" ]; then
        -H 'Priority: u=0, i' \
        -c "$COOKIE_FILE" \
        --data-raw 'fiscalyearfrom=1991&fiscalyearto=2023&competitionyearfrom=0&competitionyearto=0&PersonName=&KeyWords=&KeyWordsIn=&OrgType=0&AreaApplicationOther=&ResearchSubjectOther=&Department=&AwardAmountMin=&AwardAmountMax=&ResultsBy=1&button=' \
-       -o "search_setup_$THREAD_ID.html"
+       -o "tmp/search_setup_$THREAD_ID.html"
 fi
 
 # Now fetch the actual results page using AJAX
