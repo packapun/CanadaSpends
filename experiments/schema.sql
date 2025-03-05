@@ -1,4 +1,4 @@
-CREATE TABLE payers
+CREATE TABLE government_entities
 (
 	id INTEGER PRIMARY KEY, -- generated id
 	external_id TEXT, -- ID given to the organization by the parent organization.
@@ -12,9 +12,7 @@ CREATE TABLE payers
     description TEXT, -- Blurb of what the organization is responsible for.
     parent_id INTEGER, -- Parent organization if any, ministry, order of government, etc.
 
-
-    sources JSON, -- Hash map of attributes to the source_id of where that data came from
-    FOREIGN KEY (parent_id) REFERENCES payers (id)
+    FOREIGN KEY (parent_id) REFERENCES government_entities (id)
 );
 
 
@@ -31,8 +29,7 @@ CREATE TABLE recipients
 
     city TEXT, -- City where the head office is located (where key executives work)
     province TEXT, -- Province where the head office is located (where key executives work)
-	country TEXT, -- Country where the head office is located (where key executives work)
-    sources JSON -- Hash map of column to the source_id of where that data came from along with area in the source. e.g { "description": { "source": 1, "location": "row1" }}
+	country TEXT -- Country where the head office is located (where key executives work)
 );
 
 CREATE TABLE payments
@@ -44,7 +41,6 @@ CREATE TABLE payments
     currency TEXT,
     url TEXT,
     description TEXT,
-    sources JSON, -- Hash map of column to the source_id of where that data came from
     fiscal_year TEXT,
 --  TODO: payment year
 --  TODO: is_aggregate, flag to mark it as an aggregate of smaller payments
@@ -68,12 +64,23 @@ CREATE TABLE programs
     program_spending JSON, -- Hash of total amounts spent in each fiscal year: e.g. { "2023/2024": 1000000 }
 
 
-    FOREIGN KEY (payer_id) REFERENCES payers(id) -- references payer
+    FOREIGN KEY (payer_id) REFERENCES government_entities(id) -- references payer
 );
 
 CREATE TABLE sources
 (
     id INTEGER PRIMARY KEY, -- generated id,
+    canonical_url TEXT, -- URL where this data was found
+    cached_url TEXT, -- URL to our copy of the data
+    name TEXT,
+    description TEXT,
+    filetype TEXT
+);
+
+CREATE TABLE source_usages
+(
+    id INTEGER PRIMARY KEY, -- generated id,
+    table_name
     canonical_url TEXT, -- URL where this data was found
     cached_url TEXT, -- URL to our copy of the data
     name TEXT,

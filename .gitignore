@@ -9,3 +9,6 @@ terraform.tfstate
 terraform.tfstate.backup
 terraform.tfvars
 *.tfplan
+/scrapers/*/tmp/
+scrapers/*/data/**
+.idea/

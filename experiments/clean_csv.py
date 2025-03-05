@@ -5,7 +5,7 @@ import os
 import re
 
 # Dictionary to store unique identifiers for entities to avoid duplication
-payers = {}  # Store payer information: key is external_id, value is db id
+government_entities = {}  # Store payer information: key is external_id, value is db id
 recipients = {}  # Store recipient information: key is external_id, value is db id
 programs = {}  # Store program information: key is name, value is db id
 payments = {}  # Store payment tracking: key is (program_id, recipient_id, amount, desc), value is db id
@@ -19,7 +19,7 @@ db.execute("PRAGMA foreign_keys = ON")
 c = db.cursor()
 
 # Check if tables exist
-c.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='payers'")
+c.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='government_entities'")
 
 def load_schema():
     tables_exist = c.fetchone() is not None
@@ -30,10 +30,10 @@ def load_schema():
             c.executescript(f.read())
     else:
         print("Database already exists. Loading existing data for tracking...")
-        # Load existing payers
-        c.execute("SELECT id, external_id FROM payers")
+        # Load existing government_entities
+        c.execute("SELECT id, external_id FROM government_entities")
         for row in c.fetchall():
-            payers[row[1]] = row[0]
+            government_entities[row[1]] = row[0]
 
         # Load existing recipients
         c.execute("SELECT id, external_id FROM recipients")
@@ -65,23 +65,22 @@ def get_or_create_payer(row):
     # Normalize as can-minc-{id}
     normalized_id = f"can-minc-{external_id}"
     
-    if normalized_id in payers:
-        return payers[normalized_id]
+    if normalized_id in government_entities:
+        return government_entities[normalized_id]
 
     # TODO: passthrough source info
     # Insert payer if not exists
     c.execute('''
-        INSERT INTO payers 
-        (external_id, name, sources) 
-        VALUES (?, ?, ?)
+        INSERT INTO government_entities 
+        (external_id, name) 
+        VALUES (?, ?)
     ''', (
         normalized_id, 
-        row.get('DEPT_EN_DESC', ''),
-        '{"source": "Public Accounts Transfer Payments"}'
+        row.get('DEPT_EN_DESC', '')
     ))
     
     payer_id = c.lastrowid
-    payers[normalized_id] = payer_id
+    government_entities[normalized_id] = payer_id
     return payer_id
 
 def get_or_create_recipient(row):
@@ -107,16 +106,15 @@ def get_or_create_recipient(row):
     # Insert recipient if not exists
     c.execute('''
         INSERT INTO recipients 
-        (external_id, name, description, city, province, country, sources) 
-        VALUES (?, ?, ?, ?, ?, ?, ?)
+        (external_id, name, description, city, province, country) 
+        VALUES (?, ?, ?, ?, ?, ?)
     ''', (
         key,
         recipient_name, 
         f"Recipient class: {recipient_class}",
         city,
         province,
-        country,
-        '{"source": "Public Accounts Transfer Payments"}'
+        country
     ))
     
     recipient_id = c.lastrowid
@@ -204,16 +202,15 @@ def create_payment(row, program_id, recipient_id):
     # Create a payment record
     c.execute('''
         INSERT INTO payments 
-        (program_id, recipient_id, amount, currency, description, fiscal_year, sources) 
-        VALUES (?, ?, ?, ?, ?, ?, ?)
+        (program_id, recipient_id, amount, currency, description, fiscal_year) 
+        VALUES (?, ?, ?, ?, ?, ?)
     ''', (
         program_id,
         recipient_id, 
         amount,
         'CAD',
         description,
-        fiscal_year,
-        '{"source": "Public Accounts Transfer Payments"}'
+        fiscal_year
     ))
     
     return c.lastrowid
