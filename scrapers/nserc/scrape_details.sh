@@ -3,12 +3,13 @@
 # Create output directory if it doesn't exist
 mkdir -p data/details
 
-# Function to switch to a different Mullvad server
+# Function to switch to a different Mullvad server (only CA and US servers)
 switch_mullvad_server() {
-  echo "Switching to a different Mullvad server..."
-  # Get a list of available servers
+  echo "Switching to a different Mullvad server (CA or US only)..."
+  # Get a list of available CA and US servers
   available_servers=($(mullvad relay list | grep -o '\(ca\|us\)-[a-z]\{3\}-[a-z]\{2,4\}-[0-9]\{3\}' | sort))
-  # Choose a random server from the list
+
+  # Choose a random server from the filtered list
   if [ ${#available_servers[@]} -gt 0 ]; then
     random_index=$((RANDOM % ${#available_servers[@]}))
     new_server=${available_servers[$random_index]}
@@ -21,7 +22,7 @@ switch_mullvad_server() {
     while true; do
       status=$(mullvad status)
       if [[ "$status" == *"Connected"* ]]; then
-        echo "Successfully connected to new server"
+        echo "Successfully connected to new server: $new_server"
         break
       elif [[ "$status" == *"Connecting"* ]]; then
         echo "Still connecting, waiting..."
@@ -33,7 +34,7 @@ switch_mullvad_server() {
 
     return 0
   else
-    echo "Error: No available Mullvad servers found"
+    echo "Error: No available CA or US Mullvad servers found"
     return 1
   fi
 }
@@ -73,12 +74,44 @@ download_details() {
 
 export -f download_details
 
+# Function to display progress bar and it/s
+display_progress() {
+  local current=$1
+  local total=$2
+  local completed_percent=$((current * 100 / total))
+  local bar_width=40
+  local elapsed_time=$3
+
+  # Calculate iterations per second (it/s)
+  local its=0
+  if (( elapsed_time > 0 )); then
+    its=$(echo "scale=2; $current / $elapsed_time" | bc)
+  fi
+
+  # Create the progress bar
+  local completed_width=$((bar_width * completed_percent / 100))
+  local remaining_width=$((bar_width - completed_width))
+
+  printf "\r[%${completed_width}s%${remaining_width}s] %d/%d (%d%%) - %.2f it/s" \
+         "$(printf '#%.0s' $(seq 1 $completed_width))" \
+         "$(printf ' %.0s' $(seq 1 $remaining_width))" \
+         "$current" "$total" "$completed_percent" "$its"
+}
+
+# Variables for progress tracking
+current=0
+start_time=$(date +%s)
+total_urls=700000 # estimate
+
 # Process all JSON files and extract IDs
 find data/listing -name "nserc_results_*.json" | while read json_file; do
   echo "Processing $json_file"
 
   # Extract all detail URLs from the JSON file
   detail_urls=($(jq -r '.aaData[][5]' "$json_file"))
+
+  echo "Found $total_urls URLs to process"
+
 
   # Process each URL with retry logic
   for detail_url in "${detail_urls[@]}"; do
@@ -90,9 +123,19 @@ find data/listing -name "nserc_results_*.json" | while read json_file; do
       # Try downloading
       if download_details "$detail_url"; then
         success=true
+        current=$((current + 1))
+
+        # Calculate elapsed time
+        current_time=$(date +%s)
+        elapsed_time=$((current_time - start_time))
+
+        # Display progress only for every 10th current item
+        if (( current % 10 == 0 )); then
+            display_progress $current $total_urls $elapsed_time
+        fi
       else
         retry_count=$((retry_count + 1))
-        echo "Failed to download: $detail_url (attempt $retry_count of $MAX_RETRIES)"
+        echo -e "\nFailed to download: $detail_url (attempt $retry_count of $MAX_RETRIES)"
 
         if [ $retry_count -lt $MAX_RETRIES ]; then
           echo "Switching Mullvad server before retrying..."
@@ -104,6 +147,9 @@ find data/listing -name "nserc_results_*.json" | while read json_file; do
       fi
     done
   done
+
+  # Print newline after progress bar
+  echo ""
 done
 
 echo "All details pages have been downloaded."
