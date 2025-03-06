@@ -45,7 +45,7 @@ app.post('/slack/events', async (req, res) => {
         // Send response back to Slack
         await slackApp.client.chat.postMessage({
           channel: event.channel,
-          text: response.data.response,
+          text: formatResponse(response.data),
           thread_ts: event.ts
         });
       } catch (error) {
@@ -61,6 +61,38 @@ app.post('/slack/events', async (req, res) => {
   
   res.sendStatus(200);
 });
+
+// Add this function before the app.listen section
+function formatResponse(data: any): string {
+  // Create a nicely formatted message with all the response data
+  let message = '';
+  
+  if (data.answer) {
+    message += `*Answer:*\n${data.answer}\n\n`;
+  }
+  
+  if (data.summary) {
+    message += `*Summary:*\n${data.summary}\n\n`;
+  }
+  
+  if (data.sql_query) {
+    message += `*SQL Query:*\n\`\`\`${data.sql_query}\`\`\`\n\n`;
+  }
+  
+  if (data.related_questions && Array.isArray(data.related_questions) && data.related_questions.length > 0) {
+    message += `*Related Questions:*\n`;
+    data.related_questions.forEach((question: string, index: number) => {
+      message += `${index + 1}. ${question}\n`;
+    });
+  }
+  
+  // If we couldn't format anything, return the raw data
+  if (!message) {
+    message = `\`\`\`${JSON.stringify(data, null, 2)}\`\`\``;
+  }
+  
+  return message;
+}
 
 // Start the app
 (async () => {

@@ -77,15 +77,12 @@ RETURN ONLY THE SQL QUERY, with no explanations before or after it.
             logger.error(f"Error generating SQL query: {str(e)}")
             raise
     
-    def format_query_result(self, question: str, sql_query: str, query_result: pd.DataFrame) -> SQLResult:
+    def format_query_result(self, question: str, sql_query: str, query_result: Optional[pd.DataFrame]) -> SQLResult:
         """Format the SQL query results into a structured response using Claude 3"""
         try:
-            # Add debugging to check what's actually in the DataFrame
-            logger.info(f"Query result shape: {query_result.shape}")
-            logger.info(f"Query result columns: {query_result.columns.tolist()}")
-            logger.info(f"Query result empty check: {query_result.empty}")
-            
-            if query_result.empty:
+            if query_result is None:
+                result_str = "No query executed"
+            elif query_result.empty:
                 logger.warning("Query result is empty - no data found")
                 result_str = "No results found."
             else:

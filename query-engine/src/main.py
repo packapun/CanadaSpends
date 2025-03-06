@@ -77,7 +77,11 @@ async def sql_query(request: SQLQueryRequest):
         sql_query = claude_client.generate_sql_query(request.question, schema)
         
         # Step 3: Execute the SQL query
-        query_result = sql_connector.execute_query(sql_query)
+        # Validate query starts with SELECT for security
+        if sql_query.strip().upper().startswith('SELECT') or sql_query.strip().upper().startswith('--'):
+            query_result = sql_connector.execute_query(sql_query)
+        else:
+            query_result = None
         
         # Step 4: Format the results with Claude and instructor
         formatted_response: SQLResult = claude_client.format_query_result(
