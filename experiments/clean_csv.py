@@ -295,7 +295,7 @@ def process_file(filename):
 
 
 def main():
-    files = glob("data/*.csv")
+    files = glob("../query_engine/data/*.csv")
 
     files = sorted(files, key=lambda f: extract_fiscal_year(f))
     print(files)
