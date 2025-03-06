@@ -87,6 +87,20 @@ services:
       query-network:
         aliases:
           - sqlite
+  
+  chat-ui:
+    build:
+      context: ./chat-ui
+      dockerfile: Dockerfile
+    ports:
+      - "3001:80"
+    depends_on:
+      api:
+        condition: service_healthy
+    networks:
+      query-network:
+        aliases:
+          - chat-ui
 
 networks:
   query-network:
