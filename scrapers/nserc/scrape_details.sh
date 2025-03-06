@@ -47,6 +47,8 @@ download_details() {
   # Skip if file already exists
   if [ -f "$output_file" ]; then
     echo "File $output_file already exists. Skipping..."
+    completed=$((completed + 1))
+
     return 0
   fi
 
@@ -65,6 +67,18 @@ download_details() {
 
   # Check if file was downloaded successfully
   if [ -s "$output_file" ]; then
+    completed=$((completed + 1))
+    current=$((current + 1))
+
+    # Calculate elapsed time
+    current_time=$(date +%s)
+    elapsed_time=$((current_time - start_time))
+
+    # Display progress only for every 10th current item
+    if (( current % 10 == 0 )); then
+        display_progress $current $total_urls $elapsed_time $completed
+    fi
+
     return 0
   else
     rm -f "$output_file"  # Remove empty file
@@ -81,6 +95,7 @@ display_progress() {
   local completed_percent=$((current * 100 / total))
   local bar_width=40
   local elapsed_time=$3
+  local completed=$4
 
   # Calculate iterations per second (it/s)
   local its=0
@@ -95,16 +110,17 @@ display_progress() {
   printf "\r[%${completed_width}s%${remaining_width}s] %d/%d (%d%%) - %.2f it/s" \
          "$(printf '#%.0s' $(seq 1 $completed_width))" \
          "$(printf ' %.0s' $(seq 1 $remaining_width))" \
-         "$current" "$total" "$completed_percent" "$its"
+         "$completed" "$total" "$completed_percent" "$its"
 }
 
 # Variables for progress tracking
 current=0
+completed=0
 start_time=$(date +%s)
 total_urls=700000 # estimate
 
 # Process all JSON files and extract IDs
-find data/listing -name "nserc_results_*.json" | while read json_file; do
+find data/listing -name "nserc_results_*.json" | grep "$1" | while read json_file; do
   echo "Processing $json_file"
 
   # Extract all detail URLs from the JSON file
@@ -115,7 +131,7 @@ find data/listing -name "nserc_results_*.json" | while read json_file; do
 
   # Process each URL with retry logic
   for detail_url in "${detail_urls[@]}"; do
-    MAX_RETRIES=2
+    MAX_RETRIES=5
     retry_count=0
     success=false
 
@@ -123,21 +139,14 @@ find data/listing -name "nserc_results_*.json" | while read json_file; do
       # Try downloading
       if download_details "$detail_url"; then
         success=true
-        current=$((current + 1))
-
-        # Calculate elapsed time
-        current_time=$(date +%s)
-        elapsed_time=$((current_time - start_time))
-
-        # Display progress only for every 10th current item
-        if (( current % 10 == 0 )); then
-            display_progress $current $total_urls $elapsed_time
-        fi
       else
         retry_count=$((retry_count + 1))
         echo -e "\nFailed to download: $detail_url (attempt $retry_count of $MAX_RETRIES)"
 
-        if [ $retry_count -lt $MAX_RETRIES ]; then
+        if [ -n "$1" ]; then
+          echo "Waiting for main process to switch proxy"
+          sleep 5
+        elif [ $retry_count -lt $MAX_RETRIES ]; then
           echo "Switching Mullvad server before retrying..."
           switch_mullvad_server
         else
