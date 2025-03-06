@@ -49,6 +49,7 @@ jobs:
           ssh ec2-user@${{ env.SERVER }} "cat > /opt/canadaspends/.env << EOF
           OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}
           COHERE_API_KEY=${{ secrets.COHERE_API_KEY }}
+          ANTHROPIC_API_KEY=${{ secrets.ANTHROPIC_API_KEY }}
           SLACK_BOT_TOKEN=${{ secrets.SLACK_BOT_TOKEN }}
           SLACK_SIGNING_SECRET=${{ secrets.SLACK_SIGNING_SECRET }}
           ENVIRONMENT=development
@@ -59,6 +60,7 @@ jobs:
           ssh ec2-user@${{ env.SERVER }} "cd /opt/canadaspends && \
             export OPENAI_API_KEY='${{ secrets.OPENAI_API_KEY }}' && \
             export COHERE_API_KEY='${{ secrets.COHERE_API_KEY }}' && \
+            export ANTHROPIC_API_KEY='${{ secrets.ANTHROPIC_API_KEY }}' && \
             export SLACK_BOT_TOKEN='${{ secrets.SLACK_BOT_TOKEN }}' && \
             export SLACK_SIGNING_SECRET='${{ secrets.SLACK_SIGNING_SECRET }}' && \
             export ENVIRONMENT='development' && \
