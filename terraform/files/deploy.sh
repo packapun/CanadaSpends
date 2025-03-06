@@ -122,13 +122,13 @@ if [ "$REINDEX_NEEDED" = false ]; then
   cd $APP_DIR/query-engine
   
   # Stop only the services we want to update, keeping Weaviate running
-  docker-compose -f docker-compose.remote.yaml stop api slackbot nginx
+  docker-compose -f docker-compose.remote.yaml stop api slackbot nginx chat-ui sqlite
   
   # Remove stopped containers to ensure clean deployment
-  docker-compose -f docker-compose.remote.yaml rm -f api slackbot nginx
+  docker-compose -f docker-compose.remote.yaml rm -f api slackbot nginx chat-ui sqlite
   
   # Start/update only the non-Weaviate services
-  docker-compose -f docker-compose.remote.yaml up -d api slackbot nginx
+  docker-compose -f docker-compose.remote.yaml up -d api slackbot nginx chat-ui sqlite
 else
   echo "Performing full redeployment with reindexing..."
   cd $APP_DIR/query-engine
