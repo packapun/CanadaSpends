@@ -14,11 +14,6 @@ from claude_client import ClaudeClient, SQLResult
 # Load environment variables
 load_dotenv()
 
-# Define request models
-class QueryRequest(BaseModel):
-    query: str
-    source: str = "web"  # default to web if not specified
-
 class SQLQueryRequest(BaseModel):
     question: str
     source: str = "web"  # default to web if not specified
@@ -58,35 +53,6 @@ app = FastAPI(
     version="1.0.0",
     lifespan=lifespan
 )
-
-@app.post("/query")
-async def query_data(request: QueryRequest):
-    """
-    Query the spending data with a natural language question.
-    Accepts a JSON body with the query and optional source.
-    """
-    if not query_engine:
-        raise HTTPException(status_code=503, detail="Query engine not initialized")
-    try:
-        logger.info(f"Received query from {request.source}: {request.query}")
-        response = await query_engine.query(request.query)
-        return JSONResponse({
-            "status": "success",
-            "question": request.query,
-            "response": str(response),  # Changed from 'answer' to 'response' to match Slack code
-            "source": request.source
-        })
-    except Exception as e:
-        logger.error(f"Query error: {str(e)}")
-        return JSONResponse(
-            status_code=500,
-            content={
-                "status": "error",
-                "error": str(e),
-                "question": request.query,
-                "source": request.source
-            }
-        )
 
 @app.post("/sql/query")
 async def sql_query(request: SQLQueryRequest):

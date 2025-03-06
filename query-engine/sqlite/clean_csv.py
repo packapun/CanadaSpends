@@ -10,10 +10,11 @@ recipients = {}  # Store recipient information: key is external_id, value is db 
 programs = {}  # Store program information: key is name, value is db id
 payments = {}  # Store payment tracking: key is (program_id, recipient_id, amount, desc), value is db id
 
-os.remove("transfer_payments.sqlite")
+if os.path.exists("db/transfer_payments.sqlite"):
+    os.remove("db/transfer_payments.sqlite")
 
 # Connect to the database
-db = sqlite3.connect("transfer_payments.sqlite")
+db = sqlite3.connect("db/transfer_payments.sqlite")
 db.execute("PRAGMA foreign_keys = ON")
 
 c = db.cursor()

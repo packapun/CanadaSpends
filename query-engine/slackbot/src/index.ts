@@ -36,8 +36,8 @@ app.post('/slack/events', async (req, res) => {
         const text = event.text.replace(/<@[^>]+>/, '').trim();
         
         console.log('Sending query to API:', text);
-        const response = await axios.post(`${API_URL}/query`, {
-          query: text,
+        const response = await axios.post(`${API_URL}/sql/query`, {
+          question: text,
           source: 'slack'
         });
         console.log('Received API response:', response.data.status);

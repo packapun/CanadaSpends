@@ -11,23 +11,15 @@ class SQLiteConnector:
     
     def __init__(self, db_path: Optional[str] = None):
         """Initialize the SQLite connector with the path to the database"""
-        # Default path based on Docker setup
-        self.db_path = db_path or "/app/data/sqlite/transfer_payments.sqlite"
-        # Check if running locally for development
-        if not os.path.exists(self.db_path):
-            local_path = "query-engine/data/sqlite/transfer_payments.sqlite"
-            if os.path.exists(local_path):
-                self.db_path = local_path
-                logger.info(f"Using local database at {local_path}")
-            else:
-                logger.warning(f"Database not found at {self.db_path} or {local_path}")
+        # Connect to the SQLite container over the network
+        self.db_path = "/app/data/transfer_payments.sqlite"  # Path inside the SQLite container
         
-        logger.info(f"Initializing SQLite connector with DB path: {self.db_path}")
+        logger.info(f"Connecting to SQLite: {self.db_path}")
     
     def get_connection(self):
         """Get a connection to the SQLite database"""
         try:
-            conn = sqlite3.connect(self.db_path)
+            conn = sqlite3.connect(f"file:{self.db_path}?mode=ro", uri=True)
             # Enable JSON serialization/deserialization
             conn.execute("PRAGMA foreign_keys = ON")
             sqlite3.register_adapter(dict, json.dumps)

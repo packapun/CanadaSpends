@@ -3,7 +3,6 @@ import json
 import pandas as pd
 from typing import Dict, List, Any, Optional
 from loguru import logger
-import instructor
 from anthropic import Anthropic
 from pydantic import BaseModel, Field
 
@@ -81,19 +80,32 @@ RETURN ONLY THE SQL QUERY, with no explanations before or after it.
     def format_query_result(self, question: str, sql_query: str, query_result: pd.DataFrame) -> SQLResult:
         """Format the SQL query results into a structured response using Claude 3"""
         try:
-            # Convert DataFrame to formatted string or JSON for the prompt
+            # Add debugging to check what's actually in the DataFrame
+            logger.info(f"Query result shape: {query_result.shape}")
+            logger.info(f"Query result columns: {query_result.columns.tolist()}")
+            logger.info(f"Query result empty check: {query_result.empty}")
+            
             if query_result.empty:
+                logger.warning("Query result is empty - no data found")
                 result_str = "No results found."
             else:
+                # Debug the first few rows
+                sample_data = query_result.head(3).to_dict(orient='records')
+                logger.info(f"Sample data: {json.dumps(sample_data, default=str)}")
+                
                 try:
                     # Try using markdown table format first (requires tabulate)
                     result_str = query_result.to_markdown(index=False)
+                    logger.info("Using markdown table formatting")
                 except ImportError:
+                    logger.info("Tabulate not available, falling back to alternative formatting")
                     # Fall back to a simple string representation if tabulate is not available
                     result_str = query_result.to_string(index=False)
                     if len(result_str) > 4000:  # If the string is too long, use a more compact representation
-                        # Convert to CSV format which is more compact
-                        result_str = query_result.to_csv(index=False)
+                        # Convert to JSON records format which is more readable
+                        result_str = json.dumps(query_result.head(50).to_dict(orient='records'), indent=2, default=str)
+                        if len(query_result) > 50:
+                            result_str += f"\n\n[Note: Showing first 50 of {len(query_result)} records]"
             
             prompt = f"""You are an expert in analyzing and explaining data about Canadian government transfer payments.
 

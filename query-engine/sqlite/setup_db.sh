@@ -21,21 +21,18 @@ fi
 
 # Check if database file exists and check its contents
 echo "Checking if database was created:"
-ls -la *.sqlite || echo "No sqlite file found!"
+ls -la db/transfer_payments.sqlite || echo "No sqlite file found!"
+echo "Current working directory: $(pwd)"
 
-if [ -f transfer_payments.sqlite ]; then
+if [ -f db/transfer_payments.sqlite ]; then
   echo "Database file exists. Checking tables:"
-  echo ".tables" | sqlite3 transfer_payments.sqlite
+  echo ".tables" | sqlite3 db/transfer_payments.sqlite
   echo "Checking row counts:"
-  echo "SELECT 'payers:', COUNT(*) FROM payers;" | sqlite3 transfer_payments.sqlite
-  echo "SELECT 'recipients:', COUNT(*) FROM recipients;" | sqlite3 transfer_payments.sqlite
-  echo "SELECT 'programs:', COUNT(*) FROM programs;" | sqlite3 transfer_payments.sqlite
-  echo "SELECT 'payments:', COUNT(*) FROM payments;" | sqlite3 transfer_payments.sqlite
+  echo "SELECT 'payers:', COUNT(*) FROM payers;" | sqlite3 db/transfer_payments.sqlite
+  echo "SELECT 'recipients:', COUNT(*) FROM recipients;" | sqlite3 db/transfer_payments.sqlite
+  echo "SELECT 'programs:', COUNT(*) FROM programs;" | sqlite3 db/transfer_payments.sqlite
+  echo "SELECT 'payments:', COUNT(*) FROM payments;" | sqlite3 db/transfer_payments.sqlite
   
-  # Copy the database to the shared volume
-  echo "Copying database to shared volume..."
-  cp transfer_payments.sqlite /app/data/sqlite/
-  echo "Database copied successfully!"
 else
   echo "WARNING: transfer_payments.sqlite not found!"
 fi
