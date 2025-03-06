@@ -8,6 +8,9 @@ dotenv.config();
 // API configuration
 const API_URL = process.env.API_URL || 'http://api:8000';
 
+// Track processed events to prevent duplicates
+const processedEvents = new Set();
+
 // Initialize Slack app with the ExpressReceiver
 const slackApp = new App({
   token: process.env.SLACK_BOT_TOKEN,
@@ -27,11 +30,29 @@ const slackApp = new App({
 
 // Handle app_mention events with the Bolt API
 slackApp.event('app_mention', async ({ event, say }) => {
+  // Create a unique event ID
+  const eventId = `${event.ts}-${event.event_ts || Date.now()}`;
+  
+  // Skip if we've already processed this event
+  if (processedEvents.has(eventId)) {
+    console.log(`Skipping duplicate event: ${eventId}`);
+    return;
+  }
+  
+  // Track that we're processing this event
+  processedEvents.add(eventId);
+  
+  // Clean up old events (keep last 1000)
+  if (processedEvents.size > 1000) {
+    const toRemove = Array.from(processedEvents).slice(0, processedEvents.size - 1000);
+    toRemove.forEach(id => processedEvents.delete(id));
+  }
+  
   try {
     // Remove the bot mention from the text
     const text = event.text.replace(/<@[^>]+>/, '').trim();
     
-    console.log('Sending query to API:', text);
+    console.log(`Processing event ${eventId}: "${text}"`);
     const response = await axios.post(`${API_URL}/sql/query`, {
       question: text,
       source: 'slack'
@@ -44,7 +65,7 @@ slackApp.event('app_mention', async ({ event, say }) => {
       thread_ts: event.ts
     });
   } catch (error) {
-    console.error('Error processing mention:', error);
+    console.error(`Error processing event ${eventId}:`, error);
     await say({
       text: "Sorry, I encountered an error processing your request.",
       thread_ts: event.ts
