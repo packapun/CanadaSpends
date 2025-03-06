@@ -5,8 +5,11 @@ from pydantic import BaseModel
 from dotenv import load_dotenv
 import uvicorn
 from loguru import logger
+import os
 
 from indexer import CSVIndexer
+from sql_connector import SQLiteConnector
+from claude_client import ClaudeClient, SQLResult
 
 # Load environment variables
 load_dotenv()
@@ -16,21 +19,27 @@ class QueryRequest(BaseModel):
     query: str
     source: str = "web"  # default to web if not specified
 
+class SQLQueryRequest(BaseModel):
+    question: str
+    source: str = "web"  # default to web if not specified
+
 # Global variables
-query_engine = None
-indexing_status = {"status": "not_started", "message": "Initialization not started"}
+sql_connector = None
+claude_client = None
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Startup: Initialize the query engine
-    global query_engine, indexing_status
+    global sql_connector, claude_client
     try:
-        indexing_status = {"status": "in_progress", "message": "Initializing indexer..."}
-        logger.info("Starting indexer initialization...")
+        # Initialize SQL connector
+        sql_connector = SQLiteConnector()
         
-        indexer = CSVIndexer()
-        indexing_status = {"status": "in_progress", "message": "Building index..."}
-        query_engine = await indexer.initialize_and_index('detailed-transfer-payments')
+        # Initialize Claude client
+        anthropic_api_key = os.environ.get("ANTHROPIC_API_KEY")
+        if not anthropic_api_key:
+            logger.warning("ANTHROPIC_API_KEY not set. SQL query functionality will be limited.")
+        claude_client = ClaudeClient(api_key=anthropic_api_key)
         
         indexing_status = {"status": "ready", "message": "Index is ready"}
         logger.info("Indexer initialization complete")
@@ -41,12 +50,6 @@ async def lifespan(app: FastAPI):
         raise
     
     yield  # Server is running and handling requests
-    
-    # Cleanup
-    if hasattr(indexer, 'close'):
-        indexer.close()
-    query_engine = None
-    indexing_status = {"status": "shutdown", "message": "Service is shutting down"}
 
 # Initialize FastAPI with lifespan
 app = FastAPI(
@@ -85,13 +88,65 @@ async def query_data(request: QueryRequest):
             }
         )
 
+@app.post("/sql/query")
+async def sql_query(request: SQLQueryRequest):
+    """
+    Query the SQLite database using Claude 3.7 to generate SQL from natural language.
+    
+    Workflow:
+    1. Convert natural language question to SQL using Claude 3.7
+    2. Execute SQL against the SQLite database
+    3. Format results into a comprehensive answer using Claude 3.7
+    """
+    if not sql_connector or not claude_client:
+        raise HTTPException(status_code=503, detail="SQL query services not initialized")
+    
+    try:
+        logger.info(f"Received SQL query from {request.source}: {request.question}")
+        
+        # Step 1: Get database schema for Claude context
+        schema = sql_connector.get_table_schema()
+        
+        # Step 2: Generate SQL query from natural language using Claude
+        sql_query = claude_client.generate_sql_query(request.question, schema)
+        
+        # Step 3: Execute the SQL query
+        query_result = sql_connector.execute_query(sql_query)
+        
+        # Step 4: Format the results with Claude and instructor
+        formatted_response: SQLResult = claude_client.format_query_result(
+            request.question, sql_query, query_result
+        )
+        
+        # Return the structured response
+        return JSONResponse({
+            "status": "success",
+            "question": request.question,
+            "sql_query": sql_query,
+            "answer": formatted_response.answer,
+            "summary": formatted_response.summary,
+            "related_questions": formatted_response.related_questions,
+            "source": request.source
+        })
+        
+    except Exception as e:
+        logger.error(f"SQL query error: {str(e)}")
+        return JSONResponse(
+            status_code=500,
+            content={
+                "status": "error",
+                "error": str(e),
+                "question": request.question,
+                "source": request.source
+            }
+        )
+
 @app.get("/health")
 async def health_check():
     """Check if the API and query engine are healthy."""
     return {
-        "status": indexing_status["status"],
-        "message": indexing_status["message"],
-        "query_engine_ready": query_engine is not None
+        "sql_connector_ready": sql_connector is not None,
+        "claude_client_ready": claude_client is not None
     }
 
 if __name__ == "__main__":

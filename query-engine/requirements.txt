@@ -16,3 +16,5 @@ typing-inspect
 typing-extensions
 loguru
 rich
+anthropic
+tabulate
