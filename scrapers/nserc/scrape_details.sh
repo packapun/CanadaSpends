@@ -145,7 +145,20 @@ find data/listing -name "nserc_results_*.json" | grep "$1" | while read json_fil
 
         if [ -n "$1" ]; then
           echo "Waiting for main process to switch proxy"
-          sleep 5
+              # Wait for connection to establish by checking status
+          while true; do
+            status=$(mullvad status)
+            if [[ "$status" == *"Connected"* ]]; then
+              echo "Successfully connected to new server: $new_server"
+              break
+            elif [[ "$status" == *"Connecting"* ]]; then
+              echo "Still connecting, waiting..."
+            else
+              echo "Connection status: $status"
+            fi
+            sleep 1
+          done
+
         elif [ $retry_count -lt $MAX_RETRIES ]; then
           echo "Switching Mullvad server before retrying..."
           switch_mullvad_server
