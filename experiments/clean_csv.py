@@ -14,6 +14,7 @@ except OSError:
     pass
 
 # Connect to the database
+# db = sqlite3.connect(":memory:")
 db = sqlite3.connect("transfer_payments.sqlite")
 db.execute("PRAGMA foreign_keys = ON")
 
@@ -84,7 +85,8 @@ def get_or_create_recipient(row):
     
     # Skip if empty
     if not recipient_name:
-        raise "Missing recipient name"
+        recipient_name = "NOT PROVIDED"
+        # raise ValueError("Missing recipient name")
     
     # Create a unique external_id from the recipient name
     # Use a simplified version for the key to handle slight variations
@@ -121,18 +123,13 @@ def get_program(program_name, entity_id):
 
 def get_or_create_program(row, fiscal_year, government_entity_id):
     """Get or create program record and return id."""
-    # Program is identified by a combination of ministry, program definition
-    # A row with TOT_CY_XPND_AMT is a program definition
-    
-    if not row.get('TOT_CY_XPND_AMT') or not government_entity_id:
-        raise "Could not create program for row {}".format(row)
-    
+
     # Create a program name based on recipient class
     program_name = row.get('RCPNT_CLS_EN_DESC')
     
     # Skip if empty
     if not program_name:
-        raise "No name - Could not create program for row {}".format(row)
+        program_name = "NOT PROVIDED"
 
     key = f"{government_entity_id}_{program_name}"
     
@@ -221,14 +218,9 @@ def process_programs(reader, filename):
         # Get or create the payer for this row
         government_entity_id = get_or_create_payer(row)
 
-        # If TOT_CY_XPND_AMT exists and is non-zero, this row defines a program
-        try:
-            if row.get('TOT_CY_XPND_AMT') and float(row.get('TOT_CY_XPND_AMT')) != 0:
-                # Get or create the program
-                get_or_create_program(row, fiscal_year, government_entity_id)
-        except (ValueError, TypeError):
-            # Skip if TOT_CY_XPND_AMT is not a valid number, it's a payment
-            continue
+        # If TOT_CY_XPND_AMT exists and is non-zero, this row defines a program in 2022 and later years, in earlier years there are no defining rows.
+        # In earlier years, this doesn't exist.
+        get_or_create_program(row, fiscal_year, government_entity_id)
 
         # Commit every 1000 rows to avoid large transactions
         if row_number % 1000 == 0:
@@ -297,8 +289,6 @@ def main():
     files = sorted(files, key=lambda f: extract_fiscal_year(f))
     print(files)
     for filename in files:
-        if "-eng" in filename:
-            continue
         process_file(filename)
     # Final commit and close the database
     db.commit()
