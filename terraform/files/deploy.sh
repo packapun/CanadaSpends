@@ -79,6 +79,7 @@ cd $APP_DIR/query-engine
 cat > .env << EOF
 OPENAI_API_KEY=${OPENAI_API_KEY}
 COHERE_API_KEY=${COHERE_API_KEY}
+ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
 WEAVIATE_HOST=weaviate
 WEAVIATE_HTTP_PORT=8080
 WEAVIATE_GRPC_PORT=50051
@@ -93,6 +94,7 @@ EOF
 # Ensure API keys are properly set for Docker Compose
 export OPENAI_API_KEY=${OPENAI_API_KEY}
 export COHERE_API_KEY=${COHERE_API_KEY}
+export ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
 export SLACK_BOT_TOKEN=${SLACK_BOT_TOKEN}
 export SLACK_SIGNING_SECRET=${SLACK_SIGNING_SECRET}
 export ENVIRONMENT=development
@@ -120,13 +122,13 @@ if [ "$REINDEX_NEEDED" = false ]; then
   cd $APP_DIR/query-engine
   
   # Stop only the services we want to update, keeping Weaviate running
-  docker-compose -f docker-compose.remote.yaml stop api slackbot nginx
+  docker-compose -f docker-compose.remote.yaml stop api slackbot nginx chat-ui sqlite
   
   # Remove stopped containers to ensure clean deployment
-  docker-compose -f docker-compose.remote.yaml rm -f api slackbot nginx
+  docker-compose -f docker-compose.remote.yaml rm -f api slackbot nginx chat-ui sqlite
   
   # Start/update only the non-Weaviate services
-  docker-compose -f docker-compose.remote.yaml up -d api slackbot nginx
+  docker-compose -f docker-compose.remote.yaml up -d api slackbot nginx chat-ui sqlite
 else
   echo "Performing full redeployment with reindexing..."
   cd $APP_DIR/query-engine
