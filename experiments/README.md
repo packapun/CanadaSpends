@@ -19,7 +19,10 @@ datasette publish vercel transfer_payments.sqlite \
         --project=canada-spends \
         --vercel-json=vercel.json \
         --public \
-        --install datasette-chatgpt-plugin 
+        --install datasette-chatgpt-plugin \
+        --install datasette-search-all \
+        --install datasette-vega \
+        --install datasette-template-sql
 ```
 
 

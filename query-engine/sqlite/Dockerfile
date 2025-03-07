@@ -10,12 +10,3 @@ WORKDIR /app/sqlite
 
 # Copy scripts and requirements
 COPY . /app/sqlite/
-
-# Make scripts executable
-RUN chmod +x /app/sqlite/setup_db.sh
-
-# Create directory for output
-RUN mkdir -p /app/sqlite/db
-
-# Run setup script by default
-CMD ["/bin/bash", "setup_db.sh"] 
