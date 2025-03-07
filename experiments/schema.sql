@@ -20,9 +20,6 @@ CREATE TABLE recipients
 (
 	id INTEGER PRIMARY KEY, -- generated id
 	external_id TEXT, -- ID given to the organization by an order of government
-
-	-- GoC Ministries are normalized as can-minc-<id>
-	-- GoC Departments are normalized as can-minc-<id>-dep-<id>
 	name TEXT, -- The name of the organization spending money
     url TEXT,
     description TEXT,
@@ -56,7 +53,7 @@ FOREIGN KEY (recipient_id) REFERENCES recipients(id) -- references payer
 CREATE TABLE programs
 (
     id INTEGER PRIMARY KEY, -- generated id,
-    payer_id INTEGER, -- payer responsible for disbursing money under the program
+    government_entity_id INTEGER, -- payer responsible for disbursing money under the program
 	name TEXT, -- The name of the organization spending money
     description TEXT,
     fiscal_years TEXT [], -- Array of financial years associated with the program
@@ -64,7 +61,7 @@ CREATE TABLE programs
     program_spending JSON, -- Hash of total amounts spent in each fiscal year: e.g. { "2023/2024": 1000000 }
 
 
-    FOREIGN KEY (payer_id) REFERENCES government_entities(id) -- references payer
+    FOREIGN KEY (government_entity_id) REFERENCES government_entities(id) -- references payer
 );
 
 CREATE TABLE sources

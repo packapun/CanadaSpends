@@ -4,13 +4,14 @@ import sqlite3
 import os
 import re
 
-# Dictionary to store unique identifiers for entities to avoid duplication
-government_entities = {}  # Store payer information: key is external_id, value is db id
 recipients = {}  # Store recipient information: key is external_id, value is db id
 programs = {}  # Store program information: key is name, value is db id
 payments = {}  # Store payment tracking: key is (program_id, recipient_id, amount, desc), value is db id
 
-os.remove("transfer_payments.sqlite")
+try:
+    os.remove("transfer_payments.sqlite")
+except OSError:
+    pass
 
 # Connect to the database
 db = sqlite3.connect("transfer_payments.sqlite")
@@ -28,23 +29,6 @@ def load_schema():
     if not tables_exist:
         with open("schema.sql") as f:
             c.executescript(f.read())
-    else:
-        print("Database already exists. Loading existing data for tracking...")
-        # Load existing government_entities
-        c.execute("SELECT id, external_id FROM government_entities")
-        for row in c.fetchall():
-            government_entities[row[1]] = row[0]
-
-        # Load existing recipients
-        c.execute("SELECT id, external_id FROM recipients")
-        for row in c.fetchall():
-            recipients[row[1]] = row[0]
-
-        # Load existing programs
-        c.execute("SELECT id, payer_id, name FROM programs")
-        for row in c.fetchall():
-            key = f"{row[1]}_{row[2]}"
-            programs[key] = row[0]
 
 load_schema()
 
@@ -56,32 +40,39 @@ def extract_fiscal_year(filename):
 
 def get_or_create_payer(row):
     """Get or create payer record and return id."""
-    external_id = row['DepartmentNumber-Numéro-de-Ministère']
+    external_id = row.get('DepartmentNumber-Numéro-de-Ministère')
 
     # Skip if empty
     if not external_id:
-        raise "No External ID for row {}".format(row)
+        normalized_id = None
+    else:
+        # Normalize as can-minc-{id}
+        normalized_id = f"can-minc-{external_id}"
 
-    # Normalize as can-minc-{id}
-    normalized_id = f"can-minc-{external_id}"
-    
-    if normalized_id in government_entities:
-        return government_entities[normalized_id]
-
-    # TODO: passthrough source info
-    # Insert payer if not exists
-    c.execute('''
-        INSERT INTO government_entities 
-        (external_id, name) 
-        VALUES (?, ?)
-    ''', (
-        normalized_id, 
-        row.get('DEPT_EN_DESC', '')
+    c.execute('SELECT id, external_id, name FROM government_entities WHERE name = ?', (
+        row.get('DEPT_EN_DESC', ''),
     ))
+
+    record = c.fetchone()
+
+    if record:
+        if not record[1] and normalized_id:
+            c.execute(
+                'UPDATE government_entities SET external_id = ? WHERE id = ?', (normalized_id, record[0],)
+            )
+        return record[0]
+    else:
+        c.execute('''
+            INSERT INTO government_entities 
+            (external_id, name) 
+            VALUES (?, ?)
+        ''', (
+            normalized_id,
+            row.get('DEPT_EN_DESC', '')
+        ))
     
-    payer_id = c.lastrowid
-    government_entities[normalized_id] = payer_id
-    return payer_id
+    government_entity_id = c.lastrowid
+    return government_entity_id
 
 def get_or_create_recipient(row):
     """Get or create recipient record and return id."""
@@ -121,12 +112,19 @@ def get_or_create_recipient(row):
     recipients[key] = recipient_id
     return recipient_id
 
-def get_or_create_program(row, fiscal_year, payer_id):
+def get_program(program_name, entity_id):
+    key = f"{entity_id}_{program_name}"
+    if key in programs:
+        return programs[key]
+
+    raise RuntimeError(f"No such program: {program_name}")
+
+def get_or_create_program(row, fiscal_year, government_entity_id):
     """Get or create program record and return id."""
     # Program is identified by a combination of ministry, program definition
     # A row with TOT_CY_XPND_AMT is a program definition
     
-    if not row.get('TOT_CY_XPND_AMT') or not payer_id:
+    if not row.get('TOT_CY_XPND_AMT') or not government_entity_id:
         raise "Could not create program for row {}".format(row)
     
     # Create a program name based on recipient class
@@ -136,7 +134,7 @@ def get_or_create_program(row, fiscal_year, payer_id):
     if not program_name:
         raise "No name - Could not create program for row {}".format(row)
 
-    key = f"{payer_id}_{program_name}"
+    key = f"{government_entity_id}_{program_name}"
     
     if key in programs:
         # Add fiscal year to existing program if not already there
@@ -161,10 +159,10 @@ def get_or_create_program(row, fiscal_year, payer_id):
     # Insert program if not exists
     c.execute('''
         INSERT INTO programs 
-        (payer_id, name, fiscal_years) 
+        (government_entity_id, name, fiscal_years) 
         VALUES (?, ?, ?)
     ''', (
-        payer_id,
+        government_entity_id,
         program_name, 
         str([fiscal_year])
     ))
@@ -221,15 +219,15 @@ def process_programs(reader, filename):
         fiscal_year = row.get('FSCL_YR', '') or extract_fiscal_year(filename)
 
         # Get or create the payer for this row
-        payer_id = get_or_create_payer(row)
+        government_entity_id = get_or_create_payer(row)
 
         # If TOT_CY_XPND_AMT exists and is non-zero, this row defines a program
         try:
             if row.get('TOT_CY_XPND_AMT') and float(row.get('TOT_CY_XPND_AMT')) != 0:
                 # Get or create the program
-                get_or_create_program(row, fiscal_year, payer_id)
+                get_or_create_program(row, fiscal_year, government_entity_id)
         except (ValueError, TypeError):
-            # Skip if TOT_CY_XPND_AMT is not a valid number
+            # Skip if TOT_CY_XPND_AMT is not a valid number, it's a payment
             continue
 
         # Commit every 1000 rows to avoid large transactions
@@ -242,19 +240,21 @@ def process_payments(reader, filename):
         fiscal_year = row.get('FSCL_YR', '') or extract_fiscal_year(filename)
         
         # Get the payer for this row
-        payer_id = get_or_create_payer(row)
+        government_entity_id = get_or_create_payer(row)
         
         # Get the program for this payment
         program_name = row.get('RCPNT_CLS_EN_DESC')
-        if not program_name:
+
+        # pt-tp-2023 has some bad data for a program
+        if program_name.startswith("Contributionsto"):
+            program_name = program_name.replace("Contributionsto", "Contributions to")
+
+        # pt-tp-2022 has an extraneous row here, I think it's a duplicate with an error
+        if not program_name or program_name.startswith("(L) Paiements pour soutenir les étudiants"):
             continue
-            
-        key = f"{payer_id}_{program_name}"
-        if key not in programs:
-            continue
-            
-        program_id = programs[key]
-        
+
+        program_id = get_program(program_name, government_entity_id)
+
         # If this is a payment row (not a program definition)
         try:
             is_program_row = row.get('TOT_CY_XPND_AMT') and float(row.get('TOT_CY_XPND_AMT')) != 0
@@ -292,7 +292,7 @@ def process_file(filename):
 
 
 def main():
-    files = glob("data/*.csv")
+    files = glob("../data/transfer-payments/*.csv")
 
     files = sorted(files, key=lambda f: extract_fiscal_year(f))
     print(files)
