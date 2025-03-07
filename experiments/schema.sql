@@ -77,7 +77,7 @@ CREATE TABLE sources
 CREATE TABLE source_usages
 (
     id INTEGER PRIMARY KEY, -- generated id,
-    table_name
+    table_name TEXT, --
     canonical_url TEXT, -- URL where this data was found
     cached_url TEXT, -- URL to our copy of the data
     name TEXT,
