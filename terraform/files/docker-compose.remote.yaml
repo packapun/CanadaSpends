@@ -75,9 +75,7 @@ services:
       context: ./sqlite
       dockerfile: Dockerfile
     volumes:
-      - ./sqlite/raw_data:/app/data
-      - ./sqlite/clean_csv.py:/app/sqlite/clean_csv.py
-      - sqlite_data:/app/sqlite/db
+      - ./sqlite/transfer_payments.sqlite:/app/sqlite/db/transfer_payments.sqlite
     healthcheck:
       test: test -f /app/sqlite/db/transfer_payments.sqlite || exit 1
       interval: 10s
