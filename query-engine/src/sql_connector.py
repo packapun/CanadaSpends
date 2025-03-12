@@ -74,7 +74,7 @@ class SQLiteConnector:
         try:
             # This is a naive implementation - in a real scenario you might want to parse the schema file
             # or store column descriptions in a dedicated table
-            with open("query-engine/sqlite/schema.sql", "r") as f:
+            with open("/app/data/schema.sql", "r") as f:
                 schema_sql = f.read()
                 
             # Very basic parsing - look for comments after column definitions
