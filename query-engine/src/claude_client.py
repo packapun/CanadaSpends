@@ -27,13 +27,21 @@ class ClaudeClient:
         self.client = Anthropic(api_key=self.api_key)
         # Note: Instructor doesn't directly support Anthropic's client structure
     
-    def generate_sql_query(self, question: str, schema: Dict[str, List[Dict[str, str]]]) -> str:
+    def generate_sql_query(self, question: str, schema: Dict[str, List[Dict[str, str]]], chat_history: str = "") -> str:
         """Generate a SQL query from a natural language question using Claude 3.7"""
         try:
             # Format schema information for the prompt
             schema_str = self._format_schema_for_prompt(schema)
             
-            prompt = f"""You are an expert in translating natural language questions into SQL queries for a database containing Canadian government transfer payment information.
+            # Include chat history if available
+            history_section = ""
+            if chat_history:
+                history_section = f"""CHAT HISTORY:
+{chat_history}
+
+"""
+            
+            prompt = f"""{history_section}You are an expert in translating natural language questions into SQL queries for a database containing Canadian government transfer payment information.
 
 SCHEMA:
 {schema_str}
@@ -42,11 +50,13 @@ USER QUESTION:
 {question}
 
 Your task is to write a SQL query that answers this question. Focus on:
-1. Writing valid SQLite syntax
+1. Writing valid SQLite syntax, only one statement per query
 2. Using only tables and columns defined in the schema
 3. Including appropriate JOINs, WHERE clauses, and aggregations
-4. Keeping the query efficient and focused on answering the specific question
-5. Adding comments to explain complex parts of your query
+4. Grouping and sorting over time when appropriate
+5. Keeping the query efficient and focused on answering the specific question
+6. Adding comments to explain complex parts of your query
+7. Refer to the chat history for important context
 
 RETURN ONLY THE SQL QUERY, with no explanations before or after it.
 """
@@ -77,7 +87,7 @@ RETURN ONLY THE SQL QUERY, with no explanations before or after it.
             logger.error(f"Error generating SQL query: {str(e)}")
             raise
     
-    def format_query_result(self, question: str, sql_query: str, query_result: Optional[pd.DataFrame]) -> SQLResult:
+    def format_query_result(self, question: str, sql_query: str, query_result: Optional[pd.DataFrame], chat_history: str = "") -> SQLResult:
         """Format the SQL query results into a structured response using Claude 3"""
         try:
             if query_result is None:
@@ -104,7 +114,15 @@ RETURN ONLY THE SQL QUERY, with no explanations before or after it.
                         if len(query_result) > 50:
                             result_str += f"\n\n[Note: Showing first 50 of {len(query_result)} records]"
             
-            prompt = f"""You are an expert in analyzing and explaining data about Canadian government transfer payments.
+            # Include chat history if available
+            history_section = ""
+            if chat_history:
+                history_section = f"""CHAT HISTORY:
+{chat_history}
+
+"""
+            
+            prompt = f"""{history_section}You are an expert in analyzing and explaining data about Canadian government transfer payments.
 
 USER QUESTION:
 {question}

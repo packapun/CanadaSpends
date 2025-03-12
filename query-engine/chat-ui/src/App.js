@@ -6,6 +6,7 @@ function App() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
+  const [sessionId, setSessionId] = useState(null);
   const messageListRef = useRef(null);
 
   // Auto-scroll to bottom when messages change
@@ -15,23 +16,40 @@ function App() {
     }
   }, [messages]);
 
-  // Initial greeting and database summary prompt
+  // Create a session and show initial greeting
   useEffect(() => {
-    // Add initial greeting
-    const initialGreeting = {
-      text: "This search portal can provide answers on Canadian federal governement spending, through the transfer payments databse.",
-      sender: 'bot'
-    };
-    
-    setMessages([initialGreeting]);
-    
-    // Self-prompt for database summary after a short delay
-    const timer = setTimeout(() => {
-      handleDatabaseSummaryPrompt();
-    }, 1000);
-    
-    return () => clearTimeout(timer);
+    // Create a new session on first load
+    createNewSession().then(sessionId => {
+      // Add initial greeting after session is created
+      const initialGreeting = {
+        text: "This search portal can provide answers on Canadian federal government spending, through the transfer payments database.",
+        sender: 'bot'
+      };
+      
+      setMessages([initialGreeting]);
+      
+      // Self-prompt for database summary after a short delay
+      const timer = setTimeout(() => {
+        handleDatabaseSummaryPrompt();
+      }, 1000);
+      
+      return () => clearTimeout(timer);
+    });
   }, []);
+
+  // Create a new session
+  const createNewSession = async () => {
+    try {
+      const response = await axios.post('/api/sessions');
+      const newSessionId = response.data.session_id;
+      setSessionId(newSessionId);
+      console.log(`New session created: ${newSessionId}`);
+      return newSessionId;
+    } catch (error) {
+      console.error('Error creating session:', error);
+      return null;
+    }
+  };
 
   const handleDatabaseSummaryPrompt = async () => {
     setLoading(true);
@@ -45,10 +63,11 @@ function App() {
     setMessages(prev => [...prev, summaryPrompt]);
     
     try {
-      // Call API endpoint with the summary question
+      // Call API endpoint with the session ID
       const response = await axios.post('/api/sql/query', {
         question: "Summarize the database schema and what kind of information is available. Provide high level statistics on the data.",
-        source: "auto-prompt"
+        source: "auto-prompt",
+        session_id: sessionId
       });
       
       // Add response to chat
@@ -87,11 +106,17 @@ function App() {
     setLoading(true);
     
     try {
-      // Call API endpoint
+      // Include session_id with every request
       const response = await axios.post('/api/sql/query', {
         question: question,
-        source: source
+        source: source,
+        session_id: sessionId
       });
+      
+      // If the response includes a session_id, update it
+      if (response.data.session_id) {
+        setSessionId(response.data.session_id);
+      }
       
       // Add response to chat with related questions
       setMessages(prev => [...prev, {

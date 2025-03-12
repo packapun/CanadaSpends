@@ -33,7 +33,6 @@ class SQLiteConnector:
         """Execute a SQL query and return the results as a DataFrame"""
         try:
             conn = self.get_connection()
-            logger.info(f"Executing SQL query: {query}")
             result = pd.read_sql_query(query, conn)
             conn.close()
             return result
