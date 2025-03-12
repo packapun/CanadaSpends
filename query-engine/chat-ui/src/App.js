@@ -47,57 +47,74 @@ function App() {
     try {
       // Call API endpoint with the summary question
       const response = await axios.post('/api/sql/query', {
-        question: "Summarize the database schema and what kind of information is available",
+        question: "Summarize the database schema and what kind of information is available. Provide high level statistics on the data.",
         source: "auto-prompt"
       });
       
       // Add response to chat
       setMessages(prev => [...prev, {
         text: response.data.answer,
-        sender: 'bot'
+        sender: 'bot',
+        relatedQuestions: response.data.related_questions || []
       }]);
     } catch (error) {
       console.error('Error querying API:', error);
       setMessages(prev => [...prev, {
         text: "This database contains information about Canadian government spending, including contracts, grants, and other expenditures. You can ask questions about specific departments, spending amounts, time periods, and contractors.",
-        sender: 'bot'
+        sender: 'bot',
+        relatedQuestions: []
       }]);
     } finally {
       setLoading(false);
     }
   };
 
-  const sendMessage = async (e) => {
+  // Handle form submission
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (!input.trim()) return;
     
+    const question = input;
+    setInput(''); // Clear input field
+    sendMessage(question, "web");
+  };
+
+  // Send message and handle API response
+  const sendMessage = async (question, source = "web") => {
     // Add user message to chat
-    const userMessage = { text: input, sender: 'user' };
-    setMessages([...messages, userMessage]);
-    setInput('');
+    const userMessage = { text: question, sender: 'user' };
+    setMessages(prev => [...prev, userMessage]);
     setLoading(true);
     
     try {
       // Call API endpoint
       const response = await axios.post('/api/sql/query', {
-        question: input,
-        source: "web"
+        question: question,
+        source: source
       });
       
-      // Add response to chat
+      // Add response to chat with related questions
       setMessages(prev => [...prev, {
         text: response.data.answer || "Sorry, I couldn't process that request.",
-        sender: 'bot'
+        sender: 'bot',
+        relatedQuestions: response.data.related_questions || []
       }]);
     } catch (error) {
       console.error('Error querying API:', error);
       setMessages(prev => [...prev, {
         text: "Sorry, there was an error processing your request.",
-        sender: 'bot'
+        sender: 'bot',
+        relatedQuestions: []
       }]);
     } finally {
       setLoading(false);
     }
+  };
+
+  // Handle clicking a suggested question
+  const handleSuggestedQuestionClick = (question) => {
+    // Use the shared sendMessage function with a special source identifier
+    sendMessage(question, "suggestion");
   };
 
   return (
@@ -119,6 +136,24 @@ function App() {
                 <div className="system-prompt-label">System asked:</div>
               ) : null}
               {message.text}
+              
+              {/* Display suggestion buttons for bot messages with related questions */}
+              {message.sender === 'bot' && message.relatedQuestions && message.relatedQuestions.length > 0 && (
+                <div className="suggested-questions">
+                  <div className="suggestions-label">Suggested follow-up questions:</div>
+                  <div className="suggestion-buttons">
+                    {message.relatedQuestions.slice(0, 2).map((question, qIndex) => (
+                      <button 
+                        key={qIndex} 
+                        className="suggestion-button"
+                        onClick={() => handleSuggestedQuestionClick(question)}
+                      >
+                        {question}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           ))}
           {loading && (
@@ -129,7 +164,7 @@ function App() {
             </div>
           )}
         </div>
-        <form className="input-form" onSubmit={sendMessage}>
+        <form className="input-form" onSubmit={handleSubmit}>
           <input
             type="text"
             value={input}

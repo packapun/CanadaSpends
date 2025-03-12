@@ -230,6 +230,47 @@ button:disabled {
   }
 }
 
+/* Suggested Questions styling */
+.suggested-questions {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.suggestions-label {
+  font-size: 0.85rem;
+  color: var(--light-text);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.suggestion-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.suggestion-button {
+  background-color: #f0f4f8;
+  color: var(--primary-color);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  height: auto;
+  font-weight: normal;
+  text-align: left;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.suggestion-button:hover {
+  background-color: #e0e7ff;
+  border-color: #c7d2fe;
+}
+
 /* Responsive styles */
 @media (max-width: 768px) {
   .App {
@@ -247,5 +288,14 @@ button:disabled {
   
   .message {
     max-width: 85%;
+  }
+  
+  .suggestion-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .suggestion-button {
+    width: 100%;
   }
 } 
