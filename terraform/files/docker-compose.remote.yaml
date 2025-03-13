@@ -23,8 +23,6 @@ services:
       - ENVIRONMENT=${ENVIRONMENT:-production}
     ports:
       - "8000:8000"
-    depends_on:
-      - sqlite
     restart: always
     networks:
       query-network:
