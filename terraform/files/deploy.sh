@@ -91,6 +91,6 @@ export ENVIRONMENT=development
 echo "Performing full redeployment..."
 cd $APP_DIR/query-engine
 docker-compose -f docker-compose.remote.yaml down --remove-orphans || true
-docker-compose -f docker-compose.remote.yaml up -d
+docker-compose -f docker-compose.remote.yaml up --build -d
 
 echo "Deployment completed successfully" 

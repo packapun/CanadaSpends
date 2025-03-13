@@ -391,7 +391,7 @@ async def summarize():
         
         # Create a query request object
         summary_query = SQLQueryRequest(
-            question="Summarize the data and provide high-level statistics at the ministry level.",
+            question="Summarize the data and provide high-level spending amounts over the past 20 years.",
             source="summary",
             session_id=session.session_id
         )
