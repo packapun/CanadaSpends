@@ -34,7 +34,7 @@ services:
       start_period: 1h   # Give it up to an hour to start
     volumes:
       - ./src:/app/src
-      - sqlite_data:/app/data
+      - ./sqlite:/app/data
     environment:
       - OPENAI_API_KEY=${OPENAI_API_KEY}
       - COHERE_API_KEY=${COHERE_API_KEY}
@@ -95,25 +95,6 @@ services:
       query-network:
         aliases:
           - slackbot
-
-  sqlite:
-    build:
-      context: ./sqlite
-      dockerfile: Dockerfile
-    volumes:
-      - ./sqlite/raw_data:/app/data
-      - ./sqlite/clean_csv.py:/app/sqlite/clean_csv.py
-      - sqlite_data:/app/sqlite/db
-    healthcheck:
-      test: test -f /app/sqlite/db/transfer_payments.sqlite || exit 1
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_period: 5s
-    networks:
-      query-network:
-        aliases:
-          - sqlite
           
   chat-ui:
     build:

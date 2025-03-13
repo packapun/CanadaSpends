@@ -1,0 +1,33 @@
+.charts-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  margin-top: 15px;
+}
+
+.chart-wrapper {
+  background: #f7f9fc;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.chart-wrapper:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Media queries for responsive design */
+@media (min-width: 768px) {
+  .charts-container {
+    gap: 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  .chart-wrapper {
+    height: 300px;
+  }
+} 
