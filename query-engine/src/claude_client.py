@@ -8,13 +8,13 @@ from pydantic import BaseModel, Field
 
 
 class ChartConfig(BaseModel):
-    """Configuration for a visualization chart"""
-    chart_type: str = Field(..., description="Type of chart (e.g. 'bar', 'line', 'pie', 'scatter')")
+    """Configuration for a D3.js visualization chart"""
+    chart_type: str = Field(..., description="Type of chart (e.g. 'bar', 'line', 'pie')")
     title: str = Field(..., description="Chart title")
     x_axis_label: Optional[str] = Field(None, description="X-axis label (if applicable)")
     y_axis_label: Optional[str] = Field(None, description="Y-axis label (if applicable)")
-    data: List[Dict[str, Any]] = Field(..., description="Data for the chart in Plotly format")
-    layout: Dict[str, Any] = Field(..., description="Layout configuration in Plotly format")
+    data: Dict[str, List] = Field(..., description="Data for the chart in D3.js format with x and y arrays")
+    layout: Dict[str, Any] = Field(default_factory=dict, description="Additional layout configuration")
 
 
 class SQLResult(BaseModel):
@@ -160,13 +160,20 @@ CHART DATA (JSON):
 """
             
             # Create a non-f-string for the part with JSON examples to avoid format specifier issues
-            chart_data_example = """
-IMPORTANT: The "data" field in each chart must be a direct array of trace objects, not a nested object.
-For example, correct format:
-"data": [{"x": [1, 2, 3], "y": [4, 5, 6], "type": "bar"}]
+            d3_chart_data_example = """
+IMPORTANT: For D3.js, the "data" field in each chart must be an object with arrays for x and y values.
 
-INCORRECT format (do not use):
-"data": {"data": [{"x": [1, 2, 3], "y": [4, 5, 6], "type": "bar"}]}
+For example, correct format for D3.js:
+"data": {
+  "x": ["Category A", "Category B", "Category C"],
+  "y": [10, 20, 30]
+}
+
+For a pie chart, use:
+"data": {
+  "labels": ["Category A", "Category B", "Category C"],
+  "values": [10, 20, 30]
+}
 
 HERE IS A COMPLETE EXAMPLE of valid JSON output:
 {
@@ -183,18 +190,12 @@ HERE IS A COMPLETE EXAMPLE of valid JSON output:
       "title": "Top 5 Departments by Spending",
       "x_axis_label": "Department",
       "y_axis_label": "Amount (in millions)",
-      "data": [
-        {
-          "x": ["Dept X", "Dept Y", "Dept Z", "Dept A", "Dept B"],
-          "y": [100, 75, 50, 40, 30],
-          "type": "bar",
-          "marker": {"color": "blue"}
-        }
-      ],
+      "data": {
+        "x": ["Dept X", "Dept Y", "Dept Z", "Dept A", "Dept B"],
+        "y": [100, 75, 50, 40, 30]
+      },
       "layout": {
-        "margin": {"t": 30, "b": 40},
-        "xaxis": {"tickangle": -45},
-        "yaxis": {"title": "Amount (in millions)"}
+        "margin": {"top": 30, "right": 20, "bottom": 40, "left": 50}
       }
     }
   ]
@@ -217,8 +218,8 @@ QUERY RESULTS:
 {chart_data_str}
 Based on the query results, please provide a thorough answer to the user's question.
 
-You should create ONE simple data visualization for this data to show the key insight. 
-Focus on producing ONLY ONE high-quality chart with simple structure.
+You should create ONE simple data visualization for this data to show the key insight.
+Focus on producing ONLY ONE high-quality chart with simple structure that will work with D3.js.
 
 Your response must be a valid JSON object with these fields:
 1. "answer": A detailed answer to the question based on the data
@@ -229,14 +230,14 @@ Your response must be a valid JSON object with these fields:
    - "title": A descriptive title for the chart
    - "x_axis_label": Label for the x-axis (for bar/line charts)
    - "y_axis_label": Label for the y-axis (for bar/line charts)
-   - "data": An array with ONE trace object
-   - "layout": A simple layout with minimal options
+   - "data": An object with "x" and "y" arrays (or "labels" and "values" for pie charts)
+   - "layout": A simple layout object with minimal options
 
 Choose the most appropriate chart type for the data:
 - Use BAR charts for comparing categories (PREFERRED for simplicity)
 - Use LINE charts only for time series with clear trends
-- Use PIE charts only for showing proportions of a whole with few categories
-{chart_data_example}
+- Use PIE charts only for showing proportions of a whole with few categories (max 5-7 slices)
+{d3_chart_data_example}
 Return VALID JSON that can be parsed by Python's json.loads().
 """
             
@@ -332,21 +333,29 @@ Keep JSON structure simple and minimal."""
                 charts_to_keep = []
                 for i, chart in enumerate(result_dict["charts"]):
                     try:
-                        # Check if data is a dictionary with a 'data' key instead of a list
-                        if isinstance(chart.get("data"), dict) and "data" in chart["data"]:
-                            logger.warning(f"Fixing nested data structure in chart {i} configuration")
-                            chart["data"] = chart["data"]["data"]  # Fix the nesting issue
-                        
                         # Ensure we have a valid layout
                         if not chart.get("layout"):
                             logger.warning(f"Chart {i} is missing layout, adding empty layout")
                             chart["layout"] = {}
                             
-                        # Validate that data is an array
-                        if not isinstance(chart.get("data"), list):
-                            logger.warning(f"Chart {i} data is not a list, skipping")
+                        # Ensure data is a dictionary with x and y arrays for D3.js
+                        if not isinstance(chart.get("data"), dict):
+                            logger.warning(f"Chart {i} data is not a dictionary, skipping")
                             continue
-                            
+                        
+                        # For pie charts, ensure we have labels and values
+                        if chart.get("chart_type", "").lower() == "pie":
+                            if not chart["data"].get("labels") and chart["data"].get("x"):
+                                chart["data"]["labels"] = chart["data"]["x"]
+                            if not chart["data"].get("values") and chart["data"].get("y"):
+                                chart["data"]["values"] = chart["data"]["y"]
+                        
+                        # For bar/line charts, ensure we have x and y arrays
+                        else:
+                            if not chart["data"].get("x") or not chart["data"].get("y"):
+                                logger.warning(f"Chart {i} is missing x or y data, skipping")
+                                continue
+                                
                         # Only keep valid charts
                         charts_to_keep.append(chart)
                     except Exception as chart_err:

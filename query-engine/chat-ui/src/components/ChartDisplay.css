@@ -12,11 +12,54 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: all 0.2s ease;
+  padding: 15px;
 }
 
 .chart-wrapper:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   transform: translateY(-2px);
+}
+
+.chart-title {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #333;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.d3-chart {
+  width: 100%;
+  height: 400px;
+}
+
+/* D3 specific styles */
+.d3-chart svg {
+  width: 100%;
+  height: 100%;
+}
+
+.d3-chart .bar {
+  transition: opacity 0.2s;
+}
+
+.d3-chart .bar:hover {
+  opacity: 0.8;
+}
+
+.d3-chart .dot {
+  transition: r 0.2s;
+}
+
+.d3-chart .dot:hover {
+  r: 6;
+}
+
+.d3-chart .x-axis-label,
+.d3-chart .y-axis-label {
+  font-size: 12px;
+  fill: #666;
 }
 
 /* Media queries for responsive design */
@@ -28,6 +71,10 @@
 
 @media (max-width: 600px) {
   .chart-wrapper {
+    height: auto;
+  }
+  
+  .d3-chart {
     height: 300px;
   }
 } 
