@@ -1,10 +1,20 @@
 import os
 import json
 import pandas as pd
-from typing import Dict, List, Any, Optional
+from typing import Dict, List, Any, Optional, Union
 from loguru import logger
 from anthropic import Anthropic
 from pydantic import BaseModel, Field
+
+
+class ChartConfig(BaseModel):
+    """Configuration for a visualization chart"""
+    chart_type: str = Field(..., description="Type of chart (e.g. 'bar', 'line', 'pie', 'scatter')")
+    title: str = Field(..., description="Chart title")
+    x_axis_label: Optional[str] = Field(None, description="X-axis label (if applicable)")
+    y_axis_label: Optional[str] = Field(None, description="Y-axis label (if applicable)")
+    data: List[Dict[str, Any]] = Field(..., description="Data for the chart in Plotly format")
+    layout: Dict[str, Any] = Field(..., description="Layout configuration in Plotly format")
 
 
 class SQLResult(BaseModel):
@@ -12,6 +22,22 @@ class SQLResult(BaseModel):
     answer: str = Field(..., description="Full answer to the user's question based on the SQL results")
     summary: str = Field(..., description="A 1-2 sentence summary of the key findings")
     related_questions: List[str] = Field(..., description="3-5 follow-up questions the user might want to ask")
+    charts: Optional[List[ChartConfig]] = Field(None, description="Chart configurations for visualizing the data")
+    
+    def to_dict(self) -> Dict[str, Any]:
+        """Convert SQLResult to a dictionary suitable for JSON serialization"""
+        result = {
+            "answer": self.answer,
+            "summary": self.summary,
+            "related_questions": self.related_questions,
+        }
+        
+        if self.charts:
+            result["charts"] = [chart.dict() for chart in self.charts]
+        else:
+            result["charts"] = []
+            
+        return result
 
 
 class ClaudeClient:
@@ -57,6 +83,7 @@ Your task is to write a SQL query that answers this question. Focus on:
 5. Keeping the query efficient and focused on answering the specific question
 6. Adding comments to explain complex parts of your query
 7. Refer to the chat history for important context
+8. Remember order by should always come after union all
 
 RETURN ONLY THE SQL QUERY, with no explanations before or after it.
 """
@@ -122,6 +149,59 @@ RETURN ONLY THE SQL QUERY, with no explanations before or after it.
 
 """
             
+            # Generate chart data if we have query results
+            chart_data_str = ""
+            if query_result is not None and not query_result.empty:
+                # Convert DataFrame to JSON for chart data
+                chart_data = json.dumps(query_result.to_dict(orient='records'), default=str)
+                chart_data_str = f"""
+CHART DATA (JSON):
+{chart_data}
+"""
+            
+            # Create a non-f-string for the part with JSON examples to avoid format specifier issues
+            chart_data_example = """
+IMPORTANT: The "data" field in each chart must be a direct array of trace objects, not a nested object.
+For example, correct format:
+"data": [{"x": [1, 2, 3], "y": [4, 5, 6], "type": "bar"}]
+
+INCORRECT format (do not use):
+"data": {"data": [{"x": [1, 2, 3], "y": [4, 5, 6], "type": "bar"}]}
+
+HERE IS A COMPLETE EXAMPLE of valid JSON output:
+{
+  "answer": "Based on the data, Department X has the highest spending at $100 million in 2023.",
+  "summary": "Department X leads government spending with $100 million in 2023.",
+  "related_questions": [
+    "How has Department X spending changed over time?",
+    "Which programs received the most funding from Department X?",
+    "How does Department X compare to Department Y?"
+  ],
+  "charts": [
+    {
+      "chart_type": "bar",
+      "title": "Top 5 Departments by Spending",
+      "x_axis_label": "Department",
+      "y_axis_label": "Amount (in millions)",
+      "data": [
+        {
+          "x": ["Dept X", "Dept Y", "Dept Z", "Dept A", "Dept B"],
+          "y": [100, 75, 50, 40, 30],
+          "type": "bar",
+          "marker": {"color": "blue"}
+        }
+      ],
+      "layout": {
+        "margin": {"t": 30, "b": 40},
+        "xaxis": {"tickangle": -45},
+        "yaxis": {"title": "Amount (in millions)"}
+      }
+    }
+  ]
+}
+"""
+            
+            # Simplify the chart generation instructions to reduce complexity
             prompt = f"""{history_section}You are an expert in analyzing and explaining data about Canadian government transfer payments.
 
 USER QUESTION:
@@ -134,52 +214,167 @@ SQL QUERY EXECUTED:
 
 QUERY RESULTS:
 {result_str}
-
+{chart_data_str}
 Based on the query results, please provide a thorough answer to the user's question.
-Your response must be a valid JSON object with these three fields:
+
+You should create ONE simple data visualization for this data to show the key insight. 
+Focus on producing ONLY ONE high-quality chart with simple structure.
+
+Your response must be a valid JSON object with these fields:
 1. "answer": A detailed answer to the question based on the data
 2. "summary": A 1-2 sentence summary of key findings 
 3. "related_questions": An array of 3-5 follow-up questions
+4. "charts": An array with just one chart configuration containing:
+   - "chart_type": One of "bar", "line", "pie" (prefer bar charts for simplicity)
+   - "title": A descriptive title for the chart
+   - "x_axis_label": Label for the x-axis (for bar/line charts)
+   - "y_axis_label": Label for the y-axis (for bar/line charts)
+   - "data": An array with ONE trace object
+   - "layout": A simple layout with minimal options
 
-Example format:
-{{
-  "answer": "The data shows that...",
-  "summary": "In 2023, the top recipient was...",
-  "related_questions": [
-    "What was the trend for this recipient over time?",
-    "How does this compare to other departments?",
-    "Which programs received the most funding?"
-  ]
-}}
+Choose the most appropriate chart type for the data:
+- Use BAR charts for comparing categories (PREFERRED for simplicity)
+- Use LINE charts only for time series with clear trends
+- Use PIE charts only for showing proportions of a whole with few categories
+{chart_data_example}
+Return VALID JSON that can be parsed by Python's json.loads().
 """
             
-            response = self.client.messages.create(
-                model="claude-3-7-sonnet-20250219",
-                max_tokens=1500,
-                temperature=0.3,
-                system="You are a data analyst explaining query results. Be accurate, clear, and concise. Always return valid JSON.",
-                messages=[{"role": "user", "content": prompt}]
-            )
+            # Add a stronger system message about valid JSON formatting
+            system_message = """You are a data analyst explaining query results. Be accurate, clear, and concise.
+IMPORTANT: You must return ONLY valid JSON with no explanation text before or after.
+Do not include any text outside of the JSON object. No explanations, no notes, no preamble.
+Escape all special characters inside strings properly.
+Use double quotes for JSON keys and string values.
+Keep JSON structure simple and minimal."""
+
+            try:
+                # Set a timeout for the Claude API call
+                response = self.client.messages.create(
+                    model="claude-3-7-sonnet-20250219",
+                    max_tokens=2500,
+                    temperature=0.3,
+                    system=system_message,
+                    messages=[{"role": "user", "content": prompt}]
+                )
+                
+                # Parse the JSON response
+                response_text = response.content[0].text.strip()
+                
+                # Handle if the response is wrapped in code blocks
+                if "```json" in response_text:
+                    response_text = response_text.split("```json")[1].split("```")[0].strip()
+                elif "```" in response_text:
+                    response_text = response_text.split("```")[1].split("```")[0].strip()
+                
+            except Exception as claude_err:
+                logger.error(f"Error calling Claude API: {str(claude_err)}")
+                # Return a simplified response
+                return SQLResult(
+                    answer=f"I analyzed your query about '{question}' but encountered an error communicating with the AI. Here's what I know: The query was executed successfully and returned data about Canadian government transfer payments.",
+                    summary="Error connecting to AI service.",
+                    related_questions=["What are the top departments by spending?", 
+                                        "How have payments changed over time?", 
+                                        "What are the largest payment recipients?"],
+                    charts=None
+                )
             
-            # Parse the JSON response
-            response_text = response.content[0].text.strip()
+            # Add detailed debugging for JSON parsing errors
+            try:
+                # Log a snippet around potential problem areas to help debugging
+                if len(response_text) > 500:
+                    logger.info(f"JSON response (truncated): {response_text[:500]}...")
+                else:
+                    logger.info(f"JSON response: {response_text}")
+                
+                result_dict = json.loads(response_text)
+            except json.JSONDecodeError as json_err:
+                logger.error(f"JSON parsing error: {str(json_err)}")
+                
+                # Find the problematic area in the response
+                error_pos = json_err.pos
+                start_pos = max(0, error_pos - 50)
+                end_pos = min(len(response_text), error_pos + 50)
+                error_context = response_text[start_pos:end_pos]
+                
+                logger.error(f"Error context: ...{error_context}...")
+                logger.error(f"Error position indicator: {' ' * (error_pos - start_pos + 3)}^")
+                
+                # Try to sanitize the JSON by handling common issues
+                sanitized_text = response_text
+                
+                # Fix unescaped quotes inside strings
+                # This is an overly simplistic fix but might handle some common cases
+                # For more complex cases, a proper JSON validator would be needed
+                try:
+                    sanitized_text = sanitized_text.replace('\\"', '"')  # Fix escaped quotes
+                    sanitized_text = sanitized_text.replace("\\n", "\\\\n")  # Escape newlines properly
+                    sanitized_text = sanitized_text.replace("\n", " ")  # Replace actual newlines with spaces
+                    
+                    # Try parsing the sanitized JSON
+                    logger.info("Attempting to parse sanitized JSON")
+                    result_dict = json.loads(sanitized_text)
+                    logger.info("Successfully parsed sanitized JSON")
+                except Exception as sanitize_err:
+                    logger.error(f"Failed to sanitize and parse JSON: {str(sanitize_err)}")
+                    # Return a fallback response without charts
+                    return SQLResult(
+                        answer=f"I analyzed the data but encountered an error formatting the results. The core findings are that the query returned data related to Canadian government transfer payments. To get more specific insights, please try asking a more targeted question.",
+                        summary="Error processing query results.",
+                        related_questions=["What are the top 5 departments by total transfer payments?", 
+                                         "How have transfer payments changed over the last 3 years?",
+                                         "Which recipients received the largest payments?"],
+                        charts=None
+                    )
             
-            # Handle if the response is wrapped in code blocks
-            if "```json" in response_text:
-                response_text = response_text.split("```json")[1].split("```")[0].strip()
-            elif "```" in response_text:
-                response_text = response_text.split("```")[1].split("```")[0].strip()
-            
-            result_dict = json.loads(response_text)
-            
+            # Fix chart data format if needed
+            if "charts" in result_dict and result_dict["charts"]:
+                charts_to_keep = []
+                for i, chart in enumerate(result_dict["charts"]):
+                    try:
+                        # Check if data is a dictionary with a 'data' key instead of a list
+                        if isinstance(chart.get("data"), dict) and "data" in chart["data"]:
+                            logger.warning(f"Fixing nested data structure in chart {i} configuration")
+                            chart["data"] = chart["data"]["data"]  # Fix the nesting issue
+                        
+                        # Ensure we have a valid layout
+                        if not chart.get("layout"):
+                            logger.warning(f"Chart {i} is missing layout, adding empty layout")
+                            chart["layout"] = {}
+                            
+                        # Validate that data is an array
+                        if not isinstance(chart.get("data"), list):
+                            logger.warning(f"Chart {i} data is not a list, skipping")
+                            continue
+                            
+                        # Only keep valid charts
+                        charts_to_keep.append(chart)
+                    except Exception as chart_err:
+                        logger.error(f"Error processing chart {i}: {str(chart_err)}")
+                        # Skip this chart but continue processing
+                        
+                # Replace with only valid charts
+                result_dict["charts"] = charts_to_keep
+                        
             # Convert to SQLResult model
-            result = SQLResult(
-                answer=result_dict["answer"],
-                summary=result_dict["summary"],
-                related_questions=result_dict["related_questions"]
-            )
-            
-            return result
+            try:
+                result = SQLResult(
+                    answer=result_dict["answer"],
+                    summary=result_dict["summary"],
+                    related_questions=result_dict["related_questions"],
+                    charts=result_dict.get("charts", None)  # Optional charts field
+                )
+                
+                return result
+            except Exception as validation_err:
+                logger.error(f"Validation error creating SQLResult: {str(validation_err)}")
+                # Return a simplified result without charts when validation fails
+                return SQLResult(
+                    answer=result_dict["answer"],
+                    summary=result_dict["summary"],
+                    related_questions=result_dict["related_questions"],
+                    charts=None
+                )
             
         except Exception as e:
             logger.error(f"Error formatting query result: {str(e)}")
@@ -187,7 +382,8 @@ Example format:
             return SQLResult(
                 answer=f"Error processing results: {str(e)}",
                 summary="An error occurred while analyzing the data.",
-                related_questions=["Could you try rephrasing your question?"]
+                related_questions=["Could you try rephrasing your question?"],
+                charts=None
             )
     
     def _format_schema_for_prompt(self, schema: Dict[str, List[Dict[str, str]]]) -> str:

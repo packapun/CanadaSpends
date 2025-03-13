@@ -263,17 +263,21 @@ Available commands:
         # Add the assistant's response to the session history
         session.add_message("assistant", formatted_response.answer)
         
-        # Return the structured response
-        return JSONResponse({
+        # Convert the SQLResult model to a dictionary for JSON serialization
+        # Use the new to_dict() method of SQLResult
+        response_dict = formatted_response.to_dict()
+        
+        # Add additional API response fields
+        response_dict.update({
             "status": "success",
             "question": request.question,
             "sql_query": sql_query,
-            "answer": formatted_response.answer,
-            "summary": formatted_response.summary,
-            "related_questions": formatted_response.related_questions,
             "source": request.source,
             "session_id": session.session_id  # Return the session ID for future requests
         })
+            
+        # Return the structured response
+        return JSONResponse(response_dict)
         
     except Exception as e:
         logger.error(f"SQL query error: {str(e)}")
@@ -387,7 +391,7 @@ async def summarize():
         
         # Create a query request object
         summary_query = SQLQueryRequest(
-            question="Summarize the database schema and provide high-level statistics on the data.",
+            question="Summarize the data and provide high-level statistics at the ministry level.",
             source="summary",
             session_id=session.session_id
         )
@@ -395,18 +399,22 @@ async def summarize():
         # Call the existing sql_query function
         query_response = await sql_query(summary_query)
         
-        # Extract data from the response
-        response_data = query_response.body if hasattr(query_response, 'body') else query_response
-        if isinstance(response_data, bytes):
-            import json
-            response_data = json.loads(response_data)
+        # Since sql_query now returns a JSONResponse, we need to extract its content
+        if isinstance(query_response, JSONResponse):
+            response_data = query_response.body
+            if isinstance(response_data, bytes):
+                import json
+                response_data = json.loads(response_data)
+        else:
+            response_data = query_response
         
-        # Return just the summary and session info
+        # Build and return the summary response
         return {
             "status": "success",
             "session_id": session.session_id,
             "summary": response_data.get("answer", "Database summary not available."),
-            "related_questions": response_data.get("related_questions", [])
+            "related_questions": response_data.get("related_questions", []),
+            "charts": response_data.get("charts", [])
         }
         
     except Exception as e:

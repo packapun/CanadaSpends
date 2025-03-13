@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 import axios from 'axios';
+import ChartDisplay from './components/ChartDisplay';
+import './components/ChartDisplay.css';
 
 function App() {
   const [messages, setMessages] = useState([]);
@@ -41,7 +43,8 @@ function App() {
             setMessages(prev => [...prev, {
               text: response.data.summary,
               sender: 'bot',
-              relatedQuestions: response.data.related_questions || []
+              relatedQuestions: response.data.related_questions || [],
+              charts: response.data.charts || [] // Add charts to the message
             }]);
             setLoading(false);
           }, 1500); // 1.5 second delay for a more natural conversation pace
@@ -90,11 +93,12 @@ function App() {
         setSessionId(response.data.session_id);
       }
       
-      // Add response to chat with related questions
+      // Add response to chat with related questions and charts
       setMessages(prev => [...prev, {
         text: response.data.answer || "Sorry, I couldn't process that request.",
         sender: 'bot',
-        relatedQuestions: response.data.related_questions || []
+        relatedQuestions: response.data.related_questions || [],
+        charts: response.data.charts || [] // Add charts to the message
       }]);
     } catch (error) {
       console.error('Error querying API:', error);
@@ -133,6 +137,11 @@ function App() {
                 <div className="system-prompt-label">System asked:</div>
               ) : null}
               {message.text}
+              
+              {/* Display charts for bot messages with chart data */}
+              {message.sender === 'bot' && message.charts && message.charts.length > 0 && (
+                <ChartDisplay charts={message.charts} />
+              )}
               
               {/* Display suggestion buttons for bot messages with related questions */}
               {message.sender === 'bot' && message.relatedQuestions && message.relatedQuestions.length > 0 && (
