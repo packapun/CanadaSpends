@@ -53,7 +53,7 @@ Your task is to write a SQL query that answers this question. Focus on:
 1. Writing valid SQLite syntax, only one statement per query
 2. Using only tables and columns defined in the schema
 3. Including appropriate JOINs, WHERE clauses, and aggregations
-4. Grouping and sorting over time when appropriate
+4. Grouping and sorting over time as much as possible
 5. Keeping the query efficient and focused on answering the specific question
 6. Adding comments to explain complex parts of your query
 7. Refer to the chat history for important context

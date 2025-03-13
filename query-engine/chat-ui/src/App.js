@@ -18,75 +18,47 @@ function App() {
 
   // Create a session and show initial greeting
   useEffect(() => {
-    // Create a new session on first load
-    createNewSession().then(sessionId => {
-      // Add initial greeting after session is created
-      const initialGreeting = {
-        text: "This search portal can provide answers on Canadian federal government spending, through the transfer payments database.",
-        sender: 'bot'
-      };
-      
-      setMessages([initialGreeting]);
-      
-      // Self-prompt for database summary after a short delay
-      const timer = setTimeout(() => {
-        handleDatabaseSummaryPrompt();
-      }, 1000);
-      
-      return () => clearTimeout(timer);
-    });
-  }, []);
-
-  // Create a new session
-  const createNewSession = async () => {
-    try {
-      const response = await axios.post('/api/sessions');
-      const newSessionId = response.data.session_id;
-      setSessionId(newSessionId);
-      console.log(`New session created: ${newSessionId}`);
-      return newSessionId;
-    } catch (error) {
-      console.error('Error creating session:', error);
-      return null;
-    }
-  };
-
-  const handleDatabaseSummaryPrompt = async () => {
-    setLoading(true);
-    
-    // Add the self-prompt message
-    const summaryPrompt = {
-      text: "Summarizing the database and what kind of information is available to query...",
-      sender: 'system-prompt'
+    // Immediately add the welcome message without waiting for API
+    const welcomeMessage = {
+      text: "This search portal provides answers about Canadian federal government spending through the transfer payments database. Summarizing for you...",
+      sender: 'bot'
     };
     
-    setMessages(prev => [...prev, summaryPrompt]);
+    setMessages([welcomeMessage]);
     
-    try {
-      // Call API endpoint with the session ID
-      const response = await axios.post('/api/sql/query', {
-        question: "Summarize the database schema and what kind of information is available. Provide high level statistics on the data.",
-        source: "auto-prompt",
-        session_id: sessionId
+    // Then make API call to get the summary
+    setLoading(true);
+    
+    // Call summarize endpoint
+    axios.post('/api/summarize')
+      .then(response => {
+        if (response.data.status === "success") {
+          // Save the session ID
+          setSessionId(response.data.session_id);
+          
+          // Add the summary as a second message after a short delay
+          setTimeout(() => {
+            setMessages(prev => [...prev, {
+              text: response.data.summary,
+              sender: 'bot',
+              relatedQuestions: response.data.related_questions || []
+            }]);
+            setLoading(false);
+          }, 1500); // 1.5 second delay for a more natural conversation pace
+        } else {
+          // Handle error
+          setLoading(false);
+        }
+      })
+      .catch(error => {
+        console.error('Error getting database summary:', error);
+        setMessages(prev => [...prev, {
+          text: "I'm having trouble summarizing the database at the moment. Feel free to ask about Canadian government spending data.",
+          sender: 'bot'
+        }]);
+        setLoading(false);
       });
-      
-      // Add response to chat
-      setMessages(prev => [...prev, {
-        text: response.data.answer,
-        sender: 'bot',
-        relatedQuestions: response.data.related_questions || []
-      }]);
-    } catch (error) {
-      console.error('Error querying API:', error);
-      setMessages(prev => [...prev, {
-        text: "This database contains information about Canadian government spending, including contracts, grants, and other expenditures. You can ask questions about specific departments, spending amounts, time periods, and contractors.",
-        sender: 'bot',
-        relatedQuestions: []
-      }]);
-    } finally {
-      setLoading(false);
-    }
-  };
+  }, []);
 
   // Handle form submission
   const handleSubmit = (e) => {

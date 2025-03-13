@@ -230,7 +230,12 @@ Available commands:
                 })
         
         # Add the user's question to the session history
-        session.add_message("user", request.question)
+        if request.source == "system":
+            session.add_message("system", request.question)
+        elif request.source == "assistant":
+            session.add_message("assistant", request.question)
+        else:
+            session.add_message("user", request.question)
         
         # Step 1: Get database schema for Claude context
         schema = sql_connector.get_table_schema()
@@ -368,6 +373,51 @@ async def list_sessions():
         })
     
     return {"sessions": sessions_info}
+
+@app.post("/summarize")
+async def summarize():
+    """Create a new session and provide a database summary."""
+    if not sql_connector or not claude_client or not session_manager:
+        raise HTTPException(status_code=503, detail="Services not initialized")
+    
+    try:
+        # Create a new session
+        session = session_manager.create_session()
+        logger.info(f"Created new session for summarization: {session.session_id}")
+        
+        # Create a query request object
+        summary_query = SQLQueryRequest(
+            question="Summarize the database schema and provide high-level statistics on the data.",
+            source="summary",
+            session_id=session.session_id
+        )
+        
+        # Call the existing sql_query function
+        query_response = await sql_query(summary_query)
+        
+        # Extract data from the response
+        response_data = query_response.body if hasattr(query_response, 'body') else query_response
+        if isinstance(response_data, bytes):
+            import json
+            response_data = json.loads(response_data)
+        
+        # Return just the summary and session info
+        return {
+            "status": "success",
+            "session_id": session.session_id,
+            "summary": response_data.get("answer", "Database summary not available."),
+            "related_questions": response_data.get("related_questions", [])
+        }
+        
+    except Exception as e:
+        logger.error(f"Summarization error: {str(e)}")
+        return JSONResponse(
+            status_code=500,
+            content={
+                "status": "error",
+                "error": str(e)
+            }
+        )
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True) 

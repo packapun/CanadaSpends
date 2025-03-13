@@ -145,9 +145,10 @@ class SessionManager:
         return self.sessions.get(session_id)
     
     def create_session(self, metadata: Dict = None) -> ChatSession:
-        """Create a new chat session with system messages"""
+        """Create a new chat session without system messages"""
         session = ChatSession(metadata=metadata or {})
-        self._initialize_session_with_system_messages(session)
+        # Don't initialize with system messages
+        # self._initialize_session_with_system_messages(session)
         self.sessions[session.session_id] = session
         
         # Save to disk if persistence is enabled
@@ -157,7 +158,7 @@ class SessionManager:
         return session
     
     def get_or_create_session(self, session_id: Optional[str] = None) -> ChatSession:
-        """Get an existing session by ID or create a new one with system messages"""
+        """Get an existing session by ID or create a new one without system messages"""
         if session_id and session_id in self.sessions:
             return self.sessions[session_id]
         return self.create_session()
