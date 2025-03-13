@@ -29,18 +29,6 @@ fi
 # Create data directory if it doesn't exist
 mkdir -p $APP_DIR/data
 
-# Function to generate checksum of data directory
-generate_data_checksum() {
-  find $APP_DIR/query-engine/data -type f -exec sha256sum {} \; | sort | sha256sum | cut -d' ' -f1
-}
-
-# Store current checksum if directory exists
-CURRENT_CHECKSUM=""
-if [ -d "$APP_DIR/query-engine/data" ]; then
-  CURRENT_CHECKSUM=$(generate_data_checksum)
-  echo "Current data checksum: $CURRENT_CHECKSUM"
-fi
-
 # Clone or update repository
 if [ -d "$APP_DIR/.git" ]; then
   echo "Updating existing repository..."
@@ -99,43 +87,10 @@ export SLACK_BOT_TOKEN=${SLACK_BOT_TOKEN}
 export SLACK_SIGNING_SECRET=${SLACK_SIGNING_SECRET}
 export ENVIRONMENT=development
 
-# Check if data directory has changed
-REINDEX_NEEDED=false
-if [ -z "$CURRENT_CHECKSUM" ]; then
-  echo "No previous data checksum found. Re-indexing will be performed."
-  REINDEX_NEEDED=true
-else
-  NEW_CHECKSUM=$(generate_data_checksum)
-  echo "New data checksum: $NEW_CHECKSUM"
-  if [ "$CURRENT_CHECKSUM" != "$NEW_CHECKSUM" ]; then
-    echo "Data directory has changed. Re-indexing will be performed."
-    REINDEX_NEEDED=true
-  else
-    echo "Data directory has not changed. Skipping re-indexing."
-    REINDEX_NEEDED=false
-  fi
-fi
-
-# Modify docker-compose.yaml if needed to prevent reindexing
-if [ "$REINDEX_NEEDED" = false ]; then
-  echo "Preserving Weaviate service and updating other services..."
-  cd $APP_DIR/query-engine
-  
-  # Stop only the services we want to update, keeping Weaviate running
-  docker-compose -f docker-compose.remote.yaml stop api slackbot nginx chat-ui sqlite
-  
-  # Remove stopped containers to ensure clean deployment
-  docker-compose -f docker-compose.remote.yaml rm -f api slackbot nginx chat-ui sqlite
-  
-  # Start/update only the non-Weaviate services
-  docker-compose -f docker-compose.remote.yaml up -d api slackbot nginx chat-ui sqlite
-else
-  echo "Performing full redeployment with reindexing..."
-  cd $APP_DIR/query-engine
-  
-  # Complete teardown and rebuild of all services
-  docker-compose -f docker-compose.remote.yaml down --remove-orphans || true
-  docker-compose -f docker-compose.remote.yaml up -d
-fi
+# Deploy all services
+echo "Performing full redeployment..."
+cd $APP_DIR/query-engine
+docker-compose -f docker-compose.remote.yaml down --remove-orphans || true
+docker-compose -f docker-compose.remote.yaml up -d
 
 echo "Deployment completed successfully" 
