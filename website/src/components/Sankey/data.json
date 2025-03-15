@@ -1,0 +1,520 @@
+{
+  "total": 573.11,
+  "spending": 573.11,
+  "revenue": 459.53,
+  "spending_data": {
+    "name": "Spending",
+    "children": [
+      {
+        "name": "Economy and Standard of Living",
+        "children": [
+          {
+            "name": "Standard of Living and Assistance to Address Inequalities",
+            "children": [
+              {
+                "name": "Health",
+                "children": [
+                  {
+                    "name": "Health Care Systems + Protection",
+                    "amount": 6.84
+                  },
+                  {
+                    "name": "Food Safety",
+                    "amount": 1.08
+                  },
+                  {
+                    "name": "Public Health + Disease Prevention",
+                    "amount": 4.43
+                  },
+                  {
+                    "name": "Other Health Services",
+                    "amount": 0.01
+                  }
+                ]
+              },
+              {
+                "name": "Standard of Living",
+                "children": [
+                  {
+                    "name": "Refugee Assistance",
+                    "amount": 0.85
+                  },
+                  {
+                    "name": "Employment + Training",
+                    "amount": 0.58
+                  },
+                  {
+                    "name": "Support for Veterans",
+                    "amount": 6.07
+                  },
+                  {
+                    "name": "Housing Assistance",
+                    "amount": 5.43
+                  },
+                  {
+                    "name": "Gender Equality",
+                    "amount": 0.32
+                  },
+                  {
+                    "name": "Official Languages + Culture",
+                    "amount": 4.78
+                  },
+                  {
+                    "name": "Energy Efficient Home Retrofits",
+                    "amount": 0.69
+                  },
+                  {
+                    "name": "Carbon Tax Rebate",
+                    "amount": 9.86
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Economy + Infrastructure",
+            "children": [
+              {
+                "name": "Innovation + Research",
+                "children": [
+                  {
+                    "name": "Investment, Growth and Commercialization",
+                    "amount": 4.35
+                  },
+                  {
+                    "name": "Research",
+                    "amount": 5.42
+                  },
+                  {
+                    "name": "Statistics Canada",
+                    "amount": 0.74
+                  },
+                  {
+                    "name": "Other Boards + Councils",
+                    "amount": 0.25
+                  }
+                ]
+              },
+              {
+                "name": "Community and Regional Development",
+                "children": [
+                  {
+                    "name": "Economic Development in Southern Ontario",
+                    "amount": 0.46
+                  },
+                  {
+                    "name": "Economic Development in Atlantic Canada",
+                    "amount": 0.48
+                  },
+                  {
+                    "name": "Economic Development in the Pacific Region",
+                    "amount": 0.19
+                  },
+                  {
+                    "name": "Northern Economic Development",
+                    "amount": 0.09
+                  },
+                  {
+                    "name": "Western Economic Diversification",
+                    "amount": 0.38
+                  },
+                  {
+                    "name": "Economic Development in Northern Ontario",
+                    "amount": 0.07
+                  },
+                  {
+                    "name": "Economic Development in Southern Ontario",
+                    "amount": 0.46
+                  },
+                  {
+                    "name": "Economic Development in Quebec",
+                    "amount": 0.56
+                  }
+                ]
+              },
+              {
+                "name": "Fisheries",
+                "children": [
+                  {
+                    "name": "Coastguard Operations",
+                    "amount": 1.8
+                  },
+                  {
+                    "name": "Fisheries + Aquatic Ecosystems",
+                    "amount": 1.78
+                  },
+                  {
+                    "name": "Other Fisheries Expenses",
+                    "amount": 0.97
+                  }
+                ]
+              },
+              {
+                "name": "Agriculture",
+                "amount": 4.19
+              },
+              {
+                "name": "Space",
+                "amount": 0.45
+              },
+              {
+                "name": "Banking + Finance",
+                "amount": 26.83
+              },
+              {
+                "name": "Environment + Natural Resources",
+                "children": [
+                  {
+                    "name": "Environment and Climate Change",
+                    "amount": 2.46
+                  },
+                  {
+                    "name": "National Parks",
+                    "amount": 1.45
+                  },
+                  {
+                    "name": "Natural Resources Management",
+                    "amount": 0.21
+                  },
+                  {
+                    "name": "Nuclear Labs + Decommissioning",
+                    "amount": 1.55
+                  }
+                ]
+              },
+              {
+                "name": "Infrastructure",
+                "children": [
+                  {
+                    "name": "Canada Infrastructure Bank",
+                    "amount": 1.48
+                  },
+                  {
+                    "name": "Other Infrastructure Investments",
+                    "amount": 9.19
+                  }
+                ]
+              },
+              {
+                "name": "Transportation",
+                "amount": 5.1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Social Security",
+        "children": [
+          {
+            "name": "Retirement Benefits",
+            "amount": 76.03
+          },
+          {
+            "name": "Employment Insurance",
+            "amount": 23.13
+          },
+          {
+            "name": "Children's Benefits",
+            "amount": 26.34
+          },
+          {
+            "name": "COVID-19 Income Support",
+            "amount": 4.84
+          },
+          {
+            "name": "Canada Emergency Wage Subsidy",
+            "amount": 0.42
+          }
+        ]
+      },
+      {
+        "name": "Safety",
+        "children": [
+          {
+            "name": "Public Safety",
+            "children": [
+              {
+                "name": "Intelligence",
+                "amount": 0.83
+              },
+              {
+                "name": "Corrections",
+                "amount": 3.46
+              },
+              {
+                "name": "Law Enforcement",
+                "amount": 5.14
+              },
+              {
+                "name": "Disaster Relief",
+                "amount": 0.52
+              },
+              {
+                "name": "Other Public Safety",
+                "amount": 1.26
+              },
+              {
+                "name": "Justice System",
+                "amount": 2.45
+              }
+            ]
+          },
+          {
+            "name": "Immigration + Border Security",
+            "children": [
+              {
+                "name": "Border Security",
+                "amount": 2.69
+              },
+              {
+                "name": "Immigration",
+                "amount": 6.2
+              },
+              {
+                "name": "Citizenship + Passports",
+                "amount": 0.24
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Other",
+        "children": [
+          {
+            "name": "Public Works + Government Services",
+            "children": [
+              {
+                "name": "Property Management",
+                "amount": 2.55
+              },
+              {
+                "name": "Other Services",
+                "amount": 5.73
+              }
+            ]
+          },
+          {
+            "name": "Functioning of Government",
+            "children": [
+              {
+                "name": "Parliament",
+                "amount": 0.93
+              },
+              {
+                "name": "Privy Council Office",
+                "amount": 0.42
+              },
+              {
+                "name": "Treasury Board",
+                "amount": 4.36
+              },
+              {
+                "name": "Office of the Secretary to the Governor General",
+                "amount": 0.03
+              }
+            ]
+          },
+          {
+            "name": "Net actuarial losses",
+            "amount": 7.49
+          }
+        ]
+      },
+      {
+        "name": "Transfers to Provinces",
+        "children": [
+          {
+            "name": "Health Transfer to Provinces",
+            "amount": 49.43
+          },
+          {
+            "name": "Social Transfer to Provinces",
+            "amount": 16.42
+          },
+          {
+            "name": "Equalization Payments to Provinces",
+            "amount": 28.84
+          },
+          {
+            "name": "Quebec Tax Offset",
+            "amount": 7.1
+          },
+          {
+            "name": "Other Major Transfers",
+            "amount": 12.59
+          }
+        ]
+      },
+      {
+        "name": "Obligations",
+        "children": [
+          {
+            "name": "Net Interest on Debt",
+            "amount": 47.27
+          }
+        ]
+      },
+      {
+        "name": "Defence",
+        "children": [
+          {
+            "name": "National Defence",
+            "amount": 33.47
+          },
+          {
+            "name": "Communications Security Establishment",
+            "amount": 1.01
+          },
+          {
+            "name": "Defence Grants + Contributions",
+            "amount": 1.13
+          },
+          {
+            "name": "Other Defence",
+            "amount": 0.013
+          }
+        ]
+      },
+      
+      {
+        "name": "Indigenous Priorities",
+        "children": [
+          {
+            "name": "Indigenous Well-Being + Self Determination",
+            "amount": 38.01
+          },
+          {
+            "name": "Claims Settlements",
+            "amount": 24.92
+          }
+        ]
+      },
+      {
+        "name": "International Affairs",
+        "children": [
+          {
+            "name": "International Development + Humanitarian Assistance",
+            "amount": 6.8
+          },
+          {
+            "name": "Trade and Investment",
+            "amount": 0.44
+          },
+          {
+            "name": "International Diplomacy",
+            "amount": 1.23
+          },
+          {
+            "name": "Ukraine Financial Assistance",
+            "amount": 2.03
+          },
+          {
+            "name": "Other Foreign Affairs",
+            "amount": 15.5
+          }
+        ]
+      } 
+    ]
+  },
+  "revenue_data": {
+    "name": "Revenue",
+    "children": [
+      {
+        "name": "Other Taxes and Duties",
+        "children": [
+          {
+            "name": "Goods and Services Tax",
+            "amount": 51.42
+          },
+          {
+            "name": "Energy Taxes",
+            "children": [
+              {
+                "name": "Excise Tax — Gasoline",
+                "amount": 4.33
+              },
+              {
+                "name": "Excise Tax - Diesel Fuel",
+                "amount": 1.12
+              },
+              {
+                "name": "Excise Tax — Aviation Gasoline and Jet Fuel",
+                "amount": 0.14
+              }
+            ]
+          },
+          {
+            "name": "Customs Duties",
+            "amount": 5.57
+          },
+          {
+            "name": "Other Excise Taxes and Duties",
+            "children": [
+              {
+                "name": "Excise Duties",
+                "amount": 5.33
+              },
+              {
+                "name": "Air Travellers Charge",
+                "amount": 1.5
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Individual Income Taxes",
+        "amount": 217.7
+      },
+      {
+        "name": "Corporate Income Taxes",
+        "amount": 82.47
+      },
+      {
+        "name": "Non-resident Income Taxes",
+        "amount": 12.54
+      },
+      
+      {
+        "name": "Payroll Taxes",
+        "children": [
+          {
+            "name": "Employment Insurance Premiums",
+            "amount": 29.56
+          }
+        ]
+      },
+      {
+        "name": "Carbon Taxes",
+        "amount": 10.5
+      },
+      {
+        "name": "Other Non-tax Revenue",
+        "children": [
+          {
+            "name": "Crown Corporations and other government business enterprises",
+            "amount": 3.22
+          },
+          {
+            "name": "Net Foreign Exchange Revenue",
+            "amount": 3.4
+          },
+          {
+            "name": "Return on Investments",
+            "amount": 0.88
+          },
+          {
+            "name": "Sales of Government Goods + Services",
+            "amount": 13.99
+          },
+          {
+            "name": "Miscellaneous revenues",
+            "amount": 15.87
+          }
+        ]
+      }
+    ]
+  }
+} 
