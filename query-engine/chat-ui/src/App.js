@@ -9,6 +9,7 @@ function App() {
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
   const [sessionId, setSessionId] = useState(null);
+  const [mode, setMode] = useState('landing'); // 'landing', 'question', 'explore'
   const messageListRef = useRef(null);
 
   // Auto-scroll to bottom when messages change
@@ -18,9 +19,17 @@ function App() {
     }
   }, [messages]);
 
-  // Create a session and show initial greeting
-  useEffect(() => {
-    // Immediately add the welcome message without waiting for API
+  // Handle entering question mode
+  const enterQuestionMode = () => {
+    setMode('question');
+    setMessages([]); // Start with empty chat
+    createSession(); // Create session without initial message
+  };
+
+  // Handle entering explore mode
+  const enterExploreMode = () => {
+    setMode('explore');
+    // Welcome message for explore mode
     const welcomeMessage = {
       text: "This search portal provides answers about Canadian federal government spending through the transfer payments database. Summarizing for you...",
       sender: 'bot'
@@ -61,7 +70,20 @@ function App() {
         }]);
         setLoading(false);
       });
-  }, []);
+  };
+
+  // Create a session without showing initial greeting
+  const createSession = () => {
+    axios.post('/api/session')
+      .then(response => {
+        if (response.data.status === "success") {
+          setSessionId(response.data.session_id);
+        }
+      })
+      .catch(error => {
+        console.error('Error creating session:', error);
+      });
+  };
 
   // Handle form submission
   const handleSubmit = (e) => {
@@ -118,17 +140,42 @@ function App() {
     sendMessage(question, "suggestion");
   };
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <div className="header-content">
-          <div className="logo">🇨🇦</div>
-          <div className="title-container">
-            <h1>Canadian Federal Transfer Payments Explorer</h1>
-            <div className="subtitle">Explore Canadian Government Spending Data</div>
+  // Render the landing page
+  const renderLandingPage = () => {
+    return (
+      <div className="landing-container">
+        <div className="landing-content">
+          <h2>Welcome to the Canadian Federal Transfer Payments Explorer</h2>
+          
+          <div className="landing-description">
+            <p>
+              <strong>What are transfer payments?</strong> Transfer payments are expenditures made by the federal 
+              government to individuals, organizations, or other levels of government for which the government 
+              receives no goods or services directly in return.
+            </p>
+            <p>
+              This database contains information about billions of dollars in Canadian federal government 
+              spending across departments, programs, recipients, and years. You can explore funding amounts, 
+              trends over time, and details about specific programs or recipients.
+            </p>
+          </div>
+          
+          <div className="landing-buttons">
+            <button className="landing-button" onClick={enterQuestionMode}>
+              I have a specific question
+            </button>
+            <button className="landing-button explore" onClick={enterExploreMode}>
+              Help me explore the data
+            </button>
           </div>
         </div>
-      </header>
+      </div>
+    );
+  };
+
+  // Render chat interface
+  const renderChatInterface = () => {
+    return (
       <div className="chat-container">
         <div className="message-list" ref={messageListRef}>
           {messages.map((message, index) => (
@@ -183,6 +230,23 @@ function App() {
           </button>
         </form>
       </div>
+    );
+  };
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        <div className="header-content">
+          <div className="logo">🇨🇦</div>
+          <div className="title-container">
+            <h1>Canadian Federal Transfer Payments Explorer</h1>
+            <div className="subtitle">Explore Canadian Government Spending Data</div>
+          </div>
+        </div>
+      </header>
+      
+      {mode === 'landing' && renderLandingPage()}
+      {(mode === 'question' || mode === 'explore') && renderChatInterface()}
     </div>
   );
 }
