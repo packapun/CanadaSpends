@@ -16,7 +16,8 @@ export function Sankey() {
 			spending.current = new SankeyChart({
 				height: chartHeight,
 				container: "#spending-chart-root",
-				data: data.spending_data,
+				// force deep copy
+				data: JSON.parse(JSON.stringify(data.spending_data)),
 				direction: "left-to-right",
 				amountDomain: [0, data.total],
 				difference: data.total - data.spending,
@@ -29,7 +30,8 @@ export function Sankey() {
 			revenue.current = new SankeyChart({
 				height: chartHeight,
 				container: "#revenue-chart-root",
-				data: data.revenue_data,
+				// force deep copy
+				data: JSON.parse(JSON.stringify(data.revenue_data)),
 				colors: {
 					primary: "#249EDC",
 					background: "#202122",
@@ -41,16 +43,6 @@ export function Sankey() {
 				amountScalingFactor: 1e9,
 			});
 		}
-
-		return () => {
-			revenue.current = null;
-			spending.current = null;
-
-			const revenueEl = document.getElementById("revenue-chart-root");
-			const spendingEl = document.getElementById("spending-chart-root");
-			if (revenueEl) revenueEl.innerHTML = "";
-			if (spendingEl) spendingEl.innerHTML = "";
-		};
 	}, []);
 
 	return (
