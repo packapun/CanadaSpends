@@ -1,6 +1,6 @@
 {
-  "total": 573.11,
-  "spending": 573.11,
+  "total": 510,
+  "spending": 510,
   "revenue": 459.53,
   "spending_data": {
     "name": "Spending",
@@ -15,8 +15,12 @@
                 "name": "Health",
                 "children": [
                   {
+                    "name": "Health Research",
+                    "amount": 1.35
+                  },
+                  {
                     "name": "Health Care Systems + Protection",
-                    "amount": 6.84
+                    "amount": 3.49
                   },
                   {
                     "name": "Food Safety",
@@ -25,10 +29,6 @@
                   {
                     "name": "Public Health + Disease Prevention",
                     "amount": 4.43
-                  },
-                  {
-                    "name": "Other Health Services",
-                    "amount": 0.01
                   }
                 ]
               },
@@ -36,16 +36,12 @@
                 "name": "Standard of Living",
                 "children": [
                   {
-                    "name": "Refugee Assistance",
-                    "amount": 0.85
+                    "name": "Revenue Canada",
+                    "amount": 24.21
                   },
                   {
                     "name": "Employment + Training",
-                    "amount": 0.58
-                  },
-                  {
-                    "name": "Support for Veterans",
-                    "amount": 6.07
+                    "amount": 24.43
                   },
                   {
                     "name": "Housing Assistance",
@@ -57,11 +53,11 @@
                   },
                   {
                     "name": "Official Languages + Culture",
-                    "amount": 4.78
+                    "amount": 5.02
                   },
                   {
-                    "name": "Energy Efficient Home Retrofits",
-                    "amount": 0.69
+                    "name": "Support for Veterans",
+                    "amount": 0.53
                   },
                   {
                     "name": "Carbon Tax Rebate",
@@ -83,7 +79,7 @@
                   },
                   {
                     "name": "Research",
-                    "amount": 5.42
+                    "amount": 4.11
                   },
                   {
                     "name": "Statistics Canada",
@@ -104,31 +100,23 @@
                   },
                   {
                     "name": "Economic Development in Atlantic Canada",
-                    "amount": 0.48
+                    "amount": 0.39
                   },
                   {
                     "name": "Economic Development in the Pacific Region",
                     "amount": 0.19
                   },
                   {
-                    "name": "Northern Economic Development",
-                    "amount": 0.09
-                  },
-                  {
-                    "name": "Western Economic Diversification",
-                    "amount": 0.38
+                    "name": "Western + Northern Economic Development",
+                    "amount": 1.09
                   },
                   {
                     "name": "Economic Development in Northern Ontario",
                     "amount": 0.07
                   },
                   {
-                    "name": "Economic Development in Southern Ontario",
-                    "amount": 0.46
-                  },
-                  {
                     "name": "Economic Development in Quebec",
-                    "amount": 0.56
+                    "amount": 0.39
                   }
                 ]
               },
@@ -137,7 +125,7 @@
                 "children": [
                   {
                     "name": "Coastguard Operations",
-                    "amount": 1.8
+                    "amount": 1.80
                   },
                   {
                     "name": "Fisheries + Aquatic Ecosystems",
@@ -145,13 +133,13 @@
                   },
                   {
                     "name": "Other Fisheries Expenses",
-                    "amount": 0.97
+                    "amount": 0.08
                   }
                 ]
               },
               {
                 "name": "Agriculture",
-                "amount": 4.19
+                "amount": 5.42
               },
               {
                 "name": "Space",
@@ -159,45 +147,61 @@
               },
               {
                 "name": "Banking + Finance",
-                "amount": 26.83
+                "amount": 0.23
               },
               {
-                "name": "Environment + Natural Resources",
+                "name": "Environment and Climate Change",
                 "children": [
                   {
-                    "name": "Environment and Climate Change",
-                    "amount": 2.46
+                    "name": "Other Environment and Climate Change Programs",
+                    "amount": 1.32
+                  },
+                  {
+                    "name": "Weather Services",
+                    "amount": 0.28
+                  },
+                  {
+                    "name": "Nature Conservation",
+                    "amount": 0.72
                   },
                   {
                     "name": "National Parks",
                     "amount": 1.45
+                  }
+                ]
+              },
+              {
+                "name": "Natural Resources Management",
+                "children": [
+                  {
+                    "name": "Innovative and Sustainable Natural Resources Development",
+                    "amount": 1.91
                   },
                   {
-                    "name": "Natural Resources Management",
-                    "amount": 0.21
+                    "name": "Support for Global Competition",
+                    "amount": 0.87
                   },
                   {
                     "name": "Nuclear Labs + Decommissioning",
-                    "amount": 1.55
+                    "amount": 1.51
+                  },
+                  {
+                    "name": "Natural Resources Science + Risk Mitigation",
+                    "amount": 0.45
+                  },
+                  {
+                    "name": "Other Natural Resources Management Support",
+                    "amount": 0.06
                   }
                 ]
               },
               {
-                "name": "Infrastructure",
-                "children": [
-                  {
-                    "name": "Canada Infrastructure Bank",
-                    "amount": 1.48
-                  },
-                  {
-                    "name": "Other Infrastructure Investments",
-                    "amount": 9.19
-                  }
-                ]
+                "name": "Infrastructure Investments",
+                "amount": 5.81
               },
               {
                 "name": "Transportation",
-                "amount": 5.1
+                "amount": 5.31
               }
             ]
           }
@@ -220,11 +224,11 @@
           },
           {
             "name": "COVID-19 Income Support",
-            "amount": 4.84
+            "amount": -4.84
           },
           {
             "name": "Canada Emergency Wage Subsidy",
-            "amount": 0.42
+            "amount": -0.42
           }
         ]
       },
@@ -235,15 +239,15 @@
             "name": "Public Safety",
             "children": [
               {
-                "name": "Intelligence",
+                "name": "CSIS",
                 "amount": 0.83
               },
               {
                 "name": "Corrections",
-                "amount": 3.46
+                "amount": 3.37
               },
               {
-                "name": "Law Enforcement",
+                "name": "RCMP",
                 "amount": 5.14
               },
               {
@@ -251,12 +255,20 @@
                 "amount": 0.52
               },
               {
-                "name": "Other Public Safety",
-                "amount": 1.26
+                "name": "Community Safety",
+                "amount": 0.84
+              },
+              {
+                "name": "Office of the Chief Electoral Officer",
+                "amount": 0.25
+              },
+              {
+                "name": "Other Public Safety Expenses",
+                "amount": 5.13
               },
               {
                 "name": "Justice System",
-                "amount": 2.45
+                "amount": 2.44
               }
             ]
           },
@@ -268,8 +280,20 @@
                 "amount": 2.69
               },
               {
-                "name": "Immigration",
-                "amount": 6.2
+                "name": "Other Immigration Services",
+                "amount": 3.86
+              },
+              {
+                "name": "Settlement Assistance",
+                "amount": 1.93
+              },
+              {
+                "name": "Interim Housing Assistance",
+                "amount": 0.26
+              },
+              {
+                "name": "Visitors, International Students + Temporary Workers",
+                "amount": 0.52
               },
               {
                 "name": "Citizenship + Passports",
@@ -286,12 +310,12 @@
             "name": "Public Works + Government Services",
             "children": [
               {
-                "name": "Property Management",
-                "amount": 2.55
+                "name": "Other Public Services + Procurement",
+                "amount": 3.98
               },
               {
-                "name": "Other Services",
-                "amount": 5.73
+                "name": "Government IT Operations",
+                "amount": 2.79
               }
             ]
           },
@@ -304,11 +328,11 @@
               },
               {
                 "name": "Privy Council Office",
-                "amount": 0.42
+                "amount": 0.35
               },
               {
                 "name": "Treasury Board",
-                "amount": 4.36
+                "amount": 4.95
               },
               {
                 "name": "Office of the Secretary to the Governor General",
@@ -318,7 +342,7 @@
           },
           {
             "name": "Net actuarial losses",
-            "amount": 7.49
+            "amount": -7.49
           }
         ]
       },
@@ -339,7 +363,7 @@
           },
           {
             "name": "Quebec Tax Offset",
-            "amount": 7.1
+            "amount": -7.10
           },
           {
             "name": "Other Major Transfers",
@@ -360,8 +384,28 @@
         "name": "Defence",
         "children": [
           {
-            "name": "National Defence",
-            "amount": 33.47
+            "name": "Ready Forces",
+            "amount": 13.37
+          },
+          {
+            "name": "Defence Procurement",
+            "amount": 4.93
+          },
+          {
+            "name": "Sustainable Bases, IT Systems, Infrastructure",
+            "amount": 4.91
+          },
+          {
+            "name": "Defence Team",
+            "amount": 5.39
+          },
+          {
+            "name": "Future Force Design",
+            "amount": 1.47
+          },
+          {
+            "name": "Defence Operations + Internal Services",
+            "amount": 3.39
           },
           {
             "name": "Communications Security Establishment",
@@ -373,21 +417,91 @@
           },
           {
             "name": "Other Defence",
-            "amount": 0.013
+            "amount": 0.01
           }
         ]
       },
-      
       {
         "name": "Indigenous Priorities",
         "children": [
           {
             "name": "Indigenous Well-Being + Self Determination",
-            "amount": 38.01
+            "children": [
+              {
+                "name": "Grants to Support the New Fiscal Relationship with First Nations",
+                "amount": 1.36
+              },
+              {
+                "name": "Community Infrastructure Grants",
+                "amount": 3.31
+              },
+              {
+                "name": "First Nations Elementary and Secondary Educational Advancement",
+                "amount": 2.56
+              },
+              {
+                "name": "On-reserve Income Support in Yukon Territory",
+                "amount": 1.40
+              },
+              {
+                "name": "First Nations and Inuit Health Infrastructure Support",
+                "amount": 1.22
+              },
+              {
+                "name": "Emergency Management Activities On-Reserve",
+                "amount": 0.59
+              },
+              {
+                "name": "Prevention and Protection Services for Children, Youth, Families and Communities",
+                "amount": 3.57
+              },
+              {
+                "name": "First Nations and Inuit Primary Health Care",
+                "amount": 3.03
+              },
+              {
+                "name": "Other Support for Indigenous Well-Being",
+                "amount": 6.78
+              }
+            ]
           },
           {
-            "name": "Claims Settlements",
-            "amount": 24.92
+            "name": "Crown-Indigenous Relations",
+            "children": [
+              {
+                "name": "Claims Settlements",
+                "children": [
+                  {
+                    "name": "Out of Court Settlement",
+                    "amount": 5.00
+                  },
+                  {
+                    "name": "Gottfriedson Band Class Settlement",
+                    "amount": 2.82
+                  },
+                  {
+                    "name": "Childhood Claims Settlement",
+                    "amount": 1.42
+                  },
+                  {
+                    "name": "Other Settlement Agreements",
+                    "amount": 0.85
+                  }
+                ]
+              },
+              {
+                "name": "Grants to Indigenous Groups to Settle Claims",
+                "amount": 2.79
+              },
+              {
+                "name": "Grants to Implement Land Claims and Self Governance Agreements",
+                "amount": 1.83
+              },
+              {
+                "name": "Other Grants and Contributions to Support Crown-Indigenous Relations",
+                "amount": 6.08
+              }
+            ]
           }
         ]
       },
@@ -395,27 +509,31 @@
         "name": "International Affairs",
         "children": [
           {
-            "name": "International Development + Humanitarian Assistance",
-            "amount": 6.8
-          },
-          {
-            "name": "Trade and Investment",
-            "amount": 0.44
+            "name": "Development, Peace + Security Programming",
+            "amount": 5.37
           },
           {
             "name": "International Diplomacy",
+            "amount": 1.00
+          },
+          {
+            "name": "International Development Research Centre",
+            "amount": 0.16
+          },
+          {
+            "name": "Support for Embassies + Canada's Presence Abroad",
             "amount": 1.23
           },
           {
-            "name": "Ukraine Financial Assistance",
-            "amount": 2.03
+            "name": "Other International Affairs Activities",
+            "amount": 0.09
           },
           {
-            "name": "Other Foreign Affairs",
-            "amount": 15.5
+            "name": "Trade and Investment",
+            "amount": 0.41
           }
         ]
-      } 
+      }
     ]
   },
   "revenue_data": {
