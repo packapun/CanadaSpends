@@ -1,10 +1,13 @@
-import { format } from "d3-format";
 import { SankeyNode } from "./SankeyChartD3";
 
-const numberFormatter = format("$,.2s");
-
 export const formatNumber = (amount: number, scalingFactor = 1e9) => {
-	return numberFormatter(amount * scalingFactor).replace("G", "B");
+	return Intl.NumberFormat("en-US", {
+		style: "currency",
+		currency: "USD",
+		notation: "compact",
+		maximumFractionDigits: 2,
+		minimumFractionDigits: 0,
+	}).format(Number(amount * scalingFactor));
 };
 
 export function sortNodesByAmount(node: SankeyNode): SankeyNode {
