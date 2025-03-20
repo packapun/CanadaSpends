@@ -8,45 +8,45 @@ import { hierarchy } from 'd3-hierarchy'
 import { formatNumber } from './utils'
 
 export type SankeyNode = {
-	name: string,
-	amount: number,
+	name: string
+	amount: number
 	children?: SankeyNode[]
 }
 
 export type SankeyData = {
-	total: number,
-	spending: number,
-	revenue: number,
-	spending_data: SankeyNode,
+	total: number
+	spending: number
+	revenue: number
+	spending_data: SankeyNode
 	revenue_data: SankeyNode
 }
 
 export type SankeyChartD3Props = {
-	container?: HTMLElement,
-	width?: number,
-	height: number,
-	direction: 'left-to-right' | 'right-to-left',
+	container?: HTMLElement
+	width?: number
+	height: number
+	direction: 'left-to-right' | 'right-to-left'
 	margin?: {
-		top: number,
-		right: number,
-		bottom: number,
+		top: number
+		right: number
+		bottom: number
 		left: number
-	},
+	}
 	colors?: {
 		primary: string
-	},
-	shortBlockHeight?: number,
-	data: SankeyNode,
-	totalAmount: number,
-	difference?: number,
-	differenceLabel?: string,
-	amountScalingFactor?: number,
-	onMouseOver?: (node: any) => void,
+	}
+	shortBlockHeight?: number
+	data: SankeyNode
+	totalAmount: number
+	difference?: number
+	differenceLabel?: string
+	amountScalingFactor?: number
+	onMouseOver?: (node: any) => void
 	onMouseOut?: (node: any) => void
 }
 export class SankeyChartD3 {
 	params: SankeyChartD3Props
-	
+
 	constructor(props: SankeyChartD3Props) {
 		// Default configuration parameters for the chart
 		const params = Object.assign(
@@ -76,6 +76,7 @@ export class SankeyChartD3 {
 		)
 
 		this.highlightedNode = null
+		this.linksMap = new Map()
 
 		this.params = params
 		this.container = select(params.container || 'body').style(
@@ -184,6 +185,7 @@ export class SankeyChartD3 {
 			.data(d => d.groups)
 			.join('div')
 			.attr('class', 'group')
+			.attr('data-level', d => d.columnIndex)
 
 		groups
 			.selectAll('.spacer')
@@ -256,6 +258,7 @@ export class SankeyChartD3 {
 		this.highlightedNode = node
 
 		if (!node) {
+			this.autoScrolledFor = null
 			// Reset all highlights when no node is selected
 			this.sankeyDiv
 				.selectAll('.block')
@@ -343,7 +346,7 @@ export class SankeyChartD3 {
 			.selectAll('.block:not(.fake)')
 			.classed('highlight', function (x) {
 				if (nodesToHighlight.includes(x.name)) {
-					highlightedNodeElements.push(this)
+					highlightedNodeElements.push(this.querySelector('.label'))
 					return true
 				}
 				return false
@@ -362,7 +365,13 @@ export class SankeyChartD3 {
 			clearTimeout(this.timerId)
 		}
 
+		if (this.autoScrolledFor === node.name) {
+			return
+		}
+
 		this.timerId = setTimeout(() => {
+			// Auto scroll only once
+			this.autoScrolledFor = node.name
 			const hiddenElements = highlightedNodeElements.reduce((acc, element) => {
 				// Check if element is fully visible in viewport
 				const rect = element.getBoundingClientRect()
@@ -373,7 +382,6 @@ export class SankeyChartD3 {
 				}
 
 				const parentRect = parent.getBoundingClientRect()
-
 				const isFullyVisible =
 					rect.top >= parentRect.top && rect.bottom <= parentRect.bottom
 
@@ -385,15 +393,15 @@ export class SankeyChartD3 {
 			}, [])
 
 			if (hiddenElements.length > 0) {
-				const firstHidden = hiddenElements[0]
-				const lastHidden = hiddenElements[hiddenElements.length - 1]
+				hiddenElements.forEach(element => {
+					const relativePosition = this.getRelativePosition(element, this.container.node())
+					const isTop = relativePosition.y < this.params.height * 0.5
 
-				const elementToScroll =
-					firstHidden.getBoundingClientRect().y < this.params.height * 0.5
-						? firstHidden
-						: lastHidden
-
-				elementToScroll.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+					element.scrollIntoView({
+						behavior: 'smooth',
+						block: isTop ? 'center' : 'end'
+					})
+				})
 			}
 			highlightedNodeElements = []
 		}, 300)
@@ -462,6 +470,11 @@ export class SankeyChartD3 {
 				columnIndex: d.columnIndex
 			})
 		})
+
+		// If blockes are not rendered, don't draw links
+		if (coords.length === 0) {
+			return
+		}
 
 		const coordsGrouped = rollups(
 			coords,
@@ -550,7 +563,7 @@ export class SankeyChartD3 {
 		const root = hierarchy(clonedData).sum(d => {
 			return Math.abs(d.amount)
 		})
-		
+
 		const links = root.links()
 
 		// Calculate paths to root for each node
@@ -597,6 +610,7 @@ export class SankeyChartD3 {
 			const groups = _groups.map(([, blocks], groupIndex) => {
 				return {
 					index: groupIndex,
+					columnIndex: columnIndex,
 					blocks: blocks.map((x, blockIndex) => {
 						return {
 							...x,
@@ -662,5 +676,3 @@ export class SankeyChartD3 {
 		return formatNumber(amount, this.params.amountScalingFactor)
 	}
 }
-
-
