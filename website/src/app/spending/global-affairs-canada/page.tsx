@@ -1,4 +1,5 @@
-import { FederalSpendingChart } from "@/components/FederalSpendingChart";
+import { DepartmentList } from "@/components/DepartmentList";
+import { DepartmentSpendingChart } from "@/components/DepartmentSpendingChart";
 import { ExternalLink, GraphMock, H1, H2, Intro, P, Page, PageContent, Section, UL } from "@/components/Layout";
 import { StatCard, StatCardContainer } from "@/components/StatCard";
 
@@ -52,7 +53,7 @@ export default function Department() {
 				</P>
 			</Section>
 
-			<FederalSpendingChart department="Department of Foreign Affairs, Trade and Development" />
+			<DepartmentSpendingChart department="Department of Foreign Affairs, Trade and Development" />
 
 			<Section>
 				<H2>
@@ -105,6 +106,11 @@ export default function Department() {
 				<P>
 					These Ministers are some of the <ExternalLink href="https://www.pm.gc.ca/en/cabinet">cabinet members</ExternalLink> who serve at the Prime Minister’s discretion. Their tenure typically ends when they resign, are replaced, or when a new Prime Minister takes office and appoints a new cabinet. Outgoing ministers remain in their roles until their successors are sworn in.
 				</P>
+			</Section>
+
+			<Section>
+				<H2>Explore other Federal Departments</H2>
+				<DepartmentList />
 			</Section>
 		</PageContent>
 	</Page>

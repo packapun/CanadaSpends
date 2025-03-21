@@ -54,7 +54,7 @@ const chartdata = [
   }
 ]
 
-export function FederalSpendingChart(props: {
+export function DepartmentSpendingChart(props: {
   department: string
 }) {
 
