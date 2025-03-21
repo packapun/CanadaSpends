@@ -3,12 +3,14 @@ import { DepartmentSpendingChart } from "@/components/DepartmentSpendingChart";
 import { ExternalLink, GraphMock, H1, H2, Intro, P, Page, PageContent, Section, UL } from "@/components/Layout";
 import { StatCard, StatCardContainer } from "@/components/StatCard";
 
+const department = "Employment and Social Development Canada";
+
 export default function Department() {
 	return <Page>
 		<PageContent>
 			<Section>
 				<H1>
-					Employment and Social Development Canada
+					{department}
 				</H1>
 				<Intro>
 					Established in 2005, ESDC is a federal department responsible for supporting Canadians through social programs and workforce development. It administers key programs such as Employment Insurance (EI), the Canada Pension Plan (CPP), Old Age Security (OAS), and skills training initiatives. ESDC also oversees Service Canada, which delivers government services directly to the public.
@@ -41,7 +43,7 @@ export default function Department() {
 				</P>
 			</Section>
 
-			<DepartmentSpendingChart department="Department of Employment and Social Development" />
+			<DepartmentSpendingChart department={department} />
 
 			<Section>
 				<P>
@@ -73,7 +75,7 @@ export default function Department() {
 				</P>
 			</Section>
 
-			<GraphMock text="ESDC Graph 2" />
+			<GraphMock text="Graph 2" department={department} />
 
 			<Section>
 				<H2>
@@ -84,7 +86,7 @@ export default function Department() {
 				</P>
 			</Section>
 
-			<GraphMock text="ESDC Graph 3" />
+			<GraphMock text="Graph 3" department={department} />
 
 			<Section>
 				<H2>How did ESDC spend its budget in 2024?</H2>
@@ -93,7 +95,7 @@ export default function Department() {
 				</P>
 			</Section>
 
-			<GraphMock text="ESDC Graph 4" />
+			<GraphMock text="Graph 4" department={department} />
 
 			<Section>
 				<P>
@@ -120,7 +122,7 @@ export default function Department() {
 
 			<Section>
 				<H2>Explore other Federal Departments</H2>
-				<DepartmentList />
+				<DepartmentList current={department} />
 			</Section>
 		</PageContent>
 	</Page>

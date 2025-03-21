@@ -3,12 +3,14 @@ import { DepartmentSpendingChart } from "@/components/DepartmentSpendingChart";
 import { ExternalLink, GraphMock, H1, H2, Intro, P, Page, PageContent, Section, UL } from "@/components/Layout";
 import { StatCard, StatCardContainer } from "@/components/StatCard";
 
+const department = "Public Safety Canada";
+
 export default function Department() {
 	return <Page>
 		<PageContent>
 			<Section>
 				<H1>
-					Public Safety Canada
+					{department}
 				</H1>
 				<Intro>
 					Public Safety, Democratic Institutions and Intergovernmental Affairs Canada (Public Safety Canada) is the federal department responsible for national security, emergency preparedness, and community safety. Established in 2003, it consolidates security, law enforcement, and emergency management functions. It includes the RCMP, CSIS, and CBSA and coordinates federal responses to threats and develops policies on crime prevention, cyber resilience, and disaster preparedness while overseeing intelligence-sharing with domestic and international partners.
@@ -44,7 +46,7 @@ export default function Department() {
 
 			</Section>
 
-			<DepartmentSpendingChart department="Department of Public Safety and Emergency Preparedness" />
+			<DepartmentSpendingChart department={department} />
 
 			<Section>
 				<H2>
@@ -75,7 +77,7 @@ export default function Department() {
 				</UL>
 			</Section>
 
-			<GraphMock text="PSC Graph 2" />
+			<GraphMock text="Graph 2" department={department} />
 
 
 			<Section>
@@ -90,7 +92,7 @@ export default function Department() {
 
 			<Section>
 				<H2>Explore other Federal Departments</H2>
-				<DepartmentList />
+				<DepartmentList current={department} />
 			</Section>
 		</PageContent>
 	</Page>

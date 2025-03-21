@@ -3,6 +3,8 @@ import { DepartmentSpendingChart } from "@/components/DepartmentSpendingChart";
 import { ExternalLink, GraphMock, H1, H2, Intro, P, Page, PageContent, Section } from "@/components/Layout";
 import { StatCard, StatCardContainer } from "@/components/StatCard";
 
+const department = "Department of Finance";
+
 export default function Department() {
 	return <Page>
 		<PageContent>
@@ -57,7 +59,7 @@ export default function Department() {
 				</P>
 			</Section>
 
-			<DepartmentSpendingChart department="Department of Finance" />
+			<DepartmentSpendingChart department={department} />
 
 			<Section>
 				<P>
@@ -77,7 +79,7 @@ export default function Department() {
 				</P>
 			</Section>
 
-			<GraphMock text="Finance Graph 2" />
+			<GraphMock text="Graph 2" department={department} />
 
 			<Section>
 				<P>
@@ -97,7 +99,7 @@ export default function Department() {
 				</P>
 			</Section>
 
-			<GraphMock text="Finance Graph 3" />
+			<GraphMock text="Graph 3" department={department} />
 
 			<Section>
 				<P>
@@ -105,23 +107,23 @@ export default function Department() {
 				</P>
 			</Section>
 
-			<GraphMock text="Finance Graph 4" />
+			<GraphMock text="Finance Graph 4" department={department} />
 
 			<Section>
 				<H2>
 					Who leads the Department of Finance?
 				</H2>
 				<P>
-					The Department is led by the <ExternalLink href="https://www.canada.ca/en/government/ministers/dominic-leblanc.html">Minister of Finance</ExternalLink>, who is appointed by the Governor General on the advice of the Prime Minister and then formally sworn into office at Rideau Hall. They take the Oath of Office and the Oath of Allegiance and become a member of the King’s Privy Council for Canada.
+					The Department is led by the <ExternalLink href="https://www.canada.ca/en/government/ministers/dominic-leblanc.html">Minister of Finance</ExternalLink>, who is appointed by the Governor General on the advice of the Prime Minister and then formally sworn into office at Rideau Hall. They take the Oath of Office and the Oath of Allegiance and become a member of the King's Privy Council for Canada.
 				</P>
 				<P>
-					The Minister of Finance is one of the <ExternalLink href="https://www.pm.gc.ca/en/cabinet" >cabinet members</ExternalLink> who serve at the Prime Minister’s discretion. Their tenure typically ends when they resign, are replaced, or when a new Prime Minister takes office and appoints a new cabinet. Outgoing ministers remain in their roles until their successors are sworn in.
+					The Minister of Finance is one of the <ExternalLink href="https://www.pm.gc.ca/en/cabinet" >cabinet members</ExternalLink> who serve at the Prime Minister's discretion. Their tenure typically ends when they resign, are replaced, or when a new Prime Minister takes office and appoints a new cabinet. Outgoing ministers remain in their roles until their successors are sworn in.
 				</P>
 			</Section>
 
 			<Section>
 				<H2>Explore other Federal Departments</H2>
-				<DepartmentList />
+				<DepartmentList current={department} />
 			</Section>
 
 		</PageContent>

@@ -3,13 +3,14 @@ import { DepartmentSpendingChart } from "@/components/DepartmentSpendingChart";
 import { ExternalLink, GraphMock, H1, H2, Intro, P, Page, PageContent, Section } from "@/components/Layout";
 import { StatCard, StatCardContainer } from "@/components/StatCard";
 
+const department = "National Defence";
+
 export default function Department() {
 	return <Page>
 		<PageContent>
 			<Section>
 				<H1>
-					National Defence
-
+					{department}
 				</H1>
 				<Intro>
 					The Department of National Defence (DND) and the Canadian Armed Forces (CAF) are responsible for ensuring Canada’s security and defence through military operations, infrastructure management, and personnel support. Established in 1923 under the National Defence Act, DND oversees the defence budget, military procurement, and readiness planning, while the CAF executes domestic and international operations. The department provides strategic defence policy guidance and works with international allies, including NATO and NORAD, to ensure national security. DND also administers military health services, housing programs, and recruitment initiatives to support its personnel.
@@ -46,7 +47,7 @@ export default function Department() {
 
 			</Section>
 
-			<DepartmentSpendingChart department="Department of National Defence" />
+			<DepartmentSpendingChart department={department} />
 
 			<Section>
 				<P>
@@ -82,7 +83,7 @@ export default function Department() {
 				</P>
 			</Section>
 
-			<GraphMock text="Defence Graph 2" />
+			<GraphMock text="Graph 2" department={department} />
 
 
 			<Section>
@@ -97,7 +98,7 @@ export default function Department() {
 
 			<Section>
 				<H2>Explore other Federal Departments</H2>
-				<DepartmentList />
+				<DepartmentList current={department} />
 			</Section>
 		</PageContent>
 	</Page>

@@ -13,47 +13,74 @@ const DepartmentItem = ({ name, slug }: DepartmentProps) =>
   </div>
 
 
-const departments = [
+export const departments = [
   {
     name: "Department of Finance",
-    slug: "department-of-finance"
+    slug: "department-of-finance",
+    href: "/spending/department-of-finance",
+    amount: 136.10,
+    Percentage: 26.48
   },
   {
     name: "Employment and Social Development Canada",
-    slug: "employment-and-social-development-canada"
+    slug: "employment-and-social-development-canada",
+    href: "/spending/employment-and-social-development-canada",
+    amount: 94.48,
+    Percentage: 18.38
   },
   {
-    name: "Department of Indigenous Services and Crown-Indigenous Relations and Northern Affairs Canada",
-    slug: "indigenous-services-and-northern-affairs"
+    name: "Indigenous Services Canada",
+    slug: "indigenous-services-and-northern-affairs",
+    href: "/spending/indigenous-services-and-northern-affairs",
+    amount: 46.55,
+    Percentage: 9.06
   },
   {
     name: "National Defence",
-    slug: "national-defence"
-  },
-  {
-    name: "Canada Revenue Agency",
-    slug: "canada-revenue-agency"
-  },
-  {
-    name: "Public Safety Canada",
-    slug: "public-safety-canada"
+    slug: "national-defence",
+    href: "/spending/national-defence",
+    amount: 34.49,
+    Percentage: 6.71
   },
   {
     name: "Global Affairs Canada",
-    slug: "global-affairs-canada"
+    slug: "global-affairs-canada",
+    href: "/spending/global-affairs-canada",
+    amount: 19.20,
+    Percentage: 3.74
+  },
+  {
+    name: "Canada Revenue Agency",
+    slug: "canada-revenue-agency",
+    href: "/spending/canada-revenue-agency",
+    amount: 16.80,
+    Percentage: 3.27
   },
   {
     name: "Housing, Infrastructure and Communities Canada",
-    slug: "housing-infrastructure-communities"
+    slug: "housing-infrastructure-communities",
+    href: "/spending/housing-infrastructure-communities",
+    amount: 14.50,
+    Percentage: 2.82
+  },
+  {
+    name: "Public Safety Canada",
+    slug: "public-safety-canada",
+    href: "/spending/public-safety-canada",
+    amount: 13.91,
+    Percentage: 2.71
   },
   {
     name: "Health Canada",
-    slug: "health-canada"
+    slug: "health-canada",
+    href: "/spending/health-canada",
+    amount: 13.71,
+    Percentage: 2.67
   }
 ]
 
-export const DepartmentList = () => {
+export const DepartmentList = (props: { current?: string }) => {
   return <div className="text-gray-600 leading-relaxed mb-4">
-    {departments.map((department) => <DepartmentItem key={department.slug} {...department} />)}
+    {departments.filter(d => d.name !== props.current).map((department) => <DepartmentItem key={department.slug} {...department} />)}
   </div>
 }

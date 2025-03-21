@@ -3,12 +3,14 @@ import { DepartmentSpendingChart } from "@/components/DepartmentSpendingChart";
 import { ExternalLink, GraphMock, H1, H2, Intro, P, Page, PageContent, Section } from "@/components/Layout";
 import { StatCard, StatCardContainer } from "@/components/StatCard";
 
+const department = "Housing, Infrastructure and Communities Canada";
+
 export default function Department() {
 	return <Page>
 		<PageContent>
 			<Section>
 				<H1>
-					Housing, Infrastructure and Communities Canada
+					{department}
 				</H1>
 				<Intro>
 					Housing, Infrastructure and Communities Canada (HICC) is responsible for federal policies and programs that support public infrastructure, affordable housing, and community development. It works with provinces, territories, and municipalities to fund major infrastructure projects and improve housing affordability across Canada.
@@ -46,7 +48,7 @@ export default function Department() {
 				</P>
 			</Section>
 
-			<DepartmentSpendingChart department="Department of Housing, Infrastructure and Communities" />
+			<DepartmentSpendingChart department={department} />
 
 			<Section>
 
@@ -64,7 +66,7 @@ export default function Department() {
 				</P>
 			</Section>
 
-			<GraphMock text="HICC Graph 2" />
+			<GraphMock text="Graph 2" department={department} />
 
 
 			<Section>
@@ -77,7 +79,7 @@ export default function Department() {
 				</P>
 			</Section>
 
-			<GraphMock text="HICC Graph 3" />
+			<GraphMock text="Graph 3" department={department} />
 
 
 			<Section>
@@ -92,7 +94,7 @@ export default function Department() {
 
 			<Section>
 				<H2>Explore other Federal Departments</H2>
-				<DepartmentList />
+				<DepartmentList current={department} />
 			</Section>
 		</PageContent>
 	</Page>

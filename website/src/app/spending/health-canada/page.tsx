@@ -3,12 +3,14 @@ import { DepartmentSpendingChart } from "@/components/DepartmentSpendingChart";
 import { ExternalLink, GraphMock, H1, H2, Intro, P, Page, PageContent, Section, UL } from "@/components/Layout";
 import { StatCard, StatCardContainer } from "@/components/StatCard";
 
+const department = "Health Canada";
+
 export default function Department() {
 	return <Page>
 		<PageContent>
 			<Section>
 				<H1>
-					Health Canada
+					{department}
 				</H1>
 				<Intro>
 					Health Canada is the federal department responsible for protecting and improving the health of Canadians. It develops health policies, regulates pharmaceuticals and medical devices, enforces food safety standards, and funds public health programs. The department works with provinces and territories to support the healthcare system while ensuring safety standards for drugs, consumer products, and nutrition guidelines.
@@ -47,7 +49,7 @@ export default function Department() {
 				</P>
 			</Section>
 
-			<DepartmentSpendingChart department="Department of Health" />
+			<DepartmentSpendingChart department={department} />
 
 			<Section>
 
@@ -64,7 +66,7 @@ export default function Department() {
 
 			</Section>
 
-			<GraphMock text="HealthCanada Graph 2" />
+			<GraphMock text="Graph 2" department={department} />
 
 
 			<Section>
@@ -83,7 +85,7 @@ export default function Department() {
 				</UL>
 			</Section>
 
-			<GraphMock text="HealthCanada Graph 3" />
+			<GraphMock text="Graph 3" department={department} />
 
 
 			<Section>
@@ -98,7 +100,7 @@ export default function Department() {
 
 			<Section>
 				<H2>Explore other Federal Departments</H2>
-				<DepartmentList />
+				<DepartmentList current={department} />
 			</Section>
 		</PageContent>
 	</Page>

@@ -3,12 +3,14 @@ import { DepartmentSpendingChart } from "@/components/DepartmentSpendingChart";
 import { ExternalLink, GraphMock, H1, H2, Intro, P, Page, PageContent, Section, UL } from "@/components/Layout";
 import { StatCard, StatCardContainer } from "@/components/StatCard";
 
+const department = "Global Affairs Canada";
+
 export default function Department() {
 	return <Page>
 		<PageContent>
 			<Section>
 				<H1>
-					Global Affairs Canada
+					{department}
 				</H1>
 				<Intro>
 					Global Affairs Canada (GAC) is the federal department responsible for managing Canada’s diplomatic relations, international trade, and development assistance. Established in 1909 as the Department of External Affairs, GAC has evolved to oversee Canada’s engagement in global affairs, promoting national interests abroad and ensuring the protection of Canadian citizens overseas. The department negotiates international agreements, administers trade policies, and provides humanitarian aid. Additionally, it supports Canadian businesses in expanding internationally and strengthens diplomatic ties through multilateral organizations like the United Nations, the World Trade Organization (WTO), and NATO. GAC also plays a critical role in crisis response, assisting Canadians abroad during emergencies, and fostering global security and stability.
@@ -53,7 +55,7 @@ export default function Department() {
 				</P>
 			</Section>
 
-			<DepartmentSpendingChart department="Department of Foreign Affairs, Trade and Development" />
+			<DepartmentSpendingChart department={department} />
 
 			<Section>
 				<H2>
@@ -88,7 +90,7 @@ export default function Department() {
 				</UL>
 			</Section>
 
-			<GraphMock text="PSC Graph 2" />
+			<GraphMock text="Graph 2" department={department} />
 
 
 			<Section>
@@ -110,7 +112,7 @@ export default function Department() {
 
 			<Section>
 				<H2>Explore other Federal Departments</H2>
-				<DepartmentList />
+				<DepartmentList current={department} />
 			</Section>
 		</PageContent>
 	</Page>

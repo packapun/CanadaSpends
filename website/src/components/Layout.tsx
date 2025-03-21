@@ -4,8 +4,8 @@ export const Section = ({ children }: { children: React.ReactNode }) => {
   </div>
 }
 
-export const GraphMock = ({ text, className = "" }: { text?: React.ReactNode, className?: string }) => <div className="mt-8 max-w-5xl mx-auto bg-white rounded-xl shadow-chart slide-up slide-up-delay-2">
-  <div className={`w-full h-80 bg-gray-600 text-white flex items-center justify-center`}>{text ?? "Graph"}</div>
+export const GraphMock = ({ text, department, className = "" }: { text?: React.ReactNode, department?: string, className?: string }) => <div className="mt-8 max-w-5xl mx-auto bg-white rounded-xl shadow-chart slide-up slide-up-delay-2">
+  <div className={`w-full h-80 bg-gray-600 text-white flex items-center justify-center`}>{department} {text ?? "Graph"}</div>
 </div>
 
 

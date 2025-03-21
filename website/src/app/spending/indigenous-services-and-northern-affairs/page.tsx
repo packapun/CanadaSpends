@@ -3,12 +3,14 @@ import { DepartmentSpendingChart } from "@/components/DepartmentSpendingChart";
 import { ExternalLink, GraphMock, H1, H2, Intro, P, Page, PageContent, Section } from "@/components/Layout";
 import { StatCard, StatCardContainer } from "@/components/StatCard";
 
+const department = "Indigenous Services Canada";
+
 export default function Department() {
 	return <Page>
 		<PageContent>
 			<Section>
 				<H1>
-					Indigenous Services Canada and Crown-Indigenous Relations and Northern Affairs Canada
+					{department}
 				</H1>
 				<Intro>
 					Indigenous Services Canada (ISC) and Crown-Indigenous Relations and Northern Affairs Canada (CIRNAC) are two distinct federal departments tasked with advancing Indigenous priorities in Canada. Established in 2017 following the dissolution of Indigenous and Northern Affairs Canada (INAC), these departments manage different aspects of Indigenous policy, service delivery, and governance.
@@ -44,7 +46,7 @@ export default function Department() {
 
 			</Section>
 
-			<DepartmentSpendingChart department="Department of Crown-Indigenous Relations and Northern Affairs" />
+			<DepartmentSpendingChart department={department} />
 
 			<Section>
 				<P>
@@ -68,7 +70,7 @@ export default function Department() {
 				</P>
 			</Section>
 
-			<GraphMock text="ISC Graph 2" />
+			<GraphMock text="Graph 2" department={department} />
 
 
 			<Section>
@@ -83,7 +85,7 @@ export default function Department() {
 
 			<Section>
 				<H2>Explore other Federal Departments</H2>
-				<DepartmentList />
+				<DepartmentList current={department} />
 			</Section>
 		</PageContent>
 	</Page>

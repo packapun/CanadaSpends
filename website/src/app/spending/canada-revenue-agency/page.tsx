@@ -3,12 +3,14 @@ import { DepartmentSpendingChart } from "@/components/DepartmentSpendingChart";
 import { ExternalLink, GraphMock, H1, H2, Intro, P, Page, PageContent, Section } from "@/components/Layout";
 import { StatCard, StatCardContainer } from "@/components/StatCard";
 
+const department = 'Canada Revenue Agency'
+
 export default function Department() {
 	return <Page>
 		<PageContent>
 			<Section>
 				<H1>
-					Canada Revenue Agency
+					{department}
 				</H1>
 				<Intro>
 					The Canada Revenue Agency (CRA) is the federal institution responsible for administering tax laws, enforcing compliance, and delivering key benefit programs to individuals and businesses across Canada. Established in 1999 under the Canada Revenue Agency Act, the CRA operates with a workforce of approximately 59,155 employees (2024) and oversees tax revenues totaling $379 billion annually—which accounts for over 82% of federal revenues. It also administers over $46 billion in benefits and credits to Canadians, including the Canada Child Benefit and the GST/HST credit.
@@ -45,7 +47,7 @@ export default function Department() {
 
 			</Section>
 
-			<DepartmentSpendingChart department="Canada Revenue Agency" />
+			<DepartmentSpendingChart department={department} />
 
 			<Section>
 				<P>
@@ -82,7 +84,7 @@ export default function Department() {
 				</P>
 			</Section>
 
-			<GraphMock text="CRA Graph 2" />
+			<GraphMock text={`${department} Graph 2`} />
 
 
 			<Section>
@@ -97,7 +99,7 @@ export default function Department() {
 
 			<Section>
 				<H2>Explore other Federal Departments</H2>
-				<DepartmentList />
+				<DepartmentList current={department} />
 			</Section>
 		</PageContent>
 	</Page>
