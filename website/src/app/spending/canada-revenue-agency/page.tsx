@@ -2,6 +2,13 @@ import { DepartmentList } from "@/components/DepartmentList";
 import { DepartmentSpendingChart } from "@/components/DepartmentSpendingChart";
 import { ExternalLink, GraphMock, H1, H2, Intro, P, Page, PageContent, Section } from "@/components/Layout";
 import { StatCard, StatCardContainer } from "@/components/StatCard";
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+	title: 'Canada Revenue Agency| Canada Spends',
+	description: 'A look at how the Canada Revenue Agency spends its budget',
+}
+
 
 const department = 'Canada Revenue Agency'
 

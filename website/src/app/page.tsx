@@ -2,6 +2,7 @@ import { TwitterFeed } from "@/components/TwitterFeed";
 import Link from "next/link";
 import { FiCornerLeftDown, FiCornerRightDown } from "react-icons/fi";
 
+
 export default function Home() {
 	return (
 		<>
@@ -72,7 +73,7 @@ export default function Home() {
 										the federal government spends hundreds of billions of
 										dollars but most Canadians have no clue where it all goes.
 										The data is available, but it’s buried on obscure websites
-										and impossible to navigate. 
+										and impossible to navigate.
 									</p>
 									<p className="opacity-75">
 										Canada Spends changes this. We take raw federal spending

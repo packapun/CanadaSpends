@@ -2,6 +2,13 @@ import { DepartmentList } from "@/components/DepartmentList";
 import { DepartmentSpendingChart } from "@/components/DepartmentSpendingChart";
 import { ExternalLink, GraphMock, H1, H2, Intro, P, Page, PageContent, Section } from "@/components/Layout";
 import { StatCard, StatCardContainer } from "@/components/StatCard";
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+	title: 'Department of Finance| Canada Spends',
+	description: 'A look at how the Department of Finance spends its budget',
+}
+
 
 const department = "Department of Finance";
 

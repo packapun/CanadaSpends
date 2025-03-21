@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { BarChart } from "@/components/BarChart";
 import { BarList } from "@/components/BarList";
@@ -6,7 +6,7 @@ import { DepartmentList } from "@/components/DepartmentList";
 import { H2, P, Page, PageContent, Section } from "@/components/Layout";
 import NoSSR from "@/components/NoSSR";
 import { Sankey } from "@/components/Sankey";
-
+import Head from "next/head";
 
 const StatBox = ({ title, value, description }: { title: string, value: string, description: string }) => (
 	<div className="flex flex-col mr-8 mb-8">
@@ -35,12 +35,15 @@ const ageData = [
 	{ name: '55-59', Count: 146872 },
 	{ name: '60-64', Count: 84865 },
 	{ name: '65+', Count: 39494 },
-
 ]
 
 export default function Spending() {
 	return (
 		<Page>
+			<Head>
+				<title>Federal Spending</title>
+				<meta name="description" content="A look at how federal spending is allocated across departments" />
+			</Head>
 			<PageContent>
 				<Section>
 					<div className="text-center mb-10">
@@ -89,13 +92,15 @@ export default function Spending() {
 							<h3 className="font-medium mb-2">Type of Tenure</h3>
 							<p className="text-sm text-gray-600">80% of employees are in permanent roles</p>
 							<div className="mt-4">
-								<BarList
-									className="h-40"
-									data={tenureData}
-									valueFormatter={(value) => Intl.NumberFormat('en-US', {
-										notation: 'compact',
-									}).format(Number(value))}
-								/>
+								<NoSSR>
+									<BarList
+										className="h-40"
+										data={tenureData}
+										valueFormatter={(value) => Intl.NumberFormat('en-US', {
+											notation: 'compact',
+										}).format(Number(value))}
+									/>
+								</NoSSR>
 							</div>
 						</div>
 
@@ -103,17 +108,19 @@ export default function Spending() {
 							<h3 className="font-medium mb-2">Age</h3>
 							<p className="text-sm text-gray-600">The average employee is 45 years old</p>
 							<div className="mt-4">
-								<BarChart
-									className="h-40"
-									data={ageData}
-									index="name"
-									showLegend={false}
-									categories={["Count"]}
-									showGridLines={false}
-									valueFormatter={(value) => Intl.NumberFormat('en-US', {
-										notation: 'compact',
-									}).format(Number(value))}
-								/>
+								<NoSSR>
+									<BarChart
+										className="h-40"
+										data={ageData}
+										index="name"
+										showLegend={false}
+										categories={["Count"]}
+										showGridLines={false}
+										valueFormatter={(value) => Intl.NumberFormat('en-US', {
+											notation: 'compact',
+										}).format(Number(value))}
+									/>
+								</NoSSR>
 							</div>
 						</div>
 						<div>

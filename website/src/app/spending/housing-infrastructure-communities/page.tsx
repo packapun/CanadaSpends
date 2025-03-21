@@ -2,6 +2,12 @@ import { DepartmentList } from "@/components/DepartmentList";
 import { DepartmentSpendingChart } from "@/components/DepartmentSpendingChart";
 import { ExternalLink, GraphMock, H1, H2, Intro, P, Page, PageContent, Section } from "@/components/Layout";
 import { StatCard, StatCardContainer } from "@/components/StatCard";
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+	title: 'Housing, Infrastructure and Communities Canada| Canada Spends',
+	description: 'A look at how the Housing, Infrastructure and Communities Canada spends its budget',
+}
 
 const department = "Housing, Infrastructure and Communities Canada";
 
