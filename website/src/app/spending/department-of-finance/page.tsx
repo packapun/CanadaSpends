@@ -18,13 +18,13 @@ const H1 = ({ children, className = "" }: { children: React.ReactNode, className
 )
 
 const H2 = ({ children, className = "" }: { children: React.ReactNode, className?: string }) => (
-	<h2 className={`text-xl font-bold mb-6 ${className}`}>
+	<h2 className={`text-2xl font-bold mb-6 ${className}`}>
 		{children}
 	</h2>
 )
 
 const P = ({ children, className = "" }: { children: React.ReactNode, className?: string }) => (
-	<p className={`text-gray-600 leading-relaxed mb-8 ${className}`}>
+	<p className={`text-gray-600 leading-relaxed mb-4 ${className}`}>
 		{children}
 	</p>
 )
@@ -36,7 +36,7 @@ const Intro = ({ children, className = "" }: { children: React.ReactNode, classN
 )
 
 const Page = ({ children }: { children: React.ReactNode }) => <div className="min-h-screen bg-[#f8fafc]">
-	<div className="w-full max-w-5xl mx-auto px-4 sm:px-6 py-8">
+	<div className="w-full max-w-5xl mx-auto px-4 sm:px-6 pb-8 pt-2">
 		{children}
 	</div></div>
 
@@ -47,7 +47,7 @@ export default function Department() {
 				Department of Finance
 			</H1>
 			<Intro>
-				The Department of Finance (Finance Canada) is a central federal agency
+				The Department of Finance (Finance Canada) is a central federal department
 				responsible for overseeing the nation's economic and fiscal policies, ensuring
 				financial stability, and managing the government's fiscal framework.
 				Established in 1867 as one of the original departments following
@@ -57,7 +57,7 @@ export default function Department() {
 		</Section>
 
 		<Section>
-			<div className="text-sm text-gray-500">
+			<div className="text-sm text-gray-500 italic">
 				Data updated March 20, 2025
 			</div>
 			<StatCardContainer>
@@ -152,7 +152,7 @@ export default function Department() {
 
 			</P>
 			<P>
-				The Minister of Finance is one of 36 <a href="https://www.pm.gc.ca/en/cabinet" className="text-blue-500 underline">cabinet members</a> who serve at the Prime Minister’s discretion. Their tenure typically ends when they resign, are replaced, or when a new Prime Minister takes office and appoints a new cabinet. Outgoing ministers remain in their roles until their successors are sworn in.
+				The Minister of Finance is one of the <a href="https://www.pm.gc.ca/en/cabinet" className="text-blue-500 underline">cabinet members</a> who serve at the Prime Minister’s discretion. Their tenure typically ends when they resign, are replaced, or when a new Prime Minister takes office and appoints a new cabinet. Outgoing ministers remain in their roles until their successors are sworn in.
 			</P>
 		</Section>
 
