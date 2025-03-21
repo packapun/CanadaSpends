@@ -107,7 +107,7 @@ const ContributorCard: React.FC<Contributor> = ({
 
 export function Contributors() {
   return (
-    <div className="mt-4 grid grid-cols-1 md:grid-cols-4 gap-6 ">
+    <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 ">
       {contributors.map(contributor => (
         <ContributorCard key={contributor.name} {...contributor} />
       ))}
