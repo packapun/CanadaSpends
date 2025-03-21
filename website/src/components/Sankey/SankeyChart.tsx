@@ -1,10 +1,10 @@
-import './SankeyChart.css'
-import { useCallback, useEffect, useState } from 'react'
 import { hierarchy } from 'd3'
-import { SankeyChartSingle } from './SankeyChartSingle'
+import { useCallback, useEffect, useState } from 'react'
 import Select from 'react-select'
-import { formatNumber, sortNodesByAmount } from './utils'
+import './SankeyChart.css'
 import { SankeyData } from './SankeyChartD3'
+import { SankeyChartSingle } from './SankeyChartSingle'
+import { formatNumber, sortNodesByAmount } from './utils'
 
 type FlatDataNodes = ReturnType<typeof getFlatData>['nodes']
 type Node = FlatDataNodes[number] & {
@@ -72,7 +72,7 @@ const chartConfig = {
 } as const
 
 type SankeyChartProps = {
-  data: SankeyData
+	data: SankeyData
 }
 
 export function SankeyChart(props: SankeyChartProps) {
@@ -82,15 +82,15 @@ export function SankeyChart(props: SankeyChartProps) {
 	const [searchedNode, setSearchedNode] = useState<SearchOptionType | null>(null)
 	const [searchResult, setSearchResult] = useState<Node | null>(null)
 	const [hoverNode, setHoverNode] = useState<HoverNodeType | null>(null)
-  const [totalAmount, setTotalAmount] = useState(0)
-  
-  useEffect(() => {
-    setChartData(props.data)
-    const { nodes, revenueTotal, spendingTotal } = getFlatData(props.data)
+	const [totalAmount, setTotalAmount] = useState(0)
 
-    setFlatData(nodes)
-    setTotalAmount(Math.max(revenueTotal, spendingTotal))
-  }, [props.data])
+	useEffect(() => {
+		setChartData(props.data)
+		const { nodes, revenueTotal, spendingTotal } = getFlatData(props.data)
+
+		setFlatData(nodes)
+		setTotalAmount(Math.max(revenueTotal, spendingTotal))
+	}, [props.data])
 
 	const handleSearch = (selected: SearchOptionType | null) => {
 		setSearchedNode(selected)
@@ -124,7 +124,7 @@ export function SankeyChart(props: SankeyChartProps) {
 	}, [])
 
 	return (
-		<div className='sankey-chart-container'>
+		<>
 			<div className='search-container'>
 				<Select
 					value={searchedNode}
@@ -201,7 +201,7 @@ export function SankeyChart(props: SankeyChartProps) {
 						colors={chartConfig[searchResult.type].colors}
 						// @ts-expect-error: fix type here
 						direction={chartConfig[searchResult.type].direction}
-						totalAmount={searchResult.value ?? 0} 
+						totalAmount={searchResult.value ?? 0}
 						height={chartHeight}
 						amountScalingFactor={amountScalingFactor}
 						difference={0}
@@ -209,7 +209,7 @@ export function SankeyChart(props: SankeyChartProps) {
 					/>
 				</div>
 			)}
-		</div>
+		</>
 	)
 }
 
