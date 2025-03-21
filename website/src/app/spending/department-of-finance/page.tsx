@@ -1,3 +1,4 @@
+import { FederalSpendingChart } from "@/components/FederalSpendingChart";
 import { ExternalLink, GraphMock, H1, H2, Intro, P, Page, PageContent, Section } from "@/components/Layout";
 import { StatCard, StatCardContainer } from "@/components/StatCard";
 
@@ -55,7 +56,7 @@ export default function Department() {
 				</P>
 			</Section>
 
-			<GraphMock text="Finance Graph 1" />
+			<FederalSpendingChart department="Department of Finance" />
 
 			<Section>
 				<P>
