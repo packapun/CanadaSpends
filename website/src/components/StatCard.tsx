@@ -9,7 +9,7 @@ interface StatCardProps {
   animationDelay?: string;
 }
 
-const StatCard: React.FC<StatCardProps> = ({
+export const StatCard: React.FC<StatCardProps> = ({
   title,
   value,
   subtitle,
@@ -31,4 +31,10 @@ const StatCard: React.FC<StatCardProps> = ({
   );
 };
 
-export default StatCard;
+export const StatCardContainer: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  return (
+    <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-6 ">
+      {children}
+    </div>
+  );
+};
