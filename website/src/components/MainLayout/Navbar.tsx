@@ -11,6 +11,18 @@ export const Navbar = () => {
 					>
 						Spending
 					</Link>
+					<Link
+						className="items-center justify-center px-2 relative flex max-w-full -mb-0 py-0 text-black"
+						href="/about"
+					>
+						About
+					</Link>
+					<Link
+						className="items-center justify-center px-2 relative flex max-w-full -mb-0 py-0 text-black"
+						href="/contact"
+					>
+						Contact
+					</Link>
 				</div>
 			</div>
 		</nav>

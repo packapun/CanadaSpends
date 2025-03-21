@@ -3,10 +3,9 @@
 import { BarChart } from "@/components/BarChart";
 import { BarList } from "@/components/BarList";
 import { DepartmentList } from "@/components/DepartmentList";
-import { H2, P, Page, PageContent, Section } from "@/components/Layout";
+import { H1, H2, Intro, P, Page, PageContent, Section } from "@/components/Layout";
 import NoSSR from "@/components/NoSSR";
 import { Sankey } from "@/components/Sankey";
-import Head from "next/head";
 
 const StatBox = ({ title, value, description }: { title: string, value: string, description: string }) => (
 	<div className="flex flex-col mr-8 mb-8">
@@ -40,25 +39,18 @@ const ageData = [
 export default function Spending() {
 	return (
 		<Page>
-			<Head>
-				<title>Federal Spending</title>
-				<meta name="description" content="A look at how federal spending is allocated across departments" />
-			</Head>
 			<PageContent>
 				<Section>
-					<div className="text-center mb-10">
-						<h1 className="text-4xl font-bold mb-3">Government Spending</h1>
-						<p className="text-gray-600 max-w-2xl mx-auto">
-							Get data-driven insights into how governmental revenue and spending affect Canadian lives and programs.
-						</p>
-					</div>
-
-					<div className="py-6">
-						<h2 className="text-xl font-bold mb-1">FY 2024 Government Revenue and Spending</h2>
-						<p className="text-sm text-gray-600">
-							Explore revenue and spending categories or filter by agency for deeper insights.
-						</p>
-					</div>
+					<H1>Government Spending</H1>
+					<Intro>
+						Get data-driven insights into how governmental revenue and spending affect Canadian lives and programs.
+					</Intro>
+				</Section>
+				<Section>
+					<H2>FY 2024 Government Revenue and Spending</H2>
+					<P>
+						Explore revenue and spending categories or filter by agency for deeper insights.
+					</P>
 				</Section>
 			</PageContent>
 			<div className='sankey-chart-container'>
