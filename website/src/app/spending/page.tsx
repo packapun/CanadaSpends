@@ -176,9 +176,9 @@ export default function Spending() {
 				</Section>
 				<Section>
 					<H2>Government agencies explained</H2>
-					<P>
+					<div className="text-gray-600 leading-relaxed mb-4">
 						{agencies.map((agency) => <AgencyItem key={agency.slug} {...agency} />)}
-					</P>
+					</div>
 				</Section>
 			</PageContent>
 

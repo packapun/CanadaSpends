@@ -55,7 +55,7 @@ export default function Department() {
 				</P>
 			</Section>
 
-			<GraphMock />
+			<GraphMock text="Finance Graph 1" />
 
 			<Section>
 				<P>
@@ -75,7 +75,7 @@ export default function Department() {
 				</P>
 			</Section>
 
-			<GraphMock />
+			<GraphMock text="Finance Graph 2" />
 
 			<Section>
 				<P>
@@ -95,7 +95,7 @@ export default function Department() {
 				</P>
 			</Section>
 
-			<GraphMock />
+			<GraphMock text="Finance Graph 3" />
 
 			<Section>
 				<P>
@@ -103,7 +103,7 @@ export default function Department() {
 				</P>
 			</Section>
 
-			<GraphMock />
+			<GraphMock text="Finance Graph 4" />
 
 			<Section>
 				<H2>

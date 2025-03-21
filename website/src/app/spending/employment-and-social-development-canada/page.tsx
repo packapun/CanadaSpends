@@ -21,12 +21,12 @@ export default function Department() {
 					<StatCard
 						title="In FY 2024,"
 						value="$94.48B"
-						subtitle="was spent by ESCC"
+						subtitle="was spent by ESDC"
 					/>
 					<StatCard
 						title="In FY 2024,"
 						value="18.4%"
-						subtitle="of federal spending was by $94.48B"
+						subtitle="of federal spending was by ESDC"
 					/>
 				</StatCardContainer>
 			</Section>
@@ -39,7 +39,7 @@ export default function Department() {
 				</P>
 			</Section>
 
-			<GraphMock />
+			<GraphMock text="ESDC Graph 1" />
 
 			<Section>
 				<P>
@@ -48,6 +48,11 @@ export default function Department() {
 				<P>
 					The department’s spending grew at a rate significantly higher than overall spending, reflecting shifts in federal priorities. In 2024, ESDC accounted for 18.4% of all federal spending, 16.51 percentage points higher than in 2005.
 				</P>
+
+
+			</Section>
+
+			<Section>
 				<H2>
 					Major legislation, economic conditions, and external factors can impact ESDC’s spending.
 				</H2>
@@ -55,6 +60,9 @@ export default function Department() {
 					For example, during the COVID-19 pandemic, federal support programs led to a temporary surge in spending. ESDC expenditures increased from $63.3 billion in 2019 to $169.2 billion in 2021 before stabilizing in recent years.
 
 				</P>
+			</Section>
+
+			<Section>
 				<H2>
 					Most federal spending can be categorized as direct or indirect.
 				</H2>
@@ -63,7 +71,7 @@ export default function Department() {
 				</P>
 			</Section>
 
-			<GraphMock />
+			<GraphMock text="ESDC Graph 2" />
 
 			<Section>
 				<H2>
@@ -74,7 +82,7 @@ export default function Department() {
 				</P>
 			</Section>
 
-			<GraphMock />
+			<GraphMock text="ESDC Graph 3" />
 
 			<Section>
 				<H2>How did ESDC spend its budget in 2024?</H2>
@@ -83,7 +91,7 @@ export default function Department() {
 				</P>
 			</Section>
 
-			<GraphMock />
+			<GraphMock text="ESDC Graph 4" />
 
 			<Section>
 				<P>
