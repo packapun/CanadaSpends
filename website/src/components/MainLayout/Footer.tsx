@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { FaXTwitter } from "react-icons/fa6";
 import logoText from "./logo-text.svg";
 
 export const Footer = () => {
@@ -13,7 +14,7 @@ export const Footer = () => {
 								href="/"
 							>
 								<Image
-									className="cursor-pointer align-middle inline-block w-full h-32 max-w-full"
+									className="cursor-pointer align-middle inline-block h-32 max-w-full"
 									src={logoText}
 									alt="Canada Spends"
 								/>
@@ -28,10 +29,8 @@ export const Footer = () => {
 										>
 											<div className="items-center cursor-pointer justify-center relative flex overflow-hidden">
 												<div className="items-center justify-center flex p-1">
-													<Image
+													<FaXTwitter
 														className="align-middle inline-block w-3 h-3 min-w-[0.80rem] min-h-[0.80rem] max-w-none"
-														src={logoText}
-														alt="Canada Spends"
 													/>
 												</div>
 											</div>

@@ -127,7 +127,7 @@ export class SankeyChartD3 {
 
 		this.scale = scaleLinear()
 			.domain([0, this.params.totalAmount])
-			.range([0, this.chartHeight * 0.7])
+			.range([0.02, this.chartHeight * 0.7])
 			.clamp(true)
 	}
 
@@ -360,18 +360,24 @@ export class SankeyChartD3 {
 			path.map(d => d.lineCoords)
 		)
 
+		if (highlightedNodeElements.length > 0) {
+			this.autoScroll(highlightedNodeElements)
+		}
+	}
+
+	autoScroll(highlightedNodeElements) {
 		// Automatic scroll into view
 		if (this.timerId) {
 			clearTimeout(this.timerId)
 		}
 
-		if (this.autoScrolledFor === node.name) {
+		if (this.autoScrolledFor === this.highlightedNode?.name) {
 			return
 		}
 
 		this.timerId = setTimeout(() => {
 			// Auto scroll only once
-			this.autoScrolledFor = node.name
+			this.autoScrolledFor = this.highlightedNode?.name
 			const hiddenElements = highlightedNodeElements.reduce((acc, element) => {
 				// Check if element is fully visible in viewport
 				const rect = element.getBoundingClientRect()
@@ -393,17 +399,41 @@ export class SankeyChartD3 {
 			}, [])
 
 			if (hiddenElements.length > 0) {
-				hiddenElements.forEach(element => {
-					const relativePosition = this.getRelativePosition(element, this.container.node())
-					const isTop = relativePosition.y < this.params.height * 0.5
+				const elementsToScroll = rollups(
+					hiddenElements,
+					elements => {
+						// Sort elements by their vertical position
+						const positions = elements.map(el => ({
+							element: el,
+							position: this.getRelativePosition(el, this.container.node()).y
+						}))
 
-					element.scrollIntoView({
-						behavior: 'smooth',
-						block: isTop ? 'center' : 'end'
-					})
+						// Get the topmost and bottommost elements
+						const topElement = positions.reduce((a, b) =>
+							a.position < b.position ? a : b
+						)
+						const bottomElement = positions.reduce((a, b) =>
+							a.position > b.position ? a : b
+						)
+
+						// If topmost element is above viewport center, scroll to it
+						// Otherwise scroll to bottommost element
+						return topElement.position < this.params.height * 0.5
+							? topElement.element
+							: bottomElement.element
+					},
+					d => d.__data__.columnIndex
+				).map(d => d[1])
+
+				elementsToScroll.forEach(element => {
+					setTimeout(() => {
+						element.scrollIntoView({
+							behavior: 'smooth',
+							block: 'nearest'
+						})
+					}, 0)
 				})
 			}
-			highlightedNodeElements = []
 		}, 300)
 	}
 
