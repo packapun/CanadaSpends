@@ -88,13 +88,13 @@ const ContributorCard: React.FC<Contributor> = ({
 
       <div className="flex gap-2">
         {linkedin_username && (
-          <a href={`https://linkedin.com/in/${linkedin_username}`} className="text-2xl text-gray-500">
+          <a href={`https://linkedin.com/in/${linkedin_username}`} className="text-2xl text-gray-500" target="_blank" rel="noopener noreferrer">
             <FaLinkedin />
           </a>
         )}
 
         {x_username && (
-          <a href={`https://x.com/${x_username}`} className="text-2xl text-gray-500">
+          <a href={`https://x.com/${x_username}`} className="text-2xl text-gray-500" target="_blank" rel="noopener noreferrer">
             <FaSquareXTwitter />
           </a>
         )}
