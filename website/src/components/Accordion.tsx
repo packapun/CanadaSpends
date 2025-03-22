@@ -15,7 +15,7 @@ const AccordionTrigger = React.forwardRef<
     <AccordionPrimitives.Trigger
       className={cn(
         // base
-        "group flex flex-1 cursor-pointer items-center justify-between py-3 text-left text-sm font-medium leading-none",
+        "group flex flex-1 cursor-pointer items-center justify-between py-3 text-left font-medium leading-none",
         // text color
         "text-gray-900 dark:text-gray-50",
         // disabled
@@ -60,7 +60,7 @@ const AccordionContent = React.forwardRef<
     <div
       className={cn(
         // base
-        "overflow-hidden pb-4 text-sm",
+        "overflow-hidden pb-4",
         // text color
         "text-gray-700 dark:text-gray-200",
         className,
