@@ -7,6 +7,30 @@ import "./globals.css";
 export const metadata: Metadata = {
 	title: 'Get The Facts About Government Spending | Canada Spends',
 	description: 'Government spending shouldn’t be a black box. We turn complex data into clear, non-partisan insights so every Canadian knows where their money goes.',
+	icons: [
+		{
+			url: '/favicon-96x96.png',
+			type: 'image/png',
+			sizes: '96x96'
+		},
+		{
+			url: '/favicon.svg',
+			type: 'image/svg+xml'
+		},
+		{
+			url: '/favicon.ico',
+			rel: 'shortcut icon'
+		},
+		{
+			url: '/apple-touch-icon.png',
+			rel: 'apple-touch-icon',
+			sizes: '180x180'
+		}
+	],
+	manifest: '/site.webmanifest',
+	appleWebApp: {
+		title: 'CanadaSpends'
+	},
 }
 
 const plusJakartaSans = Plus_Jakarta_Sans({

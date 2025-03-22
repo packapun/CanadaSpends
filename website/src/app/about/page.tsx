@@ -1,6 +1,12 @@
 import { Contributors } from "@/app/about/contributors";
 import FAQ from "@/app/about/faq";
 import { H1, H2, Intro, Page, PageContent, Section } from "@/components/Layout";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: 'Making Government Spending Clear | About Us | Canada Spends',
+  description: 'We don’t tell you what to think—we give you the facts. Meet the team making government spending data accessible to all Canadians.',
+}
 
 
 export default function About() {

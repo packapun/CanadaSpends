@@ -1,4 +1,10 @@
 import { ExternalLink, H1, Intro, Page, PageContent, Section } from "@/components/Layout";
+import { Metadata } from "next";
+export const metadata: Metadata = {
+  title: 'Connect with Us | Canada Spends',
+  description: 'Have questions or feedback? Email us at hi@canadaspends.com or connect with us on X @canada_spends - we’d love to hear from you!',
+}
+
 
 export default function Contact() {
   return (
