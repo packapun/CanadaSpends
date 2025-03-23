@@ -1,6 +1,7 @@
+import { FederalSpendingChart } from "@/app/spending/department-of-finance/FederalSpendingChart";
 import { DepartmentList } from "@/components/DepartmentList";
 import { DepartmentSpendingChart } from "@/components/DepartmentSpendingChart";
-import { ExternalLink, GraphMock, H1, H2, Intro, P, Page, PageContent, Section } from "@/components/Layout";
+import { ExternalLink, GraphMock, H1, H2, H3, Intro, P, Page, PageContent, Section } from "@/components/Layout";
 import { StatCard, StatCardContainer } from "@/components/StatCard";
 import type { Metadata } from 'next';
 
@@ -81,12 +82,11 @@ export default function Department() {
 				<H2>
 					The Department of Finance's share of federal spending in FY 2024 was higher than FY 1995.
 				</H2>
-				<P>
+				<H3>
 					Percentage of federal budget dedicated to Finance, FYs 1995-2024
-				</P>
+				</H3>
+				<FederalSpendingChart />
 			</Section>
-
-			<GraphMock text="Graph 2" department={department} />
 
 			<Section>
 				<P>

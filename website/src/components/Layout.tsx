@@ -21,6 +21,12 @@ export const H2 = ({ children, className = "" }: { children: React.ReactNode, cl
   </h2>
 )
 
+export const H3 = ({ children, className = "" }: { children: React.ReactNode, className?: string }) => (
+  <h2 className={`text-xl text-gray-600 font-bold mb-6 ${className}`}>
+    {children}
+  </h2>
+)
+
 export const P = ({ children, className = "" }: { children: React.ReactNode, className?: string }) => (
   <p className={`text-gray-600 leading-relaxed mb-4 ${className}`}>
     {children}
