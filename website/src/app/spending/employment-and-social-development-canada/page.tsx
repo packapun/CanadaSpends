@@ -1,8 +1,12 @@
 import { DepartmentList } from "@/components/DepartmentList";
 import { DepartmentSpendingChart } from "@/components/DepartmentSpendingChart";
-import { ExternalLink, GraphMock, H1, H2, Intro, P, Page, PageContent, Section, UL } from "@/components/Layout";
+import { ChartContainer, ExternalLink, H1, H2, H3, Intro, P, Page, PageContent, Section, UL } from "@/components/Layout";
+import NoSSR from "@/components/NoSSR";
 import { StatCard, StatCardContainer } from "@/components/StatCard";
 import type { Metadata } from 'next';
+import { FederalSpendingByEntity } from "./FederalSpendingByEntity";
+import { FederalSpendingChart } from "./FederalSpendingChart";
+import { MiniSankey } from "./MiniSankey";
 
 export const metadata: Metadata = {
 	title: 'Employment and Social Development Canada| Canada Spends',
@@ -45,21 +49,17 @@ export default function Department() {
 				<P>
 					ESDC spent $94.48 billion in fiscal year (FY) 2024. This was 18.4% of the $513.9 billion in overall federal spending, making it one of the highest-spending federal departments.
 				</P>
-				<P>ESDC accounted for 18.4% of all federal spending in FY 2024. 10 government departments accounted for 73.2% of federal spending in FY 2024.
-				</P>
-			</Section>
-
-			<DepartmentSpendingChart department={department} />
-
-			<Section>
+				<H3>ESDC accounted for 18.4% of all federal spending in FY 2024. 10 government departments accounted for 73.2% of federal spending in FY 2024.
+				</H3>
+				<ChartContainer>
+					<DepartmentSpendingChart department={department} />
+				</ChartContainer>
 				<P>
 					Federal spending may shift over time due to population growth, changes in policy and programs, and emerging challenges. Since 2005, when ESDC was first established, overall federal spending has risen 62.9%, while ESDC spending has increased 1,485%.
 				</P>
 				<P>
 					The department’s spending grew at a rate significantly higher than overall spending, reflecting shifts in federal priorities. In 2024, ESDC accounted for 18.4% of all federal spending, 16.51 percentage points higher than in 2005.
 				</P>
-
-
 			</Section>
 
 			<Section>
@@ -68,7 +68,6 @@ export default function Department() {
 				</H2>
 				<P>
 					For example, during the COVID-19 pandemic, federal support programs led to a temporary surge in spending. ESDC expenditures increased from $63.3 billion in 2019 to $169.2 billion in 2021 before stabilizing in recent years.
-
 				</P>
 			</Section>
 
@@ -79,31 +78,35 @@ export default function Department() {
 				<P>
 					Direct spending refers to money allocated to government programs, employee salaries, and administrative expenses. Indirect spending includes federal transfers to individuals and provinces.
 				</P>
+				<H3>
+					Percentage of federal budget dedicated to ESDC, FYs 1995-2024 (inflation-adjusted)
+				</H3>
+				<ChartContainer>
+					<FederalSpendingChart />
+				</ChartContainer>
 			</Section>
 
-			<GraphMock text="Graph 2" department={department} />
+
 
 			<Section>
 				<H2>
 					In FY 2024, ESDC transferred 63% of its total spending to individuals and provinces.
 				</H2>
-				<P>
-					The chart below outlines all departmental spending.
-				</P>
+				<ChartContainer>
+					<NoSSR>
+						<MiniSankey />
+					</NoSSR>
+				</ChartContainer>
 			</Section>
-
-			<GraphMock text="Graph 3" department={department} />
 
 			<Section>
 				<H2>How did ESDC spend its budget in 2024?</H2>
-				<P>
-					Federal government spending isolated to FY 2024
-				</P>
-			</Section>
-
-			<GraphMock text="Graph 4" department={department} />
-
-			<Section>
+				<H3>
+					Federal government spending isolated to FY 2024 (in millions)
+				</H3>
+				<ChartContainer>
+					<FederalSpendingByEntity />
+				</ChartContainer>
 				<P>
 					Federal departments often include multiple agencies and service delivery arms. In FY 2024, ESDC’s highest-expenditure entities included:
 				</P>
@@ -113,7 +116,6 @@ export default function Department() {
 					<li>Canada Student Loans Program:  providing financial aid for post-secondary students.</li>
 					<li>Labour Market Development Agreements (LMDAs): federal funding to provinces for job training and employment support.</li>
 				</UL>
-
 			</Section>
 
 			<Section>

@@ -1,7 +1,10 @@
+import { FederalSpendingByEntity } from "@/app/spending/department-of-finance/FederalSpendingByEntity";
 import { FederalSpendingChart } from "@/app/spending/department-of-finance/FederalSpendingChart";
+import { MiniSankey } from "@/app/spending/department-of-finance/MiniSankey";
 import { DepartmentList } from "@/components/DepartmentList";
 import { DepartmentSpendingChart } from "@/components/DepartmentSpendingChart";
-import { ExternalLink, GraphMock, H1, H2, H3, Intro, P, Page, PageContent, Section } from "@/components/Layout";
+import { ChartContainer, ExternalLink, H1, H2, H3, Intro, P, Page, PageContent, Section } from "@/components/Layout";
+import NoSSR from "@/components/NoSSR";
 import { StatCard, StatCardContainer } from "@/components/StatCard";
 import type { Metadata } from 'next';
 
@@ -62,14 +65,12 @@ export default function Department() {
 				<H2>
 					The Department of Finance accounted for 26.4% of all federal spending in FY 2024.
 				</H2>
-				<P>
+				<H3>
 					10 government departments accounted for 73.2% of federal spending in FY 2024
-				</P>
-			</Section>
-
-			<DepartmentSpendingChart department={department} />
-
-			<Section>
+				</H3>
+				<ChartContainer>
+					<DepartmentSpendingChart department={department} />
+				</ChartContainer>
 				<P>
 					Federal spending may shift over time due to population growth, changes in policy and programs, and emerging problems to address. Since 1995, overall federal spending has risen 74.9%, while Department of Finance spending has increased 41.4%.
 				</P>
@@ -80,15 +81,14 @@ export default function Department() {
 
 			<Section>
 				<H2>
-					The Department of Finance's share of federal spending in FY 2024 was higher than FY 1995.
+					The Department of Finance's share of federal spending in FY 2024 was lower than FY 1995.
 				</H2>
 				<H3>
 					Percentage of federal budget dedicated to Finance, FYs 1995-2024
 				</H3>
-				<FederalSpendingChart />
-			</Section>
-
-			<Section>
+				<ChartContainer>
+					<FederalSpendingChart />
+				</ChartContainer>
 				<P>
 					Most federal spending can be categorized as direct or indirect. Direct spending refers to money the federal government spends on budget items such as federal programs, employee salaries, and debt interest. Indirect spending refers to federal transfers to other levels of government.
 				</P>
@@ -97,24 +97,28 @@ export default function Department() {
 				</P>
 			</Section>
 
+
 			<Section>
 				<H2>
 					How did the Department of Finance spend its budget in 2024?
 				</H2>
-				<P>
+				<H3>
 					Federal government spending isolated to FY 2024
-				</P>
-			</Section>
-
-			<GraphMock text="Graph 3" department={department} />
-
-			<Section>
+				</H3>
+				<ChartContainer>
+					<NoSSR>
+						<MiniSankey />
+					</NoSSR>
+				</ChartContainer>
 				<P>
 					Federal departments often contain other entities including offices, crown corporations and agencies. In FY 2024, Department of Finance entities with the highest expenditures were the Office of the Superintendent of Financial Institutions, Office of the Auditor General, and the Financial Transactions and Reports Analysis Centre of Canada.
 				</P>
+				<H3>Department of Finance, Spending by Entity, FY 2024 (in millions)</H3>
+				<ChartContainer>
+					<FederalSpendingByEntity />
+				</ChartContainer>
 			</Section>
 
-			<GraphMock text="Finance Graph 4" department={department} />
 
 			<Section>
 				<H2>

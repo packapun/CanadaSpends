@@ -27,6 +27,12 @@ export const H3 = ({ children, className = "" }: { children: React.ReactNode, cl
   </h2>
 )
 
+export const ChartContainer = ({ children, className = "" }: { children: React.ReactNode, className?: string }) => (
+  <div className={`mb-8 ${className}`}>
+    {children}
+  </div>
+)
+
 export const P = ({ children, className = "" }: { children: React.ReactNode, className?: string }) => (
   <p className={`text-gray-600 leading-relaxed mb-4 ${className}`}>
     {children}

@@ -90,7 +90,7 @@ export const Footer = () => {
 							))}
 						</div>
 						<p className="mt-8 text-sm/6 text-gray-600 md:order-1 md:mt-0">
-							&copy; 2025 Canada Spends. All rights reserved. A Project of <ExternalLink href="https://www.buildcanada.ca" className="underline text-gray-900 font-bold">Build Canada</ExternalLink>.
+							&copy; 2025 Canada Spends. All rights reserved. A Project of <ExternalLink href="https://www.buildcanada.com" className="underline text-gray-900 font-bold">Build Canada</ExternalLink>.
 						</p>
 					</div>
 				</div>
