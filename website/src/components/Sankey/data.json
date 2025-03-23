@@ -355,55 +355,55 @@
             "children": [
               {
                 "name": "Newfoundland and Labrador HTP",
-                "amount": 0.688
+                "amount": 0.666
               },
               {
                 "name": "Prince Edward Island HTP",
-                "amount": 0.225
+                "amount": 0.214
               },
               {
                 "name": "Nova Scotia HTP",
-                "amount": 1.358
+                "amount": 1.303
               },
               {
                 "name": "New Brunswick HTP",
-                "amount": 1.078
+                "amount": 1.027
               },
               {
                 "name": "Quebec HTP",
-                "amount": 11.423
+                "amount": 10.911
               },
               {
                 "name": "Ontario HTP",
-                "amount": 20.339
+                "amount": 19.266
               },
               {
                 "name": "Manitoba HTP",
-                "amount": 1.885
+                "amount": 1.794
               },
               {
                 "name": "Saskatchewan HTP",
-                "amount": 1.564
+                "amount": 1.491
               },
               {
                 "name": "Alberta HTP",
-                "amount": 6.167
+                "amount": 5.771
               },
               {
                 "name": "British Columbia HTP",
-                "amount": 7.188
+                "amount": 6.817
               },
               {
                 "name": "Yukon HTP",
-                "amount": 0.059
-              },
-              {
-                "name": "Northwest Territories HTP",
                 "amount": 0.056
               },
               {
+                "name": "Northwest Territories HTP",
+                "amount": 0.055
+              },
+              {
                 "name": "Nunavut HTP",
-                "amount": 0.052
+                "amount": 0.050
               }
             ]
           },
@@ -412,43 +412,43 @@
             "children": [
               {
                 "name": "Newfoundland and Labrador STP",
-                "amount": 0.223
+                "amount": 0.221
               },
               {
                 "name": "Prince Edward Island STP",
-                "amount": 0.073
+                "amount": 0.071
               },
               {
                 "name": "Nova Scotia STP",
-                "amount": 0.441
+                "amount": 0.433
               },
               {
                 "name": "New Brunswick STP",
-                "amount": 0.350
+                "amount": 0.341
               },
               {
                 "name": "Quebec STP",
-                "amount": 3.709
+                "amount": 3.624
               },
               {
                 "name": "Ontario STP",
-                "amount": 6.603
+                "amount": 6.400
               },
               {
                 "name": "Manitoba STP",
-                "amount": 0.612
+                "amount": 0.596
               },
               {
                 "name": "Saskatchewan STP",
-                "amount": 0.508
+                "amount": 0.495
               },
               {
                 "name": "Alberta STP",
-                "amount": 2.002
+                "amount": 1.917
               },
               {
                 "name": "British Columbia STP",
-                "amount": 2.334
+                "amount": 2.264
               },
               {
                 "name": "Yukon STP",
@@ -469,31 +469,31 @@
             "children": [
               {
                 "name": "Newfoundland and Labrador EQP",
-                "amount": 0.218
+                "amount": 0
               },
               {
                 "name": "Prince Edward Island EQP",
-                "amount": 0.610
+                "amount": 0.561
               },
               {
                 "name": "Nova Scotia EQP",
-                "amount": 3.284
+                "amount": 2.803
               },
               {
                 "name": "New Brunswick EQP",
-                "amount": 2.897
+                "amount": 2.631
               },
               {
                 "name": "Quebec EQP",
-                "amount": 13.316
+                "amount": 14.037
               },
               {
                 "name": "Ontario EQP",
-                "amount": 0.576
+                "amount": 0.421
               },
               {
                 "name": "Manitoba EQP",
-                "amount": 4.352
+                "amount": 3.510
               },
               {
                 "name": "Saskatchewan EQP",
