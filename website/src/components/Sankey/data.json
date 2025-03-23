@@ -348,18 +348,178 @@
       },
       {
         "name": "Transfers to Provinces",
+        "link": "https://www.canada.ca/en/department-finance/programs/federal-transfers/major-federal-transfers.html",
         "children": [
           {
             "name": "Health Transfer to Provinces",
-            "amount": 49.43
+            "children": [
+              {
+                "name": "Newfoundland and Labrador HTP",
+                "amount": 0.688
+              },
+              {
+                "name": "Prince Edward Island HTP",
+                "amount": 0.225
+              },
+              {
+                "name": "Nova Scotia HTP",
+                "amount": 1.358
+              },
+              {
+                "name": "New Brunswick HTP",
+                "amount": 1.078
+              },
+              {
+                "name": "Quebec HTP",
+                "amount": 11.423
+              },
+              {
+                "name": "Ontario HTP",
+                "amount": 20.339
+              },
+              {
+                "name": "Manitoba HTP",
+                "amount": 1.885
+              },
+              {
+                "name": "Saskatchewan HTP",
+                "amount": 1.564
+              },
+              {
+                "name": "Alberta HTP",
+                "amount": 6.167
+              },
+              {
+                "name": "British Columbia HTP",
+                "amount": 7.188
+              },
+              {
+                "name": "Yukon HTP",
+                "amount": 0.059
+              },
+              {
+                "name": "Northwest Territories HTP",
+                "amount": 0.056
+              },
+              {
+                "name": "Nunavut HTP",
+                "amount": 0.052
+              }
+            ]
           },
           {
             "name": "Social Transfer to Provinces",
-            "amount": 16.42
+            "children": [
+              {
+                "name": "Newfoundland and Labrador STP",
+                "amount": 0.223
+              },
+              {
+                "name": "Prince Edward Island STP",
+                "amount": 0.073
+              },
+              {
+                "name": "Nova Scotia STP",
+                "amount": 0.441
+              },
+              {
+                "name": "New Brunswick STP",
+                "amount": 0.350
+              },
+              {
+                "name": "Quebec STP",
+                "amount": 3.709
+              },
+              {
+                "name": "Ontario STP",
+                "amount": 6.603
+              },
+              {
+                "name": "Manitoba STP",
+                "amount": 0.612
+              },
+              {
+                "name": "Saskatchewan STP",
+                "amount": 0.508
+              },
+              {
+                "name": "Alberta STP",
+                "amount": 2.002
+              },
+              {
+                "name": "British Columbia STP",
+                "amount": 2.334
+              },
+              {
+                "name": "Yukon STP",
+                "amount": 0.019
+              },
+              {
+                "name": "Northwest Territories STP",
+                "amount": 0.018
+              },
+              {
+                "name": "Nunavut STP",
+                "amount": 0.017
+              }
+            ]
           },
           {
             "name": "Equalization Payments to Provinces",
-            "amount": 28.84
+            "children": [
+              {
+                "name": "Newfoundland and Labrador EQP",
+                "amount": 0.218
+              },
+              {
+                "name": "Prince Edward Island EQP",
+                "amount": 0.610
+              },
+              {
+                "name": "Nova Scotia EQP",
+                "amount": 3.284
+              },
+              {
+                "name": "New Brunswick EQP",
+                "amount": 2.897
+              },
+              {
+                "name": "Quebec EQP",
+                "amount": 13.316
+              },
+              {
+                "name": "Ontario EQP",
+                "amount": 0.576
+              },
+              {
+                "name": "Manitoba EQP",
+                "amount": 4.352
+              },
+              {
+                "name": "Saskatchewan EQP",
+                "amount": 0
+              },
+              {
+                "name": "Alberta EQP",
+                "amount": 0
+              },
+              {
+                "name": "British Columbia EQP",
+                "amount": 0
+              },
+              {
+                "name": "Yukon EQP",
+                "amount": 0
+              },
+              {
+                "name": "Northwest Territories EQP",
+                "amount": 0
+              },
+              {
+                "name": "Nunavut EQP",
+                "amount": 0
+              }
+            ]
           },
           {
             "name": "Quebec Tax Offset",
