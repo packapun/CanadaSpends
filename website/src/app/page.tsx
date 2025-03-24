@@ -1,3 +1,5 @@
+import { Section } from "@/components/Layout";
+import NoSSR from "@/components/NoSSR";
 import { TwitterFeed } from "@/components/TwitterFeed";
 import Link from "next/link";
 import { FiCornerLeftDown, FiCornerRightDown } from "react-icons/fi";
@@ -86,20 +88,12 @@ export default function Home() {
 					</div>
 				</div>
 			</section>
-			<section className="bg-neutral-100 font-medium">
-				<div className="items-stretch flex-col justify-start py-16 flex">
-					<div className="items-center justify-center px-12 flex py-0">
-						<TwitterFeed />
-					</div>
-				</div>
-			</section>
-			<section
-				className="border-b-gray-200 border-b-2 border-t-gray-200 border-t-2"
-				style={{
-					borderBottomStyle: "solid",
-					borderTopStyle: "solid",
-				}}
-			/>
+			<Section className="bg-[#fafafa]">
+				<NoSSR>
+					<TwitterFeed />
+				</NoSSR>
+			</Section>
+
 		</>
 	);
 }

@@ -53,7 +53,7 @@ export default function Spending() {
 					</P>
 				</Section>
 			</PageContent>
-			<div className='sankey-chart-container'>
+			<div className='sankey-chart-container full-width'>
 				<NoSSR>
 					<Sankey />
 				</NoSSR>

@@ -2,6 +2,12 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+:root {
+	--background: #f8fafc;
+	--foreground: #171717;
+}
+
+
 @theme inline {
 	--color-background: var(--background);
 	--color-foreground: var(--foreground);

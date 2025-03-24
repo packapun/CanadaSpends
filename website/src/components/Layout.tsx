@@ -1,5 +1,5 @@
-export const Section = ({ children }: { children: React.ReactNode }) => {
-  return <div className="mt-16 max-w-5xl mx-auto">
+export const Section = ({ children, className = "" }: { children: React.ReactNode, className?: string }) => {
+  return <div className={`mt-16 max-w-5xl mx-auto ${className}`}>
     {children}
   </div>
 }
@@ -19,6 +19,18 @@ export const H2 = ({ children, className = "" }: { children: React.ReactNode, cl
   <h2 className={`text-2xl font-bold mb-6 ${className}`}>
     {children}
   </h2>
+)
+
+export const H3 = ({ children, className = "" }: { children: React.ReactNode, className?: string }) => (
+  <h2 className={`text-xl text-gray-600 font-bold mb-6 ${className}`}>
+    {children}
+  </h2>
+)
+
+export const ChartContainer = ({ children, className = "" }: { children: React.ReactNode, className?: string }) => (
+  <div className={`mb-8 ${className}`}>
+    {children}
+  </div>
 )
 
 export const P = ({ children, className = "" }: { children: React.ReactNode, className?: string }) => (
@@ -48,8 +60,8 @@ export const PageContent = ({ children }: { children: React.ReactNode }) =>
     {children}
   </div>
 
-export const ExternalLink = ({ children, href }: { children: React.ReactNode, href: string }) => (
-  <a href={href} className="text-blue-500 underline" target="_blank" rel="noopener noreferrer">
+export const ExternalLink = ({ children, href, className = "" }: { children: React.ReactNode, href: string, className?: string }) => (
+  <a href={href} className={`text-blue-500 underline ${className}`} target="_blank" rel="noopener noreferrer">
     {children}
   </a>
 )

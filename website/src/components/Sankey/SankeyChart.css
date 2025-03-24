@@ -38,15 +38,29 @@
   width: 60%;
 }
 
+.spending-only {
+  #revenue-chart-root {
+    display: none
+  }
+  
+  #spending-chart-root {
+    width: 60%;
+  }
+}
+
+
 /* Optionally adjust min-width to fit the charts */
 .sankey-chart-container {
   position: relative;
-  min-width: 1280px;
-  min-height: 776px;
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
-  margin-right: calc(-50vw + 50%);
   background-color: #202122;
+  
+  &.full-width {
+    min-width: 1280px;
+    min-height: 776px;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+  }
 
 
   .search-container {
