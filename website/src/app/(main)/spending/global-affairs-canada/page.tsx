@@ -1,6 +1,6 @@
-import { FederalSpendingByEntity } from "@/app/spending/global-affairs-canada/FederalSpendingByEntity";
-import { FederalSpendingChart } from "@/app/spending/global-affairs-canada/FederalSpendingChart";
-import { MiniSankey } from "@/app/spending/global-affairs-canada/MiniSankey";
+import { FederalSpendingByEntity } from "@/app/(main)/spending/global-affairs-canada/FederalSpendingByEntity";
+import { FederalSpendingChart } from "@/app/(main)/spending/global-affairs-canada/FederalSpendingChart";
+import { MiniSankey } from "@/app/(main)/spending/global-affairs-canada/MiniSankey";
 import { DepartmentList } from "@/components/DepartmentList";
 import { ChartContainer, ExternalLink, H1, H2, Intro, P, Page, PageContent, Section, UL } from "@/components/Layout";
 import NoSSR from "@/components/NoSSR";

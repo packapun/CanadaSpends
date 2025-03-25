@@ -1,6 +1,6 @@
-import { FederalSpendingByEntity } from "@/app/spending/department-of-finance/FederalSpendingByEntity";
-import { FederalSpendingChart } from "@/app/spending/department-of-finance/FederalSpendingChart";
-import { MiniSankey } from "@/app/spending/department-of-finance/MiniSankey";
+import { FederalSpendingByEntity } from "@/app/(main)/spending/department-of-finance/FederalSpendingByEntity";
+import { FederalSpendingChart } from "@/app/(main)/spending/department-of-finance/FederalSpendingChart";
+import { MiniSankey } from "@/app/(main)/spending/department-of-finance/MiniSankey";
 import { DepartmentList } from "@/components/DepartmentList";
 import { DepartmentSpendingChart } from "@/components/DepartmentSpendingChart";
 import { ChartContainer, ExternalLink, H1, H2, H3, Intro, P, Page, PageContent, Section } from "@/components/Layout";

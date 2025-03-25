@@ -1,5 +1,5 @@
-import { FederalSpendingChart } from "@/app/spending/health-canada/FederalSpendingChart";
-import { MiniSankey } from "@/app/spending/health-canada/MiniSankey";
+import { FederalSpendingChart } from "@/app/(main)/spending/health-canada/FederalSpendingChart";
+import { MiniSankey } from "@/app/(main)/spending/health-canada/MiniSankey";
 import { DepartmentList } from "@/components/DepartmentList";
 import { DepartmentSpendingChart } from "@/components/DepartmentSpendingChart";
 import { ChartContainer, ExternalLink, H1, H2, Intro, P, Page, PageContent, Section } from "@/components/Layout";

@@ -1,5 +1,5 @@
-import { Contributors } from "@/app/about/contributors";
-import FAQ from "@/app/about/faq";
+import { Contributors } from "@/app/(main)/about/contributors";
+import FAQ from "@/app/(main)/about/faq";
 import { H1, H2, Intro, Page, PageContent, Section } from "@/components/Layout";
 import { Metadata } from "next";
 

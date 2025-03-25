@@ -1,6 +1,6 @@
-import { FederalSpendingByEntity } from "@/app/spending/housing-infrastructure-communities/FederalSpendingByEntity";
-import { FederalSpendingChart } from "@/app/spending/housing-infrastructure-communities/FederalSpendingChart";
-import { MiniSankey } from "@/app/spending/housing-infrastructure-communities/MiniSankey";
+import { FederalSpendingByEntity } from "@/app/(main)/spending/housing-infrastructure-communities/FederalSpendingByEntity";
+import { FederalSpendingChart } from "@/app/(main)/spending/housing-infrastructure-communities/FederalSpendingChart";
+import { MiniSankey } from "@/app/(main)/spending/housing-infrastructure-communities/MiniSankey";
 import { DepartmentList } from "@/components/DepartmentList";
 import { DepartmentSpendingChart } from "@/components/DepartmentSpendingChart";
 import { ChartContainer, ExternalLink, H1, H2, Intro, P, Page, PageContent, Section } from "@/components/Layout";

@@ -1,6 +1,6 @@
-import { FederalSpendingByEntity } from "@/app/spending/indigenous-services-and-northern-affairs/FederalSpendingByEntity";
-import { FederalSpendingChart } from "@/app/spending/indigenous-services-and-northern-affairs/FederalSpendingChart";
-import { MiniSankey } from "@/app/spending/indigenous-services-and-northern-affairs/MiniSankey";
+import { FederalSpendingByEntity } from "@/app/(main)/spending/indigenous-services-and-northern-affairs/FederalSpendingByEntity";
+import { FederalSpendingChart } from "@/app/(main)/spending/indigenous-services-and-northern-affairs/FederalSpendingChart";
+import { MiniSankey } from "@/app/(main)/spending/indigenous-services-and-northern-affairs/MiniSankey";
 import { DepartmentList } from "@/components/DepartmentList";
 import { DepartmentSpendingChart } from "@/components/DepartmentSpendingChart";
 import { ChartContainer, ExternalLink, H1, H2, Intro, P, Page, PageContent, Section } from "@/components/Layout";

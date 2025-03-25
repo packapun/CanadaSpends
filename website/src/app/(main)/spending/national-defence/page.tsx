@@ -1,7 +1,7 @@
 
-import { FederalSpendingByEntity } from "@/app/spending/national-defence/FederalSpendingByEntity";
-import { FederalSpendingChart } from "@/app/spending/national-defence/FederalSpendingChart";
-import { MiniSankey } from "@/app/spending/national-defence/MiniSankey";
+import { FederalSpendingByEntity } from "@/app/(main)/spending/national-defence/FederalSpendingByEntity";
+import { FederalSpendingChart } from "@/app/(main)/spending/national-defence/FederalSpendingChart";
+import { MiniSankey } from "@/app/(main)/spending/national-defence/MiniSankey";
 import { DepartmentList } from "@/components/DepartmentList";
 import { DepartmentSpendingChart } from "@/components/DepartmentSpendingChart";
 import { ChartContainer, ExternalLink, H1, H2, H3, Intro, P, Page, PageContent, Section } from "@/components/Layout";

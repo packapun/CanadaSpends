@@ -1,5 +1,5 @@
-import { FederalSpendingByEntity } from "@/app/spending/public-safety-canada/FederalSpendingByEntity";
-import { MiniSankey } from "@/app/spending/public-safety-canada/MiniSankey";
+import { FederalSpendingByEntity } from "@/app/(main)/spending/public-safety-canada/FederalSpendingByEntity";
+import { MiniSankey } from "@/app/(main)/spending/public-safety-canada/MiniSankey";
 import { DepartmentList } from "@/components/DepartmentList";
 import { DepartmentSpendingChart } from "@/components/DepartmentSpendingChart";
 import { ChartContainer, ExternalLink, H1, H2, H3, Intro, P, Page, PageContent, Section } from "@/components/Layout";

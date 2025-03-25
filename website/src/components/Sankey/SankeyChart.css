@@ -54,15 +54,6 @@
   position: relative;
   background-color: #202122;
   
-  &.full-width {
-    min-width: 1280px;
-    min-height: 776px;
-    width: 100vw;
-    margin-left: calc(-50vw + 50%);
-    margin-right: calc(-50vw + 50%);
-  }
-
-
   .search-container {
     width: 320px;
     position: absolute;

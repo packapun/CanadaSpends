@@ -3,7 +3,7 @@
 import { BarChart } from "@/components/BarChart";
 import { BarList } from "@/components/BarList";
 import { DepartmentList } from "@/components/DepartmentList";
-import { H1, H2, Intro, P, Page, PageContent, Section } from "@/components/Layout";
+import { ExternalLink, H1, H2, InternalLink, Intro, P, Page, PageContent, Section } from "@/components/Layout";
 import NoSSR from "@/components/NoSSR";
 import { Sankey } from "@/components/Sankey";
 
@@ -53,12 +53,22 @@ export default function Spending() {
 					</P>
 				</Section>
 			</PageContent>
-			<div className='sankey-chart-container full-width'>
+			<div className='sankey-chart-container relative overflow-hidden sm:(mr-0 ml-0) md:(min-h-[776px] min-w-[1280px] w-screen -ml-[50vw] -mr-[50vw] left-1/2 right-1/2)'>
 				<NoSSR>
 					<Sankey />
 				</NoSSR>
+				<div className="absolute bottom-3 left-6"><ExternalLink className="text-xs text-gray-400" href="https://www.canada.ca/en/public-services-procurement/services/payments-accounting/public-accounts/2024.html">Source</ExternalLink></div>
+				<div className="absolute top-0 left-0 w-[100vw] h-full  backdrop-blur-sm z-10 text-white md:hidden flex items-center justify-center">
+					<ExternalLink
+						className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+						href="/spending-full-screen"
+					>
+						View this chart in full screen
+					</ExternalLink>
+				</div>
 			</div>
 			<PageContent>
+
 				<Section>
 					<H2>Government Workforce</H2>
 					<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -123,7 +133,7 @@ export default function Spending() {
 				</Section>
 				<Section>
 					<H2>Sources</H2>
-					<P>We have used Treasury Board databases for Public Service demographic information and Parliamentary Budget Office data for information on employee wages. While we try our best to be accurate, we're limited by the information available.</P>
+					<P>All government spending data is sourced from official databases, but due to the complexity of these systems, occasional errors may occur despite our best efforts. We aim to make this information more accessible and accurate, and we welcome feedback. If you notice any issues, please let us know <InternalLink href="/contact">here</InternalLink> — we appreciate it and will work to address them promptly.</P>
 				</Section>
 				<Section>
 					<H2>Government Departments explained</H2>

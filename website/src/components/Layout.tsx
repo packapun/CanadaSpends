@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 export const Section = ({ children, className = "" }: { children: React.ReactNode, className?: string }) => {
   return <div className={`mt-16 max-w-5xl mx-auto ${className}`}>
     {children}
@@ -64,4 +66,10 @@ export const ExternalLink = ({ children, href, className = "" }: { children: Rea
   <a href={href} className={`text-blue-500 underline ${className}`} target="_blank" rel="noopener noreferrer">
     {children}
   </a>
+)
+
+export const InternalLink = ({ children, href, className = "" }: { children: React.ReactNode, href: string, className?: string }) => (
+  <Link href={href} className={`text-blue-500 underline ${className}`}>
+    {children}
+  </Link>
 )
