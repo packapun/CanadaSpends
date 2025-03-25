@@ -1,6 +1,9 @@
+import { FederalSpendingChart } from "@/app/spending/health-canada/FederalSpendingChart";
+import { MiniSankey } from "@/app/spending/health-canada/MiniSankey";
 import { DepartmentList } from "@/components/DepartmentList";
 import { DepartmentSpendingChart } from "@/components/DepartmentSpendingChart";
-import { ExternalLink, GraphMock, H1, H2, Intro, P, Page, PageContent, Section, UL } from "@/components/Layout";
+import { ChartContainer, ExternalLink, H1, H2, Intro, P, Page, PageContent, Section } from "@/components/Layout";
+import NoSSR from "@/components/NoSSR";
 import { StatCard, StatCardContainer } from "@/components/StatCard";
 import type { Metadata } from 'next';
 
@@ -67,13 +70,13 @@ export default function Department() {
 				</P>
 				<P>
 					Major legislation, internal or global economic conditions, and acute events like the COVID-19 pandemic can significantly influence government spending year to year. For example, during the COVID-19 pandemic, federal support programs led to a temporary surge in spending. Health Canada expenditures increased from $5 billion in FY 2019 to $14.2 billion in FY 2021 before stabilizing in recent years.
-
 				</P>
 
+				<ChartContainer>
+					<FederalSpendingChart />
+				</ChartContainer>
+
 			</Section>
-
-			<GraphMock text="Graph 2" department={department} />
-
 
 			<Section>
 				<H2>
@@ -82,16 +85,12 @@ export default function Department() {
 				<P>
 					Federal departments often contain other entities including offices, crown corporations and agencies. The Health Canada entities with the biggest expenditures in FY 2024 were
 				</P>
-				<UL>
-					<li>Department of Health ($6.84B)</li>
-					<li>Public Health Agency of Canada ($4.43B)</li>
-					<li>Canadian Institutes of Health Research ($1.35B)</li>
-					<li>Canadian Food Inspection Agency ($1.08B)</li>
-					<li>Patented Medicine Prices Review Board ($14M)</li>
-				</UL>
+				<ChartContainer>
+					<NoSSR>
+						<MiniSankey />
+					</NoSSR>
+				</ChartContainer>
 			</Section>
-
-			<GraphMock text="Graph 3" department={department} />
 
 
 			<Section>

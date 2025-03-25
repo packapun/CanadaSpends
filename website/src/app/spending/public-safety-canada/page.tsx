@@ -1,6 +1,9 @@
+import { FederalSpendingByEntity } from "@/app/spending/public-safety-canada/FederalSpendingByEntity";
+import { MiniSankey } from "@/app/spending/public-safety-canada/MiniSankey";
 import { DepartmentList } from "@/components/DepartmentList";
 import { DepartmentSpendingChart } from "@/components/DepartmentSpendingChart";
-import { ExternalLink, GraphMock, H1, H2, Intro, P, Page, PageContent, Section, UL } from "@/components/Layout";
+import { ChartContainer, ExternalLink, H1, H2, H3, Intro, P, Page, PageContent, Section } from "@/components/Layout";
+import NoSSR from "@/components/NoSSR";
 import { StatCard, StatCardContainer } from "@/components/StatCard";
 import type { Metadata } from 'next';
 
@@ -46,9 +49,11 @@ export default function Department() {
 					Public Safety Canada spent $13.9 billion in fiscal year (FY) 2024, accounting for 2.7% of the $513.9 billion in total federal spending. While not among the largest departments by expenditure, Public Safety Canada plays a crucial role in national security and emergency management, working in tandem with multiple agencies to mitigate threats and enhance public safety.
 				</P>
 
-				<P>
+				<H3>
 					10 government departments accounted for 73.2% of federal spending in FY 2024.
-				</P>
+				</H3>
+
+
 
 			</Section>
 
@@ -64,6 +69,10 @@ export default function Department() {
 				<P>
 					Major policy shifts, unforeseen events such as natural disasters, and global security concerns can significantly impact the department’s annual spending. The COVID-19 pandemic, for example, led to a sharp increase in federal emergency response funding in 2020.
 				</P>
+
+				<ChartContainer>
+					<FederalSpendingByEntity />
+				</ChartContainer>
 			</Section>
 
 
@@ -75,15 +84,13 @@ export default function Department() {
 				<P>
 					In FY 2024, Public Safety’s budget was allocated across several key areas, including:
 				</P>
-				<UL>
-					<li>Law enforcement and security (RCMP, CSIS, CBSA): $8.6 billion</li>
-					<li>Emergency management and disaster response: $1.5 billion</li>
-					<li>Correctional Service Canada and parole programs: $3.5 billion</li>
-
-				</UL>
+				<ChartContainer>
+					<NoSSR>
+						<MiniSankey />
+					</NoSSR>
+				</ChartContainer>
 			</Section>
 
-			<GraphMock text="Graph 2" department={department} />
 
 
 			<Section>

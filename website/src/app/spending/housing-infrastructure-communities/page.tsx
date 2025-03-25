@@ -1,6 +1,10 @@
+import { FederalSpendingByEntity } from "@/app/spending/housing-infrastructure-communities/FederalSpendingByEntity";
+import { FederalSpendingChart } from "@/app/spending/housing-infrastructure-communities/FederalSpendingChart";
+import { MiniSankey } from "@/app/spending/housing-infrastructure-communities/MiniSankey";
 import { DepartmentList } from "@/components/DepartmentList";
 import { DepartmentSpendingChart } from "@/components/DepartmentSpendingChart";
-import { ExternalLink, GraphMock, H1, H2, Intro, P, Page, PageContent, Section } from "@/components/Layout";
+import { ChartContainer, ExternalLink, H1, H2, Intro, P, Page, PageContent, Section } from "@/components/Layout";
+import NoSSR from "@/components/NoSSR";
 import { StatCard, StatCardContainer } from "@/components/StatCard";
 import type { Metadata } from 'next';
 
@@ -52,6 +56,9 @@ export default function Department() {
 				<P>
 					HICC accounted for 2.8% of all federal spending in FY 2024. 10 government departments accounted for 73.2% of federal spending in FY 2024.
 				</P>
+				<ChartContainer>
+					<FederalSpendingChart />
+				</ChartContainer>
 			</Section>
 
 			<DepartmentSpendingChart department={department} />
@@ -70,9 +77,11 @@ export default function Department() {
 				<P>
 					Similarly, HICC expenditures experienced notable fluctuations during this period, surging from approximately $5.9 billion​ in 2019 (adjusted for inflation) to $14.5B in 2024.
 				</P>
+				<ChartContainer>
+					<FederalSpendingByEntity />
+				</ChartContainer>
 			</Section>
 
-			<GraphMock text="Graph 2" department={department} />
 
 
 			<Section>
@@ -81,11 +90,13 @@ export default function Department() {
 				</H2>
 				<P>
 					Federal departments often contain other entities including offices, crown corporations and agencies. In FY 2024, HICC entities with the highest expenditures were Office of Infrastructure Canada, the Canada Mortgage and Housing Corporation and the Windsor-Detroit Bridge Authority.
-
 				</P>
+				<ChartContainer>
+					<NoSSR>
+						<MiniSankey />
+					</NoSSR>
+				</ChartContainer>
 			</Section>
-
-			<GraphMock text="Graph 3" department={department} />
 
 
 			<Section>
