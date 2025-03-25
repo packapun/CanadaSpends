@@ -1,6 +1,10 @@
+import { FederalSpendingByEntity } from "@/app/spending/indigenous-services-and-northern-affairs/FederalSpendingByEntity";
+import { FederalSpendingChart } from "@/app/spending/indigenous-services-and-northern-affairs/FederalSpendingChart";
+import { MiniSankey } from "@/app/spending/indigenous-services-and-northern-affairs/MiniSankey";
 import { DepartmentList } from "@/components/DepartmentList";
 import { DepartmentSpendingChart } from "@/components/DepartmentSpendingChart";
-import { ExternalLink, GraphMock, H1, H2, Intro, P, Page, PageContent, Section } from "@/components/Layout";
+import { ChartContainer, ExternalLink, H1, H2, Intro, P, Page, PageContent, Section } from "@/components/Layout";
+import NoSSR from "@/components/NoSSR";
 import { StatCard, StatCardContainer } from "@/components/StatCard";
 import type { Metadata } from 'next';
 
@@ -61,6 +65,9 @@ export default function Department() {
 				<P>
 					Despite these increases, significant challenges remain in areas such as housing, healthcare access, and infrastructure in remote Indigenous communities.
 				</P>
+				<ChartContainer>
+					<FederalSpendingChart />
+				</ChartContainer>
 
 			</Section>
 
@@ -74,9 +81,17 @@ export default function Department() {
 				<P>
 					In FY 2024, ISC and CIRNAC transferred 93.1% of total spending directly to indigenous communities.
 				</P>
+				<ChartContainer>
+					<NoSSR>
+						<MiniSankey />
+					</NoSSR>
+				</ChartContainer>
+				<ChartContainer>
+					<FederalSpendingByEntity />
+				</ChartContainer>
 			</Section>
 
-			<GraphMock text="Graph 2" department={department} />
+
 
 
 			<Section>
