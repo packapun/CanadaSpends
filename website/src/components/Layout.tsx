@@ -63,13 +63,13 @@ export const PageContent = ({ children }: { children: React.ReactNode }) =>
   </div>
 
 export const ExternalLink = ({ children, href, className = "" }: { children: React.ReactNode, href: string, className?: string }) => (
-  <a href={href} className={`text-blue-500 underline ${className}`} target="_blank" rel="noopener noreferrer">
+  <a href={href} className={`text-blue-500 underline hover:text-blue-600 ${className}`} target="_blank" rel="noopener noreferrer">
     {children}
   </a>
 )
 
 export const InternalLink = ({ children, href, className = "" }: { children: React.ReactNode, href: string, className?: string }) => (
-  <Link href={href} className={`text-blue-500 underline ${className}`}>
+  <Link href={href} className={`text-blue-500 underline hover:text-blue-600 ${className}`}>
     {children}
   </Link>
 )

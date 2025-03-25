@@ -1,6 +1,6 @@
 "use client"
 
-import Link from "next/link";
+import { InternalLink } from "@/components/Layout";
 
 interface DepartmentProps {
   name: string;
@@ -9,7 +9,7 @@ interface DepartmentProps {
 
 const DepartmentItem = ({ name, slug }: DepartmentProps) =>
   <div className="py-3 border-b border-gray-200">
-    <Link href={`/spending/${slug}`} className="font-medium">{name}</Link>
+    <InternalLink href={`/spending/${slug}`} className="font-medium text-gray-600">{name}</InternalLink>
   </div>
 
 
@@ -84,5 +84,8 @@ export const DepartmentList = (props: { current?: string }) => {
     {BrowsableDepartment.filter(d => {
       return d.name !== props.current
     }).map((department) => <DepartmentItem key={department.slug} {...department} />)}
+    <div className="py-3 border-b border-gray-200">
+      More coming soon...
+    </div>
   </div>
 }
