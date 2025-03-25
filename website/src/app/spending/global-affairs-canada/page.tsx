@@ -1,6 +1,9 @@
+import { FederalSpendingByEntity } from "@/app/spending/global-affairs-canada/FederalSpendingByEntity";
+import { FederalSpendingChart } from "@/app/spending/global-affairs-canada/FederalSpendingChart";
+import { MiniSankey } from "@/app/spending/global-affairs-canada/MiniSankey";
 import { DepartmentList } from "@/components/DepartmentList";
-import { DepartmentSpendingChart } from "@/components/DepartmentSpendingChart";
-import { ExternalLink, GraphMock, H1, H2, Intro, P, Page, PageContent, Section, UL } from "@/components/Layout";
+import { ChartContainer, ExternalLink, H1, H2, Intro, P, Page, PageContent, Section, UL } from "@/components/Layout";
+import NoSSR from "@/components/NoSSR";
 import { StatCard, StatCardContainer } from "@/components/StatCard";
 import type { Metadata } from 'next';
 
@@ -50,6 +53,10 @@ export default function Department() {
 					GAC accounted for 3.7% of all federal spending in FY 2024. 10 government departments accounted for 73.2% of federal spending in FY 2024.
 				</P>
 
+				<ChartContainer>
+					<FederalSpendingChart />
+				</ChartContainer>
+
 				<P>
 					Federal spending may shift over time due to changing global circumstances, diplomatic priorities, and Canada’s economic relationships. Since 1995, overall federal spending has increased by 74.9%, while Global Affairs Canada’s budget has grown by 166.5%, reflecting an expansion in international engagement.
 				</P>
@@ -59,9 +66,10 @@ export default function Department() {
 				<P>
 					Major international events, trade agreements, foreign aid commitments, and global crises such as the COVID-19 pandemic have influenced fluctuations in spending. In 2020, GAC’s budget surged due to emergency international assistance programs, including vaccine distribution and humanitarian relief efforts.
 				</P>
+
 			</Section>
 
-			<DepartmentSpendingChart department={department} />
+
 
 			<Section>
 				<H2>
@@ -69,7 +77,6 @@ export default function Department() {
 				</H2>
 				<P>
 					GAC’s expenditures are divided across five primary categories:
-
 				</P>
 				<UL>
 					<li>International Advocacy and Diplomacy: $1B</li>
@@ -81,6 +88,11 @@ export default function Department() {
 				<P>
 					A significant portion of GAC’s budget supports Canada’s international development assistance, with key programs focused on climate adaptation, gender equality, and health initiatives in developing nations. The department also facilitates economic diplomacy and trade agreements that benefit Canadian businesses and secure investment opportunities abroad.
 				</P>
+				<ChartContainer>
+					<NoSSR>
+						<MiniSankey />
+					</NoSSR>
+				</ChartContainer>
 			</Section>
 
 			<Section>
@@ -90,13 +102,12 @@ export default function Department() {
 				<P>
 					Federal departments often contain other entities. In FY 2024, Global Affairs Canada’s entities with the highest expenditures were:
 				</P>
-				<UL>
-					<li>Export Development Canada (Canada Account)</li>
-					<li>International Development Research Centre</li>
-				</UL>
+				<ChartContainer>
+					<FederalSpendingByEntity />
+				</ChartContainer>
 			</Section>
 
-			<GraphMock text="Graph 2" department={department} />
+
 
 
 			<Section>
