@@ -52,7 +52,7 @@ export default function Department() {
 
 			</Section>
 
-			<DepartmentSpendingChart department={department} />
+			<DepartmentSpendingChart department={[department, 'Crown-Indigenous Relations and Northern Affairs Canada']} />
 
 			<Section>
 				<P>

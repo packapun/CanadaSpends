@@ -6,16 +6,16 @@ import { useMemo } from "react"
 
 
 export function DepartmentSpendingChart(props: {
-  department: string
+  department: string | string[]
 }) {
+  const deps = Array.isArray(props.department) ? props.department : [props.department]
   const data = useMemo(() => {
     return departments.map((item) => ({
       name: item.name,
-      Percentage: props.department === item.name ? undefined : item.Percentage,
-      "Current Percentage": props.department === item.name ? item.Percentage : undefined,
-      href: item.href
+      Percentage: deps.includes(item.name) ? undefined : item.Percentage,
+      "Current Percentage": deps.includes(item.name) ? item.Percentage : undefined,
     }))
-  }, [departments, props.department])
+  }, [departments, deps])
 
 
 

@@ -1,6 +1,6 @@
 {
-  "total": 510,
-  "spending": 510,
+  "total": 513.94,
+  "spending": 513.94,
   "revenue": 459.53,
   "spending_data": {
     "name": "Spending",
@@ -37,11 +37,11 @@
                 "children": [
                   {
                     "name": "Revenue Canada",
-                    "amount": 24.21
+                    "amount": 1.26
                   },
                   {
                     "name": "Employment + Training",
-                    "amount": 24.43
+                    "amount": 8.40
                   },
                   {
                     "name": "Housing Assistance",
