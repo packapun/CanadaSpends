@@ -1,6 +1,11 @@
+
+import { FederalSpendingByEntity } from "@/app/spending/national-defence/FederalSpendingByEntity";
+import { FederalSpendingChart } from "@/app/spending/national-defence/FederalSpendingChart";
+import { MiniSankey } from "@/app/spending/national-defence/MiniSankey";
 import { DepartmentList } from "@/components/DepartmentList";
 import { DepartmentSpendingChart } from "@/components/DepartmentSpendingChart";
-import { ExternalLink, GraphMock, H1, H2, Intro, P, Page, PageContent, Section } from "@/components/Layout";
+import { ChartContainer, ExternalLink, H1, H2, H3, Intro, P, Page, PageContent, Section } from "@/components/Layout";
+import NoSSR from "@/components/NoSSR";
 import { StatCard, StatCardContainer } from "@/components/StatCard";
 import type { Metadata } from 'next';
 
@@ -62,6 +67,9 @@ export default function Department() {
 				<P>
 					DND’s spending grew less than overall spending, meaning its share of the federal budget decreased. In 2024, the department accounted for 6.7% of all federal spending, 0.6 percentage points lower than in 1995.
 				</P>
+				<ChartContainer>
+					<FederalSpendingChart />
+				</ChartContainer>
 				<P>
 					Major legislation, shifts in international security dynamics, and acute events such as Russia’s invasion of Ukraine or Arctic sovereignty disputes can influence military spending.
 				</P>
@@ -71,12 +79,12 @@ export default function Department() {
 				<P>
 					Most federal defence spending is categorized as either personnel-related or capital expenditures. Personnel costs cover wages, benefits, and pensions for military and civilian employees. Capital expenditures fund procurement, infrastructure, and weapons systems.
 				</P>
-				<P>
+				<H3>
 					In FY 2024, 45.6% of DND spending was allocated to personnel salaries, benefits, and pensions. 14.7% was directed to procurement of machinery and equipment.
-				</P>
-				<P>
-					The chart below outlines all departmental spending.
-				</P>
+				</H3>
+				<ChartContainer>
+					<FederalSpendingByEntity />
+				</ChartContainer>
 
 			</Section>
 
@@ -87,9 +95,14 @@ export default function Department() {
 				<P>
 					Federal departments often include additional agencies, commands, and operational divisions. In FY 2024, the largest spending entities within DND were the Canadian Army, the Royal Canadian Navy, and the Royal Canadian Air Force, accounting for the bulk of military expenditures.
 				</P>
+				<ChartContainer>
+					<NoSSR>
+						<MiniSankey />
+					</NoSSR>
+				</ChartContainer>
 			</Section>
 
-			<GraphMock text="Graph 2" department={department} />
+
 
 
 			<Section>
