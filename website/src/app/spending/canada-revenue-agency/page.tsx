@@ -1,6 +1,9 @@
+import { FederalSpendingChart } from "@/app/spending/canada-revenue-agency/FederalSpendingChart";
+import { MiniSankey } from "@/app/spending/canada-revenue-agency/MiniSankey";
 import { DepartmentList } from "@/components/DepartmentList";
 import { DepartmentSpendingChart } from "@/components/DepartmentSpendingChart";
-import { ExternalLink, GraphMock, H1, H2, Intro, P, Page, PageContent, Section } from "@/components/Layout";
+import { ChartContainer, ExternalLink, H1, H2, H3, Intro, P, Page, PageContent, Section } from "@/components/Layout";
+import NoSSR from "@/components/NoSSR";
 import { StatCard, StatCardContainer } from "@/components/StatCard";
 import type { Metadata } from 'next';
 
@@ -48,9 +51,12 @@ export default function Department() {
 					The Canada Revenue Agency spent $16.8 billion in fiscal year (FY) 2024, representing 3.2% of the $513.9 billion in total federal spending. The CRA’s expenditures primarily support tax administration, benefit program delivery, compliance enforcement, and IT modernization.
 				</P>
 
-				<P>
+				<H3>
 					10 government departments accounted for 73.2% of federal spending in FY 2024.
-				</P>
+				</H3>
+				<ChartContainer>
+					<FederalSpendingChart />
+				</ChartContainer>
 
 			</Section>
 
@@ -75,9 +81,7 @@ export default function Department() {
 				<P>
 					In FY 2024, 55.2% of CRA net spending was allocated to salaries, benefits, and pensions.
 				</P>
-				<P>
-					The chart below outlines all departmental spending.
-				</P>
+
 
 			</Section>
 
@@ -87,11 +91,14 @@ export default function Department() {
 				</H2>
 				<P>
 					CRA spending is divided across tax administration, compliance enforcement, benefit program delivery, and intergovernmental agreements with provinces and territories. The largest expenditures in FY 2024 included personal income tax processing, corporate tax audits, and benefit administration.
-
 				</P>
-			</Section>
 
-			<GraphMock text={`${department} Graph 2`} />
+				<ChartContainer>
+					<NoSSR>
+						<MiniSankey />
+					</NoSSR>
+				</ChartContainer>
+			</Section>
 
 
 			<Section>
