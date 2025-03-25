@@ -13,7 +13,7 @@ const data = {
         "amount": 2.636333
       },
       {
-        "name": "Transportation and Communication",
+        "name": "Transportation + Communication",
         "amount": 0.034712
       },
       {
@@ -21,7 +21,7 @@ const data = {
         "amount": 0.093827
       },
       {
-        "name": "Professional and Special Services",
+        "name": "Professional + Special Services",
         "amount": 0.774417
       },
       {
@@ -29,7 +29,7 @@ const data = {
         "amount": 0.063698
       },
       {
-        "name": "Repair and Maintenance",
+        "name": "Repair + Maintenance",
         "amount": 0.040553
       },
       {
@@ -54,11 +54,11 @@ const data = {
       },
       {
         "name": "External Revenues",
-        "amount": -0.213
+        "amount": -0.213425
       },
       {
-        "name": "Interval Revenues",
-        "amount": -0.000031
+        "name": "Internal Revenues",
+        "amount": 0.000031007
       }
     ]
   },

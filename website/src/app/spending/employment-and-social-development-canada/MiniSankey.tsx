@@ -10,51 +10,51 @@ const data = {
     "children": [
       {
         "name": "Personnel",
-        "amount": 4.01
+        "amount": 4.013769
       },
       {
         "name": "Transportation and Communication",
-        "amount": 0.09
+        "amount": 0.087711
       },
       {
         "name": "Information",
-        "amount": 0.10
+        "amount": 0.095566
       },
       {
         "name": "Professional and Special Services",
-        "amount": 1.02
+        "amount": 1.021141
       },
       {
         "name": "Rentals",
-        "amount": 0.31
+        "amount": 0.312904
       },
       {
         "name": "Repair and Maintenance",
-        "amount": 0.003
+        "amount": 0.002714
       },
       {
         "name": "Utilities, Materials and Supplies",
-        "amount": 0.005
+        "amount": 0.004768
       },
       {
         "name": "Acquisition of Machinery and Equipment",
-        "amount": 0.05
+        "amount": 0.047273
       },
       {
         "name": "Transfer Payments",
-        "amount": 91.50
+        "amount": 91.50417
       },
       {
         "name": "Other Subsidies and Payments",
-        "amount": 0.19
+        "amount": 0.192769
       },
       {
         "name": "External Revenues",
-        amount: -0.55
+        "amount": -0.55039
       },
       {
         "name": "Internal Revenues",
-        amount: -2.252413
+        "amount": -2.252413
       }
     ]
   },

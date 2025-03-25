@@ -4,7 +4,7 @@ import { SankeyChart } from "@/components/Sankey/SankeyChart";
 import { SankeyData } from "@/components/Sankey/SankeyChartD3";
 
 const data = {
-  "spending": 63014.246,
+  "spending": 34.49,
   "spending_data": {
     "name": "Department of National Defence",
     "children": [
@@ -13,7 +13,7 @@ const data = {
         "amount": 16.236306
       },
       {
-        "name": "Transportation and Communication",
+        "name": "Transportation + Communication",
         "amount": 0.923533
       },
       {
@@ -21,7 +21,7 @@ const data = {
         "amount": 0.027551
       },
       {
-        "name": "Professional and Special Services",
+        "name": "Professional + Special Services",
         "amount": 5.602702
       },
       {
@@ -29,7 +29,7 @@ const data = {
         "amount": 0.715791
       },
       {
-        "name": "Repair and Maintenance",
+        "name": "Repair + Maintenance",
         "amount": 2.002019
       },
       {
@@ -58,11 +58,11 @@ const data = {
       },
       {
         "name": "External Revenues",
-        "amount": 0.324923
+        "amount": -0.324923
       },
       {
         "name": "Internal Revenues",
-        "amount": 0.029588
+        "amount": -0.029588
       }
     ]
   },

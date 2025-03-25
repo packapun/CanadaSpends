@@ -3,51 +3,49 @@ import { cn } from "@/lib/utils";
 import Image, { StaticImageData } from "next/image";
 import { FaLinkedin } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
-import alfredYang from './alfred_yang.jpeg';
 import brendanSamek from './brendan_samek.jpeg';
-import briceScheschuk from './brice_scheschuk.jpeg';
 import joshHarris from './josh_harris.jpeg';
-import joshOssip from './josh_ossip.jpeg';
 import lucyHargreaves from './lucy_hargreaves.jpeg';
 import makSok from './mak_sok.jpeg';
-import shaneParrish from './shane_parrish.jpeg';
+import natalieLancaster from './natalie_lancaster.jpeg';
+import toddScheidt from './todd_scheidt.jpeg';
 
 const contributors: Contributor[] = [
-  {
-    name: "Alfred Yang",
-    photoSrc: alfredYang,
-    linkedin_username: "alfredqy",
-    x_username: "alfredqy",
-  },
-  {
-    name: "Brice Scheschuk",
-    photoSrc: briceScheschuk,
-    linkedin_username: "brice-scheschuk-cpa-ca-095721a",
-    x_username: "scheschuk",
-  },
+  // {
+  //   name: "Alfred Yang",
+  //   photoSrc: alfredYang,
+  //   linkedin_username: "alfredqy",
+  //   x_username: "alfredqy",
+  // },
+  // {
+  //   name: "Brice Scheschuk",
+  //   photoSrc: briceScheschuk,
+  //   linkedin_username: "brice-scheschuk-cpa-ca-095721a",
+  //   x_username: "scheschuk",
+  // },
   {
     name: 'Josh Harris',
     photoSrc: joshHarris,
     x_username: 'dynemetis',
     linkedin_username: 'joshua-harris-86188983'
   },
-  {
-    name: 'Josh Ossip',
-    photoSrc: joshOssip,
-    linkedin_username: 'josh-ossip-b37549282'
-  },
+  // {
+  //   name: 'Josh Ossip',
+  //   photoSrc: joshOssip,
+  //   linkedin_username: 'josh-ossip-b37549282'
+  // },
   {
     name: 'Lucy Hargreaves',
     photoSrc: lucyHargreaves,
     x_username: 'lucyhargreaves4',
     linkedin_username: 'lucyghargreaves'
   },
-  {
-    name: 'Shane Parrish',
-    photoSrc: shaneParrish,
-    x_username: 'ShaneAParrish',
-    linkedin_username: 'shane-parrish'
-  },
+  // {
+  //   name: 'Shane Parrish',
+  //   photoSrc: shaneParrish,
+  //   x_username: 'ShaneAParrish',
+  //   linkedin_username: 'shane-parrish'
+  // },
   {
     name: 'Brendan Samek',
     photoSrc: brendanSamek,
@@ -58,6 +56,16 @@ const contributors: Contributor[] = [
     photoSrc: makSok,
     linkedin_username: 'makara-sok',
     x_username: 'maktouch'
+  },
+  {
+    name: 'Natalie Lancaster',
+    photoSrc: natalieLancaster,
+    linkedin_username: 'natalie-lancaster-2485bba',
+  },
+  {
+    name: 'Todd Scheidt',
+    photoSrc: toddScheidt,
+    linkedin_username: 'toddscheidt',
   }
 ].sort((a, b) => a.name.localeCompare(b.name));
 

@@ -4,16 +4,16 @@ import { SankeyChart } from "@/components/Sankey/SankeyChart";
 import { SankeyData } from "@/components/Sankey/SankeyChartD3";
 
 const data = {
-  "spending": 63014.246,
+  "spending": 19.2,
   "spending_data": {
-    "name": "Department of National Defence",
+    "name": "Global Affairs Canada",
     "children": [
       {
         "name": "Personnel",
         "amount": 1.699961
       },
       {
-        "name": "Transportation and Communication",
+        "name": "Transportation + Communication",
         "amount": 0.156031
       },
       {
@@ -21,7 +21,7 @@ const data = {
         "amount": 0.04401
       },
       {
-        "name": "Professional and Special Services",
+        "name": "Professional + Special Services",
         "amount": 0.606877
       },
       {
@@ -29,7 +29,7 @@ const data = {
         "amount": 0.242551
       },
       {
-        "name": "Repair and Maintenance",
+        "name": "Repair + Maintenance",
         "amount": 0.028503
       },
       {
@@ -37,7 +37,7 @@ const data = {
         "amount": 0.04754
       },
       {
-        "name": "Acquisition of Lands, Buildings and Works",
+        "name": "Acquisition of Land, Buildings and Works",
         "amount": 0.032242
       },
       {
@@ -49,7 +49,7 @@ const data = {
         "amount": 5.818928
       },
       {
-        "name": "Public debt charges",
+        "name": "Public Debt Charges",
         "amount": 0
       },
       {
@@ -58,11 +58,11 @@ const data = {
       },
       {
         "name": "External Revenues",
-        "amount": 0.054519
+        "amount": -0.054519
       },
       {
         "name": "Internal Revenues",
-        "amount": 0.000723
+        "amount": -0.000723
       }
     ]
   },

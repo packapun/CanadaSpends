@@ -13,7 +13,7 @@ const data = {
         "amount": 1.267608
       },
       {
-        "name": "Transportation and Communication",
+        "name": "Transportation + Communication",
         "amount": 0.555086
       },
       {
@@ -21,7 +21,7 @@ const data = {
         "amount": 0.011969
       },
       {
-        "name": "Professional and Special Services",
+        "name": "Professional + Special Services",
         "amount": 1.627655
       },
       {
@@ -29,7 +29,7 @@ const data = {
         "amount": 0.023349
       },
       {
-        "name": "Repair and Maintenance",
+        "name": "Repair + Maintenance",
         "amount": 0.009626
       },
       {
@@ -49,7 +49,7 @@ const data = {
         "amount": 25.946705
       },
       {
-        "name": "Other Subsidies and Payments",
+        "name": "Other subsidies and payments",
         "amount": 32.806918
       },
       {

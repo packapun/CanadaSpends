@@ -4,7 +4,7 @@ import { SankeyChart } from "@/components/Sankey/SankeyChart";
 import { SankeyData } from "@/components/Sankey/SankeyChartD3";
 
 const data = {
-  "spending": 18.51,
+  "spending": 13.9,
   "spending_data": {
     "name": "Public Safety Canada",
     "children": [
@@ -13,7 +13,7 @@ const data = {
         "amount": 9.882296
       },
       {
-        "name": "Transportation and Communication",
+        "name": "Transportation + Communication",
         "amount": 0.349758
       },
       {
@@ -21,7 +21,7 @@ const data = {
         "amount": 0.020448
       },
       {
-        "name": "Professional and Special Services",
+        "name": "Professional + Special Services",
         "amount": 1.857377
       },
       {
@@ -29,7 +29,7 @@ const data = {
         "amount": 0.252258
       },
       {
-        "name": "Repair and Maintenance",
+        "name": "Repair + Maintenance",
         "amount": 0.207463
       },
       {
@@ -37,7 +37,7 @@ const data = {
         "amount": 0.411159
       },
       {
-        "name": "Acquisition of Lands, Buildings and Works",
+        "name": "Acquisition of Land, Buildings and Works",
         "amount": 0.292452
       },
       {

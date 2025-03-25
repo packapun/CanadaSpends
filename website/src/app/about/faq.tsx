@@ -3,6 +3,14 @@ import { ExternalLink, P } from "@/components/Layout";
 
 const faqs = [
   {
+    question: 'What is your methodology?',
+    answer: 'Canada Spends primarily relies on Public Accounts data from the Office of the Receiver General within Public Services and Procurement Canada. Data for the previous fiscal year is typically released in December of that year, though the release month can vary. For example, complete FY 2024 data covering the period April 1, 2023 - March 31, 2024 was released in December 2024. Public Accounts documents provide the final, consolidated view of total federal government spending for each fiscal year.'
+  },
+  {
+    question: 'What is the data source?',
+    answer: 'All data presented regarding government spending is sourced directly from official government databases. While we strive to provide accurate, up-to-date information, we cannot guarantee the data’s completeness, reliability, or timeliness. We assume no responsibility for any errors, omissions, or outcomes resulting from the use of this information. Please consult the original government sources for official and verified data.'
+  },
+  {
     question: 'Why did you start this project?',
     answer: 'We were frustrated by the lack of clear, accessible, unbiased data on government spending. We wanted to create a platform that focused on giving Canadians data-driven facts about how their money is being spent without spin.'
   },

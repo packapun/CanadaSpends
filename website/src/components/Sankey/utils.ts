@@ -5,7 +5,7 @@ export const formatNumber = (amount: number, scalingFactor = 1e9) => {
 		style: "currency",
 		currency: "USD",
 		notation: "compact",
-		maximumFractionDigits: 2,
+		maximumFractionDigits: Math.abs(amount * scalingFactor) >= 1e9 ? 2 : Math.abs(amount * scalingFactor) >= 1e6 ? 1 : 0,
 		minimumFractionDigits: 0,
 	}).format(Number(amount * scalingFactor));
 };
