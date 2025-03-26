@@ -1,8 +1,10 @@
-import { Section } from "@/components/Layout";
+import { H2, H3, Intro, P, PageContent, Section } from "@/components/Layout";
 import NoSSR from "@/components/NoSSR";
 import { TwitterFeed } from "@/components/TwitterFeed";
 import Link from "next/link";
 import { FiCornerLeftDown, FiCornerRightDown } from "react-icons/fi";
+import { LuReceipt, LuUsersRound } from "react-icons/lu";
+import { PiBank } from "react-icons/pi";
 
 
 export default function Home() {
@@ -61,38 +63,63 @@ export default function Home() {
 					</div>
 				</div>
 			</section>
-			<section className="bg-white">
-				<div className="items-center flex-col justify-center py-20 flex">
-					<div className="px-12 py-0">
-						<div className="items-center flex-col justify-center text-center flex max-w-3xl gap-5">
-							<div className="overflow-hidden text-5xl font-medium">
-								<h2>You deserve the facts</h2>
+			<div className="border-b-gray-200 border-b-2 pb-20">
+				<PageContent>
+					<Section className="items-center flex-col justify-center flex ">
+						<H2 className="text-5xl font-medium">
+							You deserve the facts
+						</H2>
+						<Intro>
+							Government spending shouldn’t be a black box. Every year,
+							the federal government spends hundreds of billions of
+							dollars but most Canadians have no clue where it all goes.
+							The data is available, but it’s buried on obscure websites
+							and impossible to navigate.
+						</Intro>
+						<Intro>
+							Canada Spends changes this. We take raw federal spending
+							data and turn it into accurate, straightforward facts so you
+							can understand how your money is used.
+						</Intro>
+					</Section>
+				</PageContent>
+			</div>
+			<div className="border-b-gray-200 border-b-2 pb-20">
+				<PageContent>
+					<Section>
+						<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+							<div className="flex flex-col gap-2 items-center text-center">
+								<div className="text-4xl mb-4"><PiBank /></div>
+								<H3>Facts about Spending</H3>
+								<P>
+									We turn complex government data into clear insights. We explain federal spending so every Canadian can understand where their money goes.
+								</P>
 							</div>
-							<div className="overflow-hidden text-xl">
-								<div className="items-center flex-col justify-center flex max-w-3xl gap-5">
-									<p className="opacity-75">
-										Government spending shouldn’t be a black box. Every year,
-										the federal government spends hundreds of billions of
-										dollars but most Canadians have no clue where it all goes.
-										The data is available, but it’s buried on obscure websites
-										and impossible to navigate.
-									</p>
-									<p className="opacity-75">
-										Canada Spends changes this. We take raw federal spending
-										data and turn it into accurate, straightforward facts so you
-										can understand how your money is used.
-									</p>
-								</div>
+							<div className="flex flex-col gap-2 items-center text-center">
+								<div className="text-4xl mb-4"><LuReceipt /></div>
+								<H3>Based on Data</H3>
+								<P>
+									All the information comes from public databases and reports by the Government of Canada. We show our sources, so you know exactly where it comes from.
+								</P>
+							</div>
+							<div className="flex flex-col gap-2 items-center text-center">
+								<div className="text-4xl mb-4"><LuUsersRound /></div>
+								<H3>Non-Partisan</H3>
+								<P>
+									We’re strictly non-partisan—we don’t judge policies or debate spending decisions. Our only goal is to ensure that every Canadian understands how the federal government spends money.
+								</P>
 							</div>
 						</div>
-					</div>
-				</div>
-			</section>
-			<Section className="bg-[#fafafa]">
-				<NoSSR>
-					<TwitterFeed />
-				</NoSSR>
-			</Section>
+					</Section>
+				</PageContent>
+			</div>
+			<PageContent>
+				<Section className="bg-[#fafafa]">
+					<NoSSR>
+						<TwitterFeed />
+					</NoSSR>
+				</Section>
+			</PageContent>
 
 		</>
 	);
