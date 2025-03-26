@@ -27,7 +27,7 @@ export const departments = [
     Percentage: 18.38
   },
   {
-    name: "Indigenous Services Canada",
+    name: "Indigenous Services + Crown-Indigenous Relations and Northern Affairs Canada",
     slug: "indigenous-services-and-northern-affairs",
     href: "/spending/indigenous-services-and-northern-affairs",
     Percentage: 9.06
@@ -85,7 +85,13 @@ export const departments = [
     slug: "public-services-and-procurement-canada",
     href: "/spending/public-services-and-procurement-canada",
     Percentage: 1.6
-  }
+  },
+    {
+    name: "Immigration, Refugees and Citizenship",
+    slug: "immigration-refugees-and-citizenship",
+    href: "/spending/immigration-refugees-and-citizenship",
+    Percentage: 1.2
+  },
 ].sort((a, b) => b.Percentage - a.Percentage)
 
 const BrowsableDepartment = departments.filter(d => !!d.href && !!d.slug) as {
