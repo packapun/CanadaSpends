@@ -72,13 +72,23 @@ export const Footer = () => {
 												</a>
 											</li>
 										))}
+											<li>
+												<button id="feedback-button"
+																className="text-sm/6 text-gray-600 hover:text-gray-900"
+																onClick={() => {
+													console.log('clicked');
+													// @ts-ignore
+													document.querySelector('[class^="PostHogWidget"]')?.shadowRoot?.querySelector(".footer-branding")?.style?.setProperty('display', 'none', 'important');
+												}}>
+													Report an Issue
+												</button>
+
+											</li>
+
 									</ul>
 								</div>
 							</div>
 						</div>
-
-						{/* <Subscribe /> */}
-
 					</div>
 					<div className="mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 md:flex md:items-center md:justify-between lg:mt-24">
 						<div className="flex gap-x-6 md:order-2">
