@@ -43,7 +43,9 @@ const getFlatData = (data: SankeyData) => {
 				value: d.value,
 				type: 'spending'
 			}))
-		].sort((a, b) => a.name.localeCompare(b.name)),
+		].sort((a, b) => {
+			return (a.name || "").localeCompare(b.name || "");
+		}),
 		revenueTotal: revenueRoot.value ?? 0,
 		spendingTotal: spendingRoot.value ?? 0
 	}
