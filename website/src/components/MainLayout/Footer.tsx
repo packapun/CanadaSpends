@@ -76,7 +76,6 @@ export const Footer = () => {
 												<button id="feedback-button"
 																className="text-sm/6 text-gray-600 hover:text-gray-900"
 																onClick={() => {
-													console.log('clicked');
 													// @ts-ignore
 													document.querySelector('[class^="PostHogWidget"]')?.shadowRoot?.querySelector(".footer-branding")?.style?.setProperty('display', 'none', 'important');
 												}}>
