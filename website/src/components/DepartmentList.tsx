@@ -86,10 +86,16 @@ export const departments = [
     href: "/spending/public-services-and-procurement-canada",
     Percentage: 1.6
   },
-    {
+  {
     name: "Immigration, Refugees and Citizenship",
     slug: "immigration-refugees-and-citizenship",
     href: "/spending/immigration-refugees-and-citizenship",
+    Percentage: 1.2
+  },
+  {
+    name: "Veterans Affairs",
+    slug: "veterans-affairs",
+    href: "/spending/veterans-affairs",
     Percentage: 1.2
   },
 ].sort((a, b) => b.Percentage - a.Percentage)
