@@ -52,7 +52,7 @@ export const departments = [
   },
   {
     name: "Crown-Indigenous Relations and Northern Affairs Canada",
-    slug: "indigenous-services-and-northern-affairs",
+    slug: "cirnac",
     href: "/spending/indigenous-services-and-northern-affairs",
     Percentage: 3.19
   },
