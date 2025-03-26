@@ -3,7 +3,7 @@ import { FederalSpendingChart } from "@/app/(main)/spending/indigenous-services-
 import { MiniSankey } from "@/app/(main)/spending/indigenous-services-and-northern-affairs/MiniSankey";
 import { DepartmentList } from "@/components/DepartmentList";
 import { DepartmentSpendingChart } from "@/components/DepartmentSpendingChart";
-import { ChartContainer, ExternalLink, H1, H2, Intro, P, Page, PageContent, Section } from "@/components/Layout";
+import {ChartContainer, ExternalLink, H1, H2, H3, Intro, P, Page, PageContent, Section} from "@/components/Layout";
 import NoSSR from "@/components/NoSSR";
 import { StatCard, StatCardContainer } from "@/components/StatCard";
 import type { Metadata } from 'next';
@@ -56,7 +56,7 @@ export default function Department() {
 
 			</Section>
 
-			<DepartmentSpendingChart department={[department, 'Crown-Indigenous Relations and Northern Affairs Canada']} />
+			<DepartmentSpendingChart department={["Indigenous Services Canada", 'Crown-Indigenous Relations and Northern Affairs Canada']} />
 
 			<Section>
 				<P>
@@ -87,6 +87,7 @@ export default function Department() {
 					</NoSSR>
 				</ChartContainer>
 				<ChartContainer>
+					<H3>ISC + CIRNAC, Spending by Entity, FY 2024 (in billions</H3>
 					<FederalSpendingByEntity />
 				</ChartContainer>
 			</Section>

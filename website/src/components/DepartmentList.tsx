@@ -27,7 +27,7 @@ export const departments = [
     Percentage: 18.38
   },
   {
-    name: "Indigenous Services + Crown-Indigenous Relations and Northern Affairs Canada",
+    name: "Indigenous Services Canada",
     slug: "indigenous-services-and-northern-affairs",
     href: "/spending/indigenous-services-and-northern-affairs",
     Percentage: 9.06
@@ -52,8 +52,8 @@ export const departments = [
   },
   {
     name: "Crown-Indigenous Relations and Northern Affairs Canada",
-    slug: "crown-indigenous-relations-and-northern-affairs",
-    href: "/spending/crown-indigenous-relations-and-northern-affairs",
+    slug: "indigenous-services-and-northern-affairs",
+    href: "/spending/indigenous-services-and-northern-affairs",
     Percentage: 3.19
   },
   {
