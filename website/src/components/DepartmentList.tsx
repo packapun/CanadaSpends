@@ -15,7 +15,7 @@ const DepartmentItem = ({ name, slug }: DepartmentProps) =>
 
 export const departments = [
   {
-    name: "Department of Finance",
+    name: "Finance Canada",
     slug: "department-of-finance",
     href: "/spending/department-of-finance",
     Percentage: 26.48
@@ -31,10 +31,6 @@ export const departments = [
     slug: "indigenous-services-and-northern-affairs",
     href: "/spending/indigenous-services-and-northern-affairs",
     Percentage: 9.06
-  },
-  {
-    name: "Crown-Indigenous Relations and Northern Affairs Canada",
-    Percentage: 3.19
   },
   {
     name: "National Defence",
@@ -53,6 +49,12 @@ export const departments = [
     slug: "canada-revenue-agency",
     href: "/spending/canada-revenue-agency",
     Percentage: 3.27
+  },
+  {
+    name: "Crown-Indigenous Relations and Northern Affairs Canada",
+    slug: "crown-indigenous-relations-and-northern-affairs",
+    href: "/spending/crown-indigenous-relations-and-northern-affairs",
+    Percentage: 3.19
   },
   {
     name: "Housing, Infrastructure and Communities Canada",

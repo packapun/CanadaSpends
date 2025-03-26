@@ -4,11 +4,10 @@ import { BarChart } from "@/components/BarChart";
 
 // This is placeholder data - Replace with real data from TAB 38
 const data = [
-  { name: "Real Property Services", Amount: 3.5 },
-  { name: "Procurement Services", Amount: 2.1 },
-  { name: "Public Service Pay Centre", Amount: 1.2 },
-  { name: "Translation Bureau", Amount: 0.8 },
-  { name: "Pension Centre", Amount: 0.7 }
+  { name: "Department of Public Works and Government Services", Amount: 5.375281 },
+  { name: "Canada Post Corporation", Amount: 0.02221 },
+  { name: "National Capital Commission", Amount: 0.096902 },
+  { name: "Shared Services Canada", Amount: 2.790789 },
 ].sort((a, b) => b.Amount - a.Amount);
 
 export function FederalSpendingByEntity() {

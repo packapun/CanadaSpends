@@ -3,7 +3,7 @@
 import { SankeyChart } from "@/components/Sankey/SankeyChart";
 import { SankeyData } from "@/components/Sankey/SankeyChartD3";
 
-// This is placeholder data - Replace with real data from TAB 37
+// Real data from TAB 37
 const data = {
   "spending": 8.3,
   "spending_data": {
@@ -11,59 +11,65 @@ const data = {
     "children": [
       {
         "name": "Personnel",
-        "amount": 2.1
+        "amount": 3.318286
       },
       {
         "name": "Transportation + Communication",
-        "amount": 0.25
+        "amount": 0.711299
       },
       {
         "name": "Information",
-        "amount": 0.05
+        "amount": 0.021606
       },
       {
         "name": "Professional + Special Services",
-        "amount": 1.8
+        "amount": 3.051013
       },
       {
         "name": "Rentals",
-        "amount": 0.7
+        "amount": 1.96169
       },
       {
         "name": "Repair + Maintenance",
-        "amount": 0.9
+        "amount": 1.613194
       },
       {
         "name": "Utilities, Materials and Supplies",
-        "amount": 0.3
+        "amount": 0.116031
       },
       {
-        "name": "Acquisition of Lands, Buildings and Works",
-        "amount": 0.4
+        "name": "Acquisition of Land, Buildings and Works",
+        "amount": 1.281844
       },
       {
         "name": "Acquisition of Machinery and Equipment",
-        "amount": 0.15
+        "amount": 0.545773
       },
       {
         "name": "Transfer Payments",
-        "amount": 1.5
+        "amount": 0.051293
+      },
+      {
+        "name": "Public Debt Charges",
+        "amount": 0.107187
       },
       {
         "name": "Other subsidies and payments",
-        "amount": 0.2
+        "amount": 0.546409
       },
       {
         "name": "External Revenues",
-        "amount": -0.05
+        "amount": -0.265103
       },
       {
         "name": "Internal Revenues",
-        "amount": 0.0
+        "amount": -4.77534
       }
+
     ]
   },
-  revenue_data: {}
+  revenue_data: {
+  }
 }
 
 export function MiniSankey() {

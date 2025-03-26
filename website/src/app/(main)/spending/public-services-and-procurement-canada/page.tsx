@@ -71,9 +71,9 @@ export default function Department() {
 					Similarly, PSPC's expenditures experienced notable fluctuations during this period, decreasing from approximately $6.8 billion​ in 2019 (adjusted for inflation) to $5.3 billion in 2021 before increasing again in 2024.
 				</P>
 
-				<ChartContainer>
-					<FederalSpendingChart />
-				</ChartContainer>
+				{/*<ChartContainer>*/}
+				{/*	<FederalSpendingChart />*/}
+				{/*</ChartContainer>*/}
 
 			</Section>
 
