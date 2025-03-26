@@ -15,7 +15,7 @@ const DepartmentItem = ({ name, slug }: DepartmentProps) =>
 
 export const departments = [
   {
-    name: "Department of Finance",
+    name: "Finance Canada",
     slug: "department-of-finance",
     href: "/spending/department-of-finance",
     Percentage: 26.48
@@ -31,10 +31,6 @@ export const departments = [
     slug: "indigenous-services-and-northern-affairs",
     href: "/spending/indigenous-services-and-northern-affairs",
     Percentage: 9.06
-  },
-  {
-    name: "Crown-Indigenous Relations and Northern Affairs Canada",
-    Percentage: 3.19
   },
   {
     name: "National Defence",
@@ -55,6 +51,12 @@ export const departments = [
     Percentage: 3.27
   },
   {
+    name: "Crown-Indigenous Relations and Northern Affairs Canada",
+    slug: "cirnac",
+    href: "/spending/indigenous-services-and-northern-affairs",
+    Percentage: 3.19
+  },
+  {
     name: "Housing, Infrastructure and Communities Canada",
     slug: "housing-infrastructure-communities",
     href: "/spending/housing-infrastructure-communities",
@@ -71,7 +73,37 @@ export const departments = [
     slug: "health-canada",
     href: "/spending/health-canada",
     Percentage: 2.67
-  }
+  },
+  {
+    name: "Innovation, Science and Industry",
+    slug: "innovation-science-and-industry",
+    href: "/spending/innovation-science-and-industry",
+    Percentage: 2.0
+  },
+  {
+    name: "Public Services and Procurement Canada",
+    slug: "public-services-and-procurement-canada",
+    href: "/spending/public-services-and-procurement-canada",
+    Percentage: 1.6
+  },
+  {
+    name: "Immigration, Refugees and Citizenship",
+    slug: "immigration-refugees-and-citizenship",
+    href: "/spending/immigration-refugees-and-citizenship",
+    Percentage: 1.2
+  },
+  {
+    name: "Veterans Affairs",
+    slug: "veterans-affairs",
+    href: "/spending/veterans-affairs",
+    Percentage: 1.2
+  },
+  {
+    name: "Transport Canada",
+    slug: "transport-canada",
+    href: "/spending/transport-canada",
+    Percentage: 1.0
+  },
 ].sort((a, b) => b.Percentage - a.Percentage)
 
 const BrowsableDepartment = departments.filter(d => !!d.href && !!d.slug) as {

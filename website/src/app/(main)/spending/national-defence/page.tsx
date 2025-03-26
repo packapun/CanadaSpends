@@ -58,7 +58,11 @@ export default function Department() {
 
 			</Section>
 
-			<DepartmentSpendingChart department={department} />
+			<ChartContainer>
+				<H3>Percentage of federal budget dedicated to Defence, FYs 1995-2024</H3>
+				<DepartmentSpendingChart department={department} />
+			</ChartContainer>
+
 
 			<Section>
 				<P>
@@ -83,6 +87,7 @@ export default function Department() {
 					In FY 2024, 45.6% of DND spending was allocated to personnel salaries, benefits, and pensions. 14.7% was directed to procurement of machinery and equipment.
 				</H3>
 				<ChartContainer>
+					<H3>National Defence, Spending by Entity, FY 2024 (in billions)</H3>
 					<FederalSpendingByEntity />
 				</ChartContainer>
 

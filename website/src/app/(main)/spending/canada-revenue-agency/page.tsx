@@ -55,13 +55,20 @@ export default function Department() {
 					10 government departments accounted for 73.2% of federal spending in FY 2024.
 				</H3>
 				<ChartContainer>
-					<FederalSpendingChart />
+					<DepartmentSpendingChart department={department} />
 				</ChartContainer>
+
 
 			</Section>
 
-			<DepartmentSpendingChart department={department} />
-
+			<Section>
+				<ChartContainer>
+				<H3>
+					Percentage of federal budget dedicated to Canada Revenue Agency, FYs 1995-2024
+				</H3>
+					<FederalSpendingChart />
+				</ChartContainer>
+			</Section>
 			<Section>
 				<P>
 					Federal spending may shift over time due to economic fluctuations, changes in tax policy, and the expansion of benefit programs. Since 1995, overall federal spending has risen 74.9%, while Canada Revenue Agency spending has increased 302%
