@@ -98,6 +98,12 @@ export const departments = [
     href: "/spending/veterans-affairs",
     Percentage: 1.2
   },
+  {
+    name: "Transport Canada",
+    slug: "transport-canada",
+    href: "/spending/transport-canada",
+    Percentage: 1.0
+  },
 ].sort((a, b) => b.Percentage - a.Percentage)
 
 const BrowsableDepartment = departments.filter(d => !!d.href && !!d.slug) as {
