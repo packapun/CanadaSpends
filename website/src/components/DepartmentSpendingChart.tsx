@@ -10,7 +10,7 @@ export function DepartmentSpendingChart(props: {
 }) {
   const deps = Array.isArray(props.department) ? props.department : [props.department]
   const data = useMemo(() => {
-    return departments.map((item) => ({
+    return departments.slice(0, 10).map((item) => ({
       name: item.name,
       Percentage: deps.includes(item.name) ? undefined : item.Percentage,
       "Current Percentage": deps.includes(item.name) ? item.Percentage : undefined,
