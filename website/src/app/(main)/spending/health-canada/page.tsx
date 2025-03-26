@@ -8,7 +8,7 @@ import { StatCard, StatCardContainer } from "@/components/StatCard";
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-	title: 'Health Canada| Canada Spends',
+	title: 'Health Canada | Canada Spends',
 	description: 'A look at how the Health Canada spends its budget',
 }
 
