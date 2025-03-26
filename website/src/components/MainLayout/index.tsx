@@ -40,6 +40,12 @@ export const MainLayout = ({ children }: { children: React.ReactNode }) => {
 							<NavLink href="/spending">Spending</NavLink>
 							<NavLink href="/about">About</NavLink>
 							<NavLink href="/contact">Contact</NavLink>
+							{/*<Popover>*/}
+							{/*	<PopoverTrigger>Open</PopoverTrigger>*/}
+							{/*	<PopoverContent>*/}
+							{/*		<FeedbackDialog />*/}
+							{/*	</PopoverContent>*/}
+							{/*</Popover>*/}
 						</div>
 					</div>
 				</div>
