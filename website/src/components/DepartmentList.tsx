@@ -71,6 +71,12 @@ export const departments = [
     slug: "health-canada",
     href: "/spending/health-canada",
     Percentage: 2.67
+  },
+  {
+    name: "Public Services and Procurement Canada",
+    slug: "public-services-and-procurement-canada",
+    href: "/spending/public-services-and-procurement-canada",
+    Percentage: 1.6
   }
 ].sort((a, b) => b.Percentage - a.Percentage)
 
