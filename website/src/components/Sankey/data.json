@@ -37,11 +37,11 @@
                 "children": [
                   {
                     "name": "Revenue Canada",
-                    "amount": 24.21
+                    "amount": 6.94
                   },
                   {
                     "name": "Employment + Training",
-                    "amount": 26.94
+                    "amount": 28.26
                   },
                   {
                     "name": "Housing Assistance",
@@ -244,7 +244,7 @@
               },
               {
                 "name": "Corrections",
-                "amount": 3.37
+                "amount": 3.374
               },
               {
                 "name": "RCMP",
@@ -256,19 +256,19 @@
               },
               {
                 "name": "Community Safety",
-                "amount": 0.84
+                "amount": 0.839
               },
               {
                 "name": "Office of the Chief Electoral Officer",
-                "amount": 0.25
+                "amount": 0.249
               },
               {
                 "name": "Other Public Safety Expenses",
-                "amount": 5.13
+                "amount": 0.269
               },
               {
                 "name": "Justice System",
-                "amount": 2.44
+                "amount": 2.442
               }
             ]
           },
@@ -281,11 +281,11 @@
               },
               {
                 "name": "Other Immigration Services",
-                "amount": 3.86
+                "amount": 3.389
               },
               {
                 "name": "Settlement Assistance",
-                "amount": 1.93
+                "amount": 1.926
               },
               {
                 "name": "Interim Housing Assistance",
@@ -311,11 +311,11 @@
             "children": [
               {
                 "name": "Other Public Services + Procurement",
-                "amount": 3.98
+                "amount": 5.388
               },
               {
                 "name": "Government IT Operations",
-                "amount": 2.79
+                "amount": 2.70
               }
             ]
           },
@@ -328,15 +328,15 @@
               },
               {
                 "name": "Privy Council Office",
-                "amount": 0.35
+                "amount": 0.347
               },
               {
                 "name": "Treasury Board",
-                "amount": 4.95
+                "amount": 4.954
               },
               {
                 "name": "Office of the Secretary to the Governor General",
-                "amount": 0.03
+                "amount": 0.026
               }
             ]
           },
@@ -527,7 +527,7 @@
           },
           {
             "name": "Other Major Transfers",
-            "amount": 17.54
+            "amount": 17.6
           }
         ]
       },
@@ -545,7 +545,7 @@
         "children": [
           {
             "name": "Ready Forces",
-            "amount": 13.37
+            "amount": 13.368
           },
           {
             "name": "Defence Procurement",
@@ -553,7 +553,7 @@
           },
           {
             "name": "Sustainable Bases, IT Systems, Infrastructure",
-            "amount": 4.91
+            "amount": 4.913
           },
           {
             "name": "Defence Team",
@@ -561,7 +561,7 @@
           },
           {
             "name": "Future Force Design",
-            "amount": 1.47
+            "amount": 1.472
           },
           {
             "name": "Defence Operations + Internal Services",
@@ -573,7 +573,7 @@
           },
           {
             "name": "Other Defence",
-            "amount": -0.05
+            "amount": 0.01
           }
         ]
       },
