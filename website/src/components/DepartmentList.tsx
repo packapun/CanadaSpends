@@ -75,6 +75,12 @@ export const departments = [
     Percentage: 2.67
   },
   {
+    name: "Innovation, Science and Industry",
+    slug: "innovation-science-and-industry",
+    href: "/spending/innovation-science-and-industry",
+    Percentage: 2.0
+  },
+  {
     name: "Public Services and Procurement Canada",
     slug: "public-services-and-procurement-canada",
     href: "/spending/public-services-and-procurement-canada",
