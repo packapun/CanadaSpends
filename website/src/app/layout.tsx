@@ -2,7 +2,8 @@ import { cn } from '@/lib/utils';
 import { Analytics } from '@vercel/analytics/next';
 import type { Metadata } from 'next';
 import { Plus_Jakarta_Sans } from 'next/font/google';
-import "./globals.css";
+import './globals.css';
+import { PostHogProvider } from './providers'
 
 export const metadata: Metadata = {
   title: 'Get The Facts About Government Spending | Canada Spends',
@@ -31,22 +32,24 @@ export const metadata: Metadata = {
   appleWebApp: {
     title: 'CanadaSpends'
   },
-}
+};
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   weight: ['600', '700'],
   subsets: ['latin'],
-})
+});
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
-      <body className={cn("antialiased", plusJakartaSans.className)}>
-        {children}
+      <body className={cn('antialiased', plusJakartaSans.className)}>
+        <PostHogProvider>
+          {children}
+        </PostHogProvider>
         <Analytics />
       </body>
     </html>

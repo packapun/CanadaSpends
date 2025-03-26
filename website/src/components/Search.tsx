@@ -41,8 +41,6 @@ interface SearchResult {
 function Hit({ hit }: {hit: SearchResult}) {
   // get base path
   const href = `/spending-database/${hit.type.split("/")[1]}/${hit.key}`
-  console.log(hit.type, hit.key, href)
-
 
 
   return       <Link href={href}><Card className="w-full">
