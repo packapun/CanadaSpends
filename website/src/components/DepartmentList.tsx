@@ -27,7 +27,7 @@ export const departments = [
     Percentage: 18.38
   },
   {
-    name: "Indigenous Services Canada",
+    name: "Indigenous Services Canada + Crown-Indigenous Relations and Northern Affairs Canada",
     slug: "indigenous-services-and-northern-affairs",
     href: "/spending/indigenous-services-and-northern-affairs",
     Percentage: 9.06
@@ -52,9 +52,9 @@ export const departments = [
   },
   {
     name: "Crown-Indigenous Relations and Northern Affairs Canada",
-    slug: "cirnac",
-    href: "/spending/indigenous-services-and-northern-affairs",
     Percentage: 3.19
+    // no slug here... we don't want it appearing in Government Departments explained
+    // but we want it displayed in the DepartmentSpendingChart
   },
   {
     name: "Housing, Infrastructure and Communities Canada",

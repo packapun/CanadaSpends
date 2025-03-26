@@ -4,10 +4,12 @@ import Image, { StaticImageData } from "next/image";
 import { FaLinkedin } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import brendanSamek from './brendan_samek.jpeg';
+import briceScheschuk from './brice_scheschuk.jpeg';
 import joshHarris from './josh_harris.jpeg';
 import lucyHargreaves from './lucy_hargreaves.jpeg';
 import makSok from './mak_sok.jpeg';
 import natalieLancaster from './natalie_lancaster.jpeg';
+import shaneParrish from './shane_parrish.jpeg';
 import toddScheidt from './todd_scheidt.jpeg';
 
 const contributors: Contributor[] = [
@@ -17,12 +19,12 @@ const contributors: Contributor[] = [
   //   linkedin_username: "alfredqy",
   //   x_username: "alfredqy",
   // },
-  // {
-  //   name: "Brice Scheschuk",
-  //   photoSrc: briceScheschuk,
-  //   linkedin_username: "brice-scheschuk-cpa-ca-095721a",
-  //   x_username: "scheschuk",
-  // },
+  {
+    name: "Brice Scheschuk",
+    photoSrc: briceScheschuk,
+    linkedin_username: "brice-scheschuk-cpa-ca-095721a",
+    x_username: "scheschuk",
+  },
   {
     name: 'Josh Harris',
     photoSrc: joshHarris,
@@ -40,12 +42,12 @@ const contributors: Contributor[] = [
     x_username: 'lucyhargreaves4',
     linkedin_username: 'lucyghargreaves'
   },
-  // {
-  //   name: 'Shane Parrish',
-  //   photoSrc: shaneParrish,
-  //   x_username: 'ShaneAParrish',
-  //   linkedin_username: 'shane-parrish'
-  // },
+  {
+    name: 'Shane Parrish',
+    photoSrc: shaneParrish,
+    x_username: 'ShaneAParrish',
+    linkedin_username: 'shane-parrish-050a2183'
+  },
   {
     name: 'Brendan Samek',
     photoSrc: brendanSamek,

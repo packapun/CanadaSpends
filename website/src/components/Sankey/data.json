@@ -20,7 +20,7 @@
                   },
                   {
                     "name": "Health Care Systems + Protection",
-                    "amount": 3.49
+                    "amount": 6.85
                   },
                   {
                     "name": "Food Safety",
@@ -53,11 +53,11 @@
                   },
                   {
                     "name": "Official Languages + Culture",
-                    "amount": 5.02
+                    "amount": 4.78
                   },
                   {
                     "name": "Support for Veterans",
-                    "amount": 0.53
+                    "amount": 6.07
                   },
                   {
                     "name": "Carbon Tax Rebate",
@@ -87,7 +87,7 @@
                   },
                   {
                     "name": "Other Boards + Councils",
-                    "amount": 0.25
+                    "amount": 0.18
                   }
                 ]
               },
@@ -133,13 +133,13 @@
                   },
                   {
                     "name": "Other Fisheries Expenses",
-                    "amount": 0.08
+                    "amount": 0.97
                   }
                 ]
               },
               {
                 "name": "Agriculture",
-                "amount": 5.42
+                "amount": 4.19
               },
               {
                 "name": "Space",
@@ -154,7 +154,7 @@
                 "children": [
                   {
                     "name": "Other Environment and Climate Change Programs",
-                    "amount": 1.32
+                    "amount": 1.46
                   },
                   {
                     "name": "Weather Services",
@@ -175,29 +175,29 @@
                 "children": [
                   {
                     "name": "Innovative and Sustainable Natural Resources Development",
-                    "amount": 1.91
+                    "amount": 1.911
                   },
                   {
                     "name": "Support for Global Competition",
-                    "amount": 0.87
+                    "amount": 0.874
                   },
                   {
                     "name": "Nuclear Labs + Decommissioning",
-                    "amount": 1.51
+                    "amount": 1.514
                   },
                   {
                     "name": "Natural Resources Science + Risk Mitigation",
-                    "amount": 0.45
+                    "amount": 0.452
                   },
                   {
                     "name": "Other Natural Resources Management Support",
-                    "amount": 0.06
+                    "amount": 0.344
                   }
                 ]
               },
               {
                 "name": "Infrastructure Investments",
-                "amount": 5.81
+                "amount": 9.02
               },
               {
                 "name": "Transportation",
@@ -572,12 +572,8 @@
             "amount": 1.01
           },
           {
-            "name": "Defence Grants + Contributions",
-            "amount": 1.13
-          },
-          {
             "name": "Other Defence",
-            "amount": 0.01
+            "amount": -0.05
           }
         ]
       },
@@ -621,7 +617,7 @@
               },
               {
                 "name": "Other Support for Indigenous Well-Being",
-                "amount": 6.78
+                "amount": 9.45
               }
             ]
           },
@@ -650,16 +646,8 @@
                 ]
               },
               {
-                "name": "Grants to Indigenous Groups to Settle Claims",
-                "amount": 2.79
-              },
-              {
-                "name": "Grants to Implement Land Claims and Self Governance Agreements",
-                "amount": 1.83
-              },
-              {
                 "name": "Other Grants and Contributions to Support Crown-Indigenous Relations",
-                "amount": 6.08
+                "amount": 6.26
               }
             ]
           }
@@ -686,7 +674,7 @@
           },
           {
             "name": "Other International Affairs Activities",
-            "amount": 0.09
+            "amount": 11.03
           },
           {
             "name": "Trade and Investment",

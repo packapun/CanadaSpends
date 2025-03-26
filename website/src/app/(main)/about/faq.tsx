@@ -7,8 +7,8 @@ const faqs = [
     answer: 'Canada Spends primarily relies on Public Accounts data from the Office of the Receiver General within Public Services and Procurement Canada. Data for the previous fiscal year is typically released in December of that year, though the release month can vary. For example, complete FY 2024 data covering the period April 1, 2023 - March 31, 2024 was released in December 2024. Public Accounts documents provide the final, consolidated view of total federal government spending for each fiscal year.'
   },
   {
-    question: 'What is the data source?',
-    answer: 'All data presented regarding government spending is sourced directly from official government databases. While we strive to provide accurate, up-to-date information, we cannot guarantee the data’s completeness, reliability, or timeliness. We assume no responsibility for any errors, omissions, or outcomes resulting from the use of this information. Please consult the original government sources for official and verified data.'
+    question: 'What data sources were used?',
+    answer: <span>All data presented regarding government spending is sourced directly from official government databases. Unless otherwise noted, we have used <ExternalLink href="https://www.canada.ca/en/public-services-procurement/services/payments-accounting/public-accounts.html">Public Accounts of Canada</ExternalLink> data as the primary data source. While we strive to provide accurate, up-to-date information, we cannot guarantee the data’s completeness, reliability, or timeliness. We assume no responsibility for any errors, omissions, or outcomes resulting from the use of this information. Please consult the original government sources for official and verified data.</span>
   },
   {
     question: 'Why did you start this project?',
