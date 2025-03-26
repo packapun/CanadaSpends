@@ -24,9 +24,9 @@ export const H2 = ({ children, className = "" }: { children: React.ReactNode, cl
 )
 
 export const H3 = ({ children, className = "" }: { children: React.ReactNode, className?: string }) => (
-  <h2 className={`text-xl text-gray-600 font-bold mb-6 ${className}`}>
+  <h3 className={`text-xl text-gray-600 font-bold mb-6 ${className}`}>
     {children}
-  </h2>
+  </h3>
 )
 
 export const ChartContainer = ({ children, className = "" }: { children: React.ReactNode, className?: string }) => (
