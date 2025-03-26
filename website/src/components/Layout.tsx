@@ -57,8 +57,8 @@ export const Page = ({ children }: { children: React.ReactNode }) => <div classN
   {children}
 </div>
 
-export const PageContent = ({ children }: { children: React.ReactNode }) =>
-  <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 pb-8 pt-2">
+export const PageContent = ({ children, className = "" }: { children: React.ReactNode, className?: string }) =>
+  <div className={`w-full max-w-6xl mx-auto px-4 sm:px-6 pb-8 pt-2 ${className}`}>
     {children}
   </div>
 

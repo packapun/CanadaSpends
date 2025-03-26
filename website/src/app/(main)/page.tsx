@@ -22,7 +22,7 @@ export default function Home() {
 							<div className="relative my-4">
 								<div className="text-fuchsia-600 bg-gray-200 bottom-0 left-0 absolute right-[51.88rem] top-[-216.75rem] z-[1] w-0 h-[200vw]" />
 								<div className="text-gray-200 bg-gray-200 col-end-2 col-start-1 row-end-3 row-start-2 left-[-100vw] absolute z-[2] w-[300vw] h-0" />
-								<div className="overflow-hidden text-[5.00rem] leading-none font-medium">
+								<div className="overflow-hidden text-[3.00rem] md:text-[5.00rem] leading-none font-medium">
 									<h1 className="pb-3 max-w-[18ch] m-0" id="h1-1">
 										Get The Facts About Government Spending
 									</h1>
