@@ -2,7 +2,7 @@ import { FederalSpendingByEntity } from "@/app/(main)/spending/global-affairs-ca
 import { FederalSpendingChart } from "@/app/(main)/spending/global-affairs-canada/FederalSpendingChart";
 import { MiniSankey } from "@/app/(main)/spending/global-affairs-canada/MiniSankey";
 import { DepartmentList } from "@/components/DepartmentList";
-import { ChartContainer, ExternalLink, H1, H2, Intro, P, Page, PageContent, Section, UL } from "@/components/Layout";
+import {ChartContainer, ExternalLink, H1, H2, H3, Intro, P, Page, PageContent, Section, UL} from "@/components/Layout";
 import NoSSR from "@/components/NoSSR";
 import { StatCard, StatCardContainer } from "@/components/StatCard";
 import type { Metadata } from 'next';
@@ -54,6 +54,7 @@ export default function Department() {
 				</P>
 
 				<ChartContainer>
+					<H3>Percentage of federal budget dedicated to Global Affairs Canada, FYs 1995-2024</H3>
 					<FederalSpendingChart />
 				</ChartContainer>
 
@@ -103,6 +104,7 @@ export default function Department() {
 					Federal departments often contain other entities. In FY 2024, Global Affairs Canada’s entities with the highest expenditures were:
 				</P>
 				<ChartContainer>
+					<H3>Global Affairs Canada, Spending by Entity, FY 2024 (in billions)</H3>
 					<FederalSpendingByEntity />
 				</ChartContainer>
 			</Section>
