@@ -40,7 +40,7 @@ export default function Home() {
 									</p>
 								</div>
 								<Link
-									className="text-white bg-indigo-950 items-center font-medium justify-center py-2 px-4 relative flex w-auto min-w-[7.00rem] max-w-full overflow-hidden"
+									className="text-white bg-indigo-950 hover:bg-indigo-900 items-center font-medium justify-center py-2 px-4 relative flex w-auto min-w-[7.00rem] max-w-full overflow-hidden"
 									href="/spending"
 								>
 									<div className="items-center cursor-pointer justify-center relative flex overflow-hidden">
