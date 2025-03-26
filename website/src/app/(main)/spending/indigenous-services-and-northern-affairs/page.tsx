@@ -9,11 +9,11 @@ import { StatCard, StatCardContainer } from "@/components/StatCard";
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-	title: 'Indigenous Services Canada| Canada Spends',
-	description: 'A look at how the Indigenous Services Canada spends its budget',
+	title: 'Indigenous Services + Crown-Indigenous Relations and Northern Affairs Canada| Canada Spends',
+	description: 'A look at how the Indigenous Services + Crown-Indigenous Relations and Northern Affairs Canada spends its budget',
 }
 
-const department = "Indigenous Services Canada";
+const department = "Indigenous Services + Crown-Indigenous Relations and Northern Affairs Canada";
 
 export default function Department() {
 	return <Page>
