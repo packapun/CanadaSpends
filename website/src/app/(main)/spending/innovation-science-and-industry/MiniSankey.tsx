@@ -54,6 +54,10 @@ const data = {
         "amount": 0.178779
       },
       {
+        "name": "Public Debt Charges",
+        "amount": 0
+      },
+      {
         "name": "External Revenues",
         "amount": -0.312511
       },
