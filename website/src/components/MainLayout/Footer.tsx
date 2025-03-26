@@ -90,6 +90,9 @@ export const Footer = () => {
 							</div>
 						</div>
 					</div>
+
+				{/*<Subscribe	/>*/}
+
 					<div className="mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 md:flex md:items-center md:justify-between lg:mt-24">
 						<div className="flex gap-x-6 md:order-2">
 							{navigation.social.map((item) => (
