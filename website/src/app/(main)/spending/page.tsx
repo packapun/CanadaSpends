@@ -71,10 +71,10 @@ export default function Spending() {
 
 				<Section>
 					<H2>Government Workforce</H2>
-					<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+					<div className="grid grid-cols-1 md:grid-cols-3 gap-4">
 						<StatBox
 							title="Headcount"
-							value="367,772"
+							value="441,000"
 							description="Total government employees"
 						/>
 
@@ -86,7 +86,7 @@ export default function Spending() {
 
 						<StatBox
 							title="Total Wages"
-							value="$56.5B"
+							value="$65.3B"
 							description="Annual payroll"
 						/>
 
@@ -126,9 +126,12 @@ export default function Spending() {
 							</div>
 						</div>
 						<div>
-							<h3 className="font-medium mb-2">Salary</h3>
-							<p className="text-sm text-gray-600">The average employee makes $91,000/yr</p>
+							<h3 className="font-medium mb-2">Compensation per Employee</h3>
+							<p className="text-sm text-gray-600">The average employee makes $136,345/yr</p>
 						</div>
+						<P className="text-sm">
+							Sources: <ExternalLink href="https://www.pbo-dpb.ca/en/additional-analyses--analyses-complementaires/BLOG-2425-009--personnel-expenditure-analysis-tool-update-2023-24-personnel-expenditures--mise-jour-outil-analyse-depenses-personnel-depenses-personnel-2023-2024">PBO</ExternalLink>, <ExternalLink href="https://www.canada.ca/en/treasury-board-secretariat/services/innovation/human-resources-statistics/demographic-snapshot-federal-public-service-2023.html">Treasury Board</ExternalLink>
+						</P>
 					</div>
 				</Section>
 				<Section>
