@@ -3,6 +3,7 @@ import { DepartmentSpendingChart } from "@/components/DepartmentSpendingChart";
 import { ChartContainer, ExternalLink, H1, H2, H3, Intro, P, Page, PageContent, Section } from "@/components/Layout";
 import NoSSR from "@/components/NoSSR";
 import { StatCard, StatCardContainer } from "@/components/StatCard";
+import { useDepartments } from "@/hooks/useDepartments";
 import { initLingui, PageLangParam } from "@/initLingui";
 import { useLingui } from "@lingui/react/macro";
 import { PropsWithChildren } from "react";
@@ -20,16 +21,19 @@ export async function generateMetadata(props: PropsWithChildren<PageLangParam>) 
 	}
 }
 
-export default function Department() {
+export default async function Department(props: PageLangParam) {
+	const lang = (await props.params).lang
+	initLingui(lang)
 
 	const { t } = useLingui()
+	const department = useDepartments().find(d => d.slug === "canada-revenue-agency")!
 
-	const department = 'Canada Revenue Agency'
+
 	return <Page>
 		<PageContent>
 			<Section>
 				<H1>
-					{department}
+					{department?.name}
 				</H1>
 				<Intro>
 					The Canada Revenue Agency (CRA) is the federal institution responsible for administering tax laws, enforcing compliance, and delivering key benefit programs to individuals and businesses across Canada. Established in 1999 under the Canada Revenue Agency Act, the CRA operates with a workforce of approximately 59,155 employees (2024) and oversees tax revenues totaling $379 billion annually—which accounts for over 82% of federal revenues. It also administers over $46 billion in benefits and credits to Canadians, including the Canada Child Benefit and the GST/HST credit.
@@ -65,7 +69,7 @@ export default function Department() {
 				</H3>
 
 				<ChartContainer>
-					<DepartmentSpendingChart department={department} />
+					<DepartmentSpendingChart department={department.slug} />
 				</ChartContainer>
 
 
@@ -130,7 +134,7 @@ export default function Department() {
 
 			<Section>
 				<H2>Explore other Federal Departments</H2>
-				<DepartmentList current={department} />
+				<DepartmentList current={department.slug} />
 			</Section>
 		</PageContent>
 	</Page>

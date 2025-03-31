@@ -3,6 +3,7 @@ import { DepartmentSpendingChart } from "@/components/DepartmentSpendingChart";
 import { ChartContainer, ExternalLink, H1, H2, H3, Intro, P, Page, PageContent, Section } from "@/components/Layout";
 import NoSSR from "@/components/NoSSR";
 import { StatCard, StatCardContainer } from "@/components/StatCard";
+import { useDepartments } from "@/hooks/useDepartments";
 import { initLingui, PageLangParam } from "@/initLingui";
 import { useLingui } from "@lingui/react/macro";
 import { PropsWithChildren } from "react";
@@ -21,14 +22,17 @@ export async function generateMetadata(props: PropsWithChildren<PageLangParam>) 
 	}
 }
 
-const department = "National Defence";
+export default async function Department(props: PageLangParam) {
+	const lang = (await props.params).lang
+	initLingui(lang)
 
-export default function Department() {
+	const { t } = useLingui()
+	const department = useDepartments().find(d => d.slug === "national-defence")!
 	return <Page>
 		<PageContent>
 			<Section>
 				<H1>
-					{department}
+					{department.name}
 				</H1>
 				<Intro>
 					The Department of National Defence (DND) and the Canadian Armed Forces (CAF) are responsible for ensuring Canada's security and defence through military operations, infrastructure management, and personnel support. Established in 1923 under the National Defence Act, DND oversees the defence budget, military procurement, and readiness planning, while the CAF executes domestic and international operations. The department provides strategic defence policy guidance and works with international allies, including NATO and NORAD, to ensure national security. DND also administers military health services, housing programs, and recruitment initiatives to support its personnel.
@@ -68,7 +72,7 @@ export default function Department() {
 			<Section>
 				<ChartContainer>
 					<H3>Percentage of federal budget dedicated to Defence, FYs 1995-2024</H3>
-					<DepartmentSpendingChart department={department} />
+					<DepartmentSpendingChart department={department.slug} />
 				</ChartContainer>
 			</Section>
 
@@ -131,7 +135,7 @@ export default function Department() {
 
 			<Section>
 				<H2>Explore other Federal Departments</H2>
-				<DepartmentList current={department} />
+				<DepartmentList current={department.slug} />
 			</Section>
 		</PageContent>
 	</Page>

@@ -3,6 +3,7 @@ import { DepartmentSpendingChart } from "@/components/DepartmentSpendingChart";
 import { ChartContainer, ExternalLink, H1, H2, H3, Intro, P, Page, PageContent, Section } from "@/components/Layout";
 import NoSSR from "@/components/NoSSR";
 import { StatCard, StatCardContainer } from "@/components/StatCard";
+import { useDepartments } from "@/hooks/useDepartments";
 import { initLingui, PageLangParam } from "@/initLingui";
 import { useLingui } from "@lingui/react/macro";
 import { PropsWithChildren } from "react";
@@ -20,14 +21,17 @@ export async function generateMetadata(props: PropsWithChildren<PageLangParam>) 
 	}
 }
 
-const department = "Public Safety Canada";
+export default async function Department(props: PageLangParam) {
+	const lang = (await props.params).lang
+	initLingui(lang)
 
-export default function Department() {
+	const { t } = useLingui()
+	const department = useDepartments().find(d => d.slug === "public-safety-canada")!
 	return <Page>
 		<PageContent>
 			<Section>
 				<H1>
-					{department}
+					{department.name}
 				</H1>
 				<Intro>
 					Public Safety, Democratic Institutions and Intergovernmental Affairs Canada (Public Safety Canada) is the federal department responsible for national security, emergency preparedness, and community safety. Established in 2003, it consolidates security, law enforcement, and emergency management functions. It includes the RCMP, CSIS, and CBSA and coordinates federal responses to threats and develops policies on crime prevention, cyber resilience, and disaster preparedness while overseeing intelligence-sharing with domestic and international partners.
@@ -62,7 +66,7 @@ export default function Department() {
 				</H3>
 
 				<ChartContainer>
-					<DepartmentSpendingChart department={department} />
+					<DepartmentSpendingChart department={department.slug} />
 				</ChartContainer>
 
 
@@ -114,7 +118,7 @@ export default function Department() {
 
 			<Section>
 				<H2>Explore other Federal Departments</H2>
-				<DepartmentList current={department} />
+				<DepartmentList current={department.slug} />
 			</Section>
 		</PageContent>
 	</Page>

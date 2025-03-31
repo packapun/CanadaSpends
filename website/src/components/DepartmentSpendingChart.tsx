@@ -1,7 +1,7 @@
 "use client"
 
 import { BarList } from "@/components/BarList"
-import { useDepartments } from "@/components/DepartmentList"
+import { useDepartments } from "@/hooks/useDepartments"
 import { useMemo } from "react"
 
 

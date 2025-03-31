@@ -3,6 +3,7 @@ import { DepartmentSpendingChart } from "@/components/DepartmentSpendingChart";
 import { ChartContainer, ExternalLink, H1, H2, H3, Intro, P, Page, PageContent, Section } from "@/components/Layout";
 import NoSSR from "@/components/NoSSR";
 import { StatCard, StatCardContainer } from "@/components/StatCard";
+import { useDepartments } from "@/hooks/useDepartments";
 import { initLingui, PageLangParam } from "@/initLingui";
 import { useLingui } from "@lingui/react/macro";
 import { PropsWithChildren } from "react";
@@ -21,14 +22,17 @@ export async function generateMetadata(props: PropsWithChildren<PageLangParam>) 
 	}
 }
 
-const department = "Indigenous Services Canada + Crown-Indigenous Relations and Northern Affairs Canada";
+export default async function Department(props: PageLangParam) {
+	const lang = (await props.params).lang
+	initLingui(lang)
 
-export default function Department() {
+	const { t } = useLingui()
+	const department = useDepartments().find(d => d.slug === "indigenous-services-and-northern-affairs")!
 	return <Page>
 		<PageContent>
 			<Section>
 				<H1>
-					{department}
+					{department.name}
 				</H1>
 				<Intro>
 					Indigenous Services Canada (ISC) and Crown-Indigenous Relations and Northern Affairs Canada (CIRNAC) are two distinct federal departments tasked with advancing Indigenous priorities in Canada. Established in 2017 following the dissolution of Indigenous and Northern Affairs Canada (INAC), these departments manage different aspects of Indigenous policy, service delivery, and governance.
@@ -63,7 +67,7 @@ export default function Department() {
 				</P>
 
 				<ChartContainer>
-					<DepartmentSpendingChart department={department} />
+					<DepartmentSpendingChart department={department.slug} />
 				</ChartContainer>
 
 			</Section>
@@ -117,7 +121,7 @@ export default function Department() {
 
 			<Section>
 				<H2>Explore other Federal Departments</H2>
-				<DepartmentList current={department} />
+				<DepartmentList current={department.slug} />
 			</Section>
 		</PageContent>
 	</Page>

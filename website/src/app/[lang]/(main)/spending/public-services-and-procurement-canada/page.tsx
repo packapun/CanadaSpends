@@ -3,6 +3,7 @@ import { DepartmentSpendingChart } from "@/components/DepartmentSpendingChart";
 import { ChartContainer, H1, H2, Intro, P, Page, PageContent, Section } from "@/components/Layout";
 import NoSSR from "@/components/NoSSR";
 import { StatCard, StatCardContainer } from "@/components/StatCard";
+import { useDepartments } from "@/hooks/useDepartments";
 import { initLingui, PageLangParam } from "@/initLingui";
 import { useLingui } from "@lingui/react/macro";
 import { PropsWithChildren } from "react";
@@ -20,14 +21,17 @@ export async function generateMetadata(props: PropsWithChildren<PageLangParam>) 
 	}
 }
 
-const department = "Public Services and Procurement Canada";
+export default async function Department(props: PageLangParam) {
+	const lang = (await props.params).lang
+	initLingui(lang)
 
-export default function Department() {
+	const { t } = useLingui()
+	const department = useDepartments().find(d => d.slug === "public-services-and-procurement-canada")!
 	return <Page>
 		<PageContent>
 			<Section>
 				<H1>
-					{department}
+					{department.name}
 				</H1>
 				<Intro>
 					The Public Services and Procurement Canada (PSPC) is the federal department responsible for providing centralized procurement, real estate management, pay and pension administration for federal employees, and translation services to the Government of Canada. It ensures that government departments have the goods, services, and infrastructure they need to operate efficiently while maintaining transparency, fairness, and value for taxpayers.
@@ -62,7 +66,7 @@ export default function Department() {
 				</P>
 			</Section>
 
-			<DepartmentSpendingChart department={department} />
+			<DepartmentSpendingChart department={department.slug} />
 
 			<Section>
 				<P>
@@ -119,7 +123,7 @@ export default function Department() {
 
 			<Section>
 				<H2>Explore other Federal Departments</H2>
-				<DepartmentList current={department} />
+				<DepartmentList current={department.slug} />
 			</Section>
 		</PageContent>
 	</Page>

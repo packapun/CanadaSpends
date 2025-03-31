@@ -3,6 +3,7 @@ import { DepartmentSpendingChart } from "@/components/DepartmentSpendingChart";
 import { ChartContainer, ExternalLink, H1, H2, H3, Intro, P, Page, PageContent, Section } from "@/components/Layout";
 import NoSSR from "@/components/NoSSR";
 import { StatCard, StatCardContainer } from "@/components/StatCard";
+import { useDepartments } from "@/hooks/useDepartments";
 import { initLingui, PageLangParam } from "@/initLingui";
 import { useLingui } from "@lingui/react/macro";
 import { PropsWithChildren } from "react";
@@ -21,14 +22,19 @@ export async function generateMetadata(props: PropsWithChildren<PageLangParam>) 
 	}
 }
 
-const department = "Department of Finance";
 
-export default function Department() {
+export default async function Department(props: PageLangParam) {
+	const lang = (await props.params).lang
+	initLingui(lang)
+
+	const { t } = useLingui()
+	const department = useDepartments().find(d => d.slug === "department-of-finance")!
+
 	return <Page>
 		<PageContent>
 			<Section>
 				<H1>
-					Department of Finance
+					{department?.name}
 				</H1>
 				<Intro>
 					The Department of Finance (Finance Canada) is a central federal department
@@ -76,7 +82,7 @@ export default function Department() {
 					10 government departments accounted for 73.2% of federal spending in FY 2024
 				</H3>
 				<ChartContainer>
-					<DepartmentSpendingChart department={department} />
+					<DepartmentSpendingChart department={department.slug} />
 				</ChartContainer>
 				<P>
 					Federal spending may shift over time due to population growth, changes in policy and programs, and emerging problems to address. Since 1995, overall federal spending has risen 74.9%, while Department of Finance spending has increased 41.4%.
@@ -141,7 +147,7 @@ export default function Department() {
 
 			<Section>
 				<H2>Explore other Federal Departments</H2>
-				<DepartmentList current={department} />
+				<DepartmentList current={department.slug} />
 			</Section>
 
 		</PageContent>

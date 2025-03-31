@@ -3,6 +3,7 @@ import { DepartmentSpendingChart } from "@/components/DepartmentSpendingChart";
 import { ChartContainer, ExternalLink, H1, H2, Intro, P, Page, PageContent, Section } from "@/components/Layout";
 import NoSSR from "@/components/NoSSR";
 import { StatCard, StatCardContainer } from "@/components/StatCard";
+import { useDepartments } from "@/hooks/useDepartments";
 import { initLingui, PageLangParam } from "@/initLingui";
 import { useLingui } from "@lingui/react/macro";
 import { PropsWithChildren } from "react";
@@ -21,14 +22,17 @@ export async function generateMetadata(props: PropsWithChildren<PageLangParam>) 
 	}
 }
 
-const department = "Housing, Infrastructure and Communities Canada";
+export default async function Department(props: PageLangParam) {
+	const lang = (await props.params).lang
+	initLingui(lang)
 
-export default function Department() {
+	const { t } = useLingui()
+	const department = useDepartments().find(d => d.slug === "housing-infrastructure-communities")!
 	return <Page>
 		<PageContent>
 			<Section>
 				<H1>
-					{department}
+					{department.name}
 				</H1>
 				<Intro>
 					Housing, Infrastructure and Communities Canada (HICC) is responsible for federal policies and programs that support public infrastructure, affordable housing, and community development. It works with provinces, territories, and municipalities to fund major infrastructure projects and improve housing affordability across Canada.
@@ -69,7 +73,7 @@ export default function Department() {
 				</ChartContainer>
 			</Section>
 
-			<DepartmentSpendingChart department={department} />
+			<DepartmentSpendingChart department={department.slug} />
 
 			<Section>
 
@@ -119,7 +123,7 @@ export default function Department() {
 
 			<Section>
 				<H2>Explore other Federal Departments</H2>
-				<DepartmentList current={department} />
+				<DepartmentList current={department.slug} />
 			</Section>
 		</PageContent>
 	</Page>
