@@ -1,11 +1,12 @@
 "use client";
 
+import { TenureChart } from "@/app/[lang]/(main)/spending/TenureChart";
 import { BarChart } from "@/components/BarChart";
-import { BarList } from "@/components/BarList";
 import { DepartmentList } from "@/components/DepartmentList";
 import { ExternalLink, H1, H2, InternalLink, Intro, P, Page, PageContent, Section } from "@/components/Layout";
 import NoSSR from "@/components/NoSSR";
 import { Sankey } from "@/components/Sankey";
+import { Trans, useLingui } from "@lingui/react/macro";
 
 const StatBox = ({ title, value, description }: { title: string, value: string, description: string }) => (
 	<div className="flex flex-col mr-8 mb-8">
@@ -15,12 +16,6 @@ const StatBox = ({ title, value, description }: { title: string, value: string, 
 	</div>
 );
 
-const tenureData = [
-	{ name: "Casual", value: 6990 },
-	{ name: "Indeterminate", value: 301131 },
-	{ name: "Student", value: 9120 },
-	{ name: "Term", value: 47460 },
-]
 
 const ageData = [
 	{ name: '<20', Count: 1756 },
@@ -37,19 +32,20 @@ const ageData = [
 ]
 
 export default function Spending() {
+	const { t } = useLingui()
 	return (
 		<Page>
 			<PageContent>
 				<Section>
-					<H1>Government Spending</H1>
+					<H1><Trans>Government Spending</Trans></H1>
 					<Intro>
-						Get data-driven insights into how governmental revenue and spending affect Canadian lives and programs.
+						<Trans>Get data-driven insights into how governmental revenue and spending affect Canadian lives and programs.</Trans>
 					</Intro>
 				</Section>
 				<Section>
-					<H2>FY 2024 Government Revenue and Spending</H2>
+					<H2><Trans>FY 2024 Government Revenue and Spending</Trans></H2>
 					<P>
-						Explore revenue and spending categories or filter by agency for deeper insights.
+						<Trans>Explore revenue and spending categories or filter by agency for deeper insights.</Trans>
 					</P>
 				</Section>
 			</PageContent>
@@ -63,52 +59,46 @@ export default function Spending() {
 						className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
 						href="/spending-full-screen"
 					>
-						View this chart in full screen
+						<Trans>View this chart in full screen</Trans>
 					</ExternalLink>
 				</div>
 			</div>
 			<PageContent>
 
 				<Section>
-					<H2>Government Workforce</H2>
+					<H2><Trans>Government Workforce</Trans></H2>
 					<div className="grid grid-cols-1 md:grid-cols-3 gap-4">
 						<StatBox
-							title="Headcount"
+							title={t`Headcount`}
 							value="441,000"
-							description="Total government employees"
+							description={t`Total government employees`}
 						/>
 
 						<StatBox
-							title="Departments + Agencies"
+							title={t`Departments + Agencies`}
 							value="94"
-							description="Federal organizations"
+							description={t`Federal organizations`}
 						/>
 
 						<StatBox
-							title="Total Wages"
+							title={t`Total Wages`}
 							value="$65.3B"
-							description="Annual payroll"
+							description={t`Annual payroll`}
 						/>
 
 						<div>
-							<h3 className="font-medium mb-2">Type of Tenure</h3>
-							<p className="text-sm text-gray-600">80% of employees are in permanent roles</p>
+							<h3 className="font-medium mb-2"><Trans>Type of Tenure</Trans></h3>
+							<p className="text-sm text-gray-600"><Trans>80% of employees are in permanent roles</Trans></p>
 							<div className="mt-4">
 								<NoSSR>
-									<BarList
-										className="h-40"
-										data={tenureData}
-										valueFormatter={(value) => Intl.NumberFormat('en-US', {
-											notation: 'compact',
-										}).format(Number(value))}
-									/>
+									<TenureChart />
 								</NoSSR>
 							</div>
 						</div>
 
 						<div>
 							<h3 className="font-medium mb-2">Age</h3>
-							<p className="text-sm text-gray-600">The average employee is 45 years old</p>
+							<p className="text-sm text-gray-600"><Trans>The average employee is 45 years old</Trans></p>
 							<div className="mt-4">
 								<NoSSR>
 									<BarChart
@@ -126,20 +116,20 @@ export default function Spending() {
 							</div>
 						</div>
 						<div>
-							<h3 className="font-medium mb-2">Compensation per Employee</h3>
-							<p className="text-sm text-gray-600">The average employee makes $136,345/yr</p>
+							<h3 className="font-medium mb-2"><Trans>Compensation per Employee</Trans></h3>
+							<p className="text-sm text-gray-600"><Trans>The average employee makes $136,345/yr</Trans></p>
 						</div>
 						<P className="text-sm">
-							Sources: <ExternalLink href="https://www.pbo-dpb.ca/en/additional-analyses--analyses-complementaires/BLOG-2425-009--personnel-expenditure-analysis-tool-update-2023-24-personnel-expenditures--mise-jour-outil-analyse-depenses-personnel-depenses-personnel-2023-2024">PBO</ExternalLink>, <ExternalLink href="https://www.canada.ca/en/treasury-board-secretariat/services/innovation/human-resources-statistics/demographic-snapshot-federal-public-service-2023.html">Treasury Board</ExternalLink>
+							<Trans>Sources:</Trans> <ExternalLink href="https://www.pbo-dpb.ca/en/additional-analyses--analyses-complementaires/BLOG-2425-009--personnel-expenditure-analysis-tool-update-2023-24-personnel-expenditures--mise-jour-outil-analyse-depenses-personnel-depenses-personnel-2023-2024"><Trans>PBO</Trans></ExternalLink>, <ExternalLink href="https://www.canada.ca/en/treasury-board-secretariat/services/innovation/human-resources-statistics/demographic-snapshot-federal-public-service-2023.html"><Trans>Treasury Board</Trans></ExternalLink>
 						</P>
 					</div>
 				</Section>
 				<Section>
-					<H2>Sources</H2>
-					<P>All government spending data is sourced from official databases, but due to the complexity of these systems, occasional errors may occur despite our best efforts. We aim to make this information more accessible and accurate, and we welcome feedback. If you notice any issues, please let us know <InternalLink href="/contact">here</InternalLink> — we appreciate it and will work to address them promptly.</P>
+					<H2><Trans>Sources</Trans></H2>
+					<P><Trans>All government spending data is sourced from official databases, but due to the complexity of these systems, occasional errors may occur despite our best efforts. We aim to make this information more accessible and accurate, and we welcome feedback. If you notice any issues, please let us know <InternalLink href="/contact">here</InternalLink> — we appreciate it and will work to address them promptly.</Trans></P>
 				</Section>
 				<Section>
-					<H2>Government Departments explained</H2>
+					<H2><Trans>Government Departments explained</Trans></H2>
 					<DepartmentList />
 				</Section>
 			</PageContent>

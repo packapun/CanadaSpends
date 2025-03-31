@@ -13,13 +13,17 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/app/[lang]/(main)/about/page.tsx:35
+#: src/app/[lang]/(main)/about/page.tsx:41
 msgid "— Canada Spends Team"
-msgstr ""
+msgstr "— L'équipe de Canada Spends"
 
 #: src/components/MainLayout/Footer.tsx:123
 msgid "© 2025 Canada Spends. All rights reserved. A Project of <0>Build Canada</0>."
 msgstr "© 2025 Canada Spends. Tous droits réservés. Un projet de <0>Build Canada</0>."
+
+#: src/app/[lang]/(main)/spending/page.tsx:91
+msgid "80% of employees are in permanent roles"
+msgstr "80% des employés occupent des postes permanents"
 
 #: src/components/MainLayout/index.tsx:46
 #: src/components/MainLayout/Footer.tsx:90
@@ -28,23 +32,31 @@ msgstr "À propos"
 
 #: src/app/[lang]/(main)/about/faq.tsx:18
 msgid "All data presented regarding government spending is sourced directly from official government databases. Unless otherwise noted, we have used <0>Public Accounts of Canada</0> data as the primary data source. While we strive to provide accurate, up-to-date information, we cannot guarantee the data's completeness, reliability, or timeliness. We assume no responsibility for any errors, omissions, or outcomes resulting from the use of this information. Please consult the original government sources for official and verified data."
-msgstr ""
+msgstr "Toutes les données présentées concernant les dépenses gouvernementales proviennent directement des bases de données officielles du gouvernement. Sauf indication contraire, nous avons utilisé les données des <0>Comptes publics du Canada</0> comme source principale. Bien que nous nous efforcions de fournir des informations précises et à jour, nous ne pouvons garantir l'exhaustivité, la fiabilité ou l'actualité des données. Nous n'assumons aucune responsabilité pour les erreurs, omissions ou résultats découlant de l'utilisation de ces informations. Veuillez consulter les sources gouvernementales originales pour des données officielles et vérifiées."
+
+#: src/app/[lang]/(main)/spending/page.tsx:129
+msgid "All government spending data is sourced from official databases, but due to the complexity of these systems, occasional errors may occur despite our best efforts. We aim to make this information more accessible and accurate, and we welcome feedback. If you notice any issues, please let us know <0>here</0> — we appreciate it and will work to address them promptly."
+msgstr "Toutes les données sur les dépenses gouvernementales proviennent de bases de données officielles, mais en raison de la complexité de ces systèmes, des erreurs occasionnelles peuvent survenir malgré nos meilleurs efforts. Nous visons à rendre cette information plus accessible et précise, et nous accueillons vos commentaires. Si vous remarquez des problèmes, veuillez nous en informer <0>ici</0> — nous l'apprécions et nous travaillerons à les résoudre rapidement."
 
 #: src/app/[lang]/(main)/about/faq.tsx:30
 msgid "All of the information we use comes from publicly available databases and reports issued by the Government of Canada. We reference sources for all of our content."
-msgstr ""
+msgstr "Toutes les informations que nous utilisons proviennent des bases de données publiques et des rapports émis par le gouvernement du Canada. Nous citons les sources pour tout notre contenu."
 
 #: src/app/[lang]/(main)/page.tsx:116
 msgid "All the information comes from public databases and reports by the Government of Canada. We show our sources, so you know exactly where it comes from."
 msgstr "Toutes les informations proviennent des bases de données publiques et des rapports du gouvernement du Canada. Nous indiquons nos sources pour que vous sachiez exactement d'où elles proviennent."
 
+#: src/app/[lang]/(main)/spending/page.tsx:86
+msgid "Annual payroll"
+msgstr "Masse salariale annuelle"
+
 #: src/app/[lang]/(main)/about/faq.tsx:63
 msgid "Are you DOGE?"
-msgstr ""
+msgstr "Êtes-vous DOGE?"
 
 #: src/app/[lang]/(main)/about/faq.tsx:50
 msgid "At this time, the best way to support us is through engagement and amplification of our content. If we open up to donations in the future, we'll let you know how you can contribute directly to our efforts."
-msgstr ""
+msgstr "Pour le moment, la meilleure façon de nous soutenir est de partager et d'amplifier notre contenu. Si nous acceptons des dons à l'avenir, nous vous informerons comment vous pourrez contribuer directement à nos efforts."
 
 #: src/app/[lang]/(main)/page.tsx:113
 msgid "Based on Data"
@@ -52,28 +64,36 @@ msgstr "Basé sur les données"
 
 #: src/app/[lang]/(main)/about/faq.tsx:49
 msgid "Can I donate?"
-msgstr ""
+msgstr "Puis-je faire un don?"
 
 #: src/app/[lang]/(main)/about/faq.tsx:57
 msgid "Can I get involved?"
-msgstr ""
+msgstr "Puis-je m'impliquer?"
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/(main)/page.tsx:86
 msgid "facts-2"
 msgstr "Canada Spends change cela. Nous prenons les données brutes des dépenses fédérales et les transformons en faits précis et directs pour que vous puissiez comprendre comment votre argent est utilisé."
 
-#: src/app/[lang]/(main)/about/page.tsx:32
-msgid "Canada Spends is a platform to make government spending more transparent. We take raw data and transform it into easy to understand facts for Canadians. We don’t tell you what to think. We don’t weigh in on whether spending is good or bad. We give you the facts so you can decide for yourself."
-msgstr ""
+#: src/app/[lang]/(main)/about/page.tsx:38
+msgid "Canada Spends is a platform to make government spending more transparent. We take raw data and transform it into easy to understand facts for Canadians. We don't tell you what to think. We don't weigh in on whether spending is good or bad. We give you the facts so you can decide for yourself."
+msgstr "Canada Spends est une plateforme qui vise à rendre les dépenses gouvernementales plus transparentes. Nous prenons les données brutes et les transformons en faits faciles à comprendre pour les Canadiens. Nous ne vous disons pas quoi penser. Nous ne jugeons pas si les dépenses sont bonnes ou mauvaises. Nous vous donnons les faits pour que vous puissiez décider par vous-même."
 
 #: src/app/[lang]/(main)/about/faq.tsx:14
 msgid "Canada Spends primarily relies on Public Accounts data from the Office of the Receiver General within Public Services and Procurement Canada. Data for the previous fiscal year is typically released in December of that year, though the release month can vary. For example, complete FY 2024 data covering the period April 1, 2023 - March 31, 2024 was released in December 2024. Public Accounts documents provide the final, consolidated view of total federal government spending for each fiscal year."
-msgstr ""
+msgstr "Canada Spends s'appuie principalement sur les données des Comptes publics du Bureau du receveur général au sein de Services publics et Approvisionnement Canada. Les données de l'exercice précédent sont généralement publiées en décembre de la même année, bien que le mois de publication puisse varier. Par exemple, les données complètes de l'exercice 2024 couvrant la période du 1er avril 2023 au 31 mars 2024 ont été publiées en décembre 2024. Les documents des Comptes publics fournissent la vue finale et consolidée des dépenses totales du gouvernement fédéral pour chaque exercice."
 
-#: src/app/[lang]/(main)/about/page.tsx:24
+#: src/app/[lang]/(main)/about/page.tsx:30
 msgid "Canada, you need the facts."
-msgstr ""
+msgstr "Canada, vous avez besoin des faits."
+
+#: src/app/[lang]/(main)/spending/TenureChart.tsx:8
+msgid "Casual"
+msgstr "Occasionnel"
+
+#: src/app/[lang]/(main)/spending/page.tsx:119
+msgid "Compensation per Employee"
+msgstr "Rémunération par employé"
 
 #: src/app/[lang]/(main)/contact/page.tsx:13
 #: src/app/[lang]/(main)/contact/page.tsx:27
@@ -85,9 +105,13 @@ msgstr "Connectez-vous avec nous"
 msgid "Contact"
 msgstr "Contact"
 
-#: src/app/[lang]/(main)/about/page.tsx:40
+#: src/app/[lang]/(main)/about/page.tsx:46
 msgid "Contributors / Supporters"
-msgstr ""
+msgstr "Contributeurs / Supporteurs"
+
+#: src/app/[lang]/(main)/spending/page.tsx:78
+msgid "Departments + Agencies"
+msgstr "Ministères + Organismes"
 
 #: src/components/MainLayout/Footer.tsx:47
 msgid "Email address"
@@ -95,28 +119,45 @@ msgstr "Adresse courriel"
 
 #: src/app/[lang]/(main)/contact/page.tsx:32
 msgid "Email us at <0>hi@canadaspends.com</0> or connect with us on X <1>@canada_spends</1> and we'll get back to you as soon as we can."
-msgstr ""
+msgstr "Envoyez-nous un courriel à <0>hi@canadaspends.com</0> ou connectez-vous avec nous sur X <1>@canada_spends</1> et nous vous répondrons dès que possible."
 
 #: src/components/MainLayout/Footer.tsx:53
 msgid "Enter your email"
-msgstr ""
+msgstr "Entrez votre courriel"
 
-#: src/app/[lang]/(main)/about/page.tsx:26
-msgid "Every year, hundreds of billions of dollars move through the Government of Canada’s budget. This data is technically available but the information is difficult to understand and spread across PDFs and databases that most Canadians don’t know about."
-msgstr ""
+#: src/app/[lang]/(main)/about/page.tsx:32
+msgid "Every year, hundreds of billions of dollars move through the Government of Canada's budget. This data is technically available but the information is difficult to understand and spread across PDFs and databases that most Canadians don't know about."
+msgstr "Chaque année, des centaines de milliards de dollars transitent par le budget du gouvernement du Canada. Ces données sont techniquement disponibles, mais l'information est difficile à comprendre et dispersée dans des PDF et des bases de données que la plupart des Canadiens ne connaissent pas."
 
 #: src/app/[lang]/(main)/page.tsx:52
 msgid "Explore data"
 msgstr "Explorer les données"
 
+#: src/app/[lang]/(main)/spending/page.tsx:48
+msgid "Explore revenue and spending categories or filter by agency for deeper insights."
+msgstr "Explorez les catégories de revenus et de dépenses ou filtrez par organisme pour des analyses plus approfondies."
+
 #: src/app/[lang]/(main)/page.tsx:102
 msgid "Facts about Spending"
 msgstr "Faits sur les dépenses"
 
-#: src/app/[lang]/(main)/about/page.tsx:46
-msgid "Frequently Asked Questions"
-msgstr ""
+#: src/app/[lang]/(main)/spending/page.tsx:80
+msgid "Federal organizations"
+msgstr "Organisations fédérales"
 
+#: src/app/[lang]/(main)/about/page.tsx:52
+msgid "Frequently Asked Questions"
+msgstr "Questions fréquemment posées"
+
+#: src/app/[lang]/(main)/spending/page.tsx:46
+msgid "FY 2024 Government Revenue and Spending"
+msgstr "Revenus et dépenses du gouvernement pour l'exercice 2024"
+
+#: src/app/[lang]/(main)/spending/page.tsx:42
+msgid "Get data-driven insights into how governmental revenue and spending affect Canadian lives and programs."
+msgstr "Obtenez des analyses basées sur les données sur la façon dont les revenus et les dépenses gouvernementaux affectent la vie des Canadiens et les programmes."
+
+#: src/app/[lang]/layout.tsx:18
 #: src/app/[lang]/(main)/page.tsx:31
 msgid "Get The Facts About Government Spending"
 msgstr "Découvrez les faits sur les dépenses gouvernementales"
@@ -125,46 +166,74 @@ msgstr "Découvrez les faits sur les dépenses gouvernementales"
 msgid "Get the facts weekly, right in your inbox."
 msgstr "Recevez les faits chaque semaine directement dans votre boîte de réception."
 
+#: src/app/[lang]/(main)/spending/page.tsx:132
+msgid "Government Departments explained"
+msgstr "Explication des ministères gouvernementaux"
+
+#: src/app/[lang]/(main)/spending/page.tsx:40
+msgid "Government Spending"
+msgstr "Dépenses gouvernementales"
+
 #. js-lingui-explicit-id
 #: src/app/[lang]/(main)/page.tsx:77
 msgid "facts-1"
 msgstr "Les dépenses gouvernementales ne devraient pas être une boîte noire. Chaque année, le gouvernement fédéral dépense des centaines de milliards de dollars, mais la plupart des Canadiens n'ont aucune idée où tout cet argent va. Les données sont disponibles, mais elles sont enfouies sur des sites Web obscurs et impossibles à naviguer."
 
+#: src/app/[lang]/layout.tsx:19
+msgid "Government spending shouldn't be a black box. We turn complex data into clear, non-partisan insights so every Canadian knows where their money goes."
+msgstr "Les dépenses gouvernementales ne devraient pas être une boîte noire. Nous transformons des données complexes en analyses claires et non partisanes pour que chaque Canadien sache où va son argent."
+
+#: src/app/[lang]/(main)/spending/page.tsx:69
+msgid "Government Workforce"
+msgstr "Effectif gouvernemental"
+
 #: src/app/[lang]/(main)/contact/page.tsx:14
 msgid "Have questions or feedback? Email us at hi@canadaspends.com or connect with us on X @canada_spends - we'd love to hear from you!"
-msgstr ""
+msgstr "Vous avez des questions ou des commentaires? Envoyez-nous un courriel à hi@canadaspends.com ou connectez-vous avec nous sur X @canada_spends - nous aimerions avoir de vos nouvelles!"
+
+#: src/app/[lang]/(main)/spending/page.tsx:72
+msgid "Headcount"
+msgstr "Effectif"
 
 #: src/app/[lang]/(main)/about/faq.tsx:45
 msgid "How can I show my support?"
-msgstr ""
+msgstr "Comment puis-je montrer mon soutien?"
 
 #: src/app/[lang]/(main)/about/faq.tsx:53
 msgid "How can I stay up to date on your work?"
-msgstr ""
+msgstr "Comment puis-je rester informé de votre travail?"
+
+#: src/app/[lang]/(main)/spending/TenureChart.tsx:9
+msgid "Indeterminate"
+msgstr "Indéterminé"
 
 #: src/app/[lang]/(main)/about/faq.tsx:33
 msgid "Is this a lobby group?"
-msgstr ""
+msgstr "Est-ce un groupe de pression?"
 
 #: src/app/[lang]/(main)/about/faq.tsx:37
 msgid "Is this a permanent organization?"
-msgstr ""
+msgstr "Est-ce une organisation permanente?"
 
-#: src/app/[lang]/(main)/about/page.tsx:29
-msgid "It doesn’t have to be this way."
-msgstr ""
+#: src/app/[lang]/(main)/about/page.tsx:35
+msgid "It doesn't have to be this way."
+msgstr "Ça ne doit pas être comme ça."
+
+#: src/app/[lang]/(main)/about/page.tsx:15
+msgid "Making Government Spending Clear | About Us | Canada Spends"
+msgstr "Rendre les dépenses gouvernementales claires | À propos de nous | Canada Spends"
 
 #: src/app/[lang]/(main)/about/faq.tsx:34
 msgid "No, we are not a lobby group. We are not paid, nor do we represent any special interest groups. Our mission is purely to share data-driven insights on federal government spending."
-msgstr ""
+msgstr "Non, nous ne sommes pas un groupe de pression. Nous ne sommes pas payés et ne représentons aucun groupe d'intérêt spécial. Notre mission est simplement de partager des analyses factuelles sur les dépenses du gouvernement fédéral."
 
 #: src/app/[lang]/(main)/about/faq.tsx:38
 msgid "No, we currently envision this as a short-term project. Our focus is to bring data-driven spending insights to Canadians."
-msgstr ""
+msgstr "Non, nous envisageons actuellement ceci comme un projet à court terme. Notre objectif est d'apporter aux Canadiens des analyses factuelles sur les dépenses."
 
 #: src/app/[lang]/(main)/about/faq.tsx:65
 msgid "No, we're not copying the DOGE playbook from the US."
-msgstr ""
+msgstr "Non, nous ne copions pas le modèle DOGE des États-Unis."
 
 #: src/app/[lang]/(main)/page.tsx:124
 msgid "Non-Partisan"
@@ -172,11 +241,23 @@ msgstr "Non partisan"
 
 #: src/app/[lang]/(main)/about/faq.tsx:67
 msgid "Our government is going to have to make hard choices about our nation's spending to ensure we can invest in creating a competitive, resilient, and independent nation. We care about giving Canadians the facts about spending so they can engage in this conversation with elected officials."
-msgstr ""
+msgstr "Notre gouvernement devra faire des choix difficiles concernant les dépenses de notre nation pour assurer que nous puissions investir dans la création d'une nation compétitive, résiliente et indépendante. Nous tenons à donner aux Canadiens les faits sur les dépenses afin qu'ils puissent participer à cette conversation avec les élus."
+
+#: src/app/[lang]/(main)/spending/page.tsx:123
+msgid "PBO"
+msgstr "DPB"
 
 #: src/components/MainLayout/Footer.tsx:105
 msgid "Report an Issue"
 msgstr "Signaler un problème"
+
+#: src/app/[lang]/(main)/spending/page.tsx:128
+msgid "Sources"
+msgstr "Sources"
+
+#: src/app/[lang]/(main)/spending/page.tsx:123
+msgid "Sources:"
+msgstr "Sources :"
 
 #: src/components/MainLayout/index.tsx:43
 #: src/components/MainLayout/Footer.tsx:85
@@ -189,7 +270,11 @@ msgstr "Commencer la lecture"
 
 #: src/app/[lang]/(main)/about/faq.tsx:54
 msgid "Stay connected by signing up for our newsletter. It's the best way to get updates, exclusive insights, and learn about new initiatives as they happen."
-msgstr ""
+msgstr "Restez connecté en vous inscrivant à notre infolettre. C'est le meilleur moyen d'obtenir des mises à jour, des analyses exclusives et d'être informé des nouvelles initiatives au fur et à mesure qu'elles se produisent."
+
+#: src/app/[lang]/(main)/spending/TenureChart.tsx:10
+msgid "Student"
+msgstr "Étudiant"
 
 #: src/components/MainLayout/Footer.tsx:63
 msgid "Subscribe"
@@ -199,29 +284,65 @@ msgstr "S'abonner"
 msgid "Subscribe to our newsletter"
 msgstr "Abonnez-vous à notre infolettre"
 
+#: src/app/[lang]/(main)/spending/TenureChart.tsx:11
+msgid "Term"
+msgstr "Durée déterminée"
+
 #: src/components/MainLayout/Footer.tsx:39
 msgid "Thank you for subscribing!"
 msgstr "Merci de vous être abonné!"
 
+#: src/app/[lang]/(main)/spending/page.tsx:101
+msgid "The average employee is 45 years old"
+msgstr "L'âge moyen des employés est de 45 ans"
+
+#: src/app/[lang]/(main)/spending/page.tsx:120
+msgid "The average employee makes $136,345/yr"
+msgstr "Le salaire moyen des employés est de 136 345 $/an"
+
 #: src/app/[lang]/(main)/about/faq.tsx:46
 msgid "The best way to support us is to engage with our content. Like, share, and comment on our posts on social media. Even better, share our work with a friend and encourage them to do the same. Together, we can expand the conversation and reach more people with these important facts."
-msgstr ""
+msgstr "La meilleure façon de nous soutenir est d'interagir avec notre contenu. Aimez, partagez et commentez nos publications sur les réseaux sociaux. Mieux encore, partagez notre travail avec un ami et encouragez-le à faire de même. Ensemble, nous pouvons élargir la conversation et atteindre plus de gens avec ces faits importants."
+
+#: src/app/[lang]/(main)/spending/page.tsx:74
+msgid "Total government employees"
+msgstr "Nombre total d'employés gouvernementaux"
+
+#: src/app/[lang]/(main)/spending/page.tsx:84
+msgid "Total Wages"
+msgstr "Salaires totaux"
+
+#: src/app/[lang]/(main)/spending/page.tsx:123
+msgid "Treasury Board"
+msgstr "Conseil du Trésor"
+
+#: src/app/[lang]/(main)/spending/page.tsx:90
+msgid "Type of Tenure"
+msgstr "Type d'emploi"
+
+#: src/app/[lang]/(main)/spending/page.tsx:62
+msgid "View this chart in full screen"
+msgstr "Voir ce graphique en plein écran"
 
 #: src/app/[lang]/(main)/about/faq.tsx:42
 msgid "We are a project of Build Canada. While some team members overlap, involvement in Build Canada doesn't imply involvement in Canada Spends and vice versa."
-msgstr ""
+msgstr "Nous sommes un projet de Build Canada. Bien que certains membres de l'équipe se chevauchent, l'implication dans Build Canada n'implique pas l'implication dans Canada Spends et vice versa."
 
 #: src/app/[lang]/(main)/about/faq.tsx:26
 msgid "We believe that Canadians need access to easy to understand information about government spending. We don't pass judgement on public spending decisions. We don't tell you what to think. Our only agenda is to ensure that all Canadians get the facts on spending in a clear and simple format."
-msgstr ""
+msgstr "Nous croyons que les Canadiens ont besoin d'accéder à des informations faciles à comprendre sur les dépenses gouvernementales. Nous ne portons pas de jugement sur les décisions de dépenses publiques. Nous ne vous disons pas quoi penser. Notre seul objectif est de nous assurer que tous les Canadiens obtiennent les faits sur les dépenses dans un format clair et simple."
 
 #: src/app/[lang]/(main)/about/faq.tsx:66
 msgid "We care about Canada winning. We care about Canada being a self-sustaining, independent and resilient country."
-msgstr ""
+msgstr "Nous voulons que le Canada gagne. Nous voulons que le Canada soit un pays autonome, indépendant et résilient."
+
+#: src/app/[lang]/(main)/about/page.tsx:16
+msgid "We don't tell you what to think—we give you the facts. Meet the team making government spending data accessible to all Canadians."
+msgstr "Nous ne vous disons pas quoi penser—nous vous donnons les faits. Rencontrez l'équipe qui rend les données sur les dépenses gouvernementales accessibles à tous les Canadiens."
 
 #: src/app/[lang]/(main)/contact/page.tsx:29
 msgid "We love to hear from the community."
-msgstr ""
+msgstr "Nous aimons avoir des nouvelles de la communauté."
 
 #: src/app/[lang]/(main)/page.tsx:42
 msgid "We share clear insights to level up transparency"
@@ -233,11 +354,11 @@ msgstr "Nous transformons des données gouvernementales complexes en information
 
 #: src/app/[lang]/(main)/about/faq.tsx:59
 msgid "We welcome passionate individuals who want to help make a difference. Whether it's by contributing your skills, helping with outreach, or amplifying our work, we'd love to hear from you. Reach out to us at"
-msgstr ""
+msgstr "Nous accueillons les personnes passionnées qui veulent aider à faire une différence. Que ce soit en contribuant vos compétences, en aidant à la sensibilisation ou en amplifiant notre travail, nous aimerions avoir de vos nouvelles. Contactez-nous à"
 
 #: src/app/[lang]/(main)/about/faq.tsx:22
 msgid "We were frustrated by the lack of clear, accessible, unbiased data on government spending. We wanted to create a platform that focused on giving Canadians data-driven facts about how their money is being spent without spin."
-msgstr ""
+msgstr "Nous étions frustrés par le manque de données claires, accessibles et impartiales sur les dépenses gouvernementales. Nous voulions créer une plateforme qui se concentre sur la présentation aux Canadiens de faits basés sur des données concernant la façon dont leur argent est dépensé, sans parti pris."
 
 #: src/app/[lang]/(main)/page.tsx:127
 msgid "We're strictly non-partisan—we don't judge policies or debate spending decisions. Our only goal is to ensure that every Canadian understands how the federal government spends money."
@@ -245,27 +366,27 @@ msgstr "Nous sommes strictement non partisans—nous ne jugeons pas les politiqu
 
 #: src/app/[lang]/(main)/about/faq.tsx:25
 msgid "What are the core ideas?"
-msgstr ""
+msgstr "Quelles sont les idées principales?"
 
 #: src/app/[lang]/(main)/about/faq.tsx:17
 msgid "What data sources were used?"
-msgstr ""
+msgstr "Quelles sources de données ont été utilisées?"
 
 #: src/app/[lang]/(main)/about/faq.tsx:41
 msgid "What is your affiliation with Build Canada?"
-msgstr ""
+msgstr "Quelle est votre affiliation avec Build Canada?"
 
 #: src/app/[lang]/(main)/about/faq.tsx:13
 msgid "What is your methodology?"
-msgstr ""
+msgstr "Quelle est votre méthodologie?"
 
 #: src/app/[lang]/(main)/about/faq.tsx:29
 msgid "Where do you get the data on your website?"
-msgstr ""
+msgstr "D'où proviennent les données sur votre site web?"
 
 #: src/app/[lang]/(main)/about/faq.tsx:21
 msgid "Why did you start this project?"
-msgstr ""
+msgstr "Pourquoi avez-vous commencé ce projet?"
 
 #: src/app/[lang]/(main)/page.tsx:74
 msgid "You deserve the facts"
