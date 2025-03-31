@@ -3,19 +3,28 @@ import { DepartmentSpendingChart } from "@/components/DepartmentSpendingChart";
 import { ChartContainer, ExternalLink, H1, H2, H3, Intro, P, Page, PageContent, Section } from "@/components/Layout";
 import NoSSR from "@/components/NoSSR";
 import { StatCard, StatCardContainer } from "@/components/StatCard";
-import type { Metadata } from 'next';
+import { initLingui, PageLangParam } from "@/initLingui";
+import { useLingui } from "@lingui/react/macro";
+import { PropsWithChildren } from "react";
 import { FederalSpendingChart } from "./FederalSpendingChart";
 import { MiniSankey } from "./MiniSankey";
 
-export const metadata: Metadata = {
-	title: 'Canada Revenue Agency| Canada Spends',
-	description: 'A look at how the Canada Revenue Agency spends its budget',
+export async function generateMetadata(props: PropsWithChildren<PageLangParam>) {
+	const lang = (await props.params).lang
+	initLingui(lang)
+
+	const { t } = useLingui()
+	return {
+		title: t`Canada Revenue Agency | Canada Spends`,
+		description: t`A look at how the Canada Revenue Agency spends its budget`,
+	}
 }
 
-
-const department = 'Canada Revenue Agency'
-
 export default function Department() {
+
+	const { t } = useLingui()
+
+	const department = 'Canada Revenue Agency'
 	return <Page>
 		<PageContent>
 			<Section>
@@ -48,7 +57,7 @@ export default function Department() {
 
 			<Section>
 				<P>
-					The Canada Revenue Agency spent $16.8 billion in fiscal year (FY) 2024, representing 3.2% of the $513.9 billion in total federal spending. The CRA’s expenditures primarily support tax administration, benefit program delivery, compliance enforcement, and IT modernization.
+					The Canada Revenue Agency spent $16.8 billion in fiscal year (FY) 2024, representing 3.2% of the $513.9 billion in total federal spending. The CRA's expenditures primarily support tax administration, benefit program delivery, compliance enforcement, and IT modernization.
 				</P>
 
 				<H3>
@@ -75,7 +84,7 @@ export default function Department() {
 					Federal spending may shift over time due to economic fluctuations, changes in tax policy, and the expansion of benefit programs. Since 1995, overall federal spending has risen 74.9%, while Canada Revenue Agency spending has increased 302%
 				</P>
 				<P>
-					CRA’s spending grew more than overall spending, meaning its share of the federal budget increased. In 2024, the agency accounted for 3.2% of all federal spending, 0.6 percentage points lower than in 1995.
+					CRA's spending grew more than overall spending, meaning its share of the federal budget increased. In 2024, the agency accounted for 3.2% of all federal spending, 0.6 percentage points lower than in 1995.
 				</P>
 				<P>
 					Major legislative changes, compliance trends, and digital tax services have influenced CRA spending patterns. For example, compliance initiatives and fraud investigations recovered an estimated $11.5 billion in lost revenue in 2024 due to tax evasion.
@@ -115,7 +124,7 @@ export default function Department() {
 					The Canada Revenue Agency is overseen by the <ExternalLink href="https://www.canada.ca/en/government/ministers/marie-claude-bibeau.html">Minister of National Revenue</ExternalLink>, who is responsible for ensuring tax fairness and benefit program integrity but does not have direct authority over tax law interpretations.
 				</P>
 				<P>
-					These Ministers are some of the <ExternalLink href="https://www.pm.gc.ca/en/cabinet">cabinet members</ExternalLink> who serve at the Prime Minister’s discretion. Their tenure typically ends when they resign, are replaced, or when a new Prime Minister takes office and appoints a new cabinet. Outgoing ministers remain in their roles until their successors are sworn in.
+					These Ministers are some of the <ExternalLink href="https://www.pm.gc.ca/en/cabinet">cabinet members</ExternalLink> who serve at the Prime Minister's discretion. Their tenure typically ends when they resign, are replaced, or when a new Prime Minister takes office and appoints a new cabinet. Outgoing ministers remain in their roles until their successors are sworn in.
 				</P>
 			</Section>
 

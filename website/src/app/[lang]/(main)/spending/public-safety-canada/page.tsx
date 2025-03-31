@@ -3,13 +3,21 @@ import { DepartmentSpendingChart } from "@/components/DepartmentSpendingChart";
 import { ChartContainer, ExternalLink, H1, H2, H3, Intro, P, Page, PageContent, Section } from "@/components/Layout";
 import NoSSR from "@/components/NoSSR";
 import { StatCard, StatCardContainer } from "@/components/StatCard";
-import type { Metadata } from 'next';
+import { initLingui, PageLangParam } from "@/initLingui";
+import { useLingui } from "@lingui/react/macro";
+import { PropsWithChildren } from "react";
 import { FederalSpendingByEntity } from "./FederalSpendingByEntity";
 import { MiniSankey } from "./MiniSankey";
 
-export const metadata: Metadata = {
-	title: 'Public Safety Canada| Canada Spends',
-	description: 'A look at how the Public Safety Canada spends its budget',
+export async function generateMetadata(props: PropsWithChildren<PageLangParam>) {
+	const lang = (await props.params).lang
+	initLingui(lang)
+
+	const { t } = useLingui()
+	return {
+		title: t`Public Safety Canada | Canada Spends`,
+		description: t`A look at how Public Safety Canada spends its budget`,
+	}
 }
 
 const department = "Public Safety Canada";

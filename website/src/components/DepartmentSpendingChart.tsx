@@ -1,13 +1,14 @@
 "use client"
 
 import { BarList } from "@/components/BarList"
-import { departments } from "@/components/DepartmentList"
+import { useDepartments } from "@/components/DepartmentList"
 import { useMemo } from "react"
 
 
 export function DepartmentSpendingChart(props: {
   department: string | string[]
 }) {
+  const departments = useDepartments()
   const deps = Array.isArray(props.department) ? props.department : [props.department]
   const data = useMemo(() => {
     return departments.slice(0, 10).map((item) => ({
@@ -17,7 +18,6 @@ export function DepartmentSpendingChart(props: {
       className: deps.includes(item.name) ? "bg-emerald-500" : "",
     }))
   }, [departments, deps])
-
 
 
   return <BarList

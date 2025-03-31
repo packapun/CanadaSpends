@@ -3,13 +3,21 @@ import { DepartmentSpendingChart } from "@/components/DepartmentSpendingChart";
 import { ChartContainer, ExternalLink, H1, H2, Intro, P, Page, PageContent, Section } from "@/components/Layout";
 import NoSSR from "@/components/NoSSR";
 import { StatCard, StatCardContainer } from "@/components/StatCard";
-import type { Metadata } from 'next';
+import { initLingui, PageLangParam } from "@/initLingui";
+import { useLingui } from "@lingui/react/macro";
+import { PropsWithChildren } from "react";
 import { FederalSpendingChart } from "./FederalSpendingChart";
 import { MiniSankey } from "./MiniSankey";
 
-export const metadata: Metadata = {
-	title: 'Health Canada | Canada Spends',
-	description: 'A look at how the Health Canada spends its budget',
+export async function generateMetadata(props: PropsWithChildren<PageLangParam>) {
+	const lang = (await props.params).lang
+	initLingui(lang)
+
+	const { t } = useLingui()
+	return {
+		title: t`Health Canada | Canada Spends`,
+		description: t`A look at how Health Canada spends its budget`,
+	}
 }
 
 const department = "Health Canada";

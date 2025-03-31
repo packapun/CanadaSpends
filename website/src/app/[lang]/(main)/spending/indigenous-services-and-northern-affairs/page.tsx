@@ -3,14 +3,22 @@ import { DepartmentSpendingChart } from "@/components/DepartmentSpendingChart";
 import { ChartContainer, ExternalLink, H1, H2, H3, Intro, P, Page, PageContent, Section } from "@/components/Layout";
 import NoSSR from "@/components/NoSSR";
 import { StatCard, StatCardContainer } from "@/components/StatCard";
-import type { Metadata } from 'next';
+import { initLingui, PageLangParam } from "@/initLingui";
+import { useLingui } from "@lingui/react/macro";
+import { PropsWithChildren } from "react";
 import { FederalSpendingByEntity } from "./FederalSpendingByEntity";
 import { FederalSpendingChart } from "./FederalSpendingChart";
 import { MiniSankey } from "./MiniSankey";
 
-export const metadata: Metadata = {
-	title: 'Indigenous Services Canada + Crown-Indigenous Relations and Northern Affairs Canada| Canada Spends',
-	description: 'A look at how ISC and CIRNAC spends its budget',
+export async function generateMetadata(props: PropsWithChildren<PageLangParam>) {
+	const lang = (await props.params).lang
+	initLingui(lang)
+
+	const { t } = useLingui()
+	return {
+		title: t`Indigenous Services and Northern Affairs Canada | Canada Spends`,
+		description: t`A look at how Indigenous Services and Northern Affairs Canada spends its budget`,
+	}
 }
 
 const department = "Indigenous Services Canada + Crown-Indigenous Relations and Northern Affairs Canada";
@@ -100,10 +108,10 @@ export default function Department() {
 			<Section>
 				<H2>Who leads ISC and CIRNAC?</H2>
 				<P>
-					The leadership of ISC and CIRNAC are led by the <ExternalLink href="https://www.canada.ca/en/government/ministers/patty-hajdu.html">Minister of Indigenous Services Canada</ExternalLink> and the <ExternalLink href="https://www.pm.gc.ca/en/cabinet/honourable-gary-anandasangaree">Minister of Crown-Indigenous Relations and Northern Affairs Canada</ExternalLink>, respectively.  These Ministers are appointed by the Governor General on the advice of the Prime Minister and then formally sworn into office at Rideau Hall. They take the Oath of Office and the Oath of Allegiance and become a member of the King’s Privy Council for Canada.
+					The leadership of ISC and CIRNAC are led by the <ExternalLink href="https://www.canada.ca/en/government/ministers/patty-hajdu.html">Minister of Indigenous Services Canada</ExternalLink> and the <ExternalLink href="https://www.pm.gc.ca/en/cabinet/honourable-gary-anandasangaree">Minister of Crown-Indigenous Relations and Northern Affairs Canada</ExternalLink>, respectively.  These Ministers are appointed by the Governor General on the advice of the Prime Minister and then formally sworn into office at Rideau Hall. They take the Oath of Office and the Oath of Allegiance and become a member of the King's Privy Council for Canada.
 				</P>
 				<P>
-					These Ministers are some of the <ExternalLink href="https://www.pm.gc.ca/en/cabinet">cabinet members</ExternalLink> who serve at the Prime Minister’s discretion. Their tenure typically ends when they resign, are replaced, or when a new Prime Minister takes office and appoints a new cabinet. Outgoing ministers remain in their roles until their successors are sworn in.
+					These Ministers are some of the <ExternalLink href="https://www.pm.gc.ca/en/cabinet">cabinet members</ExternalLink> who serve at the Prime Minister's discretion. Their tenure typically ends when they resign, are replaced, or when a new Prime Minister takes office and appoints a new cabinet. Outgoing ministers remain in their roles until their successors are sworn in.
 				</P>
 			</Section>
 

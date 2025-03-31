@@ -30,6 +30,26 @@ msgstr "80% of employees are in permanent roles"
 msgid "About"
 msgstr "About"
 
+#: src/components/Sankey/index.tsx:150
+msgid "Agriculture"
+msgstr "Agriculture"
+
+#: src/components/Sankey/index.tsx:735
+msgid "Air Travellers Charge"
+msgstr "Air Travellers Charge"
+
+#: src/components/Sankey/index.tsx:512
+msgid "Alberta EQP"
+msgstr "Alberta EQP"
+
+#: src/components/Sankey/index.tsx:398
+msgid "Alberta HTP"
+msgstr "Alberta HTP"
+
+#: src/components/Sankey/index.tsx:455
+msgid "Alberta STP"
+msgstr "Alberta STP"
+
 #: src/app/[lang]/(main)/about/faq.tsx:18
 msgid "All data presented regarding government spending is sourced directly from official government databases. Unless otherwise noted, we have used <0>Public Accounts of Canada</0> data as the primary data source. While we strive to provide accurate, up-to-date information, we cannot guarantee the data's completeness, reliability, or timeliness. We assume no responsibility for any errors, omissions, or outcomes resulting from the use of this information. Please consult the original government sources for official and verified data."
 msgstr "All data presented regarding government spending is sourced directly from official government databases. Unless otherwise noted, we have used <0>Public Accounts of Canada</0> data as the primary data source. While we strive to provide accurate, up-to-date information, we cannot guarantee the data's completeness, reliability, or timeliness. We assume no responsibility for any errors, omissions, or outcomes resulting from the use of this information. Please consult the original government sources for official and verified data."
@@ -58,9 +78,29 @@ msgstr "Are you DOGE?"
 msgid "At this time, the best way to support us is through engagement and amplification of our content. If we open up to donations in the future, we'll let you know how you can contribute directly to our efforts."
 msgstr "At this time, the best way to support us is through engagement and amplification of our content. If we open up to donations in the future, we'll let you know how you can contribute directly to our efforts."
 
+#: src/components/Sankey/index.tsx:158
+msgid "Banking + Finance"
+msgstr "Banking + Finance"
+
 #: src/app/[lang]/(main)/page.tsx:113
 msgid "Based on Data"
 msgstr "Based on Data"
+
+#: src/components/Sankey/index.tsx:288
+msgid "Border Security"
+msgstr "Border Security"
+
+#: src/components/Sankey/index.tsx:516
+msgid "British Columbia EQP"
+msgstr "British Columbia EQP"
+
+#: src/components/Sankey/index.tsx:402
+msgid "British Columbia HTP"
+msgstr "British Columbia HTP"
+
+#: src/components/Sankey/index.tsx:459
+msgid "British Columbia STP"
+msgstr "British Columbia STP"
 
 #: src/app/[lang]/(main)/about/faq.tsx:49
 msgid "Can I donate?"
@@ -69,6 +109,14 @@ msgstr "Can I donate?"
 #: src/app/[lang]/(main)/about/faq.tsx:57
 msgid "Can I get involved?"
 msgstr "Can I get involved?"
+
+#: src/components/Sankey/index.tsx:239
+msgid "Canada Emergency Wage Subsidy"
+msgstr "Canada Emergency Wage Subsidy"
+
+#: src/components/DepartmentList.tsx:51
+msgid "Canada Revenue Agency"
+msgstr "Canada Revenue Agency"
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/(main)/page.tsx:86
@@ -87,9 +135,53 @@ msgstr "Canada Spends primarily relies on Public Accounts data from the Office o
 msgid "Canada, you need the facts."
 msgstr "Canada, you need the facts."
 
+#: src/components/Sankey/index.tsx:72
+msgid "Carbon Tax Rebate"
+msgstr "Carbon Tax Rebate"
+
+#: src/components/Sankey/index.tsx:765
+msgid "Carbon Taxes"
+msgstr "Carbon Taxes"
+
 #: src/app/[lang]/(main)/spending/TenureChart.tsx:8
 msgid "Casual"
 msgstr "Casual"
+
+#: src/components/Sankey/index.tsx:648
+msgid "Childhood Claims Settlement"
+msgstr "Childhood Claims Settlement"
+
+#: src/components/Sankey/index.tsx:231
+msgid "Children's Benefits"
+msgstr "Children's Benefits"
+
+#: src/components/Sankey/index.tsx:308
+msgid "Citizenship + Passports"
+msgstr "Citizenship + Passports"
+
+#: src/components/Sankey/index.tsx:637
+msgid "Claims Settlements"
+msgstr "Claims Settlements"
+
+#: src/components/Sankey/index.tsx:136
+msgid "Coastguard Operations"
+msgstr "Coastguard Operations"
+
+#: src/components/Sankey/index.tsx:580
+msgid "Communications Security Establishment"
+msgstr "Communications Security Establishment"
+
+#: src/components/Sankey/index.tsx:104
+msgid "Community and Regional Development"
+msgstr "Community and Regional Development"
+
+#: src/components/Sankey/index.tsx:600
+msgid "Community Infrastructure Grants"
+msgstr "Community Infrastructure Grants"
+
+#: src/components/Sankey/index.tsx:267
+msgid "Community Safety"
+msgstr "Community Safety"
 
 #: src/app/[lang]/(main)/spending/page.tsx:119
 msgid "Compensation per Employee"
@@ -109,9 +201,93 @@ msgstr "Contact"
 msgid "Contributors / Supporters"
 msgstr "Contributors / Supporters"
 
+#: src/components/Sankey/index.tsx:747
+msgid "Corporate Income Taxes"
+msgstr "Corporate Income Taxes"
+
+#: src/components/Sankey/index.tsx:255
+msgid "Corrections"
+msgstr "Corrections"
+
+#: src/components/Sankey/index.tsx:235
+msgid "COVID-19 Income Support"
+msgstr "COVID-19 Income Support"
+
+#: src/components/Sankey/index.tsx:772
+msgid "Crown Corporations and other government business enterprises"
+msgstr "Crown Corporations and other government business enterprises"
+
+#: src/components/Sankey/index.tsx:634
+msgid "Crown-Indigenous Relations"
+msgstr "Crown-Indigenous Relations"
+
+#: src/components/Sankey/index.tsx:251
+msgid "CSIS"
+msgstr "CSIS"
+
+#: src/components/Sankey/index.tsx:724
+msgid "Customs Duties"
+msgstr "Customs Duties"
+
+#: src/components/Sankey/index.tsx:553
+msgid "Defence"
+msgstr "Defence"
+
+#: src/components/Sankey/index.tsx:576
+msgid "Defence Operations + Internal Services"
+msgstr "Defence Operations + Internal Services"
+
+#: src/components/Sankey/index.tsx:560
+msgid "Defence Procurement"
+msgstr "Defence Procurement"
+
+#: src/components/Sankey/index.tsx:568
+msgid "Defence Team"
+msgstr "Defence Team"
+
+#: src/components/DepartmentList.tsx:21
+msgid "Department of Finance"
+msgstr "Department of Finance"
+
 #: src/app/[lang]/(main)/spending/page.tsx:78
 msgid "Departments + Agencies"
 msgstr "Departments + Agencies"
+
+#: src/components/Sankey/index.tsx:669
+msgid "Development, Peace + Security Programming"
+msgstr "Development, Peace + Security Programming"
+
+#: src/components/Sankey/index.tsx:263
+msgid "Disaster Relief"
+msgstr "Disaster Relief"
+
+#: src/components/Sankey/index.tsx:111
+msgid "Economic Development in Atlantic Canada"
+msgstr "Economic Development in Atlantic Canada"
+
+#: src/components/Sankey/index.tsx:123
+msgid "Economic Development in Northern Ontario"
+msgstr "Economic Development in Northern Ontario"
+
+#: src/components/Sankey/index.tsx:127
+msgid "Economic Development in Quebec"
+msgstr "Economic Development in Quebec"
+
+#: src/components/Sankey/index.tsx:107
+msgid "Economic Development in Southern Ontario"
+msgstr "Economic Development in Southern Ontario"
+
+#: src/components/Sankey/index.tsx:115
+msgid "Economic Development in the Pacific Region"
+msgstr "Economic Development in the Pacific Region"
+
+#: src/components/Sankey/index.tsx:80
+msgid "Economy + Infrastructure"
+msgstr "Economy + Infrastructure"
+
+#: src/components/Sankey/index.tsx:18
+msgid "Economy and Standard of Living"
+msgstr "Economy and Standard of Living"
 
 #: src/components/MainLayout/Footer.tsx:47
 msgid "Email address"
@@ -121,13 +297,61 @@ msgstr "Email address"
 msgid "Email us at <0>hi@canadaspends.com</0> or connect with us on X <1>@canada_spends</1> and we'll get back to you as soon as we can."
 msgstr "Email us at <0>hi@canadaspends.com</0> or connect with us on X <1>@canada_spends</1> and we'll get back to you as soon as we can."
 
+#: src/components/Sankey/index.tsx:616
+msgid "Emergency Management Activities On-Reserve"
+msgstr "Emergency Management Activities On-Reserve"
+
+#: src/components/Sankey/index.tsx:52
+msgid "Employment + Training"
+msgstr "Employment + Training"
+
+#: src/components/DepartmentList.tsx:27
+msgid "Employment and Social Development Canada"
+msgstr "Employment and Social Development Canada"
+
+#: src/components/Sankey/index.tsx:227
+msgid "Employment Insurance"
+msgstr "Employment Insurance"
+
+#: src/components/Sankey/index.tsx:759
+msgid "Employment Insurance Premiums"
+msgstr "Employment Insurance Premiums"
+
+#: src/components/Sankey/index.tsx:707
+msgid "Energy Taxes"
+msgstr "Energy Taxes"
+
 #: src/components/MainLayout/Footer.tsx:53
 msgid "Enter your email"
 msgstr "Enter your email"
 
+#: src/components/Sankey/index.tsx:162
+msgid "Environment and Climate Change"
+msgstr "Environment and Climate Change"
+
+#: src/components/Sankey/index.tsx:477
+msgid "Equalization Payments to Provinces"
+msgstr "Equalization Payments to Provinces"
+
 #: src/app/[lang]/(main)/about/page.tsx:32
 msgid "Every year, hundreds of billions of dollars move through the Government of Canada's budget. This data is technically available but the information is difficult to understand and spread across PDFs and databases that most Canadians don't know about."
 msgstr "Every year, hundreds of billions of dollars move through the Government of Canada's budget. This data is technically available but the information is difficult to understand and spread across PDFs and databases that most Canadians don't know about."
+
+#: src/components/Sankey/index.tsx:731
+msgid "Excise Duties"
+msgstr "Excise Duties"
+
+#: src/components/Sankey/index.tsx:714
+msgid "Excise Tax - Diesel Fuel"
+msgstr "Excise Tax - Diesel Fuel"
+
+#: src/components/Sankey/index.tsx:718
+msgid "Excise Tax — Aviation Gasoline and Jet Fuel"
+msgstr "Excise Tax — Aviation Gasoline and Jet Fuel"
+
+#: src/components/Sankey/index.tsx:710
+msgid "Excise Tax — Gasoline"
+msgstr "Excise Tax — Gasoline"
 
 #: src/app/[lang]/(main)/page.tsx:52
 msgid "Explore data"
@@ -145,13 +369,49 @@ msgstr "Facts about Spending"
 msgid "Federal organizations"
 msgstr "Federal organizations"
 
+#: src/components/Sankey/index.tsx:612
+msgid "First Nations and Inuit Health Infrastructure Support"
+msgstr "First Nations and Inuit Health Infrastructure Support"
+
+#: src/components/Sankey/index.tsx:624
+msgid "First Nations and Inuit Primary Health Care"
+msgstr "First Nations and Inuit Primary Health Care"
+
+#: src/components/Sankey/index.tsx:604
+msgid "First Nations Elementary and Secondary Educational Advancement"
+msgstr "First Nations Elementary and Secondary Educational Advancement"
+
+#: src/components/Sankey/index.tsx:133
+msgid "Fisheries"
+msgstr "Fisheries"
+
+#: src/components/Sankey/index.tsx:140
+msgid "Fisheries + Aquatic Ecosystems"
+msgstr "Fisheries + Aquatic Ecosystems"
+
+#: src/components/Sankey/index.tsx:35
+msgid "Food Safety"
+msgstr "Food Safety"
+
 #: src/app/[lang]/(main)/about/page.tsx:52
 msgid "Frequently Asked Questions"
 msgstr "Frequently Asked Questions"
 
+#: src/components/Sankey/index.tsx:332
+msgid "Functioning of Government"
+msgstr "Functioning of Government"
+
+#: src/components/Sankey/index.tsx:572
+msgid "Future Force Design"
+msgstr "Future Force Design"
+
 #: src/app/[lang]/(main)/spending/page.tsx:46
 msgid "FY 2024 Government Revenue and Spending"
 msgstr "FY 2024 Government Revenue and Spending"
+
+#: src/components/Sankey/index.tsx:60
+msgid "Gender Equality"
+msgstr "Gender Equality"
 
 #: src/app/[lang]/(main)/spending/page.tsx:42
 msgid "Get data-driven insights into how governmental revenue and spending affect Canadian lives and programs."
@@ -166,9 +426,25 @@ msgstr "Get The Facts About Government Spending"
 msgid "Get the facts weekly, right in your inbox."
 msgstr "Get the facts weekly, right in your inbox."
 
+#: src/components/DepartmentList.tsx:45
+msgid "Global Affairs Canada"
+msgstr "Global Affairs Canada"
+
+#: src/components/Sankey/index.tsx:703
+msgid "Goods and Services Tax"
+msgstr "Goods and Services Tax"
+
+#: src/components/Sankey/index.tsx:644
+msgid "Gottfriedson Band Class Settlement"
+msgstr "Gottfriedson Band Class Settlement"
+
 #: src/app/[lang]/(main)/spending/page.tsx:132
 msgid "Government Departments explained"
 msgstr "Government Departments explained"
+
+#: src/components/Sankey/index.tsx:326
+msgid "Government IT Operations"
+msgstr "Government IT Operations"
 
 #: src/app/[lang]/(main)/spending/page.tsx:40
 msgid "Government Spending"
@@ -187,6 +463,10 @@ msgstr "Government spending shouldn't be a black box. We turn complex data into 
 msgid "Government Workforce"
 msgstr "Government Workforce"
 
+#: src/components/Sankey/index.tsx:596
+msgid "Grants to Support the New Fiscal Relationship with First Nations"
+msgstr "Grants to Support the New Fiscal Relationship with First Nations"
+
 #: src/app/[lang]/(main)/contact/page.tsx:14
 msgid "Have questions or feedback? Email us at hi@canadaspends.com or connect with us on X @canada_spends - we'd love to hear from you!"
 msgstr "Have questions or feedback? Email us at hi@canadaspends.com or connect with us on X @canada_spends - we'd love to hear from you!"
@@ -194,6 +474,34 @@ msgstr "Have questions or feedback? Email us at hi@canadaspends.com or connect w
 #: src/app/[lang]/(main)/spending/page.tsx:72
 msgid "Headcount"
 msgstr "Headcount"
+
+#: src/components/Sankey/index.tsx:24
+msgid "Health"
+msgstr "Health"
+
+#: src/components/DepartmentList.tsx:69
+msgid "Health Canada"
+msgstr "Health Canada"
+
+#: src/components/Sankey/index.tsx:31
+msgid "Health Care Systems + Protection"
+msgstr "Health Care Systems + Protection"
+
+#: src/components/Sankey/index.tsx:27
+msgid "Health Research"
+msgstr "Health Research"
+
+#: src/components/Sankey/index.tsx:363
+msgid "Health Transfer to Provinces"
+msgstr "Health Transfer to Provinces"
+
+#: src/components/Sankey/index.tsx:56
+msgid "Housing Assistance"
+msgstr "Housing Assistance"
+
+#: src/components/DepartmentList.tsx:57
+msgid "Housing, Infrastructure and Communities Canada"
+msgstr "Housing, Infrastructure and Communities Canada"
 
 #: src/app/[lang]/(main)/about/faq.tsx:45
 msgid "How can I show my support?"
@@ -203,9 +511,69 @@ msgstr "How can I show my support?"
 msgid "How can I stay up to date on your work?"
 msgstr "How can I stay up to date on your work?"
 
+#: src/components/Sankey/index.tsx:285
+msgid "Immigration + Border Security"
+msgstr "Immigration + Border Security"
+
+#: src/components/DepartmentList.tsx:87
+msgid "Immigration, Refugees and Citizenship"
+msgstr "Immigration, Refugees and Citizenship"
+
 #: src/app/[lang]/(main)/spending/TenureChart.tsx:9
 msgid "Indeterminate"
 msgstr "Indeterminate"
+
+#: src/components/Sankey/index.tsx:590
+msgid "Indigenous Priorities"
+msgstr "Indigenous Priorities"
+
+#: src/components/DepartmentList.tsx:33
+msgid "Indigenous Services Canada + Crown-Indigenous Relations and Northern Affairs Canada"
+msgstr "Indigenous Services Canada + Crown-Indigenous Relations and Northern Affairs Canada"
+
+#: src/components/Sankey/index.tsx:593
+msgid "Indigenous Well-Being + Self Determination"
+msgstr "Indigenous Well-Being + Self Determination"
+
+#: src/components/Sankey/index.tsx:743
+msgid "Individual Income Taxes"
+msgstr "Individual Income Taxes"
+
+#: src/components/Sankey/index.tsx:208
+msgid "Infrastructure Investments"
+msgstr "Infrastructure Investments"
+
+#: src/components/Sankey/index.tsx:83
+msgid "Innovation + Research"
+msgstr "Innovation + Research"
+
+#: src/components/DepartmentList.tsx:75
+msgid "Innovation, Science and Industry"
+msgstr "Innovation, Science and Industry"
+
+#: src/components/Sankey/index.tsx:186
+msgid "Innovative and Sustainable Natural Resources Development"
+msgstr "Innovative and Sustainable Natural Resources Development"
+
+#: src/components/Sankey/index.tsx:300
+msgid "Interim Housing Assistance"
+msgstr "Interim Housing Assistance"
+
+#: src/components/Sankey/index.tsx:666
+msgid "International Affairs"
+msgstr "International Affairs"
+
+#: src/components/Sankey/index.tsx:677
+msgid "International Development Research Centre"
+msgstr "International Development Research Centre"
+
+#: src/components/Sankey/index.tsx:673
+msgid "International Diplomacy"
+msgstr "International Diplomacy"
+
+#: src/components/Sankey/index.tsx:86
+msgid "Investment, Growth and Commercialization"
+msgstr "Investment, Growth and Commercialization"
 
 #: src/app/[lang]/(main)/about/faq.tsx:33
 msgid "Is this a lobby group?"
@@ -219,9 +587,89 @@ msgstr "Is this a permanent organization?"
 msgid "It doesn't have to be this way."
 msgstr "It doesn't have to be this way."
 
+#: src/components/Sankey/index.tsx:279
+msgid "Justice System"
+msgstr "Justice System"
+
 #: src/app/[lang]/(main)/about/page.tsx:15
 msgid "Making Government Spending Clear | About Us | Canada Spends"
 msgstr "Making Government Spending Clear | About Us | Canada Spends"
+
+#: src/components/Sankey/index.tsx:504
+msgid "Manitoba EQP"
+msgstr "Manitoba EQP"
+
+#: src/components/Sankey/index.tsx:390
+msgid "Manitoba HTP"
+msgstr "Manitoba HTP"
+
+#: src/components/Sankey/index.tsx:447
+msgid "Manitoba STP"
+msgstr "Manitoba STP"
+
+#: src/components/Sankey/index.tsx:788
+msgid "Miscellaneous revenues"
+msgstr "Miscellaneous revenues"
+
+#: src/components/DepartmentList.tsx:121
+msgid "More coming soon..."
+msgstr "More coming soon..."
+
+#: src/components/DepartmentList.tsx:39
+msgid "National Defence"
+msgstr "National Defence"
+
+#: src/components/Sankey/index.tsx:177
+msgid "National Parks"
+msgstr "National Parks"
+
+#: src/components/Sankey/index.tsx:183
+msgid "Natural Resources Management"
+msgstr "Natural Resources Management"
+
+#: src/components/Sankey/index.tsx:198
+msgid "Natural Resources Science + Risk Mitigation"
+msgstr "Natural Resources Science + Risk Mitigation"
+
+#: src/components/Sankey/index.tsx:173
+msgid "Nature Conservation"
+msgstr "Nature Conservation"
+
+#: src/components/Sankey/index.tsx:353
+msgid "Net actuarial losses"
+msgstr "Net actuarial losses"
+
+#: src/components/Sankey/index.tsx:776
+msgid "Net Foreign Exchange Revenue"
+msgstr "Net Foreign Exchange Revenue"
+
+#: src/components/Sankey/index.tsx:547
+msgid "Net Interest on Debt"
+msgstr "Net Interest on Debt"
+
+#: src/components/Sankey/index.tsx:492
+msgid "New Brunswick EQP"
+msgstr "New Brunswick EQP"
+
+#: src/components/Sankey/index.tsx:378
+msgid "New Brunswick HTP"
+msgstr "New Brunswick HTP"
+
+#: src/components/Sankey/index.tsx:435
+msgid "New Brunswick STP"
+msgstr "New Brunswick STP"
+
+#: src/components/Sankey/index.tsx:480
+msgid "Newfoundland and Labrador EQP"
+msgstr "Newfoundland and Labrador EQP"
+
+#: src/components/Sankey/index.tsx:366
+msgid "Newfoundland and Labrador HTP"
+msgstr "Newfoundland and Labrador HTP"
+
+#: src/components/Sankey/index.tsx:423
+msgid "Newfoundland and Labrador STP"
+msgstr "Newfoundland and Labrador STP"
 
 #: src/app/[lang]/(main)/about/faq.tsx:34
 msgid "No, we are not a lobby group. We are not paid, nor do we represent any special interest groups. Our mission is purely to share data-driven insights on federal government spending."
@@ -239,17 +687,289 @@ msgstr "No, we're not copying the DOGE playbook from the US."
 msgid "Non-Partisan"
 msgstr "Non-Partisan"
 
+#: src/components/Sankey/index.tsx:751
+msgid "Non-resident Income Taxes"
+msgstr "Non-resident Income Taxes"
+
+#: src/components/Sankey/index.tsx:524
+msgid "Northwest Territories EQP"
+msgstr "Northwest Territories EQP"
+
+#: src/components/Sankey/index.tsx:410
+msgid "Northwest Territories HTP"
+msgstr "Northwest Territories HTP"
+
+#: src/components/Sankey/index.tsx:467
+msgid "Northwest Territories STP"
+msgstr "Northwest Territories STP"
+
+#: src/components/Sankey/index.tsx:488
+msgid "Nova Scotia EQP"
+msgstr "Nova Scotia EQP"
+
+#: src/components/Sankey/index.tsx:374
+msgid "Nova Scotia HTP"
+msgstr "Nova Scotia HTP"
+
+#: src/components/Sankey/index.tsx:431
+msgid "Nova Scotia STP"
+msgstr "Nova Scotia STP"
+
+#: src/components/Sankey/index.tsx:194
+msgid "Nuclear Labs + Decommissioning"
+msgstr "Nuclear Labs + Decommissioning"
+
+#: src/components/Sankey/index.tsx:528
+msgid "Nunavut EQP"
+msgstr "Nunavut EQP"
+
+#: src/components/Sankey/index.tsx:414
+msgid "Nunavut HTP"
+msgstr "Nunavut HTP"
+
+#: src/components/Sankey/index.tsx:471
+msgid "Nunavut STP"
+msgstr "Nunavut STP"
+
+#: src/components/Sankey/index.tsx:544
+msgid "Obligations"
+msgstr "Obligations"
+
+#: src/components/Sankey/index.tsx:271
+msgid "Office of the Chief Electoral Officer"
+msgstr "Office of the Chief Electoral Officer"
+
+#: src/components/Sankey/index.tsx:347
+msgid "Office of the Secretary to the Governor General"
+msgstr "Office of the Secretary to the Governor General"
+
+#: src/components/Sankey/index.tsx:64
+msgid "Official Languages + Culture"
+msgstr "Official Languages + Culture"
+
+#: src/components/Sankey/index.tsx:608
+msgid "On-reserve Income Support in Yukon Territory"
+msgstr "On-reserve Income Support in Yukon Territory"
+
+#: src/components/Sankey/index.tsx:500
+msgid "Ontario EQP"
+msgstr "Ontario EQP"
+
+#: src/components/Sankey/index.tsx:386
+msgid "Ontario HTP"
+msgstr "Ontario HTP"
+
+#: src/components/Sankey/index.tsx:443
+msgid "Ontario STP"
+msgstr "Ontario STP"
+
+#: src/components/Sankey/index.tsx:316
+msgid "Other"
+msgstr "Other"
+
+#: src/components/Sankey/index.tsx:98
+msgid "Other Boards + Councils"
+msgstr "Other Boards + Councils"
+
+#: src/components/Sankey/index.tsx:584
+msgid "Other Defence"
+msgstr "Other Defence"
+
+#: src/components/Sankey/index.tsx:165
+msgid "Other Environment and Climate Change Programs"
+msgstr "Other Environment and Climate Change Programs"
+
+#: src/components/Sankey/index.tsx:728
+msgid "Other Excise Taxes and Duties"
+msgstr "Other Excise Taxes and Duties"
+
+#: src/components/Sankey/index.tsx:144
+msgid "Other Fisheries Expenses"
+msgstr "Other Fisheries Expenses"
+
+#: src/components/Sankey/index.tsx:658
+msgid "Other Grants and Contributions to Support Crown-Indigenous Relations"
+msgstr "Other Grants and Contributions to Support Crown-Indigenous Relations"
+
+#: src/components/Sankey/index.tsx:292
+msgid "Other Immigration Services"
+msgstr "Other Immigration Services"
+
+#: src/components/Sankey/index.tsx:685
+msgid "Other International Affairs Activities"
+msgstr "Other International Affairs Activities"
+
+#: src/components/Sankey/index.tsx:538
+msgid "Other Major Transfers"
+msgstr "Other Major Transfers"
+
+#: src/components/Sankey/index.tsx:202
+msgid "Other Natural Resources Management Support"
+msgstr "Other Natural Resources Management Support"
+
+#: src/components/Sankey/index.tsx:769
+msgid "Other Non-tax Revenue"
+msgstr "Other Non-tax Revenue"
+
+#: src/components/Sankey/index.tsx:275
+msgid "Other Public Safety Expenses"
+msgstr "Other Public Safety Expenses"
+
+#: src/components/Sankey/index.tsx:322
+msgid "Other Public Services + Procurement"
+msgstr "Other Public Services + Procurement"
+
+#: src/components/Sankey/index.tsx:652
+msgid "Other Settlement Agreements"
+msgstr "Other Settlement Agreements"
+
+#: src/components/Sankey/index.tsx:628
+msgid "Other Support for Indigenous Well-Being"
+msgstr "Other Support for Indigenous Well-Being"
+
+#: src/components/Sankey/index.tsx:700
+msgid "Other Taxes and Duties"
+msgstr "Other Taxes and Duties"
+
 #: src/app/[lang]/(main)/about/faq.tsx:67
 msgid "Our government is going to have to make hard choices about our nation's spending to ensure we can invest in creating a competitive, resilient, and independent nation. We care about giving Canadians the facts about spending so they can engage in this conversation with elected officials."
 msgstr "Our government is going to have to make hard choices about our nation's spending to ensure we can invest in creating a competitive, resilient, and independent nation. We care about giving Canadians the facts about spending so they can engage in this conversation with elected officials."
+
+#: src/components/Sankey/index.tsx:640
+msgid "Out of Court Settlement"
+msgstr "Out of Court Settlement"
+
+#: src/components/Sankey/index.tsx:335
+msgid "Parliament"
+msgstr "Parliament"
+
+#: src/components/Sankey/index.tsx:756
+msgid "Payroll Taxes"
+msgstr "Payroll Taxes"
 
 #: src/app/[lang]/(main)/spending/page.tsx:123
 msgid "PBO"
 msgstr "PBO"
 
+#: src/components/Sankey/index.tsx:620
+msgid "Prevention and Protection Services for Children, Youth, Families and Communities"
+msgstr "Prevention and Protection Services for Children, Youth, Families and Communities"
+
+#: src/components/Sankey/index.tsx:484
+msgid "Prince Edward Island EQP"
+msgstr "Prince Edward Island EQP"
+
+#: src/components/Sankey/index.tsx:370
+msgid "Prince Edward Island HTP"
+msgstr "Prince Edward Island HTP"
+
+#: src/components/Sankey/index.tsx:427
+msgid "Prince Edward Island STP"
+msgstr "Prince Edward Island STP"
+
+#: src/components/Sankey/index.tsx:339
+msgid "Privy Council Office"
+msgstr "Privy Council Office"
+
+#: src/components/Sankey/index.tsx:39
+msgid "Public Health + Disease Prevention"
+msgstr "Public Health + Disease Prevention"
+
+#: src/components/Sankey/index.tsx:248
+msgid "Public Safety"
+msgstr "Public Safety"
+
+#: src/components/DepartmentList.tsx:63
+msgid "Public Safety Canada"
+msgstr "Public Safety Canada"
+
+#: src/components/DepartmentList.tsx:81
+msgid "Public Services and Procurement Canada"
+msgstr "Public Services and Procurement Canada"
+
+#: src/components/Sankey/index.tsx:319
+msgid "Public Works + Government Services"
+msgstr "Public Works + Government Services"
+
+#: src/components/Sankey/index.tsx:496
+msgid "Quebec EQP"
+msgstr "Quebec EQP"
+
+#: src/components/Sankey/index.tsx:382
+msgid "Quebec HTP"
+msgstr "Quebec HTP"
+
+#: src/components/Sankey/index.tsx:439
+msgid "Quebec STP"
+msgstr "Quebec STP"
+
+#: src/components/Sankey/index.tsx:534
+msgid "Quebec Tax Offset"
+msgstr "Quebec Tax Offset"
+
+#: src/components/Sankey/index.tsx:259
+msgid "RCMP"
+msgstr "RCMP"
+
+#: src/components/Sankey/index.tsx:556
+msgid "Ready Forces"
+msgstr "Ready Forces"
+
 #: src/components/MainLayout/Footer.tsx:105
 msgid "Report an Issue"
 msgstr "Report an Issue"
+
+#: src/components/Sankey/index.tsx:90
+msgid "Research"
+msgstr "Research"
+
+#: src/components/Sankey/index.tsx:223
+msgid "Retirement Benefits"
+msgstr "Retirement Benefits"
+
+#: src/components/Sankey/index.tsx:780
+msgid "Return on Investments"
+msgstr "Return on Investments"
+
+#: src/components/Sankey/index.tsx:697
+msgid "Revenue"
+msgstr "Revenue"
+
+#: src/components/Sankey/index.tsx:48
+msgid "Revenue Canada"
+msgstr "Revenue Canada"
+
+#: src/components/Sankey/index.tsx:245
+msgid "Safety"
+msgstr "Safety"
+
+#: src/components/Sankey/index.tsx:784
+msgid "Sales of Government Goods + Services"
+msgstr "Sales of Government Goods + Services"
+
+#: src/components/Sankey/index.tsx:508
+msgid "Saskatchewan EQP"
+msgstr "Saskatchewan EQP"
+
+#: src/components/Sankey/index.tsx:394
+msgid "Saskatchewan HTP"
+msgstr "Saskatchewan HTP"
+
+#: src/components/Sankey/index.tsx:451
+msgid "Saskatchewan STP"
+msgstr "Saskatchewan STP"
+
+#: src/components/Sankey/index.tsx:296
+msgid "Settlement Assistance"
+msgstr "Settlement Assistance"
+
+#: src/components/Sankey/index.tsx:220
+msgid "Social Security"
+msgstr "Social Security"
+
+#: src/components/Sankey/index.tsx:420
+msgid "Social Transfer to Provinces"
+msgstr "Social Transfer to Provinces"
 
 #: src/app/[lang]/(main)/spending/page.tsx:128
 msgid "Sources"
@@ -259,14 +979,31 @@ msgstr "Sources"
 msgid "Sources:"
 msgstr "Sources:"
 
+#: src/components/Sankey/index.tsx:154
+msgid "Space"
+msgstr "Space"
+
+#: src/components/Sankey/index.tsx:15
 #: src/components/MainLayout/index.tsx:43
 #: src/components/MainLayout/Footer.tsx:85
 msgid "Spending"
 msgstr "Spending"
 
+#: src/components/Sankey/index.tsx:45
+msgid "Standard of Living"
+msgstr "Standard of Living"
+
+#: src/components/Sankey/index.tsx:21
+msgid "Standard of Living and Assistance to Address Inequalities"
+msgstr "Standard of Living and Assistance to Address Inequalities"
+
 #: src/app/[lang]/(main)/page.tsx:62
 msgid "Start reading"
 msgstr "Start reading"
+
+#: src/components/Sankey/index.tsx:94
+msgid "Statistics Canada"
+msgstr "Statistics Canada"
 
 #: src/app/[lang]/(main)/about/faq.tsx:54
 msgid "Stay connected by signing up for our newsletter. It's the best way to get updates, exclusive insights, and learn about new initiatives as they happen."
@@ -283,6 +1020,22 @@ msgstr "Subscribe"
 #: src/components/MainLayout/Footer.tsx:35
 msgid "Subscribe to our newsletter"
 msgstr "Subscribe to our newsletter"
+
+#: src/components/Sankey/index.tsx:681
+msgid "Support for Embassies + Canada's Presence Abroad"
+msgstr "Support for Embassies + Canada's Presence Abroad"
+
+#: src/components/Sankey/index.tsx:190
+msgid "Support for Global Competition"
+msgstr "Support for Global Competition"
+
+#: src/components/Sankey/index.tsx:68
+msgid "Support for Veterans"
+msgstr "Support for Veterans"
+
+#: src/components/Sankey/index.tsx:564
+msgid "Sustainable Bases, IT Systems, Infrastructure"
+msgstr "Sustainable Bases, IT Systems, Infrastructure"
 
 #: src/app/[lang]/(main)/spending/TenureChart.tsx:11
 msgid "Term"
@@ -312,6 +1065,23 @@ msgstr "Total government employees"
 msgid "Total Wages"
 msgstr "Total Wages"
 
+#: src/components/Sankey/index.tsx:689
+msgid "Trade and Investment"
+msgstr "Trade and Investment"
+
+#: src/components/Sankey/index.tsx:359
+msgid "Transfers to Provinces"
+msgstr "Transfers to Provinces"
+
+#: src/components/DepartmentList.tsx:99
+msgid "Transport Canada"
+msgstr "Transport Canada"
+
+#: src/components/Sankey/index.tsx:212
+msgid "Transportation"
+msgstr "Transportation"
+
+#: src/components/Sankey/index.tsx:343
 #: src/app/[lang]/(main)/spending/page.tsx:123
 msgid "Treasury Board"
 msgstr "Treasury Board"
@@ -320,9 +1090,17 @@ msgstr "Treasury Board"
 msgid "Type of Tenure"
 msgstr "Type of Tenure"
 
+#: src/components/DepartmentList.tsx:93
+msgid "Veterans Affairs"
+msgstr "Veterans Affairs"
+
 #: src/app/[lang]/(main)/spending/page.tsx:62
 msgid "View this chart in full screen"
 msgstr "View this chart in full screen"
+
+#: src/components/Sankey/index.tsx:304
+msgid "Visitors, International Students + Temporary Workers"
+msgstr "Visitors, International Students + Temporary Workers"
 
 #: src/app/[lang]/(main)/about/faq.tsx:42
 msgid "We are a project of Build Canada. While some team members overlap, involvement in Build Canada doesn't imply involvement in Canada Spends and vice versa."
@@ -364,6 +1142,14 @@ msgstr "We were frustrated by the lack of clear, accessible, unbiased data on go
 msgid "We're strictly non-partisan—we don't judge policies or debate spending decisions. Our only goal is to ensure that every Canadian understands how the federal government spends money."
 msgstr "We're strictly non-partisan—we don't judge policies or debate spending decisions. Our only goal is to ensure that every Canadian understands how the federal government spends money."
 
+#: src/components/Sankey/index.tsx:169
+msgid "Weather Services"
+msgstr "Weather Services"
+
+#: src/components/Sankey/index.tsx:119
+msgid "Western + Northern Economic Development"
+msgstr "Western + Northern Economic Development"
+
 #: src/app/[lang]/(main)/about/faq.tsx:25
 msgid "What are the core ideas?"
 msgstr "What are the core ideas?"
@@ -391,3 +1177,15 @@ msgstr "Why did you start this project?"
 #: src/app/[lang]/(main)/page.tsx:74
 msgid "You deserve the facts"
 msgstr "You deserve the facts"
+
+#: src/components/Sankey/index.tsx:520
+msgid "Yukon EQP"
+msgstr "Yukon EQP"
+
+#: src/components/Sankey/index.tsx:406
+msgid "Yukon HTP"
+msgstr "Yukon HTP"
+
+#: src/components/Sankey/index.tsx:463
+msgid "Yukon STP"
+msgstr "Yukon STP"

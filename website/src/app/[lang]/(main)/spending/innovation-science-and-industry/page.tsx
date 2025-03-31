@@ -3,13 +3,21 @@ import { DepartmentSpendingChart } from "@/components/DepartmentSpendingChart";
 import { ChartContainer, H1, H2, Intro, P, Page, PageContent, Section } from "@/components/Layout";
 import NoSSR from "@/components/NoSSR";
 import { StatCard, StatCardContainer } from "@/components/StatCard";
-import type { Metadata } from 'next';
+import { initLingui, PageLangParam } from "@/initLingui";
+import { useLingui } from "@lingui/react/macro";
+import { PropsWithChildren } from "react";
 import { FederalSpendingByEntity } from "./FederalSpendingByEntity";
 import { MiniSankey } from "./MiniSankey";
 
-export const metadata: Metadata = {
-	title: 'Innovation, Science and Industry | Canada Spends',
-	description: 'A look at how the Department of Innovation, Science and Industry spends its budget',
+export async function generateMetadata(props: PropsWithChildren<PageLangParam>) {
+	const lang = (await props.params).lang
+	initLingui(lang)
+
+	const { t } = useLingui()
+	return {
+		title: t`Innovation, Science and Industry Canada | Canada Spends`,
+		description: t`A look at how Innovation, Science and Industry Canada spends its budget`,
+	}
 }
 
 const department = "Innovation, Science and Industry";
