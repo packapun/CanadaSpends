@@ -1,24 +1,19 @@
 "use client"
 
-import { BarChart } from "@/components/BarChart";
+import { BarList } from "@/components/BarList";
+import { formatNumber } from "@/components/Sankey/utils";
 
 // Data from TAB 47
 const data = [
-  { name: "Department of Veterans Affairs", Amount: 6.053066 },
-  { name: "Veterans Review and Appeal Board", Amount: 0.018124 }
-].sort((a, b) => b.Amount - a.Amount);
+  { name: "Department of Veterans Affairs", value: 6.053066 },
+  { name: "Veterans Review and Appeal Board", value: 0.018124 }
+].sort((a, b) => b.value - a.value);
 
 export function FederalSpendingByEntity() {
-  return <BarChart
-    className="h-72"
+  return <BarList
     data={data}
-    index="name"
-    categories={["Amount"]}
-    yAxisWidth={400}
-    layout="vertical"
-    showGridLines={false}
-    showXAxis={false}
-    type="stacked"
+    valueFormatter={(number: number) =>
+      formatNumber(number, 1e9)
+    }
   />
-
 }

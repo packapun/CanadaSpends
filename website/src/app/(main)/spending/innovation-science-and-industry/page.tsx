@@ -2,7 +2,7 @@ import { FederalSpendingByEntity } from "@/app/(main)/spending/innovation-scienc
 import { MiniSankey } from "@/app/(main)/spending/innovation-science-and-industry/MiniSankey";
 import { DepartmentList } from "@/components/DepartmentList";
 import { DepartmentSpendingChart } from "@/components/DepartmentSpendingChart";
-import { ChartContainer, ExternalLink, H1, H2, Intro, P, Page, PageContent, Section } from "@/components/Layout";
+import { ChartContainer, H1, H2, Intro, P, Page, PageContent, Section } from "@/components/Layout";
 import NoSSR from "@/components/NoSSR";
 import { StatCard, StatCardContainer } from "@/components/StatCard";
 import type { Metadata } from 'next';
@@ -52,9 +52,12 @@ export default function Department() {
 				<P>
 					While not in the top 10 departments by spend, ISED accounted for 2% of all federal spending in FY 2024. 10 government departments accounted for 73.2% of federal spending in FY 2024
 				</P>
+				<ChartContainer>
+					<DepartmentSpendingChart department={department} />
+				</ChartContainer>
 			</Section>
 
-			<DepartmentSpendingChart department={department} />
+
 
 			<Section>
 				<P>
@@ -64,7 +67,7 @@ export default function Department() {
 					The department's spending has grown more than overall spending, which means that the department's share of the federal budget has increased. In FY 2024, ISED accounted for 2% of all federal spending, 0.17 percentage points higher than in 1995.
 				</P>
 				<P>
-					Major legislation, internal or global economic conditions, and acute events like the COVID-19 pandemic can significantly influence government spending year to year. For instance, during the pandemic, the Government of Canada's total expenses rose from $410.2 billion in 2019 to $420 billion in 2020 and further to $720.3 billion in 2021.​
+					Major legislation, internal or global economic conditions, and acute events like the COVID-19 pandemic can significantly influence government spending year to year. For instance, during the pandemic, the Government of Canada's total expenses rose from $410.2 billion in 2019 to $420 billion in 2020 and further to $720.3 billion in 2021.
 				</P>
 				<P>
 					Similarly, ISED's expenditures have increased during this period, growing from approximately $6.5 billion​ in 2019 (adjusted for inflation) to $10.2 billion in 2024.

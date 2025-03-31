@@ -2,7 +2,7 @@ import { FederalSpendingByEntity } from "@/app/(main)/spending/veterans-affairs/
 import { MiniSankey } from "@/app/(main)/spending/veterans-affairs/MiniSankey";
 import { DepartmentList } from "@/components/DepartmentList";
 import { DepartmentSpendingChart } from "@/components/DepartmentSpendingChart";
-import { ChartContainer, ExternalLink, H1, H2, Intro, P, Page, PageContent, Section } from "@/components/Layout";
+import { ChartContainer, H1, H2, H3, Intro, P, Page, PageContent, Section } from "@/components/Layout";
 import NoSSR from "@/components/NoSSR";
 import { StatCard, StatCardContainer } from "@/components/StatCard";
 import type { Metadata } from 'next';
@@ -49,12 +49,15 @@ export default function Department() {
 					VAC spent $6.1 billion in fiscal year (FY) 2024. This was 1.2% of the $513.9 billion in overall federal spending. The department ranked thirteenth among federal departments in total spending.
 				</P>
 
-				<P>
+				<H3>
 					VAC accounted for 1.2% of all federal spending in FY 2024. 10 government departments accounted for 73.2% of federal spending in FY 2024
-				</P>
+				</H3>
+				<ChartContainer>
+					<DepartmentSpendingChart department={department} />
+				</ChartContainer>
 			</Section>
 
-			<DepartmentSpendingChart department={department} />
+
 
 			<Section>
 				<P>
@@ -64,7 +67,7 @@ export default function Department() {
 					The department's spending has grown less than overall spending, which means that the department's share of the federal budget has increased. In FY 2024, VAC accounted for 1.1% of all federal spending, about the same share as in 1995.
 				</P>
 				<P>
-					Major legislation, internal or global economic conditions, and acute events like the COVID-19 pandemic can significantly influence government spending year to year. For instance, during the pandemic, the Government of Canada's total expenses rose from $410.2 billion in 2019 to $420 billion in 2020 and further to $720.3 billion in 2021.​
+					Major legislation, internal or global economic conditions, and acute events like the COVID-19 pandemic can significantly influence government spending year to year. For instance, during the pandemic, the Government of Canada's total expenses rose from $410.2 billion in 2019 to $420 billion in 2020 and further to $720.3 billion in 2021.
 				</P>
 				<P>
 					VAC's expenditures also grew slightly during this period, increasing from approximately $5.5B​ in 2019 when adjusted for inflation to $6.3B in 2024.

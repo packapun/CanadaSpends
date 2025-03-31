@@ -15,7 +15,7 @@ const DepartmentItem = ({ name, slug }: DepartmentProps) =>
 
 export const departments = [
   {
-    name: "Finance Canada",
+    name: "Department of Finance",
     slug: "department-of-finance",
     href: "/spending/department-of-finance",
     Percentage: 26.48
@@ -30,7 +30,7 @@ export const departments = [
     name: "Indigenous Services Canada + Crown-Indigenous Relations and Northern Affairs Canada",
     slug: "indigenous-services-and-northern-affairs",
     href: "/spending/indigenous-services-and-northern-affairs",
-    Percentage: 9.06
+    Percentage: 12.25
   },
   {
     name: "National Defence",
@@ -49,12 +49,6 @@ export const departments = [
     slug: "canada-revenue-agency",
     href: "/spending/canada-revenue-agency",
     Percentage: 3.27
-  },
-  {
-    name: "Crown-Indigenous Relations and Northern Affairs Canada",
-    Percentage: 3.19
-    // no slug here... we don't want it appearing in Government Departments explained
-    // but we want it displayed in the DepartmentSpendingChart
   },
   {
     name: "Housing, Infrastructure and Communities Canada",

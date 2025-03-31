@@ -3,7 +3,7 @@ import { FederalSpendingChart } from "@/app/(main)/spending/indigenous-services-
 import { MiniSankey } from "@/app/(main)/spending/indigenous-services-and-northern-affairs/MiniSankey";
 import { DepartmentList } from "@/components/DepartmentList";
 import { DepartmentSpendingChart } from "@/components/DepartmentSpendingChart";
-import {ChartContainer, ExternalLink, H1, H2, H3, Intro, P, Page, PageContent, Section} from "@/components/Layout";
+import { ChartContainer, ExternalLink, H1, H2, H3, Intro, P, Page, PageContent, Section } from "@/components/Layout";
 import NoSSR from "@/components/NoSSR";
 import { StatCard, StatCardContainer } from "@/components/StatCard";
 import type { Metadata } from 'next';
@@ -54,9 +54,11 @@ export default function Department() {
 					In fiscal year (FY) 2024, ISC and CIRNAC collectively spent <strong>$63 billion</strong>, accounting for <strong>12.1% of the total federal budget</strong>. The departments play a critical role in addressing socio-economic disparities, facilitating self-governance agreements, and improving service delivery for Indigenous communities across Canada.
 				</P>
 
-			</Section>
+				<ChartContainer>
+					<DepartmentSpendingChart department={department} />
+				</ChartContainer>
 
-			<DepartmentSpendingChart department={["Indigenous Services Canada", 'Crown-Indigenous Relations and Northern Affairs Canada']} />
+			</Section>
 
 			<Section>
 				<P>
@@ -87,7 +89,7 @@ export default function Department() {
 					</NoSSR>
 				</ChartContainer>
 				<ChartContainer>
-					<H3>ISC + CIRNAC, Spending by Entity, FY 2024 (in billions</H3>
+					<H3>ISC + CIRNAC, Spending by Entity, FY 2024 (in billions)</H3>
 					<FederalSpendingByEntity />
 				</ChartContainer>
 			</Section>

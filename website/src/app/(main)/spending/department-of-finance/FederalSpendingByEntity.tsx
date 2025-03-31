@@ -1,26 +1,23 @@
 "use client"
 
-import { BarChart } from "@/components/BarChart"
+import { BarList } from "@/components/BarList"
+import { formatNumber } from "@/components/Sankey/utils"
 
 const data = [
-  { name: "Department of Finance", Amount: 1355.00 },
-  { name: "Financial Consumer Agency of Canada", Amount: 53.37 },
-  { name: "Financial Transactions and Reports Analysis Centre of Canada", Amount: 98.62 },
-  { name: "Office of the Auditor General", Amount: 134.93 },
-  { name: "Office of the Superintendent of Financial Institutions", Amount: 311.47 },
+  { name: "Department of Finance", value: 1.355 },
+  { name: "Financial Consumer Agency of Canada", value: 0.053 },
+  { name: "Financial Transactions and Reports Analysis Centre of Canada", value: 0.098 },
+  { name: "Office of the Auditor General", value: 0.134 },
+  { name: "Office of the Superintendent of Financial Institutions", value: 0.311 },
 ]
 
 export function FederalSpendingByEntity() {
-  return <BarChart
-    className="h-72"
+  return <BarList
     data={data}
-    index="name"
-    categories={["Amount"]}
-    yAxisWidth={400}
-    layout="vertical"
-    showGridLines={false}
-    showXAxis={false}
-    type="stacked"
+    valueFormatter={(number: number) =>
+      formatNumber(number, 1e9)
+    }
   />
+
 
 }

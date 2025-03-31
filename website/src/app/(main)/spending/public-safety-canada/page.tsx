@@ -53,21 +53,22 @@ export default function Department() {
 					10 government departments accounted for 73.2% of federal spending in FY 2024.
 				</H3>
 
+				<ChartContainer>
+					<DepartmentSpendingChart department={department} />
+				</ChartContainer>
 
 
 			</Section>
 
-			<DepartmentSpendingChart department={department} />
-
 			<Section>
 				<H2>
-					How has Public Safety Canada’s spending changed?
+					How has Public Safety Canada's spending changed?
 				</H2>
 				<P>
-					Federal spending on public safety fluctuates based on evolving security threats, emergency events, and changes in government policy. Since 2005 shortly after it was established, Public Safety Canada's expenditures have increased by 69.6%, reflecting heightened investments in counterterrorism, cyber defence, and disaster response capabilities. The department’s share of the federal budget has remained relatively flat from 2.6% in 2005 to 2.7% in 2024.
+					Federal spending on public safety fluctuates based on evolving security threats, emergency events, and changes in government policy. Since 2005 shortly after it was established, Public Safety Canada's expenditures have increased by 69.6%, reflecting heightened investments in counterterrorism, cyber defence, and disaster response capabilities. The department's share of the federal budget has remained relatively flat from 2.6% in 2005 to 2.7% in 2024.
 				</P>
 				<P>
-					Major policy shifts, unforeseen events such as natural disasters, and global security concerns can significantly impact the department’s annual spending. The COVID-19 pandemic, for example, led to a sharp increase in federal emergency response funding in 2020.
+					Major policy shifts, unforeseen events such as natural disasters, and global security concerns can significantly impact the department's annual spending. The COVID-19 pandemic, for example, led to a sharp increase in federal emergency response funding in 2020.
 				</P>
 
 				<ChartContainer>
@@ -82,7 +83,7 @@ export default function Department() {
 					How did Public Safety Canada spend its budget in 2024?
 				</H2>
 				<P>
-					In FY 2024, Public Safety’s budget was allocated across several key areas, including:
+					In FY 2024, Public Safety's budget was allocated across several key areas, including:
 				</P>
 				<ChartContainer>
 					<NoSSR>
@@ -96,10 +97,10 @@ export default function Department() {
 			<Section>
 				<H2>Who leads Public Safety Canada?</H2>
 				<P>
-					The Department is led by the <ExternalLink href="https://www.canada.ca/en/government/ministers/david-mcguinty.html">Minister of Public Safety</ExternalLink>, who is appointed by the Governor General on the advice of the Prime Minister and then formally sworn into office at Rideau Hall. They take the Oath of Office and the Oath of Allegiance and become a member of the King’s Privy Council for Canada.
+					The Department is led by the <ExternalLink href="https://www.canada.ca/en/government/ministers/david-mcguinty.html">Minister of Public Safety</ExternalLink>, who is appointed by the Governor General on the advice of the Prime Minister and then formally sworn into office at Rideau Hall. They take the Oath of Office and the Oath of Allegiance and become a member of the King's Privy Council for Canada.
 				</P>
 				<P>
-					These Ministers are some of the <ExternalLink href="https://www.pm.gc.ca/en/cabinet">cabinet members</ExternalLink> who serve at the Prime Minister’s discretion. Their tenure typically ends when they resign, are replaced, or when a new Prime Minister takes office and appoints a new cabinet. Outgoing ministers remain in their roles until their successors are sworn in.
+					These Ministers are some of the <ExternalLink href="https://www.pm.gc.ca/en/cabinet">cabinet members</ExternalLink> who serve at the Prime Minister's discretion. Their tenure typically ends when they resign, are replaced, or when a new Prime Minister takes office and appoints a new cabinet. Outgoing ministers remain in their roles until their successors are sworn in.
 				</P>
 			</Section>
 

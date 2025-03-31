@@ -58,10 +58,12 @@ export default function Department() {
 
 			</Section>
 
-			<ChartContainer>
-				<H3>Percentage of federal budget dedicated to Defence, FYs 1995-2024</H3>
-				<DepartmentSpendingChart department={department} />
-			</ChartContainer>
+			<Section>
+				<ChartContainer>
+					<H3>Percentage of federal budget dedicated to Defence, FYs 1995-2024</H3>
+					<DepartmentSpendingChart department={department} />
+				</ChartContainer>
+			</Section>
 
 
 			<Section>
