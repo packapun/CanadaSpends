@@ -8,7 +8,7 @@ import NoSSR from "@/components/NoSSR";
 import { Sankey } from "@/components/Sankey";
 import { Trans, useLingui } from "@lingui/react/macro";
 
-const StatBox = ({ title, value, description }: { title: string, value: string, description: string }) => (
+const StatBox = ({ title, value, description }: { title: React.ReactNode, value: string, description: React.ReactNode }) => (
 	<div className="flex flex-col mr-8 mb-8">
 		<div className="text-sm text-gray-600 mb-1">{title}</div>
 		<div className="text-3xl font-bold mb-1">{value}</div>
@@ -97,7 +97,7 @@ export default function Spending() {
 						</div>
 
 						<div>
-							<h3 className="font-medium mb-2">Age</h3>
+							<h3 className="font-medium mb-2"><Trans>Age</Trans></h3>
 							<p className="text-sm text-gray-600"><Trans>The average employee is 45 years old</Trans></p>
 							<div className="mt-4">
 								<NoSSR>

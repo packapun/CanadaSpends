@@ -5,7 +5,7 @@ import NoSSR from "@/components/NoSSR";
 import { StatCard, StatCardContainer } from "@/components/StatCard";
 import { useDepartments } from "@/hooks/useDepartments";
 import { initLingui, PageLangParam } from "@/initLingui";
-import { useLingui } from "@lingui/react/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { PropsWithChildren } from "react";
 import { FederalSpendingChart } from "./FederalSpendingChart";
 import { MiniSankey } from "./MiniSankey";
@@ -36,36 +36,36 @@ export default async function Department(props: PageLangParam) {
 					{department?.name}
 				</H1>
 				<Intro>
-					The Canada Revenue Agency (CRA) is the federal institution responsible for administering tax laws, enforcing compliance, and delivering key benefit programs to individuals and businesses across Canada. Established in 1999 under the Canada Revenue Agency Act, the CRA operates with a workforce of approximately 59,155 employees (2024) and oversees tax revenues totaling $379 billion annually—which accounts for over 82% of federal revenues. It also administers over $46 billion in benefits and credits to Canadians, including the Canada Child Benefit and the GST/HST credit.
+					<Trans>The Canada Revenue Agency (CRA) is the federal institution responsible for administering tax laws, enforcing compliance, and delivering key benefit programs to individuals and businesses across Canada. Established in 1999 under the Canada Revenue Agency Act, the CRA operates with a workforce of approximately 59,155 employees (2024) and oversees tax revenues totaling $379 billion annually—which accounts for over 82% of federal revenues. It also administers over $46 billion in benefits and credits to Canadians, including the Canada Child Benefit and the GST/HST credit.</Trans>
 				</Intro>
 
 			</Section>
 
 			<Section>
 				<div className="text-sm text-gray-500 italic">
-					Data updated March 21, 2025
+					<Trans>Data updated March 21, 2025</Trans>
 				</div>
 				<StatCardContainer>
 					<StatCard
-						title="In FY 2024,"
+						title={t`In FY 2024,`}
 						value="$16.8B"
-						subtitle="was spent by the Canada Revenue Agency"
+						subtitle={t`was spent by the Canada Revenue Agency`}
 					/>
 					<StatCard
-						title="In FY 2024,"
+						title={t`In FY 2024,`}
 						value="3.2%"
-						subtitle="of federal spending was by the Canada Revenue Agency"
+						subtitle={t`of federal spending was by the Canada Revenue Agency`}
 					/>
 				</StatCardContainer>
 			</Section>
 
 			<Section>
 				<P>
-					The Canada Revenue Agency spent $16.8 billion in fiscal year (FY) 2024, representing 3.2% of the $513.9 billion in total federal spending. The CRA's expenditures primarily support tax administration, benefit program delivery, compliance enforcement, and IT modernization.
+					<Trans>The Canada Revenue Agency spent $16.8 billion in fiscal year (FY) 2024, representing 3.2% of the $513.9 billion in total federal spending. The CRA's expenditures primarily support tax administration, benefit program delivery, compliance enforcement, and IT modernization.</Trans>
 				</P>
 
 				<H3>
-					10 government departments accounted for 73.2% of federal spending in FY 2024.
+					<Trans>10 government departments accounted for 73.2% of federal spending in FY 2024.</Trans>
 				</H3>
 
 				<ChartContainer>
@@ -78,29 +78,29 @@ export default async function Department(props: PageLangParam) {
 			<Section>
 				<ChartContainer>
 					<H3>
-						Percentage of federal budget dedicated to Canada Revenue Agency, FYs 1995-2024
+						<Trans>Percentage of federal budget dedicated to Canada Revenue Agency, FYs 1995-2024</Trans>
 					</H3>
 					<FederalSpendingChart />
 				</ChartContainer>
 			</Section>
 			<Section>
 				<P>
-					Federal spending may shift over time due to economic fluctuations, changes in tax policy, and the expansion of benefit programs. Since 1995, overall federal spending has risen 74.9%, while Canada Revenue Agency spending has increased 302%
+					<Trans>Federal spending may shift over time due to economic fluctuations, changes in tax policy, and the expansion of benefit programs. Since 1995, overall federal spending has risen 74.9%, while Canada Revenue Agency spending has increased 302%</Trans>
 				</P>
 				<P>
-					CRA's spending grew more than overall spending, meaning its share of the federal budget increased. In 2024, the agency accounted for 3.2% of all federal spending, 0.6 percentage points lower than in 1995.
+					<Trans> CRA's spending grew more than overall spending, meaning its share of the federal budget increased. In 2024, the agency accounted for 3.2% of all federal spending, 0.6 percentage points lower than in 1995.</Trans>
 				</P>
 				<P>
-					Major legislative changes, compliance trends, and digital tax services have influenced CRA spending patterns. For example, compliance initiatives and fraud investigations recovered an estimated $11.5 billion in lost revenue in 2024 due to tax evasion.
+					<Trans>Major legislative changes, compliance trends, and digital tax services have influenced CRA spending patterns. For example, compliance initiatives and fraud investigations recovered an estimated $11.5 billion in lost revenue in 2024 due to tax evasion.</Trans>
 				</P>
 				<P>
-					Most federal spending can be categorized as direct or indirect. Direct spending refers to money the federal government spends on budget items such as federal programs, employee salaries, and debt interest. Indirect spending refers to federal transfers to other levels of government.
+					<Trans>Most federal spending can be categorized as direct or indirect. Direct spending refers to money the federal government spends on budget items such as federal programs, employee salaries, and debt interest. Indirect spending refers to federal transfers to other levels of government.</Trans>
 				</P>
 				<P>
-					Most CRA spending is dedicated to personnel and IT infrastructure supporting tax filing, compliance, and benefit administration.
+					<Trans>Most CRA spending is dedicated to personnel and IT infrastructure supporting tax filing, compliance, and benefit administration.</Trans>
 				</P>
 				<P>
-					In FY 2024, 55.2% of CRA net spending was allocated to salaries, benefits, and pensions.
+					<Trans>In FY 2024, 55.2% of CRA net spending was allocated to salaries, benefits, and pensions.</Trans>
 				</P>
 
 
@@ -108,10 +108,10 @@ export default async function Department(props: PageLangParam) {
 
 			<Section>
 				<H2>
-					How did the Canada Revenue Agency spend its budget in 2024?
+					<Trans>How did the Canada Revenue Agency spend its budget in 2024?</Trans>
 				</H2>
 				<P>
-					CRA spending is divided across tax administration, compliance enforcement, benefit program delivery, and intergovernmental agreements with provinces and territories. The largest expenditures in FY 2024 included personal income tax processing, corporate tax audits, and benefit administration.
+					<Trans>CRA spending is divided across tax administration, compliance enforcement, benefit program delivery, and intergovernmental agreements with provinces and territories. The largest expenditures in FY 2024 included personal income tax processing, corporate tax audits, and benefit administration.</Trans>
 				</P>
 
 				<ChartContainer>
@@ -123,17 +123,17 @@ export default async function Department(props: PageLangParam) {
 
 
 			<Section>
-				<H2>Who leads the Canada Revenue Agency?</H2>
+				<H2><Trans>Who leads the Canada Revenue Agency?</Trans></H2>
 				<P>
-					The Canada Revenue Agency is overseen by the <ExternalLink href="https://www.canada.ca/en/government/ministers/marie-claude-bibeau.html">Minister of National Revenue</ExternalLink>, who is responsible for ensuring tax fairness and benefit program integrity but does not have direct authority over tax law interpretations.
+					<Trans>The Canada Revenue Agency is overseen by the <ExternalLink href="https://www.canada.ca/en/government/ministers/marie-claude-bibeau.html">Minister of National Revenue</ExternalLink>, who is responsible for ensuring tax fairness and benefit program integrity but does not have direct authority over tax law interpretations.</Trans>
 				</P>
 				<P>
-					These Ministers are some of the <ExternalLink href="https://www.pm.gc.ca/en/cabinet">cabinet members</ExternalLink> who serve at the Prime Minister's discretion. Their tenure typically ends when they resign, are replaced, or when a new Prime Minister takes office and appoints a new cabinet. Outgoing ministers remain in their roles until their successors are sworn in.
+					<Trans>These Ministers are some of the <ExternalLink href="https://www.pm.gc.ca/en/cabinet">cabinet members</ExternalLink> who serve at the Prime Minister's discretion. Their tenure typically ends when they resign, are replaced, or when a new Prime Minister takes office and appoints a new cabinet. Outgoing ministers remain in their roles until their successors are sworn in.</Trans>
 				</P>
 			</Section>
 
 			<Section>
-				<H2>Explore other Federal Departments</H2>
+				<H2><Trans>Explore other Federal Departments</Trans></H2>
 				<DepartmentList current={department.slug} />
 			</Section>
 		</PageContent>
