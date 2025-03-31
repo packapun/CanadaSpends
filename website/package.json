@@ -4,12 +4,17 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "pnpm lingui:extract && next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "lingui:extract": "lingui extract --clean"
   },
   "dependencies": {
     "@beehiiv/sdk": "^0.1.6",
+    "@formatjs/intl-localematcher": "^0.5.0",
+    "@lingui/core": "^5.1.2",
+    "@lingui/macro": "^5.2.0",
+    "@lingui/react": "^5.1.2",
     "@radix-ui/react-accordion": "^1.2.3",
     "@radix-ui/react-slot": "^1.1.2",
     "@tailwindcss/forms": "^0.5.10",
@@ -24,6 +29,7 @@
     "d3-selection": "^3.0.0",
     "d3-shape": "^3.2.0",
     "lucide-react": "^0.483.0",
+    "negotiator": "^0.6.3",
     "next": "15.2.1",
     "posthog-js": "^1.232.7",
     "posthog-node": "^4.10.2",
@@ -41,9 +47,13 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
+    "@lingui/cli": "^5.1.2",
+    "@lingui/loader": "^5.1.2",
+    "@lingui/swc-plugin": "^5.0.1",
     "@tailwindcss/postcss": "^4",
     "@types/d3": "^7.4.3",
     "@types/d3-format": "^3.0.4",
+    "@types/negotiator": "^0.6.3",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
