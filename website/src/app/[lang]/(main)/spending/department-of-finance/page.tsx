@@ -14,7 +14,7 @@ import {
 } from "@/components/Layout";
 import NoSSR from "@/components/NoSSR";
 import { StatCard, StatCardContainer } from "@/components/StatCard";
-import { useDepartments } from "@/hooks/useDepartments";
+import { useFindDepartment } from "@/hooks/useDepartments";
 import { initLingui, type PageLangParam } from "@/initLingui";
 import { Trans, useLingui } from "@lingui/react/macro";
 import type { PropsWithChildren } from "react";
@@ -40,9 +40,7 @@ export default async function Department(props: PageLangParam) {
 	initLingui(lang);
 
 	const { t } = useLingui();
-	const department = useDepartments().find(
-		(d) => d.slug === "department-of-finance",
-	)!;
+	const department = useFindDepartment("department-of-finance");
 
 	return (
 		<Page>

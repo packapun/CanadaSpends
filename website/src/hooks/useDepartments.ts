@@ -2,7 +2,8 @@ import { useLingui } from "@lingui/react/macro";
 
 export const useDepartments = () => {
   const { t, i18n } = useLingui();
-  return [
+
+  const departments = [
     {
       name: t`Department of Finance`,
       slug: "department-of-finance",
@@ -88,5 +89,18 @@ export const useDepartments = () => {
       href: `/${i18n.locale}/spending/transport-canada`,
       Percentage: 1.0,
     },
-  ].sort((a, b) => b.Percentage - a.Percentage);
+  ];
+
+  return departments.sort((a, b) => b.Percentage - a.Percentage);
+};
+
+export const useFindDepartment = (slug: string) => {
+  const departments = useDepartments();
+  const found = departments.find((department) => department.slug === slug);
+
+  if (!found) {
+    throw new Error(`Department not found: ${slug}`);
+  }
+
+  return found;
 };
