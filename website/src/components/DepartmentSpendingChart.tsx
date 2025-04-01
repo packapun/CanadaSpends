@@ -1,35 +1,38 @@
-"use client"
+"use client";
 
-import { BarChart } from "@/components/BarChart"
-import { departments } from "@/components/DepartmentList"
-import { useMemo } from "react"
-
+import { BarList } from "@/components/BarList";
+import { useDepartments } from "@/hooks/useDepartments";
+import { useMemo } from "react";
 
 export function DepartmentSpendingChart(props: {
-  department: string | string[]
+	department: string | string[];
 }) {
-  const deps = Array.isArray(props.department) ? props.department : [props.department]
-  const data = useMemo(() => {
-    return departments.slice(0, 10).map((item) => ({
-      name: item.name,
-      Percentage: deps.includes(item.name) ? undefined : item.Percentage,
-      "Current Percentage": deps.includes(item.name) ? item.Percentage : undefined,
-    }))
-  }, [departments, deps])
+	const departments = useDepartments();
+	const deps = Array.isArray(props.department)
+		? props.department
+		: [props.department];
+	const data = useMemo(() => {
+		return departments.slice(0, 10).map((item) => ({
+			name: item.name,
+			href: item.href,
+			value: item.Percentage,
+			className:
+				deps.includes(item.name) || deps.includes(item.slug)
+					? "bg-emerald-500"
+					: "",
+		}));
+	}, [departments, deps]);
 
-
-
-  return <BarChart
-    className="h-72"
-    data={data}
-    index="name"
-    categories={["Percentage", "Current Percentage"]}
-    yAxisWidth={400}
-    layout="vertical"
-    showLegend={false}
-    showGridLines={false}
-    showXAxis={false}
-    type="stacked"
-  />
-
+	return (
+		<BarList
+			data={data}
+			valueFormatter={(number: number) =>
+				Intl.NumberFormat("en-US", {
+					style: "percent",
+					minimumFractionDigits: 0,
+					maximumFractionDigits: 2,
+				}).format(number / 100)
+			}
+		/>
+	);
 }

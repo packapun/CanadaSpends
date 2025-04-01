@@ -3,12 +3,14 @@
 import React from "react"
 
 import { cn, focusRing } from "@/lib/utils"
+import Link from "next/link"
 
 type Bar<T> = T & {
   key?: string
   href?: string
   value: number
   name: string
+  className?: string
 }
 
 interface BarListProps<T = unknown>
@@ -87,6 +89,7 @@ function BarListInner<T>(
                 rowHeight,
                 // background color
                 "bg-blue-200 ",
+                item.className,
                 onValueChange
                   ? "group-hover:bg-blue-300 "
                   : "",
@@ -100,7 +103,7 @@ function BarListInner<T>(
             >
               <div className={cn("absolute left-2 flex max-w-full pr-2")}>
                 {item.href ? (
-                  <a
+                  <Link
                     href={item.href}
                     className={cn(
                       // base
@@ -112,15 +115,13 @@ function BarListInner<T>(
                       // focus
                       focusRing,
                     )}
-                    target="_blank"
-                    rel="noreferrer"
-                    onClick={(event) => event.stopPropagation()}
                   >
                     {item.name}
-                  </a>
+                  </Link>
                 ) : (
                   <p
                     className={cn(
+
                       // base
                       "truncate whitespace-nowrap text-sm",
                       // text color

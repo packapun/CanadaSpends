@@ -2,9 +2,9 @@ import { cn } from "@/lib/utils";
 import React from 'react';
 
 interface StatCardProps {
-  title: string;
-  value: string;
-  subtitle: string;
+  title: string | React.ReactNode;
+  value: string | React.ReactNode;
+  subtitle: string | React.ReactNode;
   className?: string;
   animationDelay?: string;
 }

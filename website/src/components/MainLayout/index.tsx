@@ -1,6 +1,7 @@
+import { Footer } from "@/components/MainLayout/Footer";
+import { Trans, useLingui } from "@lingui/react/macro";
 import Image from "next/image";
 import Link from "next/link";
-import { Footer } from "./Footer";
 import logoFull from "./logo-full.svg";
 import logoGlyph from "./logo-glyph.svg";
 
@@ -16,6 +17,7 @@ const NavLink = ({ href, children }: { href: string, children: React.ReactNode }
 };
 
 export const MainLayout = ({ children }: { children: React.ReactNode }) => {
+	const { t, i18n } = useLingui()
 	return (
 		<>
 			<div className="sticky z-[100] border-b-gray-200 border-b-2 w-full border-solid px-4 sm:px-12 py-0">
@@ -23,7 +25,7 @@ export const MainLayout = ({ children }: { children: React.ReactNode }) => {
 					<div className="items-stretch auto-cols-fr justify-between flex min-h-16 gap-2 sm:gap-8 m-auto">
 						<Link
 							className="items-center float-left justify-center flex pl-0"
-							href="/"
+							href={`/${i18n.locale}`}
 						>
 							<Image
 								className="cursor-pointer align-middle w-40 h-12 max-w-full hidden sm:block"
@@ -37,9 +39,15 @@ export const MainLayout = ({ children }: { children: React.ReactNode }) => {
 							/>
 						</Link>
 						<div className="items-stretch justify-end flex min-h-full gap-6">
-							<NavLink href="/spending">Spending</NavLink>
-							<NavLink href="/about">About</NavLink>
-							<NavLink href="/contact">Contact</NavLink>
+							<NavLink href={`/${i18n.locale}/spending`} >
+								<Trans>Spending</Trans>
+							</NavLink>
+							<NavLink href={`/${i18n.locale}/about`} >
+								<Trans>About</Trans>
+							</NavLink>
+							<NavLink href={`/${i18n.locale}/contact`} >
+								<Trans>Contact</Trans>
+							</NavLink>
 						</div>
 					</div>
 				</div>
