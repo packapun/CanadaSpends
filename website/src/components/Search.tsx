@@ -31,6 +31,7 @@ interface SearchResult {
   type: string;
   recipient: string;
   payer: string;
+  fiscal_year: string;
   program: string;
   timestamp: string;
   amount: number;
@@ -53,7 +54,7 @@ function Hit({ hit }: {hit: SearchResult}) {
           <p className="text-xs text-gray-600">{hit.program} <span>({hit.timestamp})</span></p>
       </CardHeader>
         <CardContent>
-          <p className="whitespace-pre-wrap line-clamp-6">{hit.description.replace("\\n", "\n\n")}</p>
+          <p className="whitespace-pre-wrap line-clamp-6">{(hit.description || "").replace("\\n", "\n\n")}</p>
         </CardContent>
       </Card>
   </Link>
@@ -73,8 +74,12 @@ export default function Search() {
           <div style={{ width: 300 }}>
             <h3 style={{ marginBottom: '1rem' }}>Filters</h3>
 
-            <FacetGroup label="Type">
-              <RefinementList attribute="type" />
+            {/*<FacetGroup label="Type">*/}
+            {/*  <RefinementList attribute="type" />*/}
+            {/*</FacetGroup>*/}
+
+            <FacetGroup label="Fiscal Year">
+              <RefinementList attribute="fiscal_year" sortBy={["name:desc"]} />
             </FacetGroup>
 
             <FacetGroup label="Program">
