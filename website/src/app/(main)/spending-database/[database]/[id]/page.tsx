@@ -30,6 +30,7 @@ export default async function Page({ params }: { params: { id: string, database:
 import { notFound } from 'next/navigation'
 import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
 import {H1, H2} from "@/components/Layout";
+import {Badge} from "@/components/badge";
 
 interface Props {
   id: string
@@ -141,6 +142,58 @@ async function NSERCGrants({ id }: Props) {
   )
 }
 
+async function CIHRGrants({ id }: Props) {
+  const url = `${BASE}/cihr_grants/${id}.json?_shape=array`
+  const data = await jsonFetcher(url)
+  if (!data || data.length === 0) return notFound()
+  const grant = data[0]
+
+  return (
+    <main className="max-w-4xl mx-auto p-4">
+      <h1 className="text-xl font-semibold leading-tight max-w-2xl mb-4">
+        CIHR Research Grant: {grant.program}
+      </h1>
+      <div className="rounded-2xl border p-6 shadow-sm bg-white">
+        <div className="flex justify-between items-start mb-2">
+          <h2 className="text-2xl font-bold">{grant.institution}</h2>
+          <div className="text-right text-lg font-bold text-green-700 whitespace-nowrap">
+            ${Number(grant.award_amount).toLocaleString()}
+          </div>
+        </div>
+        <h3 className="text-xl font-bold">{grant.title}</h3>
+        <div className="font-bold text-gray-900 mb-1">Summary</div>
+        <div className="text-sm text-gray-700 mb-4 whitespace-pre-wrap">
+          {grant.abstract?.replaceAll("\n", "\n\n") || '—'}
+        </div>
+        <div className="grid md:grid-cols-2 grid-cols-1 gap-x-8 gap-y-2 text-sm">
+          <Detail label="Principal Investigator" value={grant.project_lead_name} />
+          <Detail label="Institution" value={grant.institution} />
+          <Detail label="Province" value={grant.province} />
+          <Detail label="Duration" value={grant.duration} />
+          <Detail label="Competition Year" value={grant.competition_year} />
+          <Detail label="Program Type" value={grant.program_type} />
+          <Detail label="Theme" value={grant.theme} />
+          <Detail label="Research Subject" value={grant.research_subject} />
+          <Detail label="External ID" value={grant.external_id} />
+        </div>
+
+        <div className="font-bold text-gray-900 mt-2">Keywords</div>
+        <div>
+        {grant.keywords?.split(";")?.map((kw: string) => <Badge className="mr-1" variant="outline" key={kw}>{kw}</Badge>)}
+        </div>
+
+        {grant.source_url && (
+          <div className="mt-6">
+            <a href={grant.source_url as string} className="text-blue-600 underline" target="_blank" rel="noopener noreferrer">
+              View original record site
+            </a>
+          </div>
+        )}
+      </div>
+    </main>
+  )
+}
+
 function Detail({ label, value }: { label: string, value: unknown }) {
   return (
     <div>
@@ -153,8 +206,6 @@ function Detail({ label, value }: { label: string, value: unknown }) {
 
 export const AggregatedContractsUnder10k = (props: Props) => <BaseSpendingPage {...props} database="aggregated-contracts-under-10k" label="Contracts Under $10k Summary" />
 export const ContractsOver10k = (props: Props) => <BaseSpendingPage {...props} database="contracts-over-10k" label="Contracts Over $10k" />
-export const CIHRGrants = (props: Props) => <BaseSpendingPage {...props} database="cihr_grants" label="CIHR Research Grants" />
-// export const NSERCGrants = (props: Props) => <BaseSpendingPage {...props} database="nserc_grants" label="NSERC Research Grants" />
 export const SSHRCGrants = (props: Props) => <BaseSpendingPage {...props} database="sshrc_grants" label="SSHRC Research Grants" />
 export const GlobalAffairsGrants = (props: Props) => <BaseSpendingPage {...props} database="global_affairs_grants" label="Global Affairs Grants" />
 export const Transfers = (props: Props) => <BaseSpendingPage {...props} database="transfers" label="Federal Transfers" />
