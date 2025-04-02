@@ -95,16 +95,6 @@ export const Footer = () => {
 												<Trans>Contact</Trans>
 											</a>
 										</li>
-										{/*<li>*/}
-										{/*	<button id="feedback-button"*/}
-										{/*		className="text-sm/6 text-gray-600 hover:text-gray-900"*/}
-										{/*		onClick={() => {*/}
-										{/*			// @ts-ignore*/}
-										{/*			document.querySelector('[class^="PostHogWidget"]')?.shadowRoot?.querySelector(".footer-branding")?.style?.setProperty('display', 'none', 'important');*/}
-										{/*		}}>*/}
-										{/*		<Trans>Report an Issue</Trans>*/}
-										{/*	</button>*/}
-										{/*</li>*/}
 									</ul>
 								</div>
 							</div>
