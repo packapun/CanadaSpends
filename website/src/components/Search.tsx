@@ -4,7 +4,7 @@ import {
   SearchBox,
   Hits,
   RefinementList,
-  ToggleRefinement, Pagination
+  ToggleRefinement, Pagination, CurrentRefinements, RangeInput
 } from 'react-instantsearch';
 import './search.css'
 
@@ -31,6 +31,7 @@ interface SearchResult {
   type: string;
   recipient: string;
   payer: string;
+  fiscal_year: string;
   program: string;
   timestamp: string;
   amount: number;
@@ -53,7 +54,7 @@ function Hit({ hit }: {hit: SearchResult}) {
           <p className="text-xs text-gray-600">{hit.program} <span>({hit.timestamp})</span></p>
       </CardHeader>
         <CardContent>
-          <p className="whitespace-pre-wrap line-clamp-6">{hit.description.replace("\\n", "\n\n")}</p>
+          <p className="whitespace-pre-wrap line-clamp-6">{(hit.description || "").replace("\\n", "\n\n")}</p>
         </CardContent>
       </Card>
   </Link>
@@ -62,28 +63,41 @@ function Hit({ hit }: {hit: SearchResult}) {
 export default function Search() {
   return (<>
   {/*<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@8.5.1/themes/satellite-min.css" integrity="sha256-woeV7a4SRDsjDc395qjBJ4+ZhDdFn8AqswN1rlTO64E=" crossOrigin="anonymous"/>*/}
-    <InstantSearch searchClient={searchClient} indexName="records" future={{
+    <InstantSearch searchClient={searchClient}
+                   indexName="records"
+                   routing={true}
+                   future={{
     preserveSharedStateOnUnmount: true,
     persistHierarchicalRootCount: true,
   }}>
       <div style={{ maxWidth: 1200, margin: '0 auto', padding: '2rem' }}>
         <SearchBox placeholder="Search records…" />
+        <CurrentRefinements/>
 
         <div style={{ display: 'flex', marginTop: '2rem', gap: '2rem' }}>
           <div style={{ width: 300 }}>
             <h3 style={{ marginBottom: '1rem' }}>Filters</h3>
 
-            <FacetGroup label="Type">
-              <RefinementList attribute="type" />
+            {/*<FacetGroup label="Type">*/}
+            {/*  <RefinementList attribute="type" />*/}
+            {/*</FacetGroup>*/}
+
+            <FacetGroup label="Fiscal Year">
+              <RefinementList attribute="fiscal_year" sortBy={["name:desc"]} />
+            </FacetGroup>
+
+            <FacetGroup label="Payer">
+              <RefinementList
+                attribute="payer"
+                  showMore={true}
+                  searchable={true}
+              />
             </FacetGroup>
 
             <FacetGroup label="Program">
               <RefinementList attribute="program" />
             </FacetGroup>
 
-            <FacetGroup label="Payer">
-              <RefinementList attribute="payer" />
-            </FacetGroup>
 
             <FacetGroup label="Province">
               <RefinementList attribute="province" />

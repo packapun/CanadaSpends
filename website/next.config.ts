@@ -29,15 +29,15 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return [
       {
-        source: "/i/static/:path*",
+        source: "/ph/static/:path*",
         destination: "https://us-assets.i.posthog.com/static/:path*",
       },
       {
-        source: "/i/:path*",
+        source: "/ph/:path*",
         destination: "https://us.i.posthog.com/:path*",
       },
       {
-        source: "/i/decide",
+        source: "/ph/decide",
         destination: "https://us.i.posthog.com/decide",
       },
     ];
