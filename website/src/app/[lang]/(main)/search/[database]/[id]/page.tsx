@@ -13,7 +13,7 @@ export default async function Page({ params }: { params: { id: string, database:
 
   const componentMap: Record<string, React.ComponentType<{ id: string }>> = {
     'aggregated-contracts-under-10k': AggregatedContractsUnder10k,
-    'contracts-over-10-k': ContractsOver10k,
+    'contracts-over-10k': ContractsOver10k,
     'cihr_grants': CIHRGrants,
     'nserc_grants': NSERCGrants,
     'sshrc_grants': SSHRCGrants,
@@ -60,9 +60,10 @@ function KeyValueTable({ record }: { record: Record<string, unknown> }) {
 
 async function BaseSpendingPage({ id, database, label }: Props & { database: string, label: string }) {
   const url = `${BASE}/${database}/${id}.json?_shape=array`
+  console.log({url})
   const data = await jsonFetcher(url)
-  const summary = await jsonFetcher(url)
-  if (!data || data.length === 0) return notFound()
+  // const summary = await jsonFetcher(url)
+  // if (!data || data.length === 0) return notFound()
   const record = data[0]
 
   return (
