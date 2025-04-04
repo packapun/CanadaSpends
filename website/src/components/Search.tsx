@@ -5,7 +5,7 @@ import {
   Hits,
   RefinementList,
   useRefinementList,
-  ToggleRefinement, Pagination, CurrentRefinements, RangeInput
+  ToggleRefinement, Pagination, CurrentRefinements, RangeInput, useInstantSearch
 } from 'react-instantsearch';
 import './search.css'
 import {
@@ -19,11 +19,11 @@ import {
 import {Card, CardHeader, CardContent, CardTitle} from '@/components/ui/card'
 import TypesenseInstantSearchAdapter from 'typesense-instantsearch-adapter';
 import Link from "next/link";
-import {ReactNode, useState} from "react";
+import {ReactNode, useEffect, useMemo, useState} from "react";
 import {Badge} from "@/components/badge";
 import { ChevronsUpDown, Check } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { Button } from "@/components/button"
+import {Button, buttonVariants} from "@/components/button"
 import {
   Command,
   CommandEmpty,
@@ -37,6 +37,7 @@ import {
   PopoverTrigger,
   PopoverContent,
 } from "@/components/popover"
+import {H2, H3, P} from "@/components/Layout";
 
 const typesenseAdapter = new TypesenseInstantSearchAdapter({
   server: {
@@ -66,63 +67,71 @@ interface SearchResult {
 
 
 
-export function RefinementListCombobox({ attribute, placeholder, width }: { attribute: string, placeholder: string, width?: string }) {
+export function RefinementListCombobox({ attribute, placeholder, width, popoverWidth }: { attribute: string, placeholder: string, width?: string, popoverWidth?: string }) {
   const {
     items,
     refine,
     searchForItems,
-  } = useRefinementList({ attribute })
+  } = useRefinementList({ attribute, limit: 30 })
 
   const [open, setOpen] = useState(false)
-
   const refinedItems = items.filter(i => i.isRefined)
   const refinedItem = refinedItems.length > 0 ? refinedItems[0] : null
-  const selectedValue = refinedItem?.value ?? ""
+
+  const [_search, setSearch] = useState("")
+  const [searchChanged, setSearchChanged] = useState(false)
+  const [cachedItems, setCachedItems] = useState(items)
+
+  const searchItems = (value: string) => {
+    setSearch(value)
+    searchForItems(value)
+    setSearchChanged(true)
+  }
+
+  useEffect(() => {
+    if (searchChanged) {
+      setCachedItems(items)
+    }
+  }, [items, searchChanged])
 
   let label: ReactNode = refinedItem?.label ?? ""
   if (refinedItems.length > 1) {
     label = <span>{label}<Badge variant="outline" className="ml-1 text-[10px]">{`+${refinedItems.length - 1}`} more</Badge></span>
   }
   return (
-    <Popover open={open} onOpenChange={setOpen}>
+    <Popover open={open} onOpenChange={(isOpen) => {
+      setOpen(isOpen)
+      searchItems("")
+    }}>
       <PopoverTrigger asChild>
         <Button variant="outline" role="combobox" aria-expanded={open} className={cn("w-full pr-2 justify-between", width)}>
           <span className="overflow-hidden whitespace-nowrap text-ellipsis">
             {refinedItem ? label : placeholder}
           </span>
-
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className={cn("w-full p-0", width)}>
+      <PopoverContent className={cn("w-full p-0", popoverWidth || "w-[300px]")}>
         <Command shouldFilter={false}>
-          <CommandInput placeholder="Search..." className="h-9" onValueChange={searchForItems} />
+          <CommandInput placeholder="Search..." className="h-9" onValueChange={searchItems} />
           <CommandList>
             <CommandEmpty>No results found.</CommandEmpty>
             <CommandGroup>
-              {/*<CommandItem*/}
-              {/*  value=""*/}
-              {/*  onSelect={() => {*/}
-              {/*    refine(selectedValue) // toggle off current*/}
-              {/*    setOpen(false)*/}
-              {/*  }}*/}
-              {/*>*/}
-              {/*  All*/}
-              {/*  <Check className={cn("ml-auto", !refinedItem ? "opacity-100" : "opacity-0")} />*/}
-              {/*</CommandItem>*/}
-              {items.map((item) => (
+              {cachedItems.map((item) => (
                 <CommandItem
                   key={item.value}
                   value={item.value}
                   onSelect={() => {
+                    setSearchChanged(false)
                     refine(item.value)
                     // setOpen(false)
                   }}
                   className="flex justify-between"
                 >
-
-
-                  <span className="flex gap-1 items-baseline"><Check className={cn("ml-auto", item.isRefined ? "opacity-100" : "opacity-0")} />{item.label}</span> <Badge variant="outline" className="text-xs text-gray-500">{item.count}</Badge>
+                  <span className="flex gap-1 items-center">
+                    <Check className={cn("ml-n1", items.find((i) => i.value===item.value)?.isRefined ? "opacity-100" : "opacity-0")} />{item.label}
+                  </span>
+                  <Badge variant="outline" className="text-[9px] text-gray-500">{item.count}</Badge>
                 </CommandItem>
               ))}
             </CommandGroup>
@@ -132,37 +141,9 @@ export function RefinementListCombobox({ attribute, placeholder, width }: { attr
     </Popover>
   )
 }
-export function RefinementListDropdown({ attribute, placeholder = 'Select' }: { attribute: string, placeholder?: string }) {
-  const { items, refine } = useRefinementList({ attribute })
-
-  const refinedItem = items.find(i => i.isRefined)
-
-  return (
-    <Select
-      onValueChange={(refine)}
-      value={refinedItem?.value ?? 'all'}
-    >
-      <SelectTrigger className="w-[200px]">
-        <SelectValue placeholder={placeholder} />
-      </SelectTrigger>
-      <SelectContent>
-        {/*<SelectItem value='all'>All</SelectItem>*/}
-        {items.map(item => {
-          return (
-            <SelectItem className="flex justify-between" key={item.label} value={item.value}>
-              <span>{item.label}</span> <Badge variant="outline">{item.count}</Badge>
-            </SelectItem>
-          );
-        })}
-      </SelectContent>
-    </Select>
-  )
-}
 
 function Hit({ hit }: {hit: SearchResult}) {
-  // get base path
-  const href = `/spending-database/${hit.type.split("/")[1]}/${hit.key}`
-
+  const href = `/search/${hit.type.split("/")[1]}/${hit.key}`
 
   return       <Link href={href}><Card className="w-full">
         <CardHeader>
@@ -180,89 +161,63 @@ function Hit({ hit }: {hit: SearchResult}) {
   </Link>
 }
 
-export default function Search() {
-  return (<>
-  {/*<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@8.5.1/themes/satellite-min.css" integrity="sha256-woeV7a4SRDsjDc395qjBJ4+ZhDdFn8AqswN1rlTO64E=" crossOrigin="anonymous"/>*/}
-  {/*<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@8.5.1/themes/algolia-min.css" crossOrigin="anonymous"/>*/}
-    <InstantSearch searchClient={searchClient}
-                   indexName="records"
-                   routing={true}
-                   future={{
-    preserveSharedStateOnUnmount: true,
-    persistHierarchicalRootCount: true,
-  }}>
-      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '2rem' }}>
-        <SearchBox placeholder="Search records…" />
-        <div className="flex gap-2 mt-2">
-        <RefinementListCombobox attribute="recipient" placeholder="Recipient" width="w-[300px]"/>
-        <RefinementListCombobox attribute="province" placeholder="Province" width="w-[300px]" />
-        <RefinementListCombobox attribute="program" placeholder="Program/Contracted Item" width="w-[300px]" />
+function SearchControls() {
+  const {uiState} = useInstantSearch();
 
-        </div>
-
-        {/*<CurrentRefinements/>*/}
-
-        <div style={{ display: 'flex', marginTop: '2rem', gap: '2rem' }}>
-          <div style={{ width: 300 }}>
-            <h3 style={{ marginBottom: '1rem' }}>Filters</h3>
-
-            {/*<FacetGroup label="Type">*/}
-            {/*  <RefinementList attribute="type" />*/}
-            {/*</FacetGroup>*/}
-
-            <FacetGroup label="Fiscal Year">
-              <RefinementList attribute="fiscal_year"
-                              sortBy={["name:desc"]}
-                              showMore={true}
-                              showMoreLimit={40}
-/>
-            </FacetGroup>
-            {/*<RefinementListDropdown attribute="recipient" placeholder="Recipient"/>*/}
-
-            <FacetGroup label="Department">
-              <RefinementList
-                attribute="payer"
-                  showMore={true}
-                  searchable={true}
-              />
-            </FacetGroup>
-
-            {/*<FacetGroup label="Program">*/}
-            {/*  <RefinementList attribute="program" />*/}
-            {/*</FacetGroup>*/}
-
-
-            {/*<FacetGroup label="Province">*/}
-            {/*  <RefinementList attribute="province" />*/}
-            {/*</FacetGroup>*/}
-
-            <FacetGroup label="Country">
-              <RefinementList attribute="country" />
-            </FacetGroup>
-
-            {/*<FacetGroup label="Recipient">*/}
-            {/*  <RefinementList attribute="recipient" />*/}
-            {/*</FacetGroup>*/}
-
-            <FacetGroup label="Award Type">
-              <RefinementList attribute="award_type" />
-            </FacetGroup>
-            {/*TODO: See why this didn't import properly*/}
-            {/*<FacetGroup label="Aggregated Awards">*/}
-            {/*  <ToggleRefinement attribute="is_aggregated" />*/}
-            {/*</FacetGroup>*/}
-          </div>
-
-          <div style={{ flex: 1 }}>
-            <Hits hitComponent={Hit} />
-            <div className="flex justify-center mt-4">
-              <Pagination />
-            </div>
-          </div>
-        </div>
+  const hasFilters = useMemo(() => Object.keys(uiState.records).length > 0, [uiState.records])
+  return <>
+    <div className="px-4">
+      <SearchBox className="" placeholder="Search federal spending…"/>
+    </div>
+    <div className="w-full overflow-x-auto">
+      <div className="flex gap-1 pl-4 mt-2 pb-2 min-w-max">
+        <RefinementListCombobox attribute="payer" placeholder="Department" width="w-[145px]"/>
+        <RefinementListCombobox attribute="fiscal_year" placeholder="Fiscal Year" width="w-[130px]"/>
+        <RefinementListCombobox attribute="recipient" placeholder="Recipient" width="w-[125px]"/>
+        <RefinementListCombobox attribute="province" placeholder="Province" width="w-[120px]"/>
+        <RefinementListCombobox attribute="country" placeholder="Country" width="w-[115px]"/>
+        <RefinementListCombobox attribute="program" placeholder="Program/Contracted Item" width="w-[240px]"/>
+        <RefinementListCombobox attribute="award_type" placeholder="Type" width="w-[100px]" popoverWidth="w-[200px]"/>
       </div>
-    </InstantSearch>
-  </>
+    </div>
+    <div className="px-4">
+      <div className="flex flex-col gap-2 mt-4">
+        {hasFilters ? (
+          <>
+                    <H2>Results</H2>
+            <Hits hitComponent={Hit}/>
+        <div className="flex justify-center mt-4">
+          <Pagination/>
+        </div>
+        </>): <div className="flex justify-center">
+          <H3>Not sure where to start? Try searching: <a className="underline hover:text-blue-600"
+                                                  href="?records%5Bquery%5D=Management%20Consulting&records%5BrefinementList%5D%5Bfiscal_year%5D%5B0%5D=2024-2025&records%5BrefinementList%5D%5Bfiscal_year%5D%5B1%5D=2020-2021&records%5BrefinementList%5D%5Bfiscal_year%5D%5B2%5D=2023-2024&records%5BrefinementList%5D%5Bfiscal_year%5D%5B3%5D=2021-2022&records%5BrefinementList%5D%5Bfiscal_year%5D%5B4%5D=2022-2023"
+          >'Management Consulting' since 2020
+          </a> or <a
+            href="?records%5Bquery%5D=Wine"
+            className="underline hover:text-blue-600">
+            Wine
+          </a>
+          </H3>
+        </div>}
+      </div>
+    </div>
+  </>;
+}
+
+export default function Search() {
+
+  return (<>
+      <InstantSearch searchClient={searchClient}
+                     indexName="records"
+                     routing={true}
+                     future={{
+                       preserveSharedStateOnUnmount: true,
+                       persistHierarchicalRootCount: true,
+                     }}>
+        <SearchControls/>
+      </InstantSearch>
+    </>
   );
 }
 

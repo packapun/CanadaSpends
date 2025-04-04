@@ -1,7 +1,8 @@
 import Link from "next/link"
+import {cn} from "@/lib/utils";
 
 export const Section = ({ children, className = "" }: { children: React.ReactNode, className?: string }) => {
-  return <div className={`mt-16 max-w-5xl mx-auto ${className}`}>
+  return <div className={cn(`mt-8 max-w-5xl mx-auto`, className)}>
     {children}
   </div>
 }
@@ -58,7 +59,7 @@ export const Page = ({ children }: { children: React.ReactNode }) => <div classN
 </div>
 
 export const PageContent = ({ children, className = "" }: { children: React.ReactNode, className?: string }) =>
-  <div className={`w-full max-w-6xl mx-auto px-4 sm:px-6 pb-8 pt-2 ${className}`}>
+  <div className={cn('w-full max-w-6xl mx-auto px-4 sm:px-6 pb-8 pt-2', className)}>
     {children}
   </div>
 
