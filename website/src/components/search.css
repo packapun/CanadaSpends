@@ -1013,6 +1013,8 @@
   padding: 0.05rem 0.5rem;
 }
 
+/* Remove all custom selectors */
+
 .ais-CurrentRefinements-category {
   display: flex;
   margin-left: 0.5rem;
@@ -1268,4 +1270,19 @@
 
 .ais-Carousel-list::-webkit-scrollbar-thumb {
   background-color: #111432;
+}
+
+body.reloading {
+  cursor: wait;
+}
+
+body.reloading .ais-Hits {
+  opacity: 0.5;
+  transition: opacity 0.2s ease-in-out;
+  pointer-events: none;
+}
+
+body.reloading .ais-Pagination {
+  opacity: 0.5;
+  pointer-events: none;
 }
