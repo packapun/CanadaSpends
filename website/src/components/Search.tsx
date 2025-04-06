@@ -5,7 +5,10 @@ import {
   Hits,
   RefinementList,
   useRefinementList,
-  ToggleRefinement, Pagination, CurrentRefinements, RangeInput, useInstantSearch
+  ToggleRefinement, Pagination, RangeInput, useInstantSearch,
+  CurrentRefinements,
+  useClearRefinements,
+  SortBy
 } from 'react-instantsearch';
 import './search.css'
 import {
@@ -46,16 +49,26 @@ const typesenseAdapter = new TypesenseInstantSearchAdapter({
     cacheSearchResultsForSeconds: 120,
   },
   additionalSearchParameters: {
-    query_by: 'program,description',
-  },
+    query_by: 'recipient,program,description',
+    query_by_weights: '4,2,1',
+    // Default sort can be empty (relevance) or a specific field if desired
+    // We remove the dynamic sort_by here as SortBy widget will handle it
+  }
 });
 
 const searchClient = typesenseAdapter.searchClient;
+
+// Define index names for SortBy widget
+const mainIndexName = 'records'; // Represents relevance sort
+const amountDescIndexName = 'records_amount_desc';
+const amountAscIndexName = 'records_amount_asc';
+// const dateDescIndexName = 'records_date_desc'; // Add when ready
 
 interface SearchResult {
   key: string;
   type: string;
   recipient: string;
+  vendor_name?: string;
   payer: string;
   fiscal_year: string;
   program: string;
@@ -65,14 +78,20 @@ interface SearchResult {
   award_type: string;
 }
 
+interface RefinementListComboboxProps {
+  attribute: string;
+  placeholder: string;
+  width?: string;
+  popoverWidth?: string;
+  sortBy?: string[];
+}
 
-
-export function RefinementListCombobox({ attribute, placeholder, width, popoverWidth }: { attribute: string, placeholder: string, width?: string, popoverWidth?: string }) {
+export function RefinementListCombobox({ attribute, placeholder, width, popoverWidth, sortBy }: RefinementListComboboxProps) {
   const {
     items,
     refine,
     searchForItems,
-  } = useRefinementList({ attribute, limit: 30 })
+  } = useRefinementList({ attribute, limit: 30, sortBy: sortBy as any });
 
   const [open, setOpen] = useState(false)
   const refinedItems = items.filter(i => i.isRefined)
@@ -145,26 +164,32 @@ export function RefinementListCombobox({ attribute, placeholder, width, popoverW
 function Hit({ hit }: {hit: SearchResult}) {
   const href = `/search/${hit.type.split("/")[1]}/${hit.key}`
 
-  return       <Link href={href}><Card className="w-full">
+  return (
+    <Link href={href}>
+      <Card className="w-full">
         <CardHeader>
           <CardTitle className="flex justify-between">
-            <h2>{hit.recipient}</h2>
+            <h2>{hit.vendor_name || hit.recipient}</h2>
             <b>${Number(hit.amount).toLocaleString()}</b>
           </CardTitle>
           <p className="text-xs text-gray-600">{hit.payer}</p>
           <p className="text-xs text-gray-600">{hit.program} <span>({hit.timestamp})</span></p>
-      </CardHeader>
+        </CardHeader>
         <CardContent>
           <p className="whitespace-pre-wrap line-clamp-6">{(hit.description || "").replace("\\n", "\n\n")}</p>
         </CardContent>
       </Card>
-  </Link>
+    </Link>
+  )
 }
 
 function SearchControls() {
-  const {uiState} = useInstantSearch();
+  const {uiState, results} = useInstantSearch();
+  const { canRefine: canClearRefinements, refine: clearAllRefinements } = useClearRefinements();
 
-  const hasFilters = useMemo(() => Object.keys(uiState.records).length > 0, [uiState.records])
+  const hasFilters = useMemo(() => Object.keys(uiState.records || {}).length > 0, [uiState.records])
+  const totalHits = results?.nbHits || 0;
+  
   return <>
     <div className="px-4">
       <SearchBox className="" placeholder="Search federal spending…"/>
@@ -172,7 +197,12 @@ function SearchControls() {
     <div className="w-full overflow-x-auto">
       <div className="flex gap-1 pl-4 mt-2 pb-2 min-w-max">
         <RefinementListCombobox attribute="payer" placeholder="Department" width="w-[145px]"/>
-        <RefinementListCombobox attribute="fiscal_year" placeholder="Fiscal Year" width="w-[130px]"/>
+        <RefinementListCombobox 
+          attribute="fiscal_year" 
+          placeholder="Fiscal Year" 
+          width="w-[130px]" 
+          sortBy={['name:desc']}
+        />
         <RefinementListCombobox attribute="recipient" placeholder="Recipient" width="w-[125px]"/>
         <RefinementListCombobox attribute="province" placeholder="Province" width="w-[120px]"/>
         <RefinementListCombobox attribute="country" placeholder="Country" width="w-[115px]"/>
@@ -180,44 +210,87 @@ function SearchControls() {
         <RefinementListCombobox attribute="award_type" placeholder="Type" width="w-[100px]" popoverWidth="w-[200px]"/>
       </div>
     </div>
+    {canClearRefinements && (
+      <div className="px-4 mt-2 mb-2 flex items-center gap-2 flex-wrap">
+          <CurrentRefinements
+            classNames={{
+              root: 'flex flex-wrap gap-2 items-center',
+              list: 'flex flex-wrap gap-2 items-center',
+              item: 'flex items-center bg-gray-100 rounded-md px-3 py-1 text-sm',
+              label: 'mr-1',
+              category: '',
+              delete: 'ml-1 hover:text-red-500 cursor-pointer text-xs font-bold',
+            }}
+          />
+          <button
+              onClick={clearAllRefinements}
+              className="text-sm text-gray-600 hover:text-gray-900 underline"
+            >
+              Clear All
+          </button>
+        </div>
+    )}
     <div className="px-4">
       <div className="flex flex-col gap-2 mt-4">
         {hasFilters ? (
           <>
-                    <H2>Results</H2>
+            <div className="flex justify-between items-center mb-2">
+              <H2>Results ({totalHits.toLocaleString()})</H2>
+              <div className="flex items-center gap-2">
+                <span className="text-sm text-gray-600">Order By</span>
+                <SortBy
+                  items={[
+                    { label: 'Relevance', value: mainIndexName },
+                    { label: 'Amount (High to Low)', value: amountDescIndexName },
+                    { label: 'Amount (Low to High)', value: amountAscIndexName },
+                    // { label: 'Contract Date', value: dateDescIndexName }, // Add later
+                  ]}
+                  classNames={{
+                    root: 'w-[180px]', // Apply width to the root
+                    select: 'w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm', // Style the select element
+                    option: 'text-gray-900', // Style options if needed
+                  }}
+                />
+              </div>
+            </div>
             <Hits hitComponent={Hit}/>
-        <div className="flex justify-center mt-4">
-          <Pagination/>
-        </div>
-        </>): <div className="flex justify-center">
-          <H3>Not sure where to start? Try searching: <a className="underline hover:text-blue-600"
-                                                  href="?records%5Bquery%5D=Management%20Consulting&records%5BrefinementList%5D%5Bfiscal_year%5D%5B0%5D=2024-2025&records%5BrefinementList%5D%5Bfiscal_year%5D%5B1%5D=2020-2021&records%5BrefinementList%5D%5Bfiscal_year%5D%5B2%5D=2023-2024&records%5BrefinementList%5D%5Bfiscal_year%5D%5B3%5D=2021-2022&records%5BrefinementList%5D%5Bfiscal_year%5D%5B4%5D=2022-2023"
-          >'Management Consulting' since 2020
-          </a> or <a
-            href="?records%5Bquery%5D=Wine"
-            className="underline hover:text-blue-600">
-            Wine
-          </a>
-          </H3>
-        </div>}
+            <div className="flex justify-center mt-4">
+              <Pagination/>
+            </div>
+          </>
+        ) : (
+          <div className="flex justify-center">
+            <H3>Not sure where to start? Try searching: <a className="underline hover:text-blue-600"
+              href="?records%5Bquery%5D=Management%20Consulting&records%5BrefinementList%5D%5Bfiscal_year%5D%5B0%5D=2024-2025&records%5BrefinementList%5D%5Bfiscal_year%5D%5B1%5D=2020-2021&records%5BrefinementList%5D%5Bfiscal_year%5D%5B2%5D=2023-2024&records%5BrefinementList%5D%5Bfiscal_year%5D%5B3%5D=2021-2022&records%5BrefinementList%5D%5Bfiscal_year%5D%5B4%5D=2022-2023"
+            >
+              'Management Consulting' since 2020
+            </a> or <a
+              href="?records%5Bquery%5D=Wine"
+              className="underline hover:text-blue-600"
+            >
+              Wine
+            </a>
+            </H3>
+          </div>
+        )}
       </div>
     </div>
   </>;
 }
 
 export default function Search() {
-
-  return (<>
-      <InstantSearch searchClient={searchClient}
-                     indexName="records"
-                     routing={true}
-                     future={{
-                       preserveSharedStateOnUnmount: true,
-                       persistHierarchicalRootCount: true,
-                     }}>
-        <SearchControls/>
-      </InstantSearch>
-    </>
+  return (
+    <InstantSearch 
+      searchClient={searchClient}
+      indexName="records"
+      routing={true}
+      future={{
+        preserveSharedStateOnUnmount: true,
+        persistHierarchicalRootCount: true,
+      }}
+    >
+      <SearchControls/>
+    </InstantSearch>
   );
 }
 
