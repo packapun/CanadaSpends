@@ -243,6 +243,54 @@ async function GlobalAffairsGrants({ id }: Props) {
   )
 }
 
+async function Transfers({ id }: Props) {
+  const url = `${BASE}/transfers/${id}.json?_shape=array`
+  const data = await jsonFetcher(url)
+  if (!data || data.length === 0) return notFound()
+  const transfer = data[0]
+
+  // Format the fiscal year for display (if available)
+  const fiscalYear = transfer.FSCL_YR || '—'
+
+  // Determine ministry name with fallbacks
+  const ministry = transfer.MINE || transfer.MINC || transfer.MINF || '—'
+
+  // Get recipient name
+  const recipient = transfer.RCPNT_NML_EN_DESC || '—'
+
+  // Get payment amount
+  const amount = transfer.AGRG_PYMT_AMT || 0
+
+  // Get location information if available
+  const location = [
+    transfer.CTY_EN_NM,
+    transfer.PROVTER_EN,
+    transfer.CNTRY_EN_NM
+  ].filter(Boolean).join(', ') || '—'
+
+  return (
+    <DetailsPage
+      fiscal_year={fiscalYear}
+      title={transfer.RCPNT_CLS_EN_DESC || '—'}
+      source_url=""
+      recipient={recipient}
+      award_amount={amount}
+      program={transfer.DEPT_EN_DESC || '—'}
+      type="Federal Transfer"
+      summary=""
+    >
+      <Detail label="Department" value={transfer.DEPT_EN_DESC} />
+      <Detail label="Ministry" value={ministry} />
+      <Detail label="Fiscal Year" value={fiscalYear} />
+      <Detail label="Recipient Class" value={transfer.RCPNT_CLS_EN_DESC} />
+      <Detail label="Recipient" value={recipient} />
+      <Detail label="Location" value={location} />
+      <Detail label="Payment Amount" value={`$${Number(amount).toLocaleString()}`} />
+    </DetailsPage>
+  )
+}
+
+
 function Detail({ label, value, className }: { label: string, value: unknown, className?: string }) {
   return (
     <div className={className}>
@@ -253,4 +301,3 @@ function Detail({ label, value, className }: { label: string, value: unknown, cl
 }
 
 export const AggregatedContractsUnder10k = (props: Props) => <BaseSpendingPage {...props} database="aggregated-contracts-under-10k" label="Contracts Under $10k Summary" />
-export const Transfers = (props: Props) => <BaseSpendingPage {...props} database="transfers" label="Federal Transfers" />
