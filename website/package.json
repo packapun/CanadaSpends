@@ -35,6 +35,7 @@
     "lucide-react": "^0.483.0",
     "negotiator": "^0.6.3",
     "next": "15.2.1",
+    "papaparse": "^5.5.2",
     "posthog-js": "^1.234.4",
     "posthog-node": "^4.10.2",
     "react": "^19.0.0",
@@ -62,6 +63,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "tailwindcss": "^4",
+    "tsx": "^4.19.3",
     "typescript": "^5"
   },
   "packageManager": "pnpm@9.5.0+sha512.140036830124618d624a2187b50d04289d5a087f326c9edfc0ccd733d76c4f52c3a313d4fc148794a2a9d81553016004e6742e8cf850670268a7387fc220c903"
