@@ -23,6 +23,7 @@ import { notFound } from 'next/navigation'
 import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
 import {H1, H2} from "@/components/Layout";
 import {Badge} from "@/components/badge";
+import {ReactNode} from "react";
 
 interface Props {
   id: string
@@ -37,7 +38,6 @@ function jsonFetcher(url: string) {
 
 async function BaseSpendingPage({ id, database, label }: Props & { database: string, label: string }) {
   const url = `${BASE}/${database}/${id}.json?_shape=array`
-  console.log({url})
   const data = await jsonFetcher(url)
   // const summary = await jsonFetcher(url)
   // if (!data || data.length === 0) return notFound()
@@ -95,8 +95,8 @@ async function DetailsPage({
   fiscal_year,
   source_url,
   recipient,
-  extraFields = [],
   keywords = [],
+  children = null,
 }: {
   type: string,
   program: string,
@@ -106,7 +106,7 @@ async function DetailsPage({
   title: string,
   recipient: string,
   summary: string,
-  extraFields?: { label: string, value: unknown }[]
+  children: ReactNode,
   keywords?: string[]
 }) {
   return (
@@ -128,9 +128,7 @@ async function DetailsPage({
           {(summary || '—')}
         </div>
         <div className="grid md:grid-cols-2 grid-cols-1 gap-x-8 gap-y-2 text-sm">
-          {extraFields.map(({ label, value }) => (
-            <Detail key={label} label={label} value={value} />
-          ))}
+          {children}
         </div>
         {keywords.length > 0 && (
           <>
@@ -168,20 +166,19 @@ async function NSERCGrants({ id }: Props) {
       program={grant.program}
       type="NSERC Research Grants"
       summary={grant.award_summary}
-      extraFields={[
-        { label: "Awarded", value: grant.competition_year },
-        { label: "Installment", value: grant.installment },
-        { label: "Principal Investigator", value: grant.project_lead_name },
-        { label: "Institution", value: grant.institution },
-        { label: "Department", value: grant.department },
-        { label: "Province", value: grant.province },
-        { label: "Competition Year", value: grant.competition_year },
-        { label: "Fiscal Year", value: grant.fiscal_year },
-        { label: "Selection Committee", value: grant.selection_committee },
-        { label: "Research Subject", value: grant.research_subject },
-        { label: "Application ID", value: grant.application_id }
-      ]}
-    />
+    >
+      <Detail label="Awarded" value={grant.competition_year} />
+      <Detail label="Installment" value={grant.installment} />
+      <Detail label="Principal Investigator" value={grant.project_lead_name} />
+      <Detail label="Institution" value={grant.institution} />
+      <Detail label="Department" value={grant.department} />
+      <Detail label="Province" value={grant.province} />
+      <Detail label="Competition Year" value={grant.competition_year} />
+      <Detail label="Fiscal Year" value={grant.fiscal_year} />
+      <Detail label="Selection Committee" value={grant.selection_committee} />
+      <Detail label="Research Subject" value={grant.research_subject} />
+      <Detail label="Application ID" value={grant.application_id} />
+    </DetailsPage>
   )
 }
 
@@ -202,20 +199,21 @@ async function CIHRGrants({ id }: Props) {
       type="CIHR Research Grant"
       summary={grant.abstract?.replaceAll("\n", "\n\n")}
       keywords={grant.keywords.split(";")}
-      extraFields={[
-        { label: "Principal Investigator", value: grant.project_lead_name },
-        { label: "Institution", value: grant.institution },
-        { label: "Province", value: grant.province },
-        { label: "Duration", value: grant.duration },
-        { label: "Competition Year", value: grant.competition_year },
-        { label: "Program Type", value: grant.program_type },
-        { label: "Theme", value: grant.theme },
-        { label: "Research Subject", value: grant.research_subject },
-        { label: "External ID", value: grant.external_id }
-      ]}
-    />
+    >
+      <Detail label="Principal Investigator" value={grant.project_lead_name} />
+      <Detail label="Institution" value={grant.institution} />
+      <Detail label="Province" value={grant.province} />
+      <Detail label="Duration" value={grant.duration} />
+      <Detail label="Competition Year" value={grant.competition_year} />
+      <Detail label="Program Type" value={grant.program_type} />
+      <Detail label="Theme" value={grant.theme} />
+      <Detail label="Research Subject" value={grant.research_subject} />
+      <Detail label="External ID" value={grant.external_id} />
+    </DetailsPage>
   )
 }
+
+
 
 function Detail({ label, value }: { label: string, value: unknown }) {
   return (
@@ -227,7 +225,7 @@ function Detail({ label, value }: { label: string, value: unknown }) {
 }
 
 export const AggregatedContractsUnder10k = (props: Props) => <BaseSpendingPage {...props} database="aggregated-contracts-under-10k" label="Contracts Under $10k Summary" />
-export const ContractsOver10k = (props: Props) => <BaseSpendingPage {...props} database="contracts-over-10k" label="Contracts Over $10k" />
+// export const ContractsOver10k = (props: Props) => <BaseSpendingPage {...props} database="contracts-over-10k" label="Contracts Over $10k" />
 export const SSHRCGrants = (props: Props) => <BaseSpendingPage {...props} database="sshrc_grants" label="SSHRC Research Grants" />
 export const GlobalAffairsGrants = (props: Props) => <BaseSpendingPage {...props} database="global_affairs_grants" label="Global Affairs Grants" />
 export const Transfers = (props: Props) => <BaseSpendingPage {...props} database="transfers" label="Federal Transfers" />
