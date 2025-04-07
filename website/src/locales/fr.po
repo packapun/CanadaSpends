@@ -2513,3 +2513,8 @@ msgstr "TCS Yukon"
 #: src/components/Sankey/index.tsx:466
 msgid "Yukon STP"
 msgstr "TPS Yukon"
+
+
+# MainLayout
+msgid "Search"
+msgstr "Recherche"
