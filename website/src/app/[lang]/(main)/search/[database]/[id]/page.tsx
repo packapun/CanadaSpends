@@ -179,9 +179,73 @@ async function SSHRCGrants({ id }: Props) {
   )
 }
 
-function Detail({ label, value }: { label: string, value: unknown }) {
+async function GlobalAffairsGrants({ id }: Props) {
+  const url = `${BASE}/global_affairs_grants/${id}.json?_shape=array`
+  const data = await jsonFetcher(url)
+  if (!data || data.length === 0) return notFound()
+  const grant = data[0]
+
+  // Parse DAC sectors if they're in JSON string format
+  let dacSectors: string[] = []
+  try {
+    if (grant.DACSectors) {
+      const parsed = JSON.parse(grant.DACSectors)
+      dacSectors = Array.isArray(parsed) ? parsed : []
+    }
+  } catch (e) {
+    dacSectors = grant.DACSectors ? [grant.DACSectors] : []
+  }
+
+  // Parse policy markers if they're in JSON string format
+  let policyMarkers: string[] = []
+  try {
+    if (grant.policyMarkers) {
+      const parsed = JSON.parse(grant.policyMarkers)
+      policyMarkers = Array.isArray(parsed) ? parsed : []
+    }
+  } catch (e) {
+    policyMarkers = grant.policyMarkers ? [grant.policyMarkers] : []
+  }
+
+  // Combine all keywords for display
+  const keywords = [...dacSectors, ...policyMarkers]
+
   return (
-    <div>
+    <DetailsPage
+      fiscal_year={new Date(grant.start).getFullYear().toString()}
+      title={grant.title}
+      source_url={grant.source_url || ""}
+      recipient={grant.executingAgencyPartner || ""}
+      award_amount={parseFloat(grant.maximumContribution)}
+      program={grant.programName || ""}
+      type="Global Affairs Grant"
+      summary={grant.description}
+      keywords={keywords}
+    >
+      <Detail label="Project Number" value={grant.projectNumber} />
+      <Detail label="Status" value={grant.status} />
+      <Detail label="Start Date" value={new Date(grant.start).toLocaleDateString()} />
+      <Detail label="End Date" value={new Date(grant.end).toLocaleDateString()} />
+      <Detail label="Countries" value={grant.countries} />
+      <Detail label="Executing Agency/Partner" value={grant.executingAgencyPartner} />
+      <Detail label="Maximum Contribution" value={`$${parseFloat(grant.maximumContribution).toLocaleString()}`} />
+      <Detail label="Contributing Organization" value={grant.ContributingOrganization} />
+      <Detail className="col-span-full" label="Expected Results" value={grant.expectedResults} />
+      <Detail className="col-span-full" label="Results Achieved" value={grant.resultsAchieved} />
+      <Detail label="Aid Type" value={grant.aidType} />
+      <Detail label="Collaboration Type" value={grant.collaborationType} />
+      <Detail label="Finance Type" value={grant.financeType} />
+      <Detail label="Reporting Organization" value={grant.reportingOrganisation} />
+      <Detail label="Program Name" value={grant.programName} />
+      <Detail label="Selection Mechanism" value={grant.selectionMechanism} />
+      <Detail label="Regions" value={grant.regions?.replace(/[\[\]"]/g, '')} />
+    </DetailsPage>
+  )
+}
+
+function Detail({ label, value, className }: { label: string, value: unknown, className?: string }) {
+  return (
+    <div className={className}>
       <div className="font-bold text-gray-900">{label}</div>
       <div className="text-gray-700">{String(value || '—')}</div>
     </div>
@@ -189,6 +253,4 @@ function Detail({ label, value }: { label: string, value: unknown }) {
 }
 
 export const AggregatedContractsUnder10k = (props: Props) => <BaseSpendingPage {...props} database="aggregated-contracts-under-10k" label="Contracts Under $10k Summary" />
-// export const SSHRCGrants = (props: Props) => <BaseSpendingPage {...props} database="sshrc_grants" label="SSHRC Research Grants" />
-export const GlobalAffairsGrants = (props: Props) => <BaseSpendingPage {...props} database="global_affairs_grants" label="Global Affairs Grants" />
 export const Transfers = (props: Props) => <BaseSpendingPage {...props} database="transfers" label="Federal Transfers" />
