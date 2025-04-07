@@ -42,6 +42,9 @@ export const MainLayout = ({ children }: { children: React.ReactNode }) => {
 							<NavLink href={`/${i18n.locale}/spending`} >
 								<Trans>Spending</Trans>
 							</NavLink>
+								<NavLink href={`/${i18n.locale}/search`} >
+									<Trans>Search</Trans>
+								</NavLink>
 							<NavLink href={`/${i18n.locale}/about`} >
 								<Trans>About</Trans>
 							</NavLink>
