@@ -25,7 +25,7 @@ msgstr "Comment Santé Canada a-t-il dépensé son budget au cours de l'exercice
 msgid "— Canada Spends Team"
 msgstr "— L'équipe de Canada Spends"
 
-#: src/components/MainLayout/Footer.tsx:123
+#: src/components/MainLayout/Footer.tsx:113
 msgid "© 2025 Canada Spends. All rights reserved. A Project of <0>Build Canada</0>."
 msgstr "© 2025 Canada Spends. Tous droits réservés. Un projet de <0>Build Canada</0>."
 
@@ -111,7 +111,7 @@ msgstr "Un aperçu de la façon dont Anciens Combattants Canada dépense son bud
 msgid "A significant portion of GAC's budget supports Canada's international development assistance, with key programs focused on climate adaptation, gender equality, and health initiatives in developing nations. The department also facilitates economic diplomacy and trade agreements that benefit Canadian businesses and secure investment opportunities abroad."
 msgstr "Une partie importante du budget d'AMC soutient l'aide au développement international du Canada, avec des programmes clés axés sur l'adaptation au climat, l'égalité des genres et les initiatives de santé dans les pays en développement. Le ministère facilite également la diplomatie économique et les accords commerciaux qui profitent aux entreprises canadiennes et sécurisent les opportunités d'investissement à l'étranger."
 
-#: src/components/MainLayout/index.tsx:46
+#: src/components/MainLayout/index.tsx:49
 #: src/components/MainLayout/Footer.tsx:90
 msgid "About"
 msgstr "À propos"
@@ -332,7 +332,7 @@ msgstr "Rémunération par employé"
 msgid "Connect with us"
 msgstr "Connectez-vous avec nous"
 
-#: src/components/MainLayout/index.tsx:49
+#: src/components/MainLayout/index.tsx:52
 #: src/components/MainLayout/Footer.tsx:95
 msgid "Contact"
 msgstr "Contact"
@@ -1851,10 +1851,6 @@ msgstr "Réparation + Entretien"
 msgid "Repair and Maintenance"
 msgstr "Réparation et entretien"
 
-#: src/components/MainLayout/Footer.tsx:105
-msgid "Report an Issue"
-msgstr "Signaler un problème"
-
 #: src/components/Sankey/index.tsx:93
 msgid "Research"
 msgstr "Recherche"
@@ -1894,6 +1890,10 @@ msgstr "TCS Saskatchewan"
 #: src/components/Sankey/index.tsx:454
 msgid "Saskatchewan STP"
 msgstr "TPS Saskatchewan"
+
+#: src/components/MainLayout/index.tsx:46
+msgid "Search"
+msgstr "Recherche"
 
 #: src/app/[lang]/(main)/spending/layout.tsx:14
 msgid "See how Canada's government spends tax dollars—track workforce data, spending trends, and federal debt with clear, non-partisan insights."
@@ -2513,8 +2513,3 @@ msgstr "TCS Yukon"
 #: src/components/Sankey/index.tsx:466
 msgid "Yukon STP"
 msgstr "TPS Yukon"
-
-
-# MainLayout
-msgid "Search"
-msgstr "Recherche"

@@ -25,7 +25,7 @@ msgstr " How did Health Canada spend its budget in FY24?"
 msgid "— Canada Spends Team"
 msgstr "— Canada Spends Team"
 
-#: src/components/MainLayout/Footer.tsx:123
+#: src/components/MainLayout/Footer.tsx:113
 msgid "© 2025 Canada Spends. All rights reserved. A Project of <0>Build Canada</0>."
 msgstr "© 2025 Canada Spends. All rights reserved. A Project of <0>Build Canada</0>."
 
@@ -111,7 +111,7 @@ msgstr "A look at how Veterans Affairs Canada spends its budget"
 msgid "A significant portion of GAC's budget supports Canada's international development assistance, with key programs focused on climate adaptation, gender equality, and health initiatives in developing nations. The department also facilitates economic diplomacy and trade agreements that benefit Canadian businesses and secure investment opportunities abroad."
 msgstr "A significant portion of GAC's budget supports Canada's international development assistance, with key programs focused on climate adaptation, gender equality, and health initiatives in developing nations. The department also facilitates economic diplomacy and trade agreements that benefit Canadian businesses and secure investment opportunities abroad."
 
-#: src/components/MainLayout/index.tsx:46
+#: src/components/MainLayout/index.tsx:49
 #: src/components/MainLayout/Footer.tsx:90
 msgid "About"
 msgstr "About"
@@ -332,7 +332,7 @@ msgstr "Compensation per Employee"
 msgid "Connect with us"
 msgstr "Connect with us"
 
-#: src/components/MainLayout/index.tsx:49
+#: src/components/MainLayout/index.tsx:52
 #: src/components/MainLayout/Footer.tsx:95
 msgid "Contact"
 msgstr "Contact"
@@ -1851,10 +1851,6 @@ msgstr "Repair + Maintenance"
 msgid "Repair and Maintenance"
 msgstr "Repair and Maintenance"
 
-#: src/components/MainLayout/Footer.tsx:105
-msgid "Report an Issue"
-msgstr "Report an Issue"
-
 #: src/components/Sankey/index.tsx:93
 msgid "Research"
 msgstr "Research"
@@ -1894,6 +1890,10 @@ msgstr "Saskatchewan HTP"
 #: src/components/Sankey/index.tsx:454
 msgid "Saskatchewan STP"
 msgstr "Saskatchewan STP"
+
+#: src/components/MainLayout/index.tsx:46
+msgid "Search"
+msgstr "Search"
 
 #: src/app/[lang]/(main)/spending/layout.tsx:14
 msgid "See how Canada's government spends tax dollars—track workforce data, spending trends, and federal debt with clear, non-partisan insights."
