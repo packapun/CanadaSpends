@@ -1,13 +1,5 @@
 import dynamic from 'next/dynamic'
 
-// const AggregatedContractsUnder10kPage = dynamic(() => import('./views/AggregatedContractsUnder10k'))
-// const ContractsOver10kPage = dynamic(() => import('./views/ContractsOver10k'))
-// const CIHRGrantsPage = dynamic(() => import('./views/CIHRGrants'))
-// const NSERCGrantsPage = dynamic(() => import('./views/NSERCGrants'))
-// const SSHRCGrantsPage = dynamic(() => import('./views/SSHRCGrants'))
-// const GlobalAffairsGrantsPage = dynamic(() => import('./views/GlobalAffairsGrants'))
-// const TransfersPage = dynamic(() => import('./views/Transfers'))
-
 export default async function Page({ params }: { params: { id: string, database: string } }) {
   const { id, database } = await params
 
@@ -41,21 +33,6 @@ const BASE = 'https://api.canadasbuilding.com/canada-spends'
 function jsonFetcher(url: string) {
   return fetch(url, { cache: 'no-store' })
     .then(res => res.ok ? res.json() : null)
-}
-
-function KeyValueTable({ record }: { record: Record<string, unknown> }) {
-  return (
-    <table className="w-full border border-gray-300 text-sm">
-      <tbody>
-        {Object.entries(record).map(([key, value]) => (
-          <tr key={key} className="even:bg-gray-50">
-            <td className="border p-2 font-medium align-top whitespace-nowrap">{key}</td>
-            <td className="border p-2 break-all">{String(value)}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  )
 }
 
 async function BaseSpendingPage({ id, database, label }: Props & { database: string, label: string }) {
@@ -92,6 +69,89 @@ async function BaseSpendingPage({ id, database, label }: Props & { database: str
   )
 }
 
+
+
+function KeyValueTable({ record }: { record: Record<string, unknown> }) {
+  return (
+    <table className="w-full border border-gray-300 text-sm">
+      <tbody>
+        {Object.entries(record).map(([key, value]) => (
+          <tr key={key} className="even:bg-gray-50">
+            <td className="border p-2 font-medium align-top whitespace-nowrap">{key}</td>
+            <td className="border p-2 break-all">{String(value)}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  )
+}
+
+async function DetailsPage({
+  type,
+  summary,
+  program,
+  title,
+  award_amount,
+  fiscal_year,
+  source_url,
+  recipient,
+  extraFields = [],
+  keywords = [],
+}: {
+  type: string,
+  program: string,
+  award_amount: number,
+  source_url: string,
+  fiscal_year: string,
+  title: string,
+  recipient: string,
+  summary: string,
+  extraFields?: { label: string, value: unknown }[]
+  keywords?: string[]
+}) {
+  return (
+    <main className="max-w-4xl mx-auto p-4">
+      <h1 className="text-xl font-semibold leading-tight max-w-2xl mb-4">
+        {type}: {program}
+      </h1>
+      <div className="rounded-2xl border p-6 shadow-sm bg-white">
+        <div className="flex justify-between items-start mb-2">
+          <h2 className="text-2xl font-bold">{recipient}</h2>
+          <div className="text-right text-lg font-bold text-green-700 whitespace-nowrap">
+            ${Number(award_amount).toLocaleString()}
+          </div>
+        </div>
+        <h3 className="text-xl font-bold">{title}</h3>
+        <p className="text-xs text-gray-500 mb-4 font-bold">FY {fiscal_year}</p>
+        <div className="font-bold text-gray-900">Summary</div>
+        <div className="text-sm text-gray-700 mb-4 whitespace-pre-wrap">
+          {(summary || '—')}
+        </div>
+        <div className="grid md:grid-cols-2 grid-cols-1 gap-x-8 gap-y-2 text-sm">
+          {extraFields.map(({ label, value }) => (
+            <Detail key={label} label={label} value={value} />
+          ))}
+        </div>
+        {keywords.length > 0 && (
+          <>
+            <div className="font-bold text-gray-900 mt-2">Keywords</div>
+            <div>
+              {keywords.map((kw: string) => (
+                <Badge className="mr-1" variant="outline" key={kw}>{kw}</Badge>
+              ))}
+            </div>
+          </>
+        )}
+        <div className="mt-6">
+          <a href={source_url} className="text-blue-600 underline" target="_blank" rel="noopener noreferrer">
+            View original record site
+          </a>
+        </div>
+      </div>
+    </main>
+  )
+}
+
 async function NSERCGrants({ id }: Props) {
   const url = `${BASE}/nserc_grants/${id}.json?_shape=array`
   const data = await jsonFetcher(url)
@@ -99,47 +159,29 @@ async function NSERCGrants({ id }: Props) {
   const grant = data[0]
 
   return (
-    <main className="max-w-4xl mx-auto p-4">
-      <h1 className="text-xl font-semibold leading-tight max-w-2xl mb-4">
-        NSERC Research Grants: {grant.program}
-      </h1>
-      <div className="rounded-2xl border p-6 shadow-sm bg-white">
-          <div className="flex justify-between items-start mb-2">
-        <h2 className="text-2xl font-bold">{grant.institution}</h2>
-          <div className="text-right text-lg font-bold text-green-700 whitespace-nowrap">
-            ${Number(grant.award_amount).toLocaleString()}
-          </div>
-          </div>
-        <h3 className="text-xl font-bold">{grant.title}</h3>
-        <p className="text-xs text-gray-500 mb-4 font-bold">FY {grant.fiscal_year}</p>
-          <div className="font-bold text-gray-900">Summary</div>
-
-        <div className="text-sm text-gray-700 mb-4 whitespace-pre-wrap">
-          {grant.award_summary.replaceAll("\n", "\n\n")}
-        </div>
-        <div className="grid md:grid-cols-2 grid-cols-1 gap-x-8 gap-y-2 text-sm">
-          <Detail label="Awarded" value={grant.competition_year} />
-          <Detail label="Installment" value={grant.installment} />
-          <Detail label="Principal Investigator" value={grant.project_lead_name} />
-          <Detail label="Institution" value={grant.institution} />
-          <Detail label="Department" value={grant.department} />
-          <Detail label="Province" value={grant.province} />
-          <Detail label="Competition Year" value={grant.competition_year} />
-          <Detail label="Fiscal Year" value={grant.fiscal_year} />
-          <Detail label="Installment" value={grant.installment} />
-          <Detail label="Selection Committee" value={grant.selection_committee} />
-          <Detail label="Research Subject" value={grant.research_subject} />
-          <Detail label="Application ID" value={grant.application_id} />
-        </div>
-        {grant.source_url && (
-          <div className="mt-6">
-            <a href={grant.source_url as string} className="text-blue-600 underline" target="_blank" rel="noopener noreferrer">
-              View original record site
-            </a>
-          </div>
-        )}
-      </div>
-    </main>
+    <DetailsPage
+      fiscal_year={grant.fiscal_year}
+      title={grant.title}
+      source_url={grant.source_url}
+      recipient={grant.institution}
+      award_amount={grant.award_amount}
+      program={grant.program}
+      type="NSERC Research Grants"
+      summary={grant.award_summary}
+      extraFields={[
+        { label: "Awarded", value: grant.competition_year },
+        { label: "Installment", value: grant.installment },
+        { label: "Principal Investigator", value: grant.project_lead_name },
+        { label: "Institution", value: grant.institution },
+        { label: "Department", value: grant.department },
+        { label: "Province", value: grant.province },
+        { label: "Competition Year", value: grant.competition_year },
+        { label: "Fiscal Year", value: grant.fiscal_year },
+        { label: "Selection Committee", value: grant.selection_committee },
+        { label: "Research Subject", value: grant.research_subject },
+        { label: "Application ID", value: grant.application_id }
+      ]}
+    />
   )
 }
 
@@ -150,60 +192,39 @@ async function CIHRGrants({ id }: Props) {
   const grant = data[0]
 
   return (
-    <main className="max-w-4xl mx-auto p-4">
-      <h1 className="text-xl font-semibold leading-tight max-w-2xl mb-4">
-        CIHR Research Grant: {grant.program}
-      </h1>
-      <div className="rounded-2xl border p-6 shadow-sm bg-white">
-        <div className="flex justify-between items-start mb-2">
-          <h2 className="text-2xl font-bold">{grant.institution}</h2>
-          <div className="text-right text-lg font-bold text-green-700 whitespace-nowrap">
-            ${Number(grant.award_amount).toLocaleString()}
-          </div>
-        </div>
-        <h3 className="text-xl font-bold">{grant.title}</h3>
-        <div className="font-bold text-gray-900 mb-1">Summary</div>
-        <div className="text-sm text-gray-700 mb-4 whitespace-pre-wrap">
-          {grant.abstract?.replaceAll("\n", "\n\n") || '—'}
-        </div>
-        <div className="grid md:grid-cols-2 grid-cols-1 gap-x-8 gap-y-2 text-sm">
-          <Detail label="Principal Investigator" value={grant.project_lead_name} />
-          <Detail label="Institution" value={grant.institution} />
-          <Detail label="Province" value={grant.province} />
-          <Detail label="Duration" value={grant.duration} />
-          <Detail label="Competition Year" value={grant.competition_year} />
-          <Detail label="Program Type" value={grant.program_type} />
-          <Detail label="Theme" value={grant.theme} />
-          <Detail label="Research Subject" value={grant.research_subject} />
-          <Detail label="External ID" value={grant.external_id} />
-        </div>
-
-        <div className="font-bold text-gray-900 mt-2">Keywords</div>
-        <div>
-        {grant.keywords?.split(";")?.map((kw: string) => <Badge className="mr-1" variant="outline" key={kw}>{kw}</Badge>)}
-        </div>
-
-        {grant.source_url && (
-          <div className="mt-6">
-            <a href={grant.source_url as string} className="text-blue-600 underline" target="_blank" rel="noopener noreferrer">
-              View original record site
-            </a>
-          </div>
-        )}
-      </div>
-    </main>
+    <DetailsPage
+      fiscal_year={grant.competition_year.slice(0,4)}
+      title={grant.title}
+      source_url={grant.source_url}
+      recipient={grant.institution}
+      award_amount={grant.award_amount}
+      program={grant.program}
+      type="CIHR Research Grant"
+      summary={grant.abstract?.replaceAll("\n", "\n\n")}
+      keywords={grant.keywords.split(";")}
+      extraFields={[
+        { label: "Principal Investigator", value: grant.project_lead_name },
+        { label: "Institution", value: grant.institution },
+        { label: "Province", value: grant.province },
+        { label: "Duration", value: grant.duration },
+        { label: "Competition Year", value: grant.competition_year },
+        { label: "Program Type", value: grant.program_type },
+        { label: "Theme", value: grant.theme },
+        { label: "Research Subject", value: grant.research_subject },
+        { label: "External ID", value: grant.external_id }
+      ]}
+    />
   )
 }
 
 function Detail({ label, value }: { label: string, value: unknown }) {
   return (
     <div>
-  <div className="font-bold text-gray-900">{label}</div>
+      <div className="font-bold text-gray-900">{label}</div>
       <div className="text-gray-700">{String(value || '—')}</div>
     </div>
   )
 }
-
 
 export const AggregatedContractsUnder10k = (props: Props) => <BaseSpendingPage {...props} database="aggregated-contracts-under-10k" label="Contracts Under $10k Summary" />
 export const ContractsOver10k = (props: Props) => <BaseSpendingPage {...props} database="contracts-over-10k" label="Contracts Over $10k" />
