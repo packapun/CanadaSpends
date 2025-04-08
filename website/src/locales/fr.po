@@ -13,10 +13,6 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/app/[lang]/(main)/spending/canada-revenue-agency/page.tsx:126
-msgid " CRA's spending grew more than overall spending, meaning its share of the federal budget increased. In 2024, the agency accounted for 3.2% of all federal spending, 0.6 percentage points lower than in 1995."
-msgstr "Les dépenses de l'ARC ont augmenté plus que les dépenses globales, ce qui signifie que sa part du budget fédéral a augmenté. En 2024, l'agence représentait 3,2 % de toutes les dépenses fédérales, soit 0,6 point de pourcentage de moins qu'en 1995."
-
 #: src/app/[lang]/(main)/spending/health-canada/page.tsx:146
 msgid " How did Health Canada spend its budget in FY24?"
 msgstr "Comment Santé Canada a-t-il dépensé son budget au cours de l'exercice 2024?"
@@ -29,11 +25,11 @@ msgstr "— L'équipe de Canada Spends"
 msgid "© 2025 Canada Spends. All rights reserved. A Project of <0>Build Canada</0>."
 msgstr "© 2025 Canada Spends. Tous droits réservés. Un projet de <0>Build Canada</0>."
 
-#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:224
+#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:230
 msgid "<0>Minister of Foreign Affairs</0>: Responsible for diplomacy, international security, international development assistance, and global partnerships."
 msgstr "<0>Ministre des Affaires étrangères</0> : Responsable de la diplomatie, de la sécurité internationale, de l'aide au développement international et des partenariats mondiaux."
 
-#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:233
+#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:239
 msgid "<0>Minister of International Trade</0>: Oversees Canada's trade negotiations, export promotion, and economic policy engagement."
 msgstr "<0>Ministre du Commerce international</0> : Supervise les négociations commerciales du Canada, la promotion des exportations et l'engagement en matière de politique économique."
 
@@ -42,8 +38,9 @@ msgid "10 government departments accounted for 73.2% of federal spending in FY 2
 msgstr "10 ministères gouvernementaux représentaient 73,2 % des dépenses fédérales pour l'exercice 2024"
 
 #: src/app/[lang]/(main)/spending/public-safety-canada/page.tsx:94
-#: src/app/[lang]/(main)/spending/national-defence/page.tsx:96
-#: src/app/[lang]/(main)/spending/canada-revenue-agency/page.tsx:94
+#: src/app/[lang]/(main)/spending/national-defence/page.tsx:106
+#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:105
+#: src/app/[lang]/(main)/spending/canada-revenue-agency/page.tsx:96
 msgid "10 government departments accounted for 73.2% of federal spending in FY 2024."
 msgstr "10 ministères gouvernementaux représentaient 73,2 % des dépenses fédérales pour l'exercice 2024."
 
@@ -95,7 +92,7 @@ msgstr "Un aperçu de la façon dont l'Agence du revenu du Canada dépense son b
 msgid "A look at how the Department of Finance spends its budget"
 msgstr "Un aperçu de la façon dont le ministère des Finances dépense son budget"
 
-#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:34
+#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:35
 msgid "A look at how the Global Affairs Canada spends its budget"
 msgstr "Un aperçu de la façon dont Affaires mondiales Canada dépense son budget"
 
@@ -107,7 +104,7 @@ msgstr "Un aperçu de la façon dont Transports Canada dépense son budget"
 msgid "A look at how Veterans Affairs Canada spends its budget"
 msgstr "Un aperçu de la façon dont Anciens Combattants Canada dépense son budget"
 
-#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:173
+#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:181
 msgid "A significant portion of GAC's budget supports Canada's international development assistance, with key programs focused on climate adaptation, gender equality, and health initiatives in developing nations. The department also facilitates economic diplomacy and trade agreements that benefit Canadian businesses and secure investment opportunities abroad."
 msgstr "Une partie importante du budget d'AMC soutient l'aide au développement international du Canada, avec des programmes clés axés sur l'adaptation au climat, l'égalité des genres et les initiatives de santé dans les pays en développement. Le ministère facilite également la diplomatie économique et les accords commerciaux qui profitent aux entreprises canadiennes et sécurisent les opportunités d'investissement à l'étranger."
 
@@ -267,7 +264,7 @@ msgstr "Canada Spends est une plateforme qui vise à rendre les dépenses gouver
 msgid "Canada Spends primarily relies on Public Accounts data from the Office of the Receiver General within Public Services and Procurement Canada. Data for the previous fiscal year is typically released in December of that year, though the release month can vary. For example, complete FY 2024 data covering the period April 1, 2023 - March 31, 2024 was released in December 2024. Public Accounts documents provide the final, consolidated view of total federal government spending for each fiscal year."
 msgstr "Canada Spends s'appuie principalement sur les données des Comptes publics du Bureau du receveur général au sein de Services publics et Approvisionnement Canada. Les données de l'exercice précédent sont généralement publiées en décembre de la même année, bien que le mois de publication puisse varier. Par exemple, les données complètes de l'exercice 2024 couvrant la période du 1er avril 2023 au 31 mars 2024 ont été publiées en décembre 2024. Les documents des Comptes publics fournissent la vue finale et consolidée des dépenses totales du gouvernement fédéral pour chaque exercice."
 
-#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/page.tsx:202
+#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/page.tsx:215
 msgid "Canada Student Loans Program: providing financial aid for post-secondary students."
 msgstr "Programme canadien de prêts aux étudiants : fournir une aide financière aux étudiants de niveau postsecondaire."
 
@@ -349,9 +346,20 @@ msgstr "Services correctionnels"
 msgid "COVID-19 Income Support"
 msgstr "Soutien au revenu COVID-19"
 
-#: src/app/[lang]/(main)/spending/canada-revenue-agency/page.tsx:173
+#: src/app/[lang]/(main)/spending/canada-revenue-agency/page.tsx:176
 msgid "CRA spending is divided across tax administration, compliance enforcement, benefit program delivery, and intergovernmental agreements with provinces and territories. The largest expenditures in FY 2024 included personal income tax processing, corporate tax audits, and benefit administration."
 msgstr "Les dépenses de l'ARC sont réparties entre l'administration fiscale, l'application de la conformité, la prestation de programmes de prestations et les accords intergouvernementaux avec les provinces et les territoires. Les plus importantes dépenses au cours de l'exercice 2024 comprenaient le traitement de l'impôt sur le revenu des particuliers, les vérifications de l'impôt des sociétés et l'administration des prestations."
+#: src/app/[lang]/(main)/spending/canada-revenue-agency/page.tsx:185
+msgid "CRA spending isolated to FY 2024"
+msgstr "Dépenses de l'ARC isolées pour l'exercice 2024"
+
+#: src/app/[lang]/(main)/spending/canada-revenue-agency/page.tsx:133
+msgid "CRA's share of federal spending in FY 2024 was higher than in FY 1995"
+msgstr "La part des dépenses fédérales de l'ARC en 2024 était plus élevée qu'en 1995"
+
+#: src/app/[lang]/(main)/spending/canada-revenue-agency/page.tsx:114
+msgid "CRA's spending grew more than overall spending, meaning its share of the federal budget increased. In 2024, the agency accounted for 3.2% of all federal spending, 1.85 percentage points higher than in 1995."
+msgstr "Les dépenses de l'ARC ont augmenté plus que les dépenses globales, ce qui signifie que sa part du budget fédéral a augmenté. En 2024, l'agence représentait 3,2 % de toutes les dépenses fédérales, soit 1,85 point de pourcentage de plus qu'en 1995."
 
 #: src/components/Sankey/index.tsx:775
 msgid "Crown Corporations and other government business enterprises"
@@ -383,7 +391,7 @@ msgstr "Données mises à jour le 20 mars 2025"
 #: src/app/[lang]/(main)/spending/immigration-refugees-and-citizenship/page.tsx:60
 #: src/app/[lang]/(main)/spending/housing-infrastructure-communities/page.tsx:73
 #: src/app/[lang]/(main)/spending/health-canada/page.tsx:71
-#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:72
+#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:73
 #: src/app/[lang]/(main)/spending/employment-and-social-development-canada/page.tsx:67
 #: src/app/[lang]/(main)/spending/canada-revenue-agency/page.tsx:66
 msgid "Data updated March 21, 2025"
@@ -425,7 +433,7 @@ msgstr "Ministère de la Défense nationale"
 msgid "Departments + Agencies"
 msgstr "Ministères + Organismes"
 
-#: src/app/[lang]/(main)/spending/indigenous-services-and-northern-affairs/page.tsx:125
+#: src/app/[lang]/(main)/spending/indigenous-services-and-northern-affairs/page.tsx:122
 msgid "Despite these increases, significant challenges remain in areas such as housing, healthcare access, and infrastructure in remote Indigenous communities."
 msgstr "Malgré ces augmentations, des défis importants subsistent dans des domaines tels que le logement, l'accès aux soins de santé et l'infrastructure dans les communautés autochtones éloignées."
 
@@ -433,11 +441,11 @@ msgstr "Malgré ces augmentations, des défis importants subsistent dans des dom
 msgid "Development, Peace + Security Programming"
 msgstr "Programmation du développement, de la paix + de la sécurité"
 
-#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:163
+#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:171
 msgid "Development, Peace and Security Programming: $5.37B"
 msgstr "Programmation du développement, de la paix et de la sécurité : 5,37 G$"
 
-#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/page.tsx:143
+#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/page.tsx:157
 msgid "Direct spending refers to money allocated to government programs, employee salaries, and administrative expenses. Indirect spending includes federal transfers to individuals and provinces."
 msgstr "Les dépenses directes font référence à l'argent alloué aux programmes gouvernementaux, aux salaires des employés et aux dépenses administratives. Les dépenses indirectes comprennent les transferts fédéraux aux particuliers et aux provinces."
 
@@ -445,7 +453,7 @@ msgstr "Les dépenses directes font référence à l'argent alloué aux programm
 msgid "Disaster Relief"
 msgstr "Secours aux sinistrés"
 
-#: src/app/[lang]/(main)/spending/national-defence/page.tsx:124
+#: src/app/[lang]/(main)/spending/national-defence/page.tsx:125
 msgid "DND's spending grew less than overall spending, meaning its share of the federal budget decreased. In 2024, the department accounted for 6.7% of all federal spending, 0.6 percentage points lower than in 1995."
 msgstr "Les dépenses du MDN ont augmenté moins que les dépenses globales, ce qui signifie que sa part du budget fédéral a diminué. En 2024, le ministère représentait 6,7 % de toutes les dépenses fédérales, soit 0,6 point de pourcentage de moins qu'en 1995."
 
@@ -537,6 +545,18 @@ msgstr "EDSC représentait 18,4 % de toutes les dépenses fédérales pour l'exe
 msgid "ESDC spent $94.48 billion in fiscal year (FY) 2024. This was 18.4% of the $513.9 billion in overall federal spending, making it one of the highest-spending federal departments."
 msgstr "EDSC a dépensé 94,48 milliards de dollars au cours de l'exercice 2024. Cela représentait 18,4 % des 513,9 milliards de dollars de dépenses fédérales totales, ce qui en fait l'un des ministères fédéraux aux dépenses les plus élevées."
 
+#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/page.tsx:198
+msgid "ESDC, Spending by Entity, FY 2024"
+msgstr "EDSC, Dépenses par entité, exercice 2024"
+
+#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/page.tsx:178
+msgid "ESDC's share of federal spending in FY 2024"
+msgstr "Part des dépenses fédérales d'EDSC pour l'exercice 2024"
+
+#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/page.tsx:138
+msgid "ESDC's share of federal spending in FY 2024 was lower than FY 1995"
+msgstr "La part des dépenses fédérales d'EDSC en 2024 était inférieure à celle de 1995"
+
 #: src/app/[lang]/(main)/spending/employment-and-social-development-canada/page.tsx:54
 msgid "Established in 2005, ESDC is a federal department responsible for supporting Canadians through social programs and workforce development. It administers key programs such as Employment Insurance (EI), the Canada Pension Plan (CPP), Old Age Security (OAS), and skills training initiatives. ESDC also oversees Service Canada, which delivers government services directly to the public."
 msgstr "Établi en 2005, EDSC est un ministère fédéral responsable du soutien aux Canadiens par le biais de programmes sociaux et de développement de la main-d'œuvre. Il administre des programmes clés tels que l'assurance-emploi (AE), le Régime de pensions du Canada (RPC), la Sécurité de la vieillesse (SV) et des initiatives de formation professionnelle. EDSC supervise également Service Canada, qui fournit des services gouvernementaux directement au public."
@@ -569,16 +589,16 @@ msgstr "Explorer les données"
 #: src/app/[lang]/(main)/spending/transport-canada/page.tsx:196
 #: src/app/[lang]/(main)/spending/public-services-and-procurement-canada/page.tsx:198
 #: src/app/[lang]/(main)/spending/public-safety-canada/page.tsx:188
-#: src/app/[lang]/(main)/spending/national-defence/page.tsx:229
+#: src/app/[lang]/(main)/spending/national-defence/page.tsx:231
 #: src/app/[lang]/(main)/spending/innovation-science-and-industry/page.tsx:191
-#: src/app/[lang]/(main)/spending/indigenous-services-and-northern-affairs/page.tsx:209
+#: src/app/[lang]/(main)/spending/indigenous-services-and-northern-affairs/page.tsx:220
 #: src/app/[lang]/(main)/spending/immigration-refugees-and-citizenship/page.tsx:191
 #: src/app/[lang]/(main)/spending/housing-infrastructure-communities/page.tsx:203
 #: src/app/[lang]/(main)/spending/health-canada/page.tsx:196
-#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:266
-#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/page.tsx:249
+#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:272
+#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/page.tsx:262
 #: src/app/[lang]/(main)/spending/department-of-finance/page.tsx:227
-#: src/app/[lang]/(main)/spending/canada-revenue-agency/page.tsx:221
+#: src/app/[lang]/(main)/spending/canada-revenue-agency/page.tsx:226
 msgid "Explore other Federal Departments"
 msgstr "Explorer d'autres ministères fédéraux"
 
@@ -631,45 +651,45 @@ msgstr "Les ministères fédéraux comprennent souvent d'autres entités, notamm
 msgid "Federal departments often contain other entities including offices, crown corporations and agencies. The Health Canada entities with the biggest expenditures in FY 2024 were"
 msgstr "Les ministères fédéraux comprennent souvent d'autres entités, notamment des bureaux, des sociétés d'État et des organismes. Les entités de Santé Canada ayant les dépenses les plus élevées au cours de l'exercice 2024 étaient"
 
-#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:194
+#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:203
 msgid "Federal departments often contain other entities. In FY 2024, Global Affairs Canada's entities with the highest expenditures were:"
 msgstr "Les ministères fédéraux comprennent souvent d'autres entités. Au cours de l'exercice 2024, les entités d'Affaires mondiales Canada ayant les dépenses les plus élevées étaient :"
 
-#: src/app/[lang]/(main)/spending/national-defence/page.tsx:184
+#: src/app/[lang]/(main)/spending/national-defence/page.tsx:182
 msgid "Federal departments often include additional agencies, commands, and operational divisions. In FY 2024, the largest spending entities within DND were the Canadian Army, the Royal Canadian Navy, and the Royal Canadian Air Force, accounting for the bulk of military expenditures."
 msgstr "Les ministères fédéraux comprennent souvent des agences supplémentaires, des commandements et des divisions opérationnelles. Au cours de l'exercice 2024, les entités ayant les dépenses les plus importantes au sein du MDN étaient l'Armée canadienne, la Marine royale canadienne et l'Aviation royale canadienne, représentant la majeure partie des dépenses militaires."
 
-#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/page.tsx:187
+#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/page.tsx:191
 msgid "Federal departments often include multiple agencies and service delivery arms. In FY 2024, ESDC's highest-expenditure entities included:"
 msgstr "Les ministères fédéraux comprennent souvent plusieurs agences et organes de prestation de services. Au cours de l'exercice 2024, les entités d'EDSC ayant les dépenses les plus élevées comprenaient :"
+
+#: src/app/[lang]/(main)/spending/indigenous-services-and-northern-affairs/page.tsx:164
+#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:191
+#: src/app/[lang]/(main)/spending/department-of-finance/page.tsx:167
+msgid "Federal government spending in FY 2024"
+msgstr "Dépenses du gouvernement fédéral pour l'exercice 2024"
 
 #: src/app/[lang]/(main)/spending/veterans-affairs/page.tsx:141
 #: src/app/[lang]/(main)/spending/transport-canada/page.tsx:138
 #: src/app/[lang]/(main)/spending/public-services-and-procurement-canada/page.tsx:145
 #: src/app/[lang]/(main)/spending/innovation-science-and-industry/page.tsx:139
 #: src/app/[lang]/(main)/spending/immigration-refugees-and-citizenship/page.tsx:137
-#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:191
-#: src/app/[lang]/(main)/spending/department-of-finance/page.tsx:167
 msgid "Federal government spending isolated to FY 2024"
 msgstr "Dépenses du gouvernement fédéral isolées pour l'exercice 2024"
-
-#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/page.tsx:179
-msgid "Federal government spending isolated to FY 2024 (in millions)"
-msgstr "Dépenses du gouvernement fédéral isolées pour l'exercice 2024 (en millions)"
 
 #: src/app/[lang]/(main)/spending/page.tsx:80
 msgid "Federal organizations"
 msgstr "Organisations fédérales"
 
-#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:117
+#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:112
 msgid "Federal spending may shift over time due to changing global circumstances, diplomatic priorities, and Canada's economic relationships. Since 1995, overall federal spending has increased by 74.9%, while Global Affairs Canada's budget has grown by 166.5%, reflecting an expansion in international engagement."
 msgstr "Les dépenses fédérales peuvent évoluer au fil du temps en raison de l'évolution des circonstances mondiales, des priorités diplomatiques et des relations économiques du Canada. Depuis 1995, les dépenses fédérales globales ont augmenté de 74,9 %, tandis que le budget d'Affaires mondiales Canada a augmenté de 166,5 %, reflétant une expansion de l'engagement international."
 
-#: src/app/[lang]/(main)/spending/canada-revenue-agency/page.tsx:118
+#: src/app/[lang]/(main)/spending/canada-revenue-agency/page.tsx:106
 msgid "Federal spending may shift over time due to economic fluctuations, changes in tax policy, and the expansion of benefit programs. Since 1995, overall federal spending has risen 74.9%, while Canada Revenue Agency spending has increased 302%"
 msgstr "Les dépenses fédérales peuvent évoluer au fil du temps en raison des fluctuations économiques, des changements dans la politique fiscale et de l'expansion des programmes de prestations. Depuis 1995, les dépenses fédérales globales ont augmenté de 74,9 %, tandis que les dépenses de l'Agence du revenu du Canada ont augmenté de 302 %"
 
-#: src/app/[lang]/(main)/spending/national-defence/page.tsx:116
+#: src/app/[lang]/(main)/spending/national-defence/page.tsx:117
 msgid "Federal spending may shift over time due to geopolitical tensions, defence modernization needs, and emerging threats such as cyber warfare. Since 1995, overall federal spending has risen 74.9%, while Department of National Defence spending has increased 59.9%."
 msgstr "Les dépenses fédérales peuvent évoluer au fil du temps en raison des tensions géopolitiques, des besoins de modernisation de la défense et des menaces émergentes telles que la cyberguerre. Depuis 1995, les dépenses fédérales globales ont augmenté de 74,9 %, tandis que les dépenses du ministère de la Défense nationale ont augmenté de 59,9 %."
 
@@ -709,7 +729,7 @@ msgstr "Les dépenses fédérales peuvent évoluer au fil du temps en raison de 
 msgid "Federal spending may shift over time due to population growth, changes in policy and programs, and emerging problems to address. Since 1995, overall federal spending has risen 77%, while VAC spending has increased 51%."
 msgstr "Les dépenses fédérales peuvent évoluer au fil du temps en raison de la croissance démographique, des changements dans les politiques et les programmes, et des problèmes émergents à résoudre. Depuis 1995, les dépenses fédérales globales ont augmenté de 77 %, tandis que les dépenses d'ACC ont augmenté de 51 %."
 
-#: src/app/[lang]/(main)/spending/indigenous-services-and-northern-affairs/page.tsx:114
+#: src/app/[lang]/(main)/spending/indigenous-services-and-northern-affairs/page.tsx:111
 msgid "Federal spending on Indigenous priorities may fluctuate over time due to population growth, policy shifts, and emerging challenges such as climate change and infrastructure deficits. Since 1995, total federal spending has risen by 74.9%, while spending on Indigenous priorities has increased by 592%, reflecting expanded program commitments and new governance agreements and claim settlements."
 msgstr "Les dépenses fédérales consacrées aux priorités autochtones peuvent fluctuer au fil du temps en raison de la croissance démographique, des changements de politique et des défis émergents tels que le changement climatique et les déficits d'infrastructure. Depuis 1995, les dépenses fédérales totales ont augmenté de 74,9 %, tandis que les dépenses consacrées aux priorités autochtones ont augmenté de 592 %, reflétant l'expansion des engagements de programme et de nouveaux accords de gouvernance et règlements de revendications."
 
@@ -769,11 +789,11 @@ msgstr "Conception des forces futures"
 msgid "FY 2024 Government Revenue and Spending"
 msgstr "Revenus et dépenses du gouvernement pour l'exercice 2024"
 
-#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:99
-msgid "GAC accounted for 3.7% of all federal spending in FY 2024. 10 government departments accounted for 73.2% of federal spending in FY 2024."
-msgstr "AMC représentait 3,7 % de toutes les dépenses fédérales pour l'exercice 2024. 10 ministères gouvernementaux représentaient 73,2 % des dépenses fédérales pour l'exercice 2024."
+#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:100
+msgid "GAC accounted for 3.7% of all federal spending in FY 2024."
+msgstr "AMC représentait 3,7 % de toutes les dépenses fédérales pour l'exercice 2024."
 
-#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:151
+#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:159
 msgid "GAC's expenditures are divided across five primary categories:"
 msgstr "Les dépenses d'AMC sont réparties en cinq catégories principales :"
 
@@ -799,25 +819,25 @@ msgstr "Recevez les faits chaque semaine directement dans votre boîte de récep
 msgid "Global Affairs Canada"
 msgstr "Affaires mondiales Canada"
 
-#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:51
+#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:52
 msgid "Global Affairs Canada (GAC) is the federal department responsible for managing Canada's diplomatic relations, international trade, and development assistance. Established in 1909 as the Department of External Affairs, GAC has evolved to oversee Canada's engagement in global affairs, promoting national interests abroad and ensuring the protection of Canadian citizens overseas. The department negotiates international agreements, administers trade policies, and provides humanitarian aid. Additionally, it supports Canadian businesses in expanding internationally and strengthens diplomatic ties through multilateral organizations like the United Nations, the World Trade Organization (WTO), and NATO. GAC also plays a critical role in crisis response, assisting Canadians abroad during emergencies, and fostering global security and stability."
 msgstr "Affaires mondiales Canada (AMC) est le ministère fédéral responsable de la gestion des relations diplomatiques du Canada, du commerce international et de l'aide au développement. Établi en 1909 sous le nom de ministère des Affaires extérieures, AMC a évolué pour superviser l'engagement du Canada dans les affaires mondiales, promouvoir les intérêts nationaux à l'étranger et assurer la protection des citoyens canadiens à l'étranger. Le ministère négocie des accords internationaux, administre les politiques commerciales et fournit de l'aide humanitaire. De plus, il soutient les entreprises canadiennes dans leur expansion internationale et renforce les liens diplomatiques par le biais d'organisations multilatérales comme les Nations Unies, l'Organisation mondiale du commerce (OMC) et l'OTAN. AMC joue également un rôle crucial dans la réponse aux crises, aidant les Canadiens à l'étranger lors d'urgences et favorisant la sécurité et la stabilité mondiales."
 
-#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:33
+#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:34
 msgid "Global Affairs Canada | Canada Spends"
 msgstr "Affaires mondiales Canada | Canada Spends"
 
-#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:215
-msgid "Global Affairs Canada operates under a tripartite leadership structure, with three ministers appointed by the Prime Minister and formally sworn into office at Rideau Hall. The department's leadership includes:"
-msgstr "Affaires mondiales Canada fonctionne selon une structure de direction tripartite, avec trois ministres nommés par le Premier ministre et officiellement assermentés à Rideau Hall. La direction du ministère comprend :"
+#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:224
+msgid "Global Affairs Canada is led by two ministers appointed by the Prime Minister and formally sworn into office at Rideau Hall. The department's leadership includes:"
+msgstr "Affaires mondiales Canada est dirigé par deux ministres nommés par le premier ministre et officiellement assermentés à Rideau Hall. La direction du ministère comprend :"
 
-#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:90
+#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:91
 msgid "Global Affairs Canada spent $19.2 billion in fiscal year (FY) 2024, representing 3.7% of the $513.9 billion in overall federal spending. This placed GAC among the mid-sized federal departments in terms of total expenditures."
 msgstr "Affaires mondiales Canada a dépensé 19,2 milliards de dollars au cours de l'exercice 2024, représentant 3,7 % des 513,9 milliards de dollars de dépenses fédérales totales. Cela place AMC parmi les ministères fédéraux de taille moyenne en termes de dépenses totales."
 
-#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:202
-msgid "Global Affairs Canada, Spending by Entity, FY 2024 (in billions)"
-msgstr "Affaires mondiales Canada, Dépenses par entité, exercice 2024 (en milliards)"
+#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:211
+msgid "Global Affairs Canada, Spending by Entity, FY 2024"
+msgstr "Affaires mondiales Canada, Dépenses par entité, exercice 2024"
 
 #: src/components/Sankey/index.tsx:706
 msgid "Goods and Services Tax"
@@ -909,7 +929,7 @@ msgstr "Recherche en santé"
 msgid "Health Transfer to Provinces"
 msgstr "Transfert en matière de santé aux provinces"
 
-#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:166
+#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:174
 msgid "Help for Canadians Abroad: $85.98M"
 msgstr "Aide aux Canadiens à l'étranger : 85,98 M$"
 
@@ -957,11 +977,11 @@ msgstr "Comment puis-je montrer mon soutien?"
 msgid "How can I stay up to date on your work?"
 msgstr "Comment puis-je rester informé de votre travail?"
 
-#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/page.tsx:176
+#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/page.tsx:167
 msgid "How did ESDC spend its budget in 2024?"
 msgstr "Comment EDSC a-t-il dépensé son budget en 2024?"
 
-#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:146
+#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:154
 msgid "How did Global Affairs Canada spend its budget in 2024?"
 msgstr "Comment Affaires mondiales Canada a-t-il dépensé son budget en 2024?"
 
@@ -973,7 +993,7 @@ msgstr "Comment LICC a-t-il dépensé son budget pour l'exercice 2024?"
 msgid "How did IRCC spend its budget in FY24?"
 msgstr "Comment IRCC a-t-il dépensé son budget pour l'exercice 2024?"
 
-#: src/app/[lang]/(main)/spending/indigenous-services-and-northern-affairs/page.tsx:138
+#: src/app/[lang]/(main)/spending/indigenous-services-and-northern-affairs/page.tsx:161
 msgid "How did ISC and CIRNAC spend their budgets in 2024?"
 msgstr "Comment SAC et RCAANC ont-ils dépensé leurs budgets en 2024?"
 
@@ -989,7 +1009,7 @@ msgstr "Comment SPAC a-t-il dépensé son budget pour l'exercice 2024?"
 msgid "How did Public Safety Canada spend its budget in 2024?"
 msgstr "Comment Sécurité publique Canada a-t-il dépensé son budget en 2024?"
 
-#: src/app/[lang]/(main)/spending/canada-revenue-agency/page.tsx:168
+#: src/app/[lang]/(main)/spending/canada-revenue-agency/page.tsx:171
 msgid "How did the Canada Revenue Agency spend its budget in 2024?"
 msgstr "Comment l'Agence du revenu du Canada a-t-elle dépensé son budget en 2024?"
 
@@ -997,7 +1017,7 @@ msgstr "Comment l'Agence du revenu du Canada a-t-elle dépensé son budget en 20
 msgid "How did the Department of Finance spend its budget in 2024?"
 msgstr "Comment le ministère des Finances a-t-il dépensé son budget en 2024?"
 
-#: src/app/[lang]/(main)/spending/national-defence/page.tsx:178
+#: src/app/[lang]/(main)/spending/national-defence/page.tsx:156
 msgid "How did the Department of National Defence spend its budget in 2024?"
 msgstr "Comment le ministère de la Défense nationale a-t-il dépensé son budget en 2024?"
 
@@ -1031,8 +1051,8 @@ msgid "Immigration, Refugees and Citizenship Canada | Canada Spends"
 msgstr "Immigration, Réfugiés et Citoyenneté Canada | Canada Spends"
 
 #: src/app/[lang]/(main)/spending/indigenous-services-and-northern-affairs/page.tsx:96
-msgid "In fiscal year (FY) 2024, ISC and CIRNAC collectively spent <0>$63 billion</0>, accounting for <1>12.1% of the total federal budget</1>. The departments play a critical role in addressing socio-economic disparities, facilitating self-governance agreements, and improving service delivery for Indigenous communities across Canada."
-msgstr "Au cours de l'exercice 2024, SAC et RCAANC ont collectivement dépensé <0>63 milliards de dollars</0>, représentant <1>12,1 % du budget fédéral total</1>. Les ministères jouent un rôle essentiel dans la réduction des disparités socio-économiques, la facilitation des accords d'autonomie gouvernementale et l'amélioration de la prestation de services aux communautés autochtones à travers le Canada."
+msgid "In fiscal year (FY) 2024, ISC and CIRNAC collectively spent <0>$63 billion</0>, accounting for <1>12.3% of the total federal budget</1>. The departments play a critical role in addressing socio-economic disparities, facilitating self-governance agreements, and improving service delivery for Indigenous communities across Canada."
+msgstr "Au cours de l'exercice 2024, SAC et RCAANC ont collectivement dépensé <0>63 milliards de dollars</0>, représentant <1>12,3 % du budget fédéral total</1>. Les ministères jouent un rôle essentiel dans la réduction des disparités socio-économiques, la facilitation des accords d'autonomie gouvernementale et l'amélioration de la prestation de services aux communautés autochtones à travers le Canada."
 
 #: src/app/[lang]/(main)/spending/veterans-affairs/page.tsx:67
 #: src/app/[lang]/(main)/spending/veterans-affairs/page.tsx:72
@@ -1052,8 +1072,8 @@ msgstr "Au cours de l'exercice 2024, SAC et RCAANC ont collectivement dépensé 
 #: src/app/[lang]/(main)/spending/housing-infrastructure-communities/page.tsx:82
 #: src/app/[lang]/(main)/spending/health-canada/page.tsx:75
 #: src/app/[lang]/(main)/spending/health-canada/page.tsx:80
-#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:76
-#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:81
+#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:77
+#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:82
 #: src/app/[lang]/(main)/spending/employment-and-social-development-canada/page.tsx:71
 #: src/app/[lang]/(main)/spending/employment-and-social-development-canada/page.tsx:76
 #: src/app/[lang]/(main)/spending/department-of-finance/page.tsx:69
@@ -1063,23 +1083,19 @@ msgstr "Au cours de l'exercice 2024, SAC et RCAANC ont collectivement dépensé 
 msgid "In FY 2024,"
 msgstr "Au cours de l'exercice 2024,"
 
-#: src/app/[lang]/(main)/spending/national-defence/page.tsx:160
-msgid "In FY 2024, 45.6% of DND spending was allocated to personnel salaries, benefits, and pensions. 14.7% was directed to procurement of machinery and equipment."
-msgstr "Au cours de l'exercice 2024, 45,6 % des dépenses du MDN ont été allouées aux salaires, aux avantages sociaux et aux pensions du personnel. 14,7 % ont été consacrés à l'acquisition de machines et d'équipement."
-
-#: src/app/[lang]/(main)/spending/canada-revenue-agency/page.tsx:159
+#: src/app/[lang]/(main)/spending/canada-revenue-agency/page.tsx:162
 msgid "In FY 2024, 55.2% of CRA net spending was allocated to salaries, benefits, and pensions."
 msgstr "Au cours de l'exercice 2024, 55,2 % des dépenses nettes de l'ARC ont été allouées aux salaires, aux avantages sociaux et aux pensions."
 
-#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/page.tsx:162
+#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/page.tsx:172
 msgid "In FY 2024, ESDC transferred 63% of its total spending to individuals and provinces."
 msgstr "Au cours de l'exercice 2024, EDSC a transféré 63 % de ses dépenses totales aux particuliers et aux provinces."
 
 #: src/app/[lang]/(main)/spending/department-of-finance/page.tsx:152
-msgid "In FY 2024, Finance Canada transferred 66.2% of its total spending to provinces and territories. The chart below outlines all departmental spending."
-msgstr "Au cours de l'exercice 2024, Finances Canada a transféré 66,2 % de ses dépenses totales aux provinces et aux territoires. Le graphique ci-dessous présente toutes les dépenses ministérielles."
+msgid "In FY 2024, Finance Canada transferred 66.2% of its total spending to provinces and territories. The chart below outlines all departmental spending in 2024."
+msgstr "Au cours de l'exercice 2024, Finances Canada a transféré 66,2 % de ses dépenses totales aux provinces et aux territoires. Le graphique ci-dessous présente toutes les dépenses ministérielles en 2024."
 
-#: src/app/[lang]/(main)/spending/indigenous-services-and-northern-affairs/page.tsx:150
+#: src/app/[lang]/(main)/spending/indigenous-services-and-northern-affairs/page.tsx:153
 msgid "In FY 2024, ISC and CIRNAC transferred 93.1% of total spending directly to indigenous communities."
 msgstr "Au cours de l'exercice 2024, SAC et RCAANC ont transféré 93,1 % des dépenses totales directement aux communautés autochtones."
 
@@ -1182,7 +1198,7 @@ msgstr "Aide temporaire au logement"
 msgid "Internal Revenues"
 msgstr "Revenus internes"
 
-#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:157
+#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:165
 msgid "International Advocacy and Diplomacy: $1B"
 msgstr "Plaidoyer international et diplomatie : 1 G$"
 
@@ -1218,9 +1234,13 @@ msgstr "Est-ce un groupe de pression?"
 msgid "Is this a permanent organization?"
 msgstr "Est-ce une organisation permanente?"
 
-#: src/app/[lang]/(main)/spending/indigenous-services-and-northern-affairs/page.tsx:162
-msgid "ISC + CIRNAC, Spending by Entity, FY 2024 (in billions)"
-msgstr "SAC + RCAANC, Dépenses par entité, exercice 2024 (en milliards)"
+#: src/app/[lang]/(main)/spending/indigenous-services-and-northern-affairs/page.tsx:173
+msgid "ISC + CIRNAC, Spending by Entity, FY 2024"
+msgstr "SAC + RCAANC, Dépenses par entité, exercice 2024"
+
+#: src/app/[lang]/(main)/spending/indigenous-services-and-northern-affairs/page.tsx:132
+msgid "ISC + CIRNAC's share of federal spending in FY 2024 was 592% higher than in FY 1995"
+msgstr "La part des dépenses fédérales de SAC + RCAANC pour l'exercice 2024 était 592 % plus élevée qu'en 1995"
 
 #: src/app/[lang]/(main)/spending/indigenous-services-and-northern-affairs/MiniSankey.tsx:19
 msgid "ISC and CIRNAC"
@@ -1242,11 +1262,11 @@ msgstr "Ça ne doit pas être comme ça."
 msgid "Justice System"
 msgstr "Système de justice"
 
-#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/page.tsx:208
+#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/page.tsx:221
 msgid "Labour Market Development Agreements (LMDAs): federal funding to provinces for job training and employment support."
 msgstr "Ententes sur le développement du marché du travail (EDMT) : financement fédéral aux provinces pour la formation professionnelle et le soutien à l'emploi."
 
-#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:134
+#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:142
 msgid "Major international events, trade agreements, foreign aid commitments, and global crises such as the COVID-19 pandemic have influenced fluctuations in spending. In 2020, GAC's budget surged due to emergency international assistance programs, including vaccine distribution and humanitarian relief efforts."
 msgstr "Les événements internationaux majeurs, les accords commerciaux, les engagements d'aide étrangère et les crises mondiales comme la pandémie de COVID-19 ont influencé les fluctuations des dépenses. En 2020, le budget d'AMC a augmenté en raison des programmes d'aide internationale d'urgence, y compris la distribution de vaccins et les efforts d'aide humanitaire."
 
@@ -1271,11 +1291,11 @@ msgstr "Les principales lois, les conditions économiques internes ou mondiales 
 msgid "Major legislation, internal or global economic conditions, and acute events like the COVID-19 pandemic can significantly influence government spending year to year. For instance, during the pandemic, the Government of Canada's total expenses rose from $410.2 billion in 2019 to $420 billion in 2020 and further to $720.3 billion in 2021."
 msgstr "Les principales lois, les conditions économiques internes ou mondiales et les événements aigus comme la pandémie de COVID-19 peuvent influencer significativement les dépenses gouvernementales d'une année à l'autre. Par exemple, pendant la pandémie, les dépenses totales du gouvernement du Canada sont passées de 410,2 milliards de dollars en 2019 à 420 milliards en 2020 et à 720,3 milliards en 2021."
 
-#: src/app/[lang]/(main)/spending/national-defence/page.tsx:135
+#: src/app/[lang]/(main)/spending/national-defence/page.tsx:147
 msgid "Major legislation, shifts in international security dynamics, and acute events such as Russia's invasion of Ukraine or Arctic sovereignty disputes can influence military spending."
 msgstr "Les principales lois, les changements dans la dynamique de sécurité internationale et les événements aigus tels que l'invasion de l'Ukraine par la Russie ou les différends sur la souveraineté de l'Arctique peuvent influencer les dépenses militaires."
 
-#: src/app/[lang]/(main)/spending/canada-revenue-agency/page.tsx:135
+#: src/app/[lang]/(main)/spending/canada-revenue-agency/page.tsx:122
 msgid "Major legislative changes, compliance trends, and digital tax services have influenced CRA spending patterns. For example, compliance initiatives and fraud investigations recovered an estimated $11.5 billion in lost revenue in 2024 due to tax evasion."
 msgstr "Les changements législatifs majeurs, les tendances en matière de conformité et les services fiscaux numériques ont influencé les modèles de dépenses de l'ARC. Par exemple, les initiatives de conformité et les enquêtes sur la fraude ont permis de récupérer environ 11,5 milliards de dollars de revenus perdus en 2024 en raison de l'évasion fiscale."
 
@@ -1307,22 +1327,18 @@ msgstr "Revenus divers"
 msgid "More coming soon..."
 msgstr "Plus à venir..."
 
-#: src/app/[lang]/(main)/spending/canada-revenue-agency/page.tsx:153
+#: src/app/[lang]/(main)/spending/canada-revenue-agency/page.tsx:156
 msgid "Most CRA spending is dedicated to personnel and IT infrastructure supporting tax filing, compliance, and benefit administration."
 msgstr "La plupart des dépenses de l'ARC sont consacrées au personnel et à l'infrastructure informatique soutenant la production des déclarations, la conformité et l'administration des prestations."
 
-#: src/app/[lang]/(main)/spending/national-defence/page.tsx:151
-msgid "Most federal defence spending is categorized as either personnel-related or capital expenditures. Personnel costs cover wages, benefits, and pensions for military and civilian employees. Capital expenditures fund procurement, infrastructure, and weapons systems."
-msgstr "La plupart des dépenses fédérales de défense sont classées soit comme des dépenses liées au personnel, soit comme des dépenses en capital. Les coûts de personnel couvrent les salaires, les avantages sociaux et les pensions des employés militaires et civils. Les dépenses en capital financent l'approvisionnement, l'infrastructure et les systèmes d'armement."
-
-#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/page.tsx:138
+#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/page.tsx:152
 msgid "Most federal spending can be categorized as direct or indirect."
 msgstr "La plupart des dépenses fédérales peuvent être classées comme directes ou indirectes."
 
-#: src/app/[lang]/(main)/spending/national-defence/page.tsx:142
-#: src/app/[lang]/(main)/spending/indigenous-services-and-northern-affairs/page.tsx:141
+#: src/app/[lang]/(main)/spending/national-defence/page.tsx:171
+#: src/app/[lang]/(main)/spending/indigenous-services-and-northern-affairs/page.tsx:144
 #: src/app/[lang]/(main)/spending/department-of-finance/page.tsx:143
-#: src/app/[lang]/(main)/spending/canada-revenue-agency/page.tsx:144
+#: src/app/[lang]/(main)/spending/canada-revenue-agency/page.tsx:147
 msgid "Most federal spending can be categorized as direct or indirect. Direct spending refers to money the federal government spends on budget items such as federal programs, employee salaries, and debt interest. Indirect spending refers to federal transfers to other levels of government."
 msgstr "La plupart des dépenses fédérales peuvent être classées comme directes ou indirectes. Les dépenses directes font référence à l'argent que le gouvernement fédéral dépense pour des postes budgétaires tels que les programmes fédéraux, les salaires des employés et les intérêts sur la dette. Les dépenses indirectes font référence aux transferts fédéraux vers d'autres niveaux de gouvernement."
 
@@ -1334,9 +1350,17 @@ msgstr "Défense nationale"
 msgid "National Defence | Canada Spends"
 msgstr "Défense nationale | Canada Spends"
 
-#: src/app/[lang]/(main)/spending/national-defence/page.tsx:168
-msgid "National Defence, Spending by Entity, FY 2024 (in billions)"
-msgstr "Défense nationale, Dépenses par entité, exercice 2024 (en milliards)"
+#: src/app/[lang]/(main)/spending/national-defence/page.tsx:100
+msgid "National Defence accounted for 6.7% of all federal spending in FY 2024"
+msgstr "La Défense nationale représentait 6,7 % de toutes les dépenses fédérales pour l'exercice 2024"
+
+#: src/app/[lang]/(main)/spending/national-defence/page.tsx:191
+msgid "National Defence, Spending by Entity, FY 2024"
+msgstr "Défense nationale, Dépenses par entité, exercice 2024"
+
+#: src/app/[lang]/(main)/spending/national-defence/page.tsx:135
+msgid "National Defence's share of federal spending in FY 2024 was lower than in FY 1995"
+msgstr "La part des dépenses fédérales de la Défense nationale en 2024 était inférieure à celle de 1995"
 
 #: src/components/Sankey/index.tsx:180
 msgid "National Parks"
@@ -1498,7 +1522,7 @@ msgstr "des dépenses fédérales ont été effectuées par le ministère des Tr
 msgid "Of federal spending was by the Dept. of Veterans Affairs"
 msgstr "des dépenses fédérales ont été effectuées par le ministère des Anciens Combattants"
 
-#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:83
+#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:84
 msgid "of federal spending was by the Global Affairs Canada"
 msgstr "des dépenses fédérales ont été effectuées par Affaires mondiales Canada"
 
@@ -1646,15 +1670,15 @@ msgstr "Charges sociales"
 msgid "PBO"
 msgstr "DPB"
 
-#: src/app/[lang]/(main)/spending/canada-revenue-agency/page.tsx:108
+#: src/app/[lang]/(main)/spending/canada-revenue-agency/page.tsx:136
 msgid "Percentage of federal budget dedicated to Canada Revenue Agency, FYs 1995-2024"
 msgstr "Pourcentage du budget fédéral consacré à l'Agence du revenu du Canada, exercices 1995-2024"
 
-#: src/app/[lang]/(main)/spending/national-defence/page.tsx:106
+#: src/app/[lang]/(main)/spending/national-defence/page.tsx:140
 msgid "Percentage of federal budget dedicated to Defence, FYs 1995-2024"
 msgstr "Pourcentage du budget fédéral consacré à la Défense, exercices 1995-2024"
 
-#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/page.tsx:150
+#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/page.tsx:143
 msgid "Percentage of federal budget dedicated to ESDC, FYs 1995-2024 (inflation-adjusted)"
 msgstr "Pourcentage du budget fédéral consacré à EDSC, exercices 1995-2024 (ajusté à l'inflation)"
 
@@ -1662,9 +1686,13 @@ msgstr "Pourcentage du budget fédéral consacré à EDSC, exercices 1995-2024 (
 msgid "Percentage of federal budget dedicated to Finance, FYs 1995-2024"
 msgstr "Pourcentage du budget fédéral consacré à Finances, exercices 1995-2024"
 
-#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:108
+#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:124
 msgid "Percentage of federal budget dedicated to Global Affairs Canada, FYs 1995-2024"
 msgstr "Pourcentage du budget fédéral consacré à Affaires mondiales Canada, exercices 1995-2024"
+
+#: src/app/[lang]/(main)/spending/indigenous-services-and-northern-affairs/page.tsx:134
+msgid "Percentage of federal budget dedicated to Indigenous Priorities, FYs 1995-2024"
+msgstr "Pourcentage du budget fédéral consacré aux priorités autochtones, exercices 1995-2024"
 
 #: src/app/[lang]/(main)/spending/veterans-affairs/MiniSankey.tsx:21
 #: src/app/[lang]/(main)/spending/transport-canada/MiniSankey.tsx:22
@@ -1898,7 +1926,7 @@ msgstr "Recherche"
 msgid "See how Canada's government spends tax dollars—track workforce data, spending trends, and federal debt with clear, non-partisan insights."
 msgstr "Voyez comment le gouvernement du Canada dépense les dollars des contribuables—suivez les données sur la main-d'œuvre, les tendances des dépenses et la dette fédérale avec des analyses claires et non partisanes."
 
-#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/page.tsx:196
+#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/page.tsx:209
 msgid "Service Canada: responsible for processing EI, CPP, and OAS benefits."
 msgstr "Service Canada : responsable du traitement des prestations d'AE, du RPC et de la SV."
 
@@ -1984,7 +2012,7 @@ msgstr "S'abonner"
 msgid "Subscribe to our newsletter"
 msgstr "Abonnez-vous à notre infolettre"
 
-#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:169
+#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:177
 msgid "Support for Canada's Presence Abroad: $1.23B"
 msgstr "Soutien à la présence du Canada à l'étranger : 1,23 G$"
 
@@ -2028,7 +2056,7 @@ msgstr "La meilleure façon de nous soutenir est d'interagir avec notre contenu.
 msgid "The Canada Revenue Agency (CRA) is the federal institution responsible for administering tax laws, enforcing compliance, and delivering key benefit programs to individuals and businesses across Canada. Established in 1999 under the Canada Revenue Agency Act, the CRA operates with a workforce of approximately 59,155 employees (2024) and oversees tax revenues totaling $379 billion annually—which accounts for over 82% of federal revenues. It also administers over $46 billion in benefits and credits to Canadians, including the Canada Child Benefit and the GST/HST credit."
 msgstr "L'Agence du revenu du Canada (ARC) est l'institution fédérale responsable de l'administration des lois fiscales, de l'application de la conformité et de la prestation de programmes de prestations clés aux particuliers et aux entreprises à travers le Canada. Établie en 1999 en vertu de la Loi sur l'Agence du revenu du Canada, l'ARC fonctionne avec un effectif d'environ 59 155 employés (2024) et supervise des recettes fiscales totalisant 379 milliards de dollars annuellement—ce qui représente plus de 82 % des revenus fédéraux. Elle administre également plus de 46 milliards de dollars en prestations et crédits aux Canadiens, y compris l'Allocation canadienne pour enfants et le crédit pour la TPS/TVH."
 
-#: src/app/[lang]/(main)/spending/canada-revenue-agency/page.tsx:194
+#: src/app/[lang]/(main)/spending/canada-revenue-agency/page.tsx:199
 msgid "The Canada Revenue Agency is overseen by the <0>Minister of National Revenue</0>, who is responsible for ensuring tax fairness and benefit program integrity but does not have direct authority over tax law interpretations."
 msgstr "L'Agence du revenu du Canada est supervisée par le <0>ministre du Revenu national</0>, qui est responsable d'assurer l'équité fiscale et l'intégrité des programmes de prestations, mais n'a pas d'autorité directe sur les interprétations des lois fiscales."
 
@@ -2036,7 +2064,11 @@ msgstr "L'Agence du revenu du Canada est supervisée par le <0>ministre du Reven
 msgid "The Canada Revenue Agency spent $16.8 billion in fiscal year (FY) 2024, representing 3.2% of the $513.9 billion in total federal spending. The CRA's expenditures primarily support tax administration, benefit program delivery, compliance enforcement, and IT modernization."
 msgstr "L'Agence du revenu du Canada a dépensé 16,8 milliards de dollars au cours de l'exercice 2024, ce qui représente 3,2 % des 513,9 milliards de dollars de dépenses fédérales totales. Les dépenses de l'ARC soutiennent principalement l'administration fiscale, la prestation de programmes de prestations, l'application de la conformité et la modernisation des TI."
 
-#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/page.tsx:221
+#: src/app/[lang]/(main)/spending/canada-revenue-agency/page.tsx:93
+msgid "The CRA accounted for 3.2% of all federal spending in FY 2024"
+msgstr "L'ARC représentait 3,2 % de toutes les dépenses fédérales pour l'exercice 2024"
+
+#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/page.tsx:234
 msgid "The Department is currently led by the <0>Minister of Jobs and Families</0> who is appointed by the Governor General on the advice of the Prime Minister and then formally sworn into office at Rideau Hall. They take the Oath of Office and the Oath of Allegiance and become a member of the King's Privy Council for Canada."
 msgstr "Le ministère est actuellement dirigé par le <0>ministre des Emplois et des Familles</0> qui est nommé par le gouverneur général sur l'avis du premier ministre et ensuite officiellement assermenté à Rideau Hall. Il prête le serment d'office et le serment d'allégeance et devient membre du Conseil privé du Roi pour le Canada."
 
@@ -2076,7 +2108,7 @@ msgstr "Le ministère de l'Innovation, des Sciences et de l'Industrie (ISIC) est
 msgid "The Department of National Defence (DND) and the Canadian Armed Forces (CAF) are responsible for ensuring Canada's security and defence through military operations, infrastructure management, and personnel support. Established in 1923 under the National Defence Act, DND oversees the defence budget, military procurement, and readiness planning, while the CAF executes domestic and international operations. The department provides strategic defence policy guidance and works with international allies, including NATO and NORAD, to ensure national security. DND also administers military health services, housing programs, and recruitment initiatives to support its personnel."
 msgstr "Le ministère de la Défense nationale (MDN) et les Forces armées canadiennes (FAC) sont responsables d'assurer la sécurité et la défense du Canada par le biais d'opérations militaires, de gestion des infrastructures et de soutien au personnel. Établi en 1923 en vertu de la Loi sur la défense nationale, le MDN supervise le budget de la défense, l'approvisionnement militaire et la planification de la disponibilité opérationnelle, tandis que les FAC exécutent des opérations nationales et internationales. Le ministère fournit des orientations stratégiques en matière de politique de défense et travaille avec des alliés internationaux, y compris l'OTAN et le NORAD, pour assurer la sécurité nationale. Le MDN administre également les services de santé militaires, les programmes de logement et les initiatives de recrutement pour soutenir son personnel."
 
-#: src/app/[lang]/(main)/spending/national-defence/page.tsx:202
+#: src/app/[lang]/(main)/spending/national-defence/page.tsx:204
 msgid "The Department of National Defence is led by the <0>Minister of National Defence</0>, who is appointed by the Governor General on the advice of the Prime Minister. The minister is responsible for overseeing national defense policy, military operations, and procurement."
 msgstr "Le ministère de la Défense nationale est dirigé par le <0>ministre de la Défense nationale</0>, qui est nommé par le gouverneur général sur l'avis du premier ministre. Le ministre est responsable de la supervision de la politique de défense nationale, des opérations militaires et de l'approvisionnement."
 
@@ -2116,7 +2148,7 @@ msgstr "Les dépenses du ministère ont augmenté plus que les dépenses globale
 msgid "The department's spending has increased less than overall spending has grown and the department's share of the federal budget has decreased over time. In FY 2024, PSPC accounted for 1.6% of all federal spending, 1 percentage point lower than in 1995."
 msgstr "Les dépenses du ministère ont augmenté moins que les dépenses globales et la part du ministère dans le budget fédéral a diminué au fil du temps. Au cours de l'exercice 2024, SPAC représentait 1,6 % de toutes les dépenses fédérales, soit 1 point de pourcentage de moins qu'en 1995."
 
-#: src/app/[lang]/(main)/spending/indigenous-services-and-northern-affairs/page.tsx:175
+#: src/app/[lang]/(main)/spending/indigenous-services-and-northern-affairs/page.tsx:186
 msgid "The leadership of ISC and CIRNAC are led by the <0>Minister of Indigenous Services Canada</0> and the <1>Minister of Crown-Indigenous Relations and Northern Affairs Canada</1>, respectively. These Ministers are appointed by the Governor General on the advice of the Prime Minister and then formally sworn into office at Rideau Hall. They take the Oath of Office and the Oath of Allegiance and become a member of the King's Privy Council for Canada."
 msgstr "La direction de SAC et RCAANC est assurée respectivement par le <0>ministre des Services aux Autochtones Canada</0> et le <1>ministre des Relations Couronne-Autochtones et des Affaires du Nord Canada</1>. Ces ministres sont nommés par le gouverneur général sur l'avis du premier ministre et sont ensuite officiellement assermentés à Rideau Hall. Ils prêtent le serment d'office et le serment d'allégeance et deviennent membres du Conseil privé du Roi pour le Canada."
 
@@ -2152,7 +2184,7 @@ msgstr "Le ministre des Transports est l'un des membres du cabinet qui servent �
 msgid "The Minister of Veterans Affairs is one of the cabinet members who serve at the Prime Minister's discretion. Their tenure typically ends when they resign, are replaced, or when a new Prime Minister appoints a new cabinet. Outgoing ministers continue in their roles until their successors are sworn in."
 msgstr "Le ministre des Anciens Combattants est l'un des membres du cabinet qui servent à la discrétion du premier ministre. Leur mandat se termine généralement lorsqu'ils démissionnent, sont remplacés ou lorsqu'un nouveau premier ministre nomme un nouveau cabinet. Les ministres sortants continuent dans leurs rôles jusqu'à ce que leurs successeurs soient assermentés."
 
-#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:243
+#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:249
 msgid "The ministers work alongside the Deputy Minister of Foreign Affairs and the Deputy Minister of International Trade, who manage the department's operational and policy frameworks."
 msgstr "Les ministres travaillent aux côtés du sous-ministre des Affaires étrangères et du sous-ministre du Commerce international, qui gèrent les cadres opérationnels et politiques du ministère."
 
@@ -2161,13 +2193,13 @@ msgid "The Public Services and Procurement Canada (PSPC) is the federal departme
 msgstr "Services publics et Approvisionnement Canada (SPAC) est le ministère fédéral responsable de l'approvisionnement centralisé, de la gestion immobilière, de l'administration de la paye et des pensions pour les employés fédéraux, et des services de traduction pour le gouvernement du Canada. Il s'assure que les ministères gouvernementaux disposent des biens, des services et de l'infrastructure dont ils ont besoin pour fonctionner efficacement tout en maintenant la transparence, l'équité et la valeur pour les contribuables."
 
 #: src/app/[lang]/(main)/spending/public-safety-canada/page.tsx:172
-#: src/app/[lang]/(main)/spending/national-defence/page.tsx:213
-#: src/app/[lang]/(main)/spending/indigenous-services-and-northern-affairs/page.tsx:193
+#: src/app/[lang]/(main)/spending/national-defence/page.tsx:215
+#: src/app/[lang]/(main)/spending/indigenous-services-and-northern-affairs/page.tsx:204
 #: src/app/[lang]/(main)/spending/housing-infrastructure-communities/page.tsx:187
 #: src/app/[lang]/(main)/spending/health-canada/page.tsx:180
-#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:250
-#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/page.tsx:233
-#: src/app/[lang]/(main)/spending/canada-revenue-agency/page.tsx:205
+#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:256
+#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/page.tsx:246
+#: src/app/[lang]/(main)/spending/canada-revenue-agency/page.tsx:210
 msgid "These Ministers are some of the <0>cabinet members</0> who serve at the Prime Minister's discretion. Their tenure typically ends when they resign, are replaced, or when a new Prime Minister takes office and appoints a new cabinet. Outgoing ministers remain in their roles until their successors are sworn in."
 msgstr "Ces ministres sont parmi les <0>membres du cabinet</0> qui servent à la discrétion du premier ministre. Leur mandat se termine généralement lorsqu'ils démissionnent, sont remplacés ou lorsqu'un nouveau premier ministre prend ses fonctions et nomme un nouveau cabinet. Les ministres sortants restent en fonction jusqu'à ce que leurs successeurs soient assermentés."
 
@@ -2187,7 +2219,7 @@ msgstr "Salaires totaux"
 msgid "Trade and Investment"
 msgstr "Commerce et investissement"
 
-#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:160
+#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:168
 msgid "Trade and Investment: $380.3M"
 msgstr "Commerce et investissement : 380,3 M$"
 
@@ -2357,7 +2389,7 @@ msgstr "A été dépensé par le ministère des Transports"
 msgid "Was spent by the Dept. of Veterans Affairs"
 msgstr "A été dépensé par le ministère des Anciens Combattants"
 
-#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:78
+#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:79
 msgid "was spent by the Global Affairs Canada"
 msgstr "a été dépensé par Affaires mondiales Canada"
 
@@ -2437,7 +2469,7 @@ msgstr "Lorsque LGIC a été fondé au cours de l'exercice 2005 en tant que Bure
 msgid "Where do you get the data on your website?"
 msgstr "D'où proviennent les données sur votre site web?"
 
-#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:126
+#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:134
 msgid "While GAC's spending has increased in real terms, its share of the federal budget has also increased moderately over the past decades. In 2024, GAC accounted for 3.7% of federal spending, compared to 2% in 1995."
 msgstr "Bien que les dépenses d'AMC aient augmenté en termes réels, sa part du budget fédéral a également augmenté modérément au cours des dernières décennies. En 2024, AMC représentait 3,7 % des dépenses fédérales, contre 2 % en 1995."
 
@@ -2445,11 +2477,11 @@ msgstr "Bien que les dépenses d'AMC aient augmenté en termes réels, sa part d
 msgid "While not in the top 10 departments by spend, ISED accounted for 2% of all federal spending in FY 2024. 10 government departments accounted for 73.2% of federal spending in FY 2024"
 msgstr "Bien que ne figurant pas parmi les 10 premiers ministères en termes de dépenses, ISIC représentait 2 % de toutes les dépenses fédérales pour l'exercice 2024. 10 ministères gouvernementaux représentaient 73,2 % des dépenses fédérales pour l'exercice 2024"
 
-#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/page.tsx:218
+#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/page.tsx:231
 msgid "Who leads ESDC?"
 msgstr "Qui dirige EDSC?"
 
-#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:212
+#: src/app/[lang]/(main)/spending/global-affairs-canada/page.tsx:221
 msgid "Who leads Global Affairs Canada?"
 msgstr "Qui dirige Affaires mondiales Canada?"
 
@@ -2465,7 +2497,7 @@ msgstr "Qui dirige Immigration, Réfugiés et Citoyenneté Canada (IRCC)?"
 msgid "Who Leads Innovation, Science and Industry Canada (ISED)?"
 msgstr "Qui dirige Innovation, Sciences et Industrie Canada (ISIC)?"
 
-#: src/app/[lang]/(main)/spending/indigenous-services-and-northern-affairs/page.tsx:172
+#: src/app/[lang]/(main)/spending/indigenous-services-and-northern-affairs/page.tsx:183
 msgid "Who leads ISC and CIRNAC?"
 msgstr "Qui dirige SAC et RCAANC?"
 
@@ -2477,7 +2509,7 @@ msgstr "Qui dirige Sécurité publique Canada?"
 msgid "Who Leads Public Services and Procurement Canada (PSPC)?"
 msgstr "Qui dirige Services publics et Approvisionnement Canada (SPAC)?"
 
-#: src/app/[lang]/(main)/spending/canada-revenue-agency/page.tsx:191
+#: src/app/[lang]/(main)/spending/canada-revenue-agency/page.tsx:196
 msgid "Who leads the Canada Revenue Agency?"
 msgstr "Qui dirige l'Agence du revenu du Canada?"
 

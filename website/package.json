@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "pnpm lingui:extract && next build",
+    "build": "pnpm extract && next build",
     "start": "next start",
     "lint": "next lint",
     "extract": "lingui extract --clean"
