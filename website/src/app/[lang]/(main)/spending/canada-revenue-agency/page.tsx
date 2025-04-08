@@ -90,6 +90,8 @@ export default async function Department(props: PageLangParam) {
 						</Trans>
 					</P>
 
+					<H2><Trans>The CRA accounted for 3.2% of all federal spending in FY 2024</Trans></H2>
+
 					<H3>
 						<Trans>
 							10 government departments accounted for 73.2% of federal spending
@@ -100,20 +102,6 @@ export default async function Department(props: PageLangParam) {
 					<ChartContainer>
 						<DepartmentSpendingChart department={department.slug} />
 					</ChartContainer>
-				</Section>
-
-				<Section>
-					<ChartContainer>
-						<H3>
-							<Trans>
-								Percentage of federal budget dedicated to Canada Revenue Agency,
-								FYs 1995-2024
-							</Trans>
-						</H3>
-						<FederalSpendingChart />
-					</ChartContainer>
-				</Section>
-				<Section>
 					<P>
 						<Trans>
 							Federal spending may shift over time due to economic fluctuations,
@@ -124,10 +112,9 @@ export default async function Department(props: PageLangParam) {
 					</P>
 					<P>
 						<Trans>
-							{" "}
 							CRA's spending grew more than overall spending, meaning its share
 							of the federal budget increased. In 2024, the agency accounted for
-							3.2% of all federal spending, 0.6 percentage points lower than in
+							3.2% of all federal spending, 1.85 percentage points higher than in
 							1995.
 						</Trans>
 					</P>
@@ -140,6 +127,22 @@ export default async function Department(props: PageLangParam) {
 							evasion.
 						</Trans>
 					</P>
+				</Section>
+
+				<Section>
+					<H2><Trans>CRA's share of federal spending in FY 2024 was higher than in FY 1995</Trans></H2>
+					<ChartContainer>
+						<H3>
+							<Trans>
+								Percentage of federal budget dedicated to Canada Revenue Agency,
+								FYs 1995-2024
+							</Trans>
+						</H3>
+						<FederalSpendingChart />
+					</ChartContainer>
+				</Section>
+				<Section>
+
 					<P>
 						<Trans>
 							Most federal spending can be categorized as direct or indirect.
@@ -178,6 +181,8 @@ export default async function Department(props: PageLangParam) {
 							corporate tax audits, and benefit administration.
 						</Trans>
 					</P>
+
+					<H3><Trans>CRA spending isolated to FY 2024</Trans></H3>
 
 					<ChartContainer>
 						<NoSSR>

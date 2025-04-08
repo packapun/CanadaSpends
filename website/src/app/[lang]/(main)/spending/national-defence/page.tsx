@@ -92,19 +92,20 @@ export default async function Department(props: PageLangParam) {
 						</Trans>
 					</P>
 
-					<P>
-						<Trans>
-							10 government departments accounted for 73.2% of federal spending
-							in FY 2024.
-						</Trans>
-					</P>
+
 				</Section>
 
 				<Section>
+					<H2>
+						<Trans>National Defence accounted for 6.7% of all federal spending in FY 2024</Trans>
+					</H2>
+
+
 					<ChartContainer>
 						<H3>
 							<Trans>
-								Percentage of federal budget dedicated to Defence, FYs 1995-2024
+								10 government departments accounted for 73.2% of federal spending
+								in FY 2024.
 							</Trans>
 						</H3>
 						<DepartmentSpendingChart department={department.slug} />
@@ -128,7 +129,18 @@ export default async function Department(props: PageLangParam) {
 							in 1995.
 						</Trans>
 					</P>
+				</Section>
+				<Section>
+
+					<H2><Trans>National Defence's share of federal spending in FY 2024 was lower than in FY 1995</Trans></H2>
+
 					<ChartContainer>
+
+						<H3>
+							<Trans>
+								Percentage of federal budget dedicated to Defence, FYs 1995-2024
+							</Trans>
+						</H3>
 						<FederalSpendingChart />
 					</ChartContainer>
 					<P>
@@ -138,6 +150,23 @@ export default async function Department(props: PageLangParam) {
 							sovereignty disputes can influence military spending.
 						</Trans>
 					</P>
+				</Section>
+				<Section>
+					<H2>
+						<Trans>
+							How did the Department of National Defence spend its budget in
+							2024?
+						</Trans>
+					</H2>
+
+					<ChartContainer>
+						<NoSSR>
+							<MiniSankey />
+						</NoSSR>
+					</ChartContainer>
+				</Section>
+
+				<Section>
 					<P>
 						<Trans>
 							Most federal spending can be categorized as direct or indirect.
@@ -147,54 +176,27 @@ export default async function Department(props: PageLangParam) {
 							levels of government.
 						</Trans>
 					</P>
-					<P>
-						<Trans>
-							Most federal defence spending is categorized as either
-							personnel-related or capital expenditures. Personnel costs cover
-							wages, benefits, and pensions for military and civilian employees.
-							Capital expenditures fund procurement, infrastructure, and weapons
-							systems.
-						</Trans>
-					</P>
-					<H3>
-						<Trans>
-							In FY 2024, 45.6% of DND spending was allocated to personnel
-							salaries, benefits, and pensions. 14.7% was directed to
-							procurement of machinery and equipment.
-						</Trans>
-					</H3>
+
 					<ChartContainer>
+						<P>
+							<Trans>
+								Federal departments often include additional agencies, commands,
+								and operational divisions. In FY 2024, the largest spending
+								entities within DND were the Canadian Army, the Royal Canadian
+								Navy, and the Royal Canadian Air Force, accounting for the bulk of
+								military expenditures.
+							</Trans>
+						</P>
 						<H3>
 							<Trans>
-								National Defence, Spending by Entity, FY 2024 (in billions)
+								National Defence, Spending by Entity, FY 2024
 							</Trans>
 						</H3>
 						<FederalSpendingByEntity />
 					</ChartContainer>
 				</Section>
 
-				<Section>
-					<H2>
-						<Trans>
-							How did the Department of National Defence spend its budget in
-							2024?
-						</Trans>
-					</H2>
-					<P>
-						<Trans>
-							Federal departments often include additional agencies, commands,
-							and operational divisions. In FY 2024, the largest spending
-							entities within DND were the Canadian Army, the Royal Canadian
-							Navy, and the Royal Canadian Air Force, accounting for the bulk of
-							military expenditures.
-						</Trans>
-					</P>
-					<ChartContainer>
-						<NoSSR>
-							<MiniSankey />
-						</NoSSR>
-					</ChartContainer>
-				</Section>
+
 
 				<Section>
 					<H2>Who leads the Department of National Defence?</H2>

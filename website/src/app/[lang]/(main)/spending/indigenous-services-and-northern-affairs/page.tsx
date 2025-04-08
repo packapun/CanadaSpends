@@ -85,7 +85,7 @@ export default async function Department(props: PageLangParam) {
 						/>
 						<StatCard
 							title={t`In FY 2024,`}
-							value="12.2%"
+							value="12.3%"
 							subtitle={t`of federal spending was allocated to Indigenous priorities via these Departments. This does not include additional programs in other departments designed specifically for Indigenous beneficiaries.`}
 						/>
 					</StatCardContainer>
@@ -96,7 +96,7 @@ export default async function Department(props: PageLangParam) {
 						<Trans>
 							In fiscal year (FY) 2024, ISC and CIRNAC collectively spent{" "}
 							<strong>$63 billion</strong>, accounting for{" "}
-							<strong>12.1% of the total federal budget</strong>. The
+							<strong>12.3% of the total federal budget</strong>. The
 							departments play a critical role in addressing socio-economic
 							disparities, facilitating self-governance agreements, and
 							improving service delivery for Indigenous communities across
@@ -107,9 +107,6 @@ export default async function Department(props: PageLangParam) {
 					<ChartContainer>
 						<DepartmentSpendingChart department={department.slug} />
 					</ChartContainer>
-				</Section>
-
-				<Section>
 					<P>
 						<Trans>
 							Federal spending on Indigenous priorities may fluctuate over time
@@ -128,15 +125,21 @@ export default async function Department(props: PageLangParam) {
 							Indigenous communities.
 						</Trans>
 					</P>
+				</Section>
+
+				<Section>
+
+					<H2><Trans>ISC + CIRNAC's share of federal spending in FY 2024 was 592% higher than in FY 1995</Trans></H2>
+					<H3>
+						<Trans>Percentage of federal budget dedicated to Indigenous Priorities, FYs 1995-2024</Trans>
+					</H3>
 					<ChartContainer>
 						<FederalSpendingChart />
 					</ChartContainer>
 				</Section>
 
 				<Section>
-					<H2>
-						<Trans>How did ISC and CIRNAC spend their budgets in 2024?</Trans>
-					</H2>
+
 					<P>
 						<Trans>
 							Most federal spending can be categorized as direct or indirect.
@@ -152,6 +155,14 @@ export default async function Department(props: PageLangParam) {
 							directly to indigenous communities.
 						</Trans>
 					</P>
+				</Section>
+				<Section>
+					<H2>
+						<Trans>How did ISC and CIRNAC spend their budgets in 2024?</Trans>
+					</H2>
+					<H3>
+						<Trans>Federal government spending in FY 2024</Trans>
+					</H3>
 					<ChartContainer>
 						<NoSSR>
 							<MiniSankey />
@@ -160,7 +171,7 @@ export default async function Department(props: PageLangParam) {
 					<ChartContainer>
 						<H3>
 							<Trans>
-								ISC + CIRNAC, Spending by Entity, FY 2024 (in billions)
+								ISC + CIRNAC, Spending by Entity, FY 2024
 							</Trans>
 						</H3>
 						<FederalSpendingByEntity />

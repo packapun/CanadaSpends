@@ -117,12 +117,12 @@ export default async function Department(props: PageLangParam) {
 				</Section>
 
 				<Section>
-					<H2>
+					<P>
 						<Trans>
 							Major legislation, economic conditions, and external factors can
 							impact ESDC's spending.
 						</Trans>
-					</H2>
+					</P>
 					<P>
 						<Trans>
 							For example, during the COVID-19 pandemic, federal support
@@ -136,16 +136,9 @@ export default async function Department(props: PageLangParam) {
 				<Section>
 					<H2>
 						<Trans>
-							Most federal spending can be categorized as direct or indirect.
+							ESDC's share of federal spending in FY 2024 was lower than FY 1995
 						</Trans>
 					</H2>
-					<P>
-						<Trans>
-							Direct spending refers to money allocated to government programs,
-							employee salaries, and administrative expenses. Indirect spending
-							includes federal transfers to individuals and provinces.
-						</Trans>
-					</P>
 					<H3>
 						<Trans>
 							Percentage of federal budget dedicated to ESDC, FYs 1995-2024
@@ -155,15 +148,37 @@ export default async function Department(props: PageLangParam) {
 					<ChartContainer>
 						<FederalSpendingChart />
 					</ChartContainer>
+					<P>
+						<Trans>
+							Most federal spending can be categorized as direct or indirect.
+						</Trans>
+					</P>
+					<P>
+						<Trans>
+							Direct spending refers to money allocated to government programs,
+							employee salaries, and administrative expenses. Indirect spending
+							includes federal transfers to individuals and provinces.
+						</Trans>
+					</P>
 				</Section>
 
 				<Section>
 					<H2>
 						<Trans>
+							How did ESDC spend its budget in 2024?
+						</Trans>
+					</H2>
+					<P>
+						<Trans>
 							In FY 2024, ESDC transferred 63% of its total spending to
 							individuals and provinces.
 						</Trans>
-					</H2>
+					</P>
+					<H3>
+						<Trans>
+							ESDC's share of federal spending in FY 2024
+						</Trans>
+					</H3>
 					<ChartContainer>
 						<NoSSR>
 							<MiniSankey />
@@ -172,17 +187,6 @@ export default async function Department(props: PageLangParam) {
 				</Section>
 
 				<Section>
-					<H2>
-						<Trans>How did ESDC spend its budget in 2024?</Trans>
-					</H2>
-					<H3>
-						<Trans>
-							Federal government spending isolated to FY 2024 (in millions)
-						</Trans>
-					</H3>
-					<ChartContainer>
-						<FederalSpendingByEntity />
-					</ChartContainer>
 					<P>
 						<Trans>
 							Federal departments often include multiple agencies and service
@@ -190,6 +194,15 @@ export default async function Department(props: PageLangParam) {
 							included:
 						</Trans>
 					</P>
+					<H3>
+						<Trans>
+							ESDC, Spending by Entity, FY 2024
+						</Trans>
+					</H3>
+					<ChartContainer>
+						<FederalSpendingByEntity />
+					</ChartContainer>
+
 
 					<UL>
 						<li>

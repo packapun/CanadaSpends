@@ -1,4 +1,5 @@
 import { DepartmentList } from "@/components/DepartmentList";
+import { DepartmentSpendingChart } from "@/components/DepartmentSpendingChart";
 import {
 	ChartContainer,
 	ExternalLink,
@@ -95,22 +96,16 @@ export default async function Department(props: PageLangParam) {
 						</Trans>
 					</P>
 
-					<P>
+					<H2>
 						<Trans>
-							GAC accounted for 3.7% of all federal spending in FY 2024. 10
-							government departments accounted for 73.2% of federal spending in
-							FY 2024.
+							GAC accounted for 3.7% of all federal spending in FY 2024.
 						</Trans>
-					</P>
+					</H2>
+
+					<H3><Trans>10 government departments accounted for 73.2% of federal spending in FY 2024.</Trans></H3>
 
 					<ChartContainer>
-						<H3>
-							<Trans>
-								Percentage of federal budget dedicated to Global Affairs Canada,
-								FYs 1995-2024
-							</Trans>
-						</H3>
-						<FederalSpendingChart />
+						<DepartmentSpendingChart department={department.slug} />
 					</ChartContainer>
 
 					<P>
@@ -122,6 +117,19 @@ export default async function Department(props: PageLangParam) {
 							166.5%, reflecting an expansion in international engagement.
 						</Trans>
 					</P>
+
+					<ChartContainer>
+
+						<H3>
+							<Trans>
+								Percentage of federal budget dedicated to Global Affairs Canada,
+								FYs 1995-2024
+							</Trans>
+						</H3>
+						<FederalSpendingChart />
+					</ChartContainer>
+
+
 					<P>
 						<Trans>
 							While GAC's spending has increased in real terms, its share of the
@@ -179,6 +187,9 @@ export default async function Department(props: PageLangParam) {
 							and secure investment opportunities abroad.
 						</Trans>
 					</P>
+					<H3>
+						<Trans>Federal government spending in FY 2024</Trans>
+					</H3>
 					<ChartContainer>
 						<NoSSR>
 							<MiniSankey />
@@ -187,9 +198,7 @@ export default async function Department(props: PageLangParam) {
 				</Section>
 
 				<Section>
-					<H2>
-						<Trans>Federal government spending isolated to FY 2024</Trans>
-					</H2>
+
 					<P>
 						<Trans>
 							Federal departments often contain other entities. In FY 2024,
@@ -200,7 +209,7 @@ export default async function Department(props: PageLangParam) {
 					<ChartContainer>
 						<H3>
 							<Trans>
-								Global Affairs Canada, Spending by Entity, FY 2024 (in billions)
+								Global Affairs Canada, Spending by Entity, FY 2024
 							</Trans>
 						</H3>
 						<FederalSpendingByEntity />
@@ -213,10 +222,7 @@ export default async function Department(props: PageLangParam) {
 					</H2>
 					<P>
 						<Trans>
-							Global Affairs Canada operates under a tripartite leadership
-							structure, with three ministers appointed by the Prime Minister
-							and formally sworn into office at Rideau Hall. The department's
-							leadership includes:
+							Global Affairs Canada is led by two ministers appointed by the Prime Minister and formally sworn into office at Rideau Hall. The department's leadership includes:
 						</Trans>
 					</P>
 					<UL>

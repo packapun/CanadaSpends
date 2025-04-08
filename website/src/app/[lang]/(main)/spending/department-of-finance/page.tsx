@@ -152,7 +152,7 @@ export default async function Department(props: PageLangParam) {
 						<Trans>
 							In FY 2024, Finance Canada transferred 66.2% of its total spending
 							to provinces and territories. The chart below outlines all
-							departmental spending.
+							departmental spending in 2024.
 						</Trans>
 					</P>
 				</Section>
@@ -164,7 +164,7 @@ export default async function Department(props: PageLangParam) {
 						</Trans>
 					</H2>
 					<H3>
-						<Trans>Federal government spending isolated to FY 2024</Trans>
+						<Trans>Federal government spending in FY 2024</Trans>
 					</H3>
 					<ChartContainer>
 						<NoSSR>
