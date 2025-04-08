@@ -177,7 +177,7 @@ msgstr "TCS Alberta"
 msgid "All data presented regarding government spending is sourced directly from official government databases. Unless otherwise noted, we have used <0>Public Accounts of Canada</0> data as the primary data source. While we strive to provide accurate, up-to-date information, we cannot guarantee the data's completeness, reliability, or timeliness. We assume no responsibility for any errors, omissions, or outcomes resulting from the use of this information. Please consult the original government sources for official and verified data."
 msgstr "Toutes les données présentées concernant les dépenses gouvernementales proviennent directement des bases de données officielles du gouvernement. Sauf indication contraire, nous avons utilisé les données des <0>Comptes publics du Canada</0> comme source principale. Bien que nous nous efforcions de fournir des informations précises et à jour, nous ne pouvons garantir l'exhaustivité, la fiabilité ou l'actualité des données. Nous n'assumons aucune responsabilité pour les erreurs, omissions ou résultats découlant de l'utilisation de ces informations. Veuillez consulter les sources gouvernementales originales pour des données officielles et vérifiées."
 
-#: src/app/[lang]/(main)/spending/page.tsx:129
+#: src/app/[lang]/(main)/spending/page.tsx:133
 msgid "All government spending data is sourced from official databases, but due to the complexity of these systems, occasional errors may occur despite our best efforts. We aim to make this information more accessible and accurate, and we welcome feedback. If you notice any issues, please let us know <0>here</0> — we appreciate it and will work to address them promptly."
 msgstr "Toutes les données sur les dépenses gouvernementales proviennent de bases de données officielles, mais en raison de la complexité de ces systèmes, des erreurs occasionnelles peuvent survenir malgré nos meilleurs efforts. Nous visons à rendre cette information plus accessible et précise, et nous accueillons vos commentaires. Si vous remarquez des problèmes, veuillez nous en informer <0>ici</0> — nous l'apprécions et nous travaillerons à les résoudre rapidement."
 
@@ -282,10 +282,6 @@ msgstr "Remboursement de la taxe sur le carbone"
 #: src/components/Sankey/index.tsx:768
 msgid "Carbon Taxes"
 msgstr "Taxes sur le carbone"
-
-#: src/app/[lang]/(main)/spending/TenureChart.tsx:8
-msgid "Casual"
-msgstr "Occasionnel"
 
 #: src/components/Sankey/index.tsx:651
 msgid "Childhood Claims Settlement"
@@ -409,7 +405,6 @@ msgstr "Approvisionnement de la défense"
 msgid "Defence Team"
 msgstr "Équipe de la défense"
 
-#: src/hooks/useDepartments.ts:8
 #: src/app/[lang]/(main)/spending/department-of-finance/MiniSankey.tsx:17
 msgid "Department of Finance"
 msgstr "Ministère des Finances"
@@ -722,6 +717,10 @@ msgstr "Les dépenses fédérales consacrées aux priorités autochtones peuvent
 msgid "Federal spending on public safety fluctuates based on evolving security threats, emergency events, and changes in government policy. Since 2005 shortly after it was established, Public Safety Canada's expenditures have increased by 69.6%, reflecting heightened investments in counterterrorism, cyber defence, and disaster response capabilities. The department's share of the federal budget has remained relatively flat from 2.6% in 2005 to 2.7% in 2024."
 msgstr "Les dépenses fédérales en matière de sécurité publique fluctuent en fonction de l'évolution des menaces pour la sécurité, des événements d'urgence et des changements dans la politique gouvernementale. Depuis 2005, peu après sa création, les dépenses de Sécurité publique Canada ont augmenté de 69,6 %, reflétant des investissements accrus dans les capacités de lutte contre le terrorisme, de cyberdéfense et d'intervention en cas de catastrophe. La part du ministère dans le budget fédéral est restée relativement stable, passant de 2,6 % en 2005 à 2,7 % en 2024."
 
+#: src/hooks/useDepartments.ts:8
+msgid "Finance Canada"
+msgstr "Finance Canada"
+
 #: src/components/Sankey/index.tsx:615
 msgid "First Nations and Inuit Health Infrastructure Support"
 msgstr "Soutien à l'infrastructure de santé des Premières Nations et des Inuits"
@@ -828,7 +827,7 @@ msgstr "Taxe sur les produits et services"
 msgid "Gottfriedson Band Class Settlement"
 msgstr "Règlement du recours collectif de la bande Gottfriedson"
 
-#: src/app/[lang]/(main)/spending/page.tsx:132
+#: src/app/[lang]/(main)/spending/page.tsx:128
 msgid "Government Departments explained"
 msgstr "Explication des ministères gouvernementaux"
 
@@ -1096,7 +1095,7 @@ msgstr "Au cours de l'exercice 2024, Transports Canada représentait 1 % des dé
 msgid "In FY 2024, VAC reported total expenditures of $6.07 billion across two entities:"
 msgstr "Au cours de l'exercice 2024, ACC a déclaré des dépenses totales de 6,07 milliards de dollars réparties entre deux entités :"
 
-#: src/app/[lang]/(main)/spending/TenureChart.tsx:9
+#: src/app/[lang]/(main)/spending/TenureChart.tsx:8
 msgid "Indeterminate"
 msgstr "Indéterminé"
 
@@ -1935,7 +1934,7 @@ msgstr "Sécurité sociale"
 msgid "Social Transfer to Provinces"
 msgstr "Transfert social aux provinces"
 
-#: src/app/[lang]/(main)/spending/page.tsx:128
+#: src/app/[lang]/(main)/spending/page.tsx:132
 msgid "Sources"
 msgstr "Sources"
 
@@ -1973,9 +1972,9 @@ msgstr "Statistique Canada"
 msgid "Stay connected by signing up for our newsletter. It's the best way to get updates, exclusive insights, and learn about new initiatives as they happen."
 msgstr "Restez connecté en vous inscrivant à notre infolettre. C'est le meilleur moyen d'obtenir des mises à jour, des analyses exclusives et d'être informé des nouvelles initiatives au fur et à mesure qu'elles se produisent."
 
-#: src/app/[lang]/(main)/spending/TenureChart.tsx:10
-msgid "Student"
-msgstr "Étudiant"
+#: src/app/[lang]/(main)/spending/TenureChart.tsx:9
+msgid "Student + Casual"
+msgstr "Étudiant + Occasionnel"
 
 #: src/components/MainLayout/Footer.tsx:63
 msgid "Subscribe"
@@ -2005,7 +2004,7 @@ msgstr "Soutien aux anciens combattants"
 msgid "Sustainable Bases, IT Systems, Infrastructure"
 msgstr "Bases durables, systèmes TI, infrastructure"
 
-#: src/app/[lang]/(main)/spending/TenureChart.tsx:11
+#: src/app/[lang]/(main)/spending/TenureChart.tsx:10
 msgid "Term"
 msgstr "Durée déterminée"
 
@@ -2014,8 +2013,8 @@ msgid "Thank you for subscribing!"
 msgstr "Merci de vous être abonné!"
 
 #: src/app/[lang]/(main)/spending/page.tsx:101
-msgid "The average employee is 45 years old"
-msgstr "L'âge moyen des employés est de 45 ans"
+msgid "The average employee is 43.3 years old"
+msgstr "L'âge moyen des employés est de 43,3 ans"
 
 #: src/app/[lang]/(main)/spending/page.tsx:120
 msgid "The average employee makes $136,345/yr"
@@ -2177,8 +2176,8 @@ msgid "Through the Public Health Agency of Canada (PHAC), Health Canada monitors
 msgstr "Par l'intermédiaire de l'Agence de la santé publique du Canada (ASPC), Santé Canada surveille les risques pour la santé publique, gère les éclosions de maladies et fait la promotion d'initiatives en matière de santé. Il finance également la recherche médicale par l'entremise des Instituts de recherche en santé du Canada (IRSC) et supervise les services de santé pour les communautés autochtones."
 
 #: src/app/[lang]/(main)/spending/page.tsx:74
-msgid "Total government employees"
-msgstr "Nombre total d'employés gouvernementaux"
+msgid "Total full-time equivalents"
+msgstr "Équivalents temps plein totaux"
 
 #: src/app/[lang]/(main)/spending/page.tsx:84
 msgid "Total Wages"

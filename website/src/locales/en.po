@@ -177,7 +177,7 @@ msgstr "Alberta STP"
 msgid "All data presented regarding government spending is sourced directly from official government databases. Unless otherwise noted, we have used <0>Public Accounts of Canada</0> data as the primary data source. While we strive to provide accurate, up-to-date information, we cannot guarantee the data's completeness, reliability, or timeliness. We assume no responsibility for any errors, omissions, or outcomes resulting from the use of this information. Please consult the original government sources for official and verified data."
 msgstr "All data presented regarding government spending is sourced directly from official government databases. Unless otherwise noted, we have used <0>Public Accounts of Canada</0> data as the primary data source. While we strive to provide accurate, up-to-date information, we cannot guarantee the data's completeness, reliability, or timeliness. We assume no responsibility for any errors, omissions, or outcomes resulting from the use of this information. Please consult the original government sources for official and verified data."
 
-#: src/app/[lang]/(main)/spending/page.tsx:129
+#: src/app/[lang]/(main)/spending/page.tsx:133
 msgid "All government spending data is sourced from official databases, but due to the complexity of these systems, occasional errors may occur despite our best efforts. We aim to make this information more accessible and accurate, and we welcome feedback. If you notice any issues, please let us know <0>here</0> — we appreciate it and will work to address them promptly."
 msgstr "All government spending data is sourced from official databases, but due to the complexity of these systems, occasional errors may occur despite our best efforts. We aim to make this information more accessible and accurate, and we welcome feedback. If you notice any issues, please let us know <0>here</0> — we appreciate it and will work to address them promptly."
 
@@ -282,10 +282,6 @@ msgstr "Carbon Tax Rebate"
 #: src/components/Sankey/index.tsx:768
 msgid "Carbon Taxes"
 msgstr "Carbon Taxes"
-
-#: src/app/[lang]/(main)/spending/TenureChart.tsx:8
-msgid "Casual"
-msgstr "Casual"
 
 #: src/components/Sankey/index.tsx:651
 msgid "Childhood Claims Settlement"
@@ -409,7 +405,6 @@ msgstr "Defence Procurement"
 msgid "Defence Team"
 msgstr "Defence Team"
 
-#: src/hooks/useDepartments.ts:8
 #: src/app/[lang]/(main)/spending/department-of-finance/MiniSankey.tsx:17
 msgid "Department of Finance"
 msgstr "Department of Finance"
@@ -722,6 +717,10 @@ msgstr "Federal spending on Indigenous priorities may fluctuate over time due to
 msgid "Federal spending on public safety fluctuates based on evolving security threats, emergency events, and changes in government policy. Since 2005 shortly after it was established, Public Safety Canada's expenditures have increased by 69.6%, reflecting heightened investments in counterterrorism, cyber defence, and disaster response capabilities. The department's share of the federal budget has remained relatively flat from 2.6% in 2005 to 2.7% in 2024."
 msgstr "Federal spending on public safety fluctuates based on evolving security threats, emergency events, and changes in government policy. Since 2005 shortly after it was established, Public Safety Canada's expenditures have increased by 69.6%, reflecting heightened investments in counterterrorism, cyber defence, and disaster response capabilities. The department's share of the federal budget has remained relatively flat from 2.6% in 2005 to 2.7% in 2024."
 
+#: src/hooks/useDepartments.ts:8
+msgid "Finance Canada"
+msgstr "Finance Canada"
+
 #: src/components/Sankey/index.tsx:615
 msgid "First Nations and Inuit Health Infrastructure Support"
 msgstr "First Nations and Inuit Health Infrastructure Support"
@@ -828,7 +827,7 @@ msgstr "Goods and Services Tax"
 msgid "Gottfriedson Band Class Settlement"
 msgstr "Gottfriedson Band Class Settlement"
 
-#: src/app/[lang]/(main)/spending/page.tsx:132
+#: src/app/[lang]/(main)/spending/page.tsx:128
 msgid "Government Departments explained"
 msgstr "Government Departments explained"
 
@@ -1096,7 +1095,7 @@ msgstr "In FY 2024, Transport Canada accounted for 1% of all federal spending, 0
 msgid "In FY 2024, VAC reported total expenditures of $6.07 billion across two entities:"
 msgstr "In FY 2024, VAC reported total expenditures of $6.07 billion across two entities:"
 
-#: src/app/[lang]/(main)/spending/TenureChart.tsx:9
+#: src/app/[lang]/(main)/spending/TenureChart.tsx:8
 msgid "Indeterminate"
 msgstr "Indeterminate"
 
@@ -1935,7 +1934,7 @@ msgstr "Social Security"
 msgid "Social Transfer to Provinces"
 msgstr "Social Transfer to Provinces"
 
-#: src/app/[lang]/(main)/spending/page.tsx:128
+#: src/app/[lang]/(main)/spending/page.tsx:132
 msgid "Sources"
 msgstr "Sources"
 
@@ -1973,9 +1972,9 @@ msgstr "Statistics Canada"
 msgid "Stay connected by signing up for our newsletter. It's the best way to get updates, exclusive insights, and learn about new initiatives as they happen."
 msgstr "Stay connected by signing up for our newsletter. It's the best way to get updates, exclusive insights, and learn about new initiatives as they happen."
 
-#: src/app/[lang]/(main)/spending/TenureChart.tsx:10
-msgid "Student"
-msgstr "Student"
+#: src/app/[lang]/(main)/spending/TenureChart.tsx:9
+msgid "Student + Casual"
+msgstr "Student + Casual"
 
 #: src/components/MainLayout/Footer.tsx:63
 msgid "Subscribe"
@@ -2005,7 +2004,7 @@ msgstr "Support for Veterans"
 msgid "Sustainable Bases, IT Systems, Infrastructure"
 msgstr "Sustainable Bases, IT Systems, Infrastructure"
 
-#: src/app/[lang]/(main)/spending/TenureChart.tsx:11
+#: src/app/[lang]/(main)/spending/TenureChart.tsx:10
 msgid "Term"
 msgstr "Term"
 
@@ -2014,8 +2013,8 @@ msgid "Thank you for subscribing!"
 msgstr "Thank you for subscribing!"
 
 #: src/app/[lang]/(main)/spending/page.tsx:101
-msgid "The average employee is 45 years old"
-msgstr "The average employee is 45 years old"
+msgid "The average employee is 43.3 years old"
+msgstr "The average employee is 43.3 years old"
 
 #: src/app/[lang]/(main)/spending/page.tsx:120
 msgid "The average employee makes $136,345/yr"
@@ -2177,8 +2176,8 @@ msgid "Through the Public Health Agency of Canada (PHAC), Health Canada monitors
 msgstr "Through the Public Health Agency of Canada (PHAC), Health Canada monitors public health risks, manages disease outbreaks, and promotes health initiatives. It also funds medical research via the Canadian Institutes of Health Research (CIHR) and oversees healthcare services for Indigenous communities."
 
 #: src/app/[lang]/(main)/spending/page.tsx:74
-msgid "Total government employees"
-msgstr "Total government employees"
+msgid "Total full-time equivalents"
+msgstr "Total full-time equivalents"
 
 #: src/app/[lang]/(main)/spending/page.tsx:84
 msgid "Total Wages"

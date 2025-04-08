@@ -71,7 +71,7 @@ export default function Spending() {
 						<StatBox
 							title={t`Headcount`}
 							value="441,000"
-							description={t`Total government employees`}
+							description={t`Total full-time equivalents`}
 						/>
 
 						<StatBox
@@ -98,7 +98,7 @@ export default function Spending() {
 
 						<div>
 							<h3 className="font-medium mb-2"><Trans>Age</Trans></h3>
-							<p className="text-sm text-gray-600"><Trans>The average employee is 45 years old</Trans></p>
+							<p className="text-sm text-gray-600"><Trans>The average employee is 43.3 years old</Trans></p>
 							<div className="mt-4">
 								<NoSSR>
 									<BarChart
@@ -125,12 +125,12 @@ export default function Spending() {
 					</div>
 				</Section>
 				<Section>
-					<H2><Trans>Sources</Trans></H2>
-					<P><Trans>All government spending data is sourced from official databases, but due to the complexity of these systems, occasional errors may occur despite our best efforts. We aim to make this information more accessible and accurate, and we welcome feedback. If you notice any issues, please let us know <InternalLink href="/contact">here</InternalLink> — we appreciate it and will work to address them promptly.</Trans></P>
-				</Section>
-				<Section>
 					<H2><Trans>Government Departments explained</Trans></H2>
 					<DepartmentList />
+				</Section>
+				<Section>
+					<H2><Trans>Sources</Trans></H2>
+					<P><Trans>All government spending data is sourced from official databases, but due to the complexity of these systems, occasional errors may occur despite our best efforts. We aim to make this information more accessible and accurate, and we welcome feedback. If you notice any issues, please let us know <InternalLink href="/contact">here</InternalLink> — we appreciate it and will work to address them promptly.</Trans></P>
 				</Section>
 			</PageContent>
 

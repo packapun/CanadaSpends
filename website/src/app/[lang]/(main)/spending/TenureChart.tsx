@@ -5,10 +5,9 @@ export const TenureChart = () => {
   const { t } = useLingui()
 
   const tenureData = [
-    { name: t`Casual`, value: 6990 },
-    { name: t`Indeterminate`, value: 301131 },
-    { name: t`Student`, value: 9120 },
-    { name: t`Term`, value: 47460 },
+    { name: t`Indeterminate`, value: 359000 },
+    { name: t`Student + Casual`, value: 22000 },
+    { name: t`Term`, value: 59000 },
   ]
 
   return <BarList

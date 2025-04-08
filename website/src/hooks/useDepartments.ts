@@ -5,7 +5,7 @@ export const useDepartments = () => {
 
   const departments = [
     {
-      name: t`Department of Finance`,
+      name: t`Finance Canada`,
       slug: "department-of-finance",
       href: `/${i18n.locale}/spending/department-of-finance`,
       Percentage: 26.48,

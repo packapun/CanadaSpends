@@ -7,7 +7,7 @@
     "build": "pnpm lingui:extract && next build",
     "start": "next start",
     "lint": "next lint",
-    "lingui:extract": "lingui extract --clean"
+    "extract": "lingui extract --clean"
   },
   "dependencies": {
     "@beehiiv/sdk": "^0.1.6",

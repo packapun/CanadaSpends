@@ -23,7 +23,7 @@ const DepartmentItem = ({ name, slug }: DepartmentProps) => {
 export const DepartmentList = (props: { current?: string }) => {
 
   const departments = useDepartments()
-  const BrowsableDepartment = departments.filter(d => !!d.href && !!d.slug) as {
+  const BrowsableDepartment = departments.filter(d => !!d.href && !!d.slug).sort((a, b) => a.name.localeCompare(b.name)) as {
     name: string;
     slug: string;
   }[]
