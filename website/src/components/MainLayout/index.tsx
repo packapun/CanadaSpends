@@ -40,10 +40,10 @@ export const MainLayout = ({ children }: { children: React.ReactNode }) => {
 						</Link>
 						<div className="items-stretch justify-end flex min-h-full gap-6">
 							<NavLink href={`/${i18n.locale}/spending`} >
-								<Trans>Spending</Trans>
+								<Trans>Government Spending</Trans>
 							</NavLink>
 								<NavLink href={`/${i18n.locale}/search`} >
-									<Trans>Search</Trans>
+									<Trans>Spending Database</Trans>
 								</NavLink>
 							<NavLink href={`/${i18n.locale}/about`} >
 								<Trans>About</Trans>
