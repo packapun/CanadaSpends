@@ -6,6 +6,7 @@ import { useLingui } from '@lingui/react/macro';
 import { Analytics } from '@vercel/analytics/next';
 import { Plus_Jakarta_Sans } from 'next/font/google';
 import { PropsWithChildren } from 'react';
+import { Toaster } from 'sonner';
 import './globals.css';
 import { PostHogProvider } from './providers';
 
@@ -64,6 +65,7 @@ export default async function RootLayout({ children, params }: PropsWithChildren
             initialMessages={allMessages[lang]!}
           >
             {children}
+            <Toaster position="top-right" richColors />
           </LinguiClientProvider>
         </PostHogProvider>
         <Analytics />
