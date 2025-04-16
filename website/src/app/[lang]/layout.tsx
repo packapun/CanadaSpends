@@ -69,6 +69,9 @@ export default async function RootLayout({ children, params }: PropsWithChildren
           </LinguiClientProvider>
         </PostHogProvider>
         <Analytics />
+        {/* Simple Analytics Script */}
+        <script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+        <noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="" referrerPolicy="no-referrer-when-downgrade" /></noscript>
       </body>
     </html>
   );
