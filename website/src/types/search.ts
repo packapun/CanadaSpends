@@ -12,6 +12,8 @@ export interface SearchResult {
   award_type: string;
   province?: string;
   country?: string;
+  is_aggregated?: number;
+  source_url?: string;
   objectID: string; // Keep objectID as it's used by InstantSearch internally
 }
 

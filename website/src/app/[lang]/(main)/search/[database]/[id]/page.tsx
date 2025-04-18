@@ -11,67 +11,43 @@ interface Props {
   database: string
 }
 
-export default async function Page({ params }: { params: { id: string, database: string } }) {
-  const { id, database } = await params
+// Constants from typesenseAdapter config (ensure these are accessible or redefine here)
+const TYPESENSE_HOST = 'search.canadasbuilding.com';
+const TYPESENSE_PORT = 443;
+const TYPESENSE_PROTOCOL = 'https';
+const TYPESENSE_API_KEY = 'YpZamILESYThUVYZZ87dIBuJorHtRPfa'; // Search-only key
+const TYPESENSE_COLLECTION = 'records'; // Assumed collection name
 
-  const componentMap: Record<string, React.ComponentType<{ id: string, database: string }>> = {
-    'aggregated-contracts-under-10k': AggregatedContractsUnder10k,
-    'contracts-over-10k': ContractsOver10k,
-    'cihr_grants': CIHRGrants,
-    'nserc_grants': NSERCGrants,
-    'sshrc_grants': SSHRCGrants,
-    'global_affairs_grants': GlobalAffairsGrants,
-    'transfers': Transfers,
-  }
-
-  const Component = componentMap[database]
-  if (!Component) return notFound()
-
-  return <Component id={id} database={database} />
-}
-
-
-const BASE = 'https://api.canadasbuilding.com/canada-spends'
+// Re-define BASE constant for other fetchers
+const BASE = 'https://api.canadasbuilding.com/canada-spends';
 
 function jsonFetcher(url: string) {
   return fetch(url, { cache: 'no-store' })
     .then(res => res.ok ? res.json() : null)
 }
 
-async function BaseSpendingPage({ id, database, label }: Props & { database: string, label: string }) {
-  const url = `${BASE}/${database}/${id}.json?_shape=array`
-  const data = await jsonFetcher(url)
-  // const summary = await jsonFetcher(url)
-  // if (!data || data.length === 0) return notFound()
-  const record = data[0]
+// ... KeyValueTable, NSERCGrants, CIHRGrants, etc. ...
 
-  return (
-    <main className="max-w-4xl mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">{label}: {record.program}</h1>
-      <Card>
-        <CardHeader>
-          <CardTitle>
-            <h2 className="text-2xl font-bold">
-              {record.title}
-            </h2>
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-            <KeyValueTable record={record} />
-        </CardContent>
-      </Card>
-      {record.source_url && (
-        <div className="mt-4">
-          <a href={record.source_url as string} className="text-blue-600 underline" target="_blank" rel="noopener noreferrer">
-            View original record
-          </a>
-        </div>
-      )}
-    </main>
-  )
+export default async function Page({ params }: { params: { id: string, database: string } }) {
+  const { id, database } = await params;
+
+  const componentMap: Record<string, React.ComponentType<Props>> = {
+    'contracts-over-10k': ContractsOver10k,
+    'cihr_grants': CIHRGrants,
+    'nserc_grants': NSERCGrants,
+    'sshrc_grants': SSHRCGrants,
+    'global_affairs_grants': GlobalAffairsGrants,
+    'transfers': Transfers,
+  };
+
+  const Component = componentMap[database];
+  if (!Component) {
+      console.warn(`No component found for database type: ${database}. Displaying 404.`);
+      return notFound(); // Display 404 if no component matches (handles aggregated type)
+  }
+
+  return <Component id={id} database={database} />;
 }
-
-
 
 function KeyValueTable({ record }: { record: Record<string, unknown> }) {
   return (
@@ -292,6 +268,11 @@ async function Transfers({ id, database }: Props & { database: string }) {
   )
 }
 
+// Add formatCurrency helper if not imported/available
+const formatCurrency = (value: number | null | undefined): string => {
+  if (value == null) return '—';
+  return Number(value).toLocaleString('en-US', { style: 'currency', currency: 'CAD' });
+};
 
 function Detail({ label, value, className }: { label: string, value: unknown, className?: string }) {
   return (
@@ -301,5 +282,3 @@ function Detail({ label, value, className }: { label: string, value: unknown, cl
     </div>
   )
 }
-
-export const AggregatedContractsUnder10k = (props: Props) => <BaseSpendingPage {...props} database="aggregated-contracts-under-10k" label="Contracts Under $10k Summary" />

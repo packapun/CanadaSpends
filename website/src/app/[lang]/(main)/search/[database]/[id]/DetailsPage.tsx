@@ -34,8 +34,12 @@ export async function DetailsPage({
   vendor_name,
 }: DetailsPageProps) {
   let finalSourceUrl = source_url;
+
   if (database === 'contracts-over-10k' && reference_number && vendor_name) {
     const encodedRef = encodeURIComponent(reference_number);
+    // Double-encode vendor_name because the API's `filters` parameter
+    // is URL-encoded as a whole, and nested values must be pre-encoded
+    // to preserve reserved characters (e.g., "|", ":").
     const encodedVendor = encodeURIComponent(encodeURIComponent(vendor_name));
     const filters = `reference_number%3A${encodedRef}%7Cvendor_name%3A${encodedVendor}`;
     finalSourceUrl = `${source_url}?filters=${filters}`;

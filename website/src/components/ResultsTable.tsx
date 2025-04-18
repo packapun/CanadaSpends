@@ -53,11 +53,27 @@ export function ResultsTable() {
                 <TableCell className="hidden sm:table-cell px-2">{hit.fiscal_year}</TableCell>
                 <TableCell className="text-right font-medium text-blue-600 px-2 tabular-nums">${formattedAmount}</TableCell>
                 <TableCell className="text-center px-2 pr-4 sm:pr-6">
-                  <Link href={href} legacyBehavior={false}>
-                    <Button variant="ghost" size="sm" className="h-8 px-2">
-                      View
-                    </Button>
-                  </Link>
+                  {/* TODO: Link aggregated records to internal detail page once API/ID issue is resolved */}
+                  {!hit.is_aggregated ? (
+                    // Link to internal detail page for non-aggregated
+                    <Link href={href} legacyBehavior={false}>
+                      <Button variant="ghost" size="sm" className="h-8 px-2">
+                        View
+                      </Button>
+                    </Link>
+                  ) : (
+                    // Link to external source_url for aggregated (temporary)
+                    hit.source_url ? (
+                      <a href={hit.source_url} target="_blank" rel="noopener noreferrer">
+                        {/* Use same style/text as internal link button */}
+                        <Button variant="ghost" size="sm" className="h-8 px-2">
+                          View
+                        </Button>
+                      </a>
+                    ) : (
+                      <span className="text-gray-400 text-sm">N/A</span> // Show N/A if no source_url
+                    )
+                  )}
                 </TableCell>
               </TableRow>
             );
