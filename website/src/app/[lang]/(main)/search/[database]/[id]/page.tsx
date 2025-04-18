@@ -8,69 +8,46 @@ import {ContractsOver10k} from "./Contracts";
 
 interface Props {
   id: string
+  database: string
 }
 
-export default async function Page({ params }: { params: { id: string, database: string } }) {
-  const { id, database } = await params
+// Constants from typesenseAdapter config (ensure these are accessible or redefine here)
+const TYPESENSE_HOST = 'search.canadasbuilding.com';
+const TYPESENSE_PORT = 443;
+const TYPESENSE_PROTOCOL = 'https';
+const TYPESENSE_API_KEY = 'YpZamILESYThUVYZZ87dIBuJorHtRPfa'; // Search-only key
+const TYPESENSE_COLLECTION = 'records'; // Assumed collection name
 
-  const componentMap: Record<string, React.ComponentType<{ id: string }>> = {
-    'aggregated-contracts-under-10k': AggregatedContractsUnder10k,
-    'contracts-over-10k': ContractsOver10k,
-    'cihr_grants': CIHRGrants,
-    'nserc_grants': NSERCGrants,
-    'sshrc_grants': SSHRCGrants,
-    'global_affairs_grants': GlobalAffairsGrants,
-    'transfers': Transfers,
-  }
-
-  const Component = componentMap[database]
-  if (!Component) return notFound()
-
-  return <Component id={id} />
-}
-
-
-const BASE = 'https://api.canadasbuilding.com/canada-spends'
+// Re-define BASE constant for other fetchers
+const BASE = 'https://api.canadasbuilding.com/canada-spends';
 
 function jsonFetcher(url: string) {
   return fetch(url, { cache: 'no-store' })
     .then(res => res.ok ? res.json() : null)
 }
 
-async function BaseSpendingPage({ id, database, label }: Props & { database: string, label: string }) {
-  const url = `${BASE}/${database}/${id}.json?_shape=array`
-  const data = await jsonFetcher(url)
-  // const summary = await jsonFetcher(url)
-  // if (!data || data.length === 0) return notFound()
-  const record = data[0]
+// ... KeyValueTable, NSERCGrants, CIHRGrants, etc. ...
 
-  return (
-    <main className="max-w-4xl mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">{label}: {record.program}</h1>
-      <Card>
-        <CardHeader>
-          <CardTitle>
-            <h2 className="text-2xl font-bold">
-              {record.title}
-            </h2>
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-            <KeyValueTable record={record} />
-        </CardContent>
-      </Card>
-      {record.source_url && (
-        <div className="mt-4">
-          <a href={record.source_url as string} className="text-blue-600 underline" target="_blank" rel="noopener noreferrer">
-            View original record
-          </a>
-        </div>
-      )}
-    </main>
-  )
+export default async function Page({ params }: { params: { id: string, database: string } }) {
+  const { id, database } = await params;
+
+  const componentMap: Record<string, React.ComponentType<Props>> = {
+    'contracts-over-10k': ContractsOver10k,
+    'cihr_grants': CIHRGrants,
+    'nserc_grants': NSERCGrants,
+    'sshrc_grants': SSHRCGrants,
+    'global_affairs_grants': GlobalAffairsGrants,
+    'transfers': Transfers,
+  };
+
+  const Component = componentMap[database];
+  if (!Component) {
+      console.warn(`No component found for database type: ${database}. Displaying 404.`);
+      return notFound(); // Display 404 if no component matches (handles aggregated type)
+  }
+
+  return <Component id={id} database={database} />;
 }
-
-
 
 function KeyValueTable({ record }: { record: Record<string, unknown> }) {
   return (
@@ -87,7 +64,7 @@ function KeyValueTable({ record }: { record: Record<string, unknown> }) {
   )
 }
 
-async function NSERCGrants({ id }: Props) {
+async function NSERCGrants({ id, database }: Props & { database: string }) {
   const url = `${BASE}/nserc_grants/${id}.json?_shape=array`
   const data = await jsonFetcher(url)
   if (!data || data.length === 0) return notFound()
@@ -103,6 +80,7 @@ async function NSERCGrants({ id }: Props) {
       program={grant.program}
       type="NSERC Research Grants"
       summary={grant.award_summary}
+      database={database}
     >
       <Detail label="Awarded" value={grant.competition_year} />
       <Detail label="Installment" value={grant.installment} />
@@ -119,7 +97,7 @@ async function NSERCGrants({ id }: Props) {
   )
 }
 
-async function CIHRGrants({ id }: Props) {
+async function CIHRGrants({ id, database }: Props & { database: string }) {
   const url = `${BASE}/cihr_grants/${id}.json?_shape=array`
   const data = await jsonFetcher(url)
   if (!data || data.length === 0) return notFound()
@@ -136,6 +114,7 @@ async function CIHRGrants({ id }: Props) {
       type="CIHR Research Grant"
       summary={grant.abstract?.replaceAll("\n", "\n\n")}
       keywords={grant.keywords.split(";")}
+      database={database}
     >
       <Detail label="Principal Investigator" value={grant.project_lead_name} />
       <Detail label="Institution" value={grant.institution} />
@@ -150,7 +129,7 @@ async function CIHRGrants({ id }: Props) {
   )
 }
 
-async function SSHRCGrants({ id }: Props) {
+async function SSHRCGrants({ id, database }: Props & { database: string }) {
   const url = `${BASE}/sshrc_grants/${id}.json?_shape=array`
   const data = await jsonFetcher(url)
   if (!data || data.length === 0) return notFound()
@@ -167,6 +146,7 @@ async function SSHRCGrants({ id }: Props) {
       type="SSHRC Research Grant"
       summary=""
       keywords={grant.keywords.replaceAll('["', '').replaceAll('"]', '').split("\\n")}
+      database={database}
     >
       <Detail label="Principal Applicant" value={grant.applicant} />
       <Detail label="Organization" value={grant.organization} />
@@ -179,7 +159,7 @@ async function SSHRCGrants({ id }: Props) {
   )
 }
 
-async function GlobalAffairsGrants({ id }: Props) {
+async function GlobalAffairsGrants({ id, database }: Props & { database: string }) {
   const url = `${BASE}/global_affairs_grants/${id}.json?_shape=array`
   const data = await jsonFetcher(url)
   if (!data || data.length === 0) return notFound()
@@ -221,6 +201,7 @@ async function GlobalAffairsGrants({ id }: Props) {
       type="Global Affairs Grant"
       summary={grant.description}
       keywords={keywords}
+      database={database}
     >
       <Detail label="Project Number" value={grant.projectNumber} />
       <Detail label="Status" value={grant.status} />
@@ -243,53 +224,55 @@ async function GlobalAffairsGrants({ id }: Props) {
   )
 }
 
-async function Transfers({ id }: Props) {
+async function Transfers({ id, database }: Props & { database: string }) {
   const url = `${BASE}/transfers/${id}.json?_shape=array`
   const data = await jsonFetcher(url)
   if (!data || data.length === 0) return notFound()
   const transfer = data[0]
 
-  // Format the fiscal year for display (if available)
   const fiscalYear = transfer.FSCL_YR || '—'
-
-  // Determine ministry name with fallbacks
   const ministry = transfer.MINE || transfer.MINC || transfer.MINF || '—'
-
-  // Get recipient name
   const recipient = transfer.RCPNT_NML_EN_DESC || '—'
-
-  // Get payment amount
   const amount = transfer.AGRG_PYMT_AMT || 0
-
-  // Get location information if available
   const location = [
     transfer.CTY_EN_NM,
     transfer.PROVTER_EN,
     transfer.CNTRY_EN_NM
   ].filter(Boolean).join(', ') || '—'
 
+  // Define the constant URL for the dataset page
+  const datasetPageUrl = "https://open.canada.ca/data/en/dataset/69bdc3eb-e919-4854-bc52-a435a3e19092";
+
   return (
-    <DetailsPage
-      fiscal_year={fiscalYear}
-      title={transfer.RCPNT_CLS_EN_DESC || '—'}
-      source_url=""
-      recipient={recipient}
-      award_amount={amount}
-      program={transfer.DEPT_EN_DESC || '—'}
-      type="Federal Transfer"
-      summary=""
-    >
-      <Detail label="Department" value={transfer.DEPT_EN_DESC} />
-      <Detail label="Ministry" value={ministry} />
-      <Detail label="Fiscal Year" value={fiscalYear} />
-      <Detail label="Recipient Class" value={transfer.RCPNT_CLS_EN_DESC} />
-      <Detail label="Recipient" value={recipient} />
-      <Detail label="Location" value={location} />
-      <Detail label="Payment Amount" value={`$${Number(amount).toLocaleString()}`} />
-    </DetailsPage>
+    <>
+      <DetailsPage
+        fiscal_year={fiscalYear}
+        title={transfer.RCPNT_CLS_EN_DESC || '—'}
+        source_url={datasetPageUrl}
+        recipient={recipient}
+        award_amount={amount}
+        program={transfer.DEPT_EN_DESC || '—'}
+        type="Federal Transfer"
+        summary=""
+        database={database}
+      >
+        <Detail label="Department" value={transfer.DEPT_EN_DESC} />
+        <Detail label="Ministry" value={ministry} />
+        <Detail label="Fiscal Year" value={fiscalYear} />
+        <Detail label="Recipient Class" value={transfer.RCPNT_CLS_EN_DESC} />
+        <Detail label="Recipient" value={recipient} />
+        <Detail label="Location" value={location} />
+        <Detail label="Payment Amount" value={`$${Number(amount).toLocaleString()}`} />
+      </DetailsPage>
+    </>
   )
 }
 
+// Add formatCurrency helper if not imported/available
+const formatCurrency = (value: number | null | undefined): string => {
+  if (value == null) return '—';
+  return Number(value).toLocaleString('en-US', { style: 'currency', currency: 'CAD' });
+};
 
 function Detail({ label, value, className }: { label: string, value: unknown, className?: string }) {
   return (
@@ -299,5 +282,3 @@ function Detail({ label, value, className }: { label: string, value: unknown, cl
     </div>
   )
 }
-
-export const AggregatedContractsUnder10k = (props: Props) => <BaseSpendingPage {...props} database="aggregated-contracts-under-10k" label="Contracts Under $10k Summary" />

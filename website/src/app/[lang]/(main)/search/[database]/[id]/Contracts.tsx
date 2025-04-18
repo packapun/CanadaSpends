@@ -47,12 +47,12 @@ const fieldMapping = {
   // },
   vendor_postal_code: {
     human_name: "Vendor Postal Code",
-    info: "i. It is recommended that this field be populated with the first three digits of the postal code for the vendor identified in the contract. ii. Alternatively, the vendor postal code may be the first three digits of the postal code identified in the procurement or financial system if this is the standard practice in the department. iii. This field is to be populated with “NA” if the vendor is located outside of Canada, as the value “NA” for this field indicates not applicable.",
+    info: "i. It is recommended that this field be populated with the first three digits of the postal code for the vendor identified in the contract. ii. Alternatively, the vendor postal code may be the first three digits of the postal code identified in the procurement or financial system if this is the standard practice in the department. iii. This field is to be populated with \"NA\" if the vendor is located outside of Canada, as the value \"NA\" for this field indicates not applicable.",
     mapping: null
   },
   buyer_name: {
     human_name: "Buyer Name",
-    info: "i. It is recommended that the field be populated with the name of the buyer, as indicated on the original contract or, alternatively, the individual responsible for the procurement at the department. ii. For the establishment of a standing offer or supply arrangement agreement, it is recommended that this field be populated with the name of the buyer that issued the original standing offer or supply arrangement agreement. iii. For a call-up contract against a standing offer or supply arrangement, this field should be the name of the buyer identified in the original call-up contract. iv. For a contract with task authorizations, this field may be populated with the name of the buyer indicated in the original contract or in the individual task authorization. v. For amendments, it is recommended that this field be populated with the value “NA,” as the value “NA” for this field indicates not applicable. vi. For contracts awarded by PSPC or Shared Services Canada (SSC) on behalf of the client department, it is recommended that this field be populated with the name of the PSPC or SSC contracting authority. If this is not available, indicate the values, “PSPC-SPAC” or “SSC-SPC” as applicable.",
+    info: "i. It is recommended that the field be populated with the name of the buyer, as indicated on the original contract or, alternatively, the individual responsible for the procurement at the department. ii. For the establishment of a standing offer or supply arrangement agreement, it is recommended that this field be populated with the name of the buyer that issued the original standing offer or supply arrangement agreement. iii. For a call-up contract against a standing offer or supply arrangement, this field should be the name of the buyer identified in the original call-up contract. iv. For a contract with task authorizations, this field may be populated with the name of the buyer indicated in the original contract or in the individual task authorization. v. For amendments, it is recommended that this field be populated with the value \"NA,\" as the value \"NA\" for this field indicates not applicable. vi. For contracts awarded by PSPC or Shared Services Canada (SSC) on behalf of the client department, it is recommended that this field be populated with the name of the PSPC or SSC contracting authority. If this is not available, indicate the values, \"PSPC-SPAC\" or \"SSC-SPC\" as applicable.",
     mapping: null
   },
   contract_date: {
@@ -62,17 +62,17 @@ const fieldMapping = {
   },
   economic_object_code: {
     human_name: "Economic Object Code",
-    info: "i. It is recommended that this field be populated with the contract’s numeric economic object code. Economic object codes are listed in the government-wide chart of accounts. The use of accurate economic object codes is important for maintaining the integrity of the Public Accounts of Canada. Departments are to ensure that all expenditures are coded appropriately in accordance with the Directive on Accounting Standards: GC 5000 Recording Financial Transactions in the Accounts of Canada. ii. For standing offers and supply arrangement agreements, this field may be populated with the data value “NA” as the value “NA” for this field means not applicable. iii. When a contract involves more than one economic object, it is recommended that the economic object associated with the largest dollar value be used. A department may use a different approach if this is the standard practice in the department.",
+    info: "i. It is recommended that this field be populated with the contract's numeric economic object code. Economic object codes are listed in the government-wide chart of accounts. The use of accurate economic object codes is important for maintaining the integrity of the Public Accounts of Canada. Departments are to ensure that all expenditures are coded appropriately in accordance with the Directive on Accounting Standards: GC 5000 Recording Financial Transactions in the Accounts of Canada. ii. For standing offers and supply arrangement agreements, this field may be populated with the data value \"NA\" as the value \"NA\" for this field means not applicable. iii. When a contract involves more than one economic object, it is recommended that the economic object associated with the largest dollar value be used. A department may use a different approach if this is the standard practice in the department.",
     mapping: null
   },
   // description_en: {
   //   human_name: "Description of Work English",
-  //   info: "It is recommended that this field be populated with the economic object code’s text description as listed in the government-wide chart of accounts ( http://www.tpsgc-pwgsc.gc.ca/recgen/pceaf-gwcoa/index-eng.html ). For standing offers and supply arrangement agreements, this field may be populated with the commodity code’s text description used by the federal government for procurement activities.",
+  //   info: "It is recommended that this field be populated with the economic object code's text description as listed in the government-wide chart of accounts ( http://www.tpsgc-pwgsc.gc.ca/recgen/pceaf-gwcoa/index-eng.html ). For standing offers and supply arrangement agreements, this field may be populated with the commodity code's text description used by the federal government for procurement activities.",
   //   mapping: null
   // },
   // description_fr: {
   //   human_name: "Description of Work French",
-  //   info: "It is recommended that this field be populated with the economic object code’s text description as listed in the government-wide chart of accounts ( http://www.tpsgc-pwgsc.gc.ca/recgen/pceaf-gwcoa/index-eng.html ). For standing offers and supply arrangement agreements, this field may be populated with the commodity code’s text description used by the federal government for procurement activities.",
+  //   info: "It is recommended that this field be populated with the economic object code's text description as listed in the government-wide chart of accounts ( http://www.tpsgc-pwgsc.gc.ca/recgen/pceaf-gwcoa/index-eng.html ). For standing offers and supply arrangement agreements, this field may be populated with the commodity code's text description used by the federal government for procurement activities.",
   //   mapping: null
   // },
   contract_period_start: {
@@ -97,7 +97,7 @@ const fieldMapping = {
   },
   amendment_value: {
     human_name: "Contract Amendment Value",
-    info: "i. For an amendment, it is recommended that the contract amendment value be the value of the contract amendment. Negative amendments should include a minus sign in front of the value. It is recommended for this field to be in Canadian currency and for it to include all applicable taxes. ii. Multiple amendment(s) to a contract that take place in the same fiscal quarter may be reported either individually or combined. Positive or negative amendments over $10,000 are to be reported quarterly in accordance with Appendix A. Positive or negative amendments of $10,000 and under are to be reported annually via email to PSPC in accordance with Appendix A, and to be reported annually on the Open Government Portal in accordance with Appendix B. An amendment should be reported either quarterly or annually. Reporting an amendment both quarterly and annually would result in double counting of the amendment’s value when calculating the total contracting activity of an organization. iii. When a contract is entered into and subsequently amended in the same fiscal quarter, the two transactions should be reported separately. Entry into the contract should be reported as a separate entry with the value at contract entry in the original contract value and should not include the value of the contract amendment. The contract amendment should also be reported as a separate entry with the value of the amendment in the contract amendment value and the contract entry value in the original contract value. iv. For a contract with task authorizations, when the full value is likely not to be used, the value of any subsequent task authorization may be reported as an amendment with its value reported in the contract amendment value. v. A “0” value should be included if there are no amendments associated with the contract.",
+    info: "i. For an amendment, it is recommended that the contract amendment value be the value of the contract amendment. Negative amendments should include a minus sign in front of the value. It is recommended for this field to be in Canadian currency and for it to include all applicable taxes. ii. Multiple amendment(s) to a contract that take place in the same fiscal quarter may be reported either individually or combined. Positive or negative amendments over $10,000 are to be reported quarterly in accordance with Appendix A. Positive or negative amendments of $10,000 and under are to be reported annually via email to PSPC in accordance with Appendix A, and to be reported annually on the Open Government Portal in accordance with Appendix B. An amendment should be reported either quarterly or annually. Reporting an amendment both quarterly and annually would result in double counting of the amendment's value when calculating the total contracting activity of an organization. iii. When a contract is entered into and subsequently amended in the same fiscal quarter, the two transactions should be reported separately. Entry into the contract should be reported as a separate entry with the value at contract entry in the original contract value and should not include the value of the contract amendment. The contract amendment should also be reported as a separate entry with the value of the amendment in the contract amendment value and the contract entry value in the original contract value. iv. For a contract with task authorizations, when the full value is likely not to be used, the value of any subsequent task authorization may be reported as an amendment with its value reported in the contract amendment value. v. A \"0\" value should be included if there are no amendments associated with the contract.",
     mapping: formatMoney
   },
   // comments_en: {
@@ -123,8 +123,8 @@ const fieldMapping = {
   agreement_type_code: {
     human_name: "Agreement Type",
     info: "This data field is archived and replaced by the Appendix A data fields for Trade Agreement, Comprehensive Land Claims Agreement and Procurement Strategy for Indigenous Business.",
-    mapping: (v) => {
-      const codes = {
+    mapping: (v: string) => {
+      const codes: { [key: string]: string } = {
         "0": "None",
         "A": "ABSA",
         "C": "NAFTA / CFTA",
@@ -133,7 +133,7 @@ const fieldMapping = {
         "F": "CETA / TCA / WTO-AGP / NAFTA / CFTA / CCFTA / CCoFTA / CHFTA / CPaFTA / CPFTA / CKFTA",
         "I": "CFTA",
         "R": "LCSA",
-        "S": "NAFTA / CFTA / CCFTA / CCoFTA / CHFTA / CPaFTA / CKFTA",
+        "S": "NAFTA / CFTA / CCFTA / CCoFTA / CHFTA / CPaFTA",
         "T": "NAFTA / CFTA / CCFTA / CCoFTA / CHFTA / CPaFTA / CPFTA / CKFTA",
         "V": "CFTA / CCFTA / CKFTA",
         "W": "WTO-AGP / CFTA / CCFTA / CCoFTA / CHFTA / CPaFTA / CPFTA / CKFTA",
@@ -177,8 +177,8 @@ const fieldMapping = {
   trade_agreement: {
     human_name: "Trade Agreement",
     info: "i. It is recommended that this field indicate whether the procurement is covered by each of the applicable trade agreements. ii. It is recommended that this field be populated with one or more of the following alphabetic characters. Report the alphabetic characters only. All text after the alphabetic characters, including the colon, is for information purposes only. For example, a procurement covered by the Canadian Free Trade Agreement and the Comprehensive Economic Free Trade Agreement is reported as CA, EU.",
-    mapping: (v) => {
-      const codes = {
+    mapping: (v: string) => {
+      const codes: { [key: string]: string } = {
         "CA": "Canadian Free Trade Agreement",
         "CL": "Canada-Chile Free Trade Agreement",
         "CO": "Canada-Colombia Free Trade Agreement",
@@ -201,8 +201,8 @@ const fieldMapping = {
   land_claims: {
     human_name: "Comprehensive Land Claims Agreement",
     info: "It is recommended that this field indicate whether the procurement is for goods, services or construction services to be delivered to an area that is within one or more of the Comprehensive Land Claims Agreements.",
-    mapping: (v) => {
-      const codes = {
+    mapping: (v: string) => {
+      const codes: { [key: string]: string } = {
         "CH": "Champagne and Aishihik First Nations Final Agreement",
         "CT": "Carcross/Tagish First Nation Final Agreement",
         "EM": "Eeyou Marine Region Land Claims Agreement",
@@ -238,8 +238,8 @@ const fieldMapping = {
   commodity_type: {
     human_name: "Commodity Type",
     info: "It is recommended that the commodity type be populated with the one of the three commodity types (Good, Service or Construction). When a contract involves more than one commodity type, the commodity type associated with the largest dollar value should be used. A department may use a different approach if this is the standard practice in the department.",
-    mapping: (v) => {
-      const codes = {
+    mapping: (v: string) => {
+      const codes: { [key: string]: string } = {
         "C": "Construction",
         "G": "Good",
         "S": "Service"
@@ -256,8 +256,8 @@ const fieldMapping = {
   country_of_vendor: {
     human_name: "Country of Vendor",
     info: "i. It is recommended that this data field be populated with the country of the vendor's address identified in the contract. ii. Alternatively, the country of the vendor may be the country of the vendor's address identified in the procurement or financial system if this is the standard practice in the department. iii. The country of vendor must be alphabetic characters listed in the International Organization for Standardization (ISO) 3166 Country Codes.",
-    mapping: (v) => {
-      const codes = {
+    mapping: (v: string) => {
+      const codes: { [key: string]: string } = {
         "AD": "Andorra",
         "AE": "United Arab Emirates",
         "AF": "Afghanistan",
@@ -515,8 +515,8 @@ const fieldMapping = {
   solicitation_procedure: {
   human_name: "Solicitation Procedure",
   info: "It is recommended that this field be populated with one of the five solicitation procedures listed below: • AC: Advance Contract Award Notice (ACAN) refers to a contract awarded to a supplier identified under an ACAN process where it was determined that there were no other statements of capabilities that could successfully meet the government's requirements. • OB: Competitive – Open Bidding (Government Electronic Tendering System (GETS)) refers to a competitive contract where bids were solicited via GETS. • TC: Competitive – Traditional refers to a competitive contract where bids were not solicited via GETS, but through another medium, such as soliciting bids directly from suppliers by email or phone. • ST: Competitive – Selective Tendering refers to a solicitation procedure permitted under Canada's trade agreements where qualified suppliers are selected from a source list (including single-use or multi-use lists) under the selective tendering procedural rules in Canada's trade agreements. • TN: Non-competitive refers to a contract awarded to a supplier without soliciting bids.",
-  mapping: (v) => {
-    const codes = {
+  mapping: (v: string) => {
+    const codes: { [key: string]: string } = {
       "AC": "Advance Contract Award Notice",
       "OB": "Competitive – Open Bidding (GETS)",
       "ST": "Competitive – Selective Tendering",
@@ -530,8 +530,8 @@ const fieldMapping = {
 limited_tendering_reason: {
   human_name: "Limited Tendering Reason",
   info: "It is recommended that this field be populated with one or more of the limited tendering reasons listed below.",
-  mapping: (v) => {
-    const codes = {
+  mapping: (v: string) => {
+    const codes: { [key: string]: string } = {
       "00": "None",
       "05": "No response to bid solicitation",
       "20": "Goods purchased on a commodity market",
@@ -554,8 +554,8 @@ limited_tendering_reason: {
 trade_agreement_exceptions: {
   human_name: "Trade Agreement Exceptions and Exclusions",
   info: "It is recommended that this field to be populated with one or more of the exceptions or exclusions listed below.",
-  mapping: (v) => {
-    const codes = {
+  mapping: (v: string) => {
+    const codes: { [key: string]: string } = {
       "00": "None",
       "01": "Shipbuilding and repair",
       "02": "Urban rail and urban transportation equipment systems, components and materials",
@@ -578,8 +578,8 @@ trade_agreement_exceptions: {
 indigenous_business: {
   human_name: "Procurement Strategy for Indigenous Business",
   info: "It is recommended that this field indicate whether the Procurement Strategy for Indigenous Business mandatory or voluntary set-aside applies to the procurement transaction.",
-  mapping: (v) => {
-    const codes = {
+  mapping: (v: string) => {
+    const codes: { [key: string]: string } = {
       "MS": "Mandatory Set-Aside",
       "NA": "None",
       "VS": "Voluntary Set-Aside"
@@ -591,8 +591,8 @@ indigenous_business: {
 indigenous_business_excluding_psib: {
   human_name: "Indigenous Business excluding PSIB",
   info: "i. It is recommended that this field indicate whether a contract was awarded to an Indigenous business. ii. Any contract awarded to an Indigenous business where the procurement is subject to a mandatory or voluntary set-aside under the Procurement Strategy for Indigenous Business should be reported as \"No\" under this data field as such contracts are already reported under the Procurement Strategy for Indigenous Business data field.",
-  mapping: (v) => {
-    const codes = {
+  mapping: (v: string) => {
+    const codes: { [key: string]: string } = {
       "N": "No",
       "Y": "Yes"
     };
@@ -603,8 +603,8 @@ indigenous_business_excluding_psib: {
 intellectual_property: {
   human_name: "Intellectual Property Indicator",
   info: "It is recommended that this field identify whether there are terms and conditions in the contract related to intellectual property and whether those terms would result in Crown or contractor ownership of the rights to the intellectual property.",
-  mapping: (v) => {
-    const codes = {
+  mapping: (v: string) => {
+    const codes: { [key: string]: string } = {
       "A2": "Crown owned – exception 2",
       "A3": "Crown owned – exception 3",
       "A41": "Crown owned – exception 4.1",
@@ -622,8 +622,8 @@ intellectual_property: {
 potential_commercial_exploitation: {
   human_name: "Potential for Commercial Exploitation",
   info: "It is recommended that this field identify whether intellectual property generated under the contract has the potential for commercial exploitation.",
-  mapping: (v) => {
-    const codes = {
+  mapping: (v: string) => {
+    const codes: { [key: string]: string } = {
       "N": "No",
       "Y": "Yes"
     };
@@ -633,8 +633,8 @@ potential_commercial_exploitation: {
   former_public_servant: {
   human_name: "Former Public Servant in receipt of a PSSA pension",
   info: "It is recommended that this field identify whether the contractor is a former public servant in receipt of a pension under the Public Service Superannuation Act (PSSA).",
-  mapping: (v) => {
-    const codes = {
+  mapping: (v: string) => {
+    const codes: { [key: string]: string } = {
       "N": "No",
       "Y": "Yes"
     };
@@ -645,8 +645,8 @@ potential_commercial_exploitation: {
 contracting_entity: {
   human_name: "Contracting Entity",
   info: "i. It is recommended that this field identify whether the procurement is a contract awarded by the client department, PSPC, SSC or another departmental entity or a call-up contract against a standing offer agreement or supply arrangement agreement established by PSPC, SSC or the department.",
-  mapping: (v) => {
-    const codes = {
+  mapping: (v: string) => {
+    const codes: { [key: string]: string } = {
       "DC": "Contract awarded by the department",
       "DSOSA": "Call-up or Contract Against a Standing Offer or Supply Arrangement Agreement established by the department",
       "OGDC": "Contract awarded by another department on behalf of the client department",
@@ -668,8 +668,8 @@ standing_offer_number: {
 instrument_type: {
   human_name: "Instrument Type",
   info: "i. It is recommended that the instrument type identify whether the transaction being reported is a contract, contract amendment, or a standing offer or supply arrangement agreement.",
-  mapping: (v) => {
-    const codes = {
+  mapping: (v: string) => {
+    const codes: { [key: string]: string } = {
       "A": "Amendment",
       "C": "Contract",
       "SOSA": "Standing Offer or Supply Arrangement Agreement"
@@ -681,8 +681,8 @@ instrument_type: {
 ministers_office: {
   human_name: "Minister's Office Contracts",
   info: "It is recommended that this field indicate whether the transaction is for the Minister's office. Ministers' offices contracts are any contracts for goods and services entered into by a minister or their exempt staff.",
-  mapping: (v) => {
-    const codes = {
+  mapping: (v: string) => {
+    const codes: { [key: string]: string } = {
       "N": "No",
       "Y": "Yes"
     };
@@ -699,8 +699,8 @@ number_of_bids: {
 article_6_exceptions: {
   human_name: "Section 6 Government Contracts Regulations Exceptions",
   info: "i. The Government Contracts Regulations requires the solicitation of bids unless one of the s.6 exceptions to the Government Contracts Regulations applies to the contract.",
-  mapping: (v) => {
-    const codes = {
+  mapping: (v: string) => {
+    const codes: { [key: string]: string } = {
       "0": "Not applicable",
       "1": "Pressing emergency in which delay would be injurious to the public interest",
       "2": "Does not exceed s.6 (b) Government Contracts Regulations prescribed dollar limits",
@@ -714,8 +714,8 @@ article_6_exceptions: {
 award_criteria: {
   human_name: "Award Criteria",
   info: "It is recommended that this field be populated with one of the bid evaluation methodologies below if bids have been solicited for the contract.",
-  mapping: (v) => {
-    const codes = {
+  mapping: (v: string) => {
+    const codes: { [key: string]: string } = {
       "0": "Not applicable",
       "1": "Lowest Price",
       "2": "Lowest Cost-per-Point",
@@ -730,8 +730,8 @@ award_criteria: {
 socioeconomic_indicator: {
   human_name: "Socio-Economic Indicator",
   info: "It is recommended for this field to indicate whether the procurement is subject to one or more of the applicable Socio-economic indicators.",
-  mapping: (v) => {
-    const codes = {
+  mapping: (v: string) => {
+    const codes: { [key: string]: string } = {
       "FP": "Federal Contractors Program for Employment Equity",
       "NA": "None"
     };
@@ -801,7 +801,7 @@ type ContractInfo = {
   owner_org_title: string;
 };
 
-export async function ContractsOver10k({ id }: { id: string }) {
+export async function ContractsOver10k({ id, database }: { id: string, database: string }) { // Add database here
   const url = `${BASE}/contracts-over-10k/${id}.json?_shape=array`;
   const data = await jsonFetcher(url);
   if (!data || data.length === 0) return notFound();
@@ -817,13 +817,16 @@ export async function ContractsOver10k({ id }: { id: string }) {
       program={contract.description_en}
       type="Contracts Over $10k"
       summary={contract.comments_en}
+      reference_number={contract.reference_number}
+      database={database}
+      vendor_name={contract.vendor_name}
     >
       <Detail label={"rowid"} value={contract.rowid} />
             {Object.entries(fieldMapping).map(([key, { human_name, info, mapping }]) => {
               // @ts-ignore
-              const mapper = mapping || ((v) => v);
+              const mapper = mapping || ((v: any) => v);
               // @ts-ignore
-              const value = mapper(contract[key]);
+              const value = mapper(contract[key as keyof ContractInfo]);
               
               return (
                 <Detail key={key} label={human_name} value={value} info={info}/>
