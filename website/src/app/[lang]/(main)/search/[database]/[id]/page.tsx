@@ -8,12 +8,13 @@ import {ContractsOver10k} from "./Contracts";
 
 interface Props {
   id: string
+  database: string
 }
 
 export default async function Page({ params }: { params: { id: string, database: string } }) {
   const { id, database } = await params
 
-  const componentMap: Record<string, React.ComponentType<{ id: string }>> = {
+  const componentMap: Record<string, React.ComponentType<{ id: string, database: string }>> = {
     'aggregated-contracts-under-10k': AggregatedContractsUnder10k,
     'contracts-over-10k': ContractsOver10k,
     'cihr_grants': CIHRGrants,
@@ -26,7 +27,7 @@ export default async function Page({ params }: { params: { id: string, database:
   const Component = componentMap[database]
   if (!Component) return notFound()
 
-  return <Component id={id} />
+  return <Component id={id} database={database} />
 }
 
 
@@ -87,7 +88,7 @@ function KeyValueTable({ record }: { record: Record<string, unknown> }) {
   )
 }
 
-async function NSERCGrants({ id }: Props) {
+async function NSERCGrants({ id, database }: Props & { database: string }) {
   const url = `${BASE}/nserc_grants/${id}.json?_shape=array`
   const data = await jsonFetcher(url)
   if (!data || data.length === 0) return notFound()
@@ -103,6 +104,7 @@ async function NSERCGrants({ id }: Props) {
       program={grant.program}
       type="NSERC Research Grants"
       summary={grant.award_summary}
+      database={database}
     >
       <Detail label="Awarded" value={grant.competition_year} />
       <Detail label="Installment" value={grant.installment} />
@@ -119,7 +121,7 @@ async function NSERCGrants({ id }: Props) {
   )
 }
 
-async function CIHRGrants({ id }: Props) {
+async function CIHRGrants({ id, database }: Props & { database: string }) {
   const url = `${BASE}/cihr_grants/${id}.json?_shape=array`
   const data = await jsonFetcher(url)
   if (!data || data.length === 0) return notFound()
@@ -136,6 +138,7 @@ async function CIHRGrants({ id }: Props) {
       type="CIHR Research Grant"
       summary={grant.abstract?.replaceAll("\n", "\n\n")}
       keywords={grant.keywords.split(";")}
+      database={database}
     >
       <Detail label="Principal Investigator" value={grant.project_lead_name} />
       <Detail label="Institution" value={grant.institution} />
@@ -150,7 +153,7 @@ async function CIHRGrants({ id }: Props) {
   )
 }
 
-async function SSHRCGrants({ id }: Props) {
+async function SSHRCGrants({ id, database }: Props & { database: string }) {
   const url = `${BASE}/sshrc_grants/${id}.json?_shape=array`
   const data = await jsonFetcher(url)
   if (!data || data.length === 0) return notFound()
@@ -167,6 +170,7 @@ async function SSHRCGrants({ id }: Props) {
       type="SSHRC Research Grant"
       summary=""
       keywords={grant.keywords.replaceAll('["', '').replaceAll('"]', '').split("\\n")}
+      database={database}
     >
       <Detail label="Principal Applicant" value={grant.applicant} />
       <Detail label="Organization" value={grant.organization} />
@@ -179,7 +183,7 @@ async function SSHRCGrants({ id }: Props) {
   )
 }
 
-async function GlobalAffairsGrants({ id }: Props) {
+async function GlobalAffairsGrants({ id, database }: Props & { database: string }) {
   const url = `${BASE}/global_affairs_grants/${id}.json?_shape=array`
   const data = await jsonFetcher(url)
   if (!data || data.length === 0) return notFound()
@@ -221,6 +225,7 @@ async function GlobalAffairsGrants({ id }: Props) {
       type="Global Affairs Grant"
       summary={grant.description}
       keywords={keywords}
+      database={database}
     >
       <Detail label="Project Number" value={grant.projectNumber} />
       <Detail label="Status" value={grant.status} />
@@ -243,50 +248,47 @@ async function GlobalAffairsGrants({ id }: Props) {
   )
 }
 
-async function Transfers({ id }: Props) {
+async function Transfers({ id, database }: Props & { database: string }) {
   const url = `${BASE}/transfers/${id}.json?_shape=array`
   const data = await jsonFetcher(url)
   if (!data || data.length === 0) return notFound()
   const transfer = data[0]
 
-  // Format the fiscal year for display (if available)
   const fiscalYear = transfer.FSCL_YR || '—'
-
-  // Determine ministry name with fallbacks
   const ministry = transfer.MINE || transfer.MINC || transfer.MINF || '—'
-
-  // Get recipient name
   const recipient = transfer.RCPNT_NML_EN_DESC || '—'
-
-  // Get payment amount
   const amount = transfer.AGRG_PYMT_AMT || 0
-
-  // Get location information if available
   const location = [
     transfer.CTY_EN_NM,
     transfer.PROVTER_EN,
     transfer.CNTRY_EN_NM
   ].filter(Boolean).join(', ') || '—'
 
+  // Define the constant URL for the dataset page
+  const datasetPageUrl = "https://open.canada.ca/data/en/dataset/69bdc3eb-e919-4854-bc52-a435a3e19092";
+
   return (
-    <DetailsPage
-      fiscal_year={fiscalYear}
-      title={transfer.RCPNT_CLS_EN_DESC || '—'}
-      source_url=""
-      recipient={recipient}
-      award_amount={amount}
-      program={transfer.DEPT_EN_DESC || '—'}
-      type="Federal Transfer"
-      summary=""
-    >
-      <Detail label="Department" value={transfer.DEPT_EN_DESC} />
-      <Detail label="Ministry" value={ministry} />
-      <Detail label="Fiscal Year" value={fiscalYear} />
-      <Detail label="Recipient Class" value={transfer.RCPNT_CLS_EN_DESC} />
-      <Detail label="Recipient" value={recipient} />
-      <Detail label="Location" value={location} />
-      <Detail label="Payment Amount" value={`$${Number(amount).toLocaleString()}`} />
-    </DetailsPage>
+    <>
+      <DetailsPage
+        fiscal_year={fiscalYear}
+        title={transfer.RCPNT_CLS_EN_DESC || '—'}
+        source_url={datasetPageUrl}
+        recipient={recipient}
+        award_amount={amount}
+        program={transfer.DEPT_EN_DESC || '—'}
+        type="Federal Transfer"
+        summary=""
+        database={database}
+      >
+        <Detail label="Department" value={transfer.DEPT_EN_DESC} />
+        <Detail label="Ministry" value={ministry} />
+        <Detail label="Fiscal Year" value={fiscalYear} />
+        <Detail label="Recipient Class" value={transfer.RCPNT_CLS_EN_DESC} />
+        <Detail label="Recipient" value={recipient} />
+        <Detail label="Location" value={location} />
+        <Detail label="Payment Amount" value={`$${Number(amount).toLocaleString()}`} />
+      </DetailsPage>
+    </>
   )
 }
 

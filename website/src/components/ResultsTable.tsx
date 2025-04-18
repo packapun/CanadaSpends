@@ -20,14 +20,14 @@ export function ResultsTable() {
 
   return (
     <div className="border rounded-md overflow-hidden mb-8">
-      <Table>
+      <Table className="table-fixed w-full">
         <TableHeader>
           <TableRow className="bg-gray-50">
-            <TableHead className="w-[30%] pl-4 pr-2 sm:pl-6">Recipient / Department</TableHead>
-            <TableHead className="w-[25%] hidden md:table-cell px-2">Program</TableHead>
-            <TableHead className="w-[15%] hidden sm:table-cell px-2">Fiscal Year</TableHead>
+            <TableHead className="w-[40%] pl-4 pr-2 sm:pl-6">Recipient / Department</TableHead>
+            <TableHead className="w-[27%] hidden md:table-cell px-2">Program</TableHead>
+            <TableHead className="w-[8%] hidden sm:table-cell px-2">Fiscal Year</TableHead>
             <TableHead className="w-[15%] text-right px-2">Amount</TableHead>
-            <TableHead className="w-[15%] text-center px-2 pr-4 sm:pr-6">Action</TableHead>
+            <TableHead className="w-[10%] text-center px-2 pr-4 sm:pr-6">Action</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -40,9 +40,9 @@ export function ResultsTable() {
             return (
               <TableRow key={hit.objectID} className="hover:bg-gray-50">
                 <TableCell className="pl-4 pr-2 sm:pl-6">
-                  <div>
-                    <div className="font-medium">{displayRecipient}</div>
-                    <div className="text-sm text-gray-500 truncate max-w-[250px] sm:max-w-[300px]" title={hit.payer}>
+                  <div className="max-w-md truncate">
+                    <div className="font-medium truncate" title={displayRecipient}>{displayRecipient}</div>
+                    <div className="text-sm text-gray-500 truncate" title={hit.payer}>
                       {hit.payer}
                     </div>
                   </div>
@@ -51,7 +51,7 @@ export function ResultsTable() {
                   {hit.program}
                 </TableCell>
                 <TableCell className="hidden sm:table-cell px-2">{hit.fiscal_year}</TableCell>
-                <TableCell className="text-right font-medium text-blue-600 px-2">${formattedAmount}</TableCell>
+                <TableCell className="text-right font-medium text-blue-600 px-2 tabular-nums">${formattedAmount}</TableCell>
                 <TableCell className="text-center px-2 pr-4 sm:pr-6">
                   <Link href={href} legacyBehavior={false}>
                     <Button variant="ghost" size="sm" className="h-8 px-2">
