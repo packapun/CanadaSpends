@@ -8,7 +8,8 @@ import {
   YAxis,
   Tooltip,
   Text,
-  LabelList
+  LabelList,
+  XAxis
 } from 'recharts';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { SearchResult } from '../types/search';
@@ -156,6 +157,7 @@ export function FacetBarChart({ chartAttribute, setChartAttribute, data, isLoadi
               layout="vertical"
               margin={{ top: 5, right: 80, left: 20, bottom: 5 }}
             >
+              <XAxis type="number" hide />
               <YAxis
                 type="category"
                 dataKey="name"

@@ -80,154 +80,31 @@ function SearchControls() {
   const { results, indexUiState, setIndexUiState, status } = useInstantSearch();
   const [viewMode, setViewMode] = useState<'table' | 'cards'>('table');
   const [copyStatus, setCopyStatus] = useState("Copy Link");
+  const [tableData, setTableData] = useState<SearchResult[]>([]);
   const [chartAttribute, setChartAttribute] = useState<ChartableAttribute>('payer'); 
 
-  const [aggregatedChartData, setAggregatedChartData] = useState<AggregatedData[]>([]);
   const [isChartLoading, setIsChartLoading] = useState(false);
 
   const { items: currentRefinements } = useCurrentRefinements();
 
+  const aggregatedChartData = useMemo(() => {
+    const aggregation: { [key: string]: number } = {};
+
+    tableData.forEach((row) => {
+      const key = row[chartAttribute];
+      if (key) {
+        aggregation[key] = (aggregation[key] || 0) + (row.amount || 0);
+      }
+    });
+
+    return Object.entries(aggregation)
+      .map(([name, value]) => ({ name, value }))
+      .sort((a, b) => b.value - a.value)
+      .slice(0, 10); // Limit to top 10
+  }, [tableData, chartAttribute]);
   const hasFilters = useMemo(() => currentRefinements.length > 0, [currentRefinements]);
   const totalHits = results?.nbHits ?? 0;
   const router = useRouter();
-
-  // --- Effect to fetch and aggregate data for the chart ---
-  useEffect(() => {
-    const fetchAndAggregateData = async () => {
-      const currentQuery = indexUiState.query || '';
-      
-      // Only fetch if there's a query or active refinements
-      if (!currentQuery && !hasFilters) {
-        setAggregatedChartData([]);
-        setIsChartLoading(false); // Ensure loading is set to false
-        return;
-      }
-
-      setIsChartLoading(true);
-      let allFetchedHits: SearchResult[] = [];
-      let currentPage = 0;
-      const hitsToFetchTotal = Math.min(totalHits, MAX_CHART_RECORDS);
-
-      try {
-        // --- Construct Filters (Similar to DownloadResultsButton) --- 
-        // Note: Typesense API filter_by uses different syntax than InstantSearch facetFilters
-        // We need to build the filter_by string for the direct API call.
-        const filterParts: string[] = [];
-
-        // Refinement Lists
-        if (indexUiState.refinementList) {
-            Object.entries(indexUiState.refinementList).forEach(([facet, values]) => {
-                if (values && values.length > 0) {
-                    // Escape backticks in values and wrap in backticks for exact match
-                    const joinedValues = values.map(v => `\`${(v || '').replace(/`/g, '\\\\`')}\``).join(', ');
-                    filterParts.push(`${facet}:=[${joinedValues}]`);
-                }
-            });
-        }
-        // Range Filters
-        if (indexUiState.range) {
-            Object.entries(indexUiState.range).forEach(([facet, rangeString]) => {
-                if (typeof rangeString === 'string' && rangeString.includes(':')) {
-                    const [minStr, maxStr] = rangeString.split(':');
-                    const min = minStr ? parseFloat(minStr) : null;
-                    const max = maxStr ? parseFloat(maxStr) : null;
-                    if (min !== null && isFinite(min)) filterParts.push(`${facet}:>=${min}`);
-                    if (max !== null && isFinite(max)) filterParts.push(`${facet}:<=${max}`);
-                } 
-            });
-        }
-        // Toggle Filters
-        if (indexUiState.toggle) {
-             Object.entries(indexUiState.toggle).forEach(([facet, enabled]) => {
-                if (enabled) {
-                    filterParts.push(`${facet}:=true`);
-                }
-            });
-        }
-        // Combine filters with &&
-        const filterBy = filterParts.join(' && ');
-        // --- End Filter Construction --- 
-
-        // Handle SortBy for the direct API call
-        let apiSortBy: string | undefined;
-        if (indexUiState.sortBy && indexUiState.sortBy !== mainIndexName) {
-            apiSortBy = indexUiState.sortBy.split('/sort/')[1]; // Extract field:order
-        }
-
-        // --- Pagination Loop --- 
-        while (allFetchedHits.length < hitsToFetchTotal) {
-          const pageToFetch = currentPage;
-
-          const searchParams = {
-            ...additionalSearchParams,
-            q: currentQuery || '*',
-            query_by: currentQuery ? additionalSearchParams.query_by : undefined,
-            filter_by: filterBy || undefined,
-            sort_by: apiSortBy, // Add sort parameter
-            facet_by: undefined,
-            max_facet_values: undefined,
-            page: pageToFetch + 1, // Typesense page is 1-based
-            hitsPerPage: CHART_BATCH_SIZE,
-            attributesToRetrieve: [chartAttribute, 'amount'],
-          };
-
-          const finalSearchParams: Record<string, any> = {};
-          Object.entries(searchParams).forEach(([key, value]) => {
-              if (value !== undefined && value !== null && value !== '') { // More robust check
-                  finalSearchParams[key] = value;
-              }
-          });
-
-          const searchRequests = [{ indexName: mainIndexName, params: finalSearchParams }];
-          const searchResponse = await (searchClient as any).search(searchRequests);
-          const hitsFromPage = searchResponse?.results?.[0]?.hits?.map((h: any) => h as SearchResult) || [];
-
-          if (hitsFromPage.length === 0) {
-              break;
-          }
-
-          allFetchedHits = allFetchedHits.concat(hitsFromPage);
-          currentPage++;
-
-          if (currentPage * CHART_BATCH_SIZE > hitsToFetchTotal + CHART_BATCH_SIZE * 2) {
-              console.warn("Chart data fetch loop exceeded expected pages, breaking.");
-              break;
-          }
-        }
-        // --- End Pagination Loop --- 
-
-        // --- Aggregation Logic --- 
-        const aggregation: { [key: string]: AggregatedData } = {};
-        allFetchedHits.forEach((hit: SearchResult) => {
-          const key = hit[chartAttribute as keyof SearchResult] as string;
-          if (!key || typeof key !== 'string') return;
-          if (!aggregation[key]) {
-            aggregation[key] = { name: key, value: 0 };
-          }
-          aggregation[key].value += hit.amount || 0;
-        });
-        const aggregatedArray = Object.values(aggregation)
-          .sort((a, b) => b.value - a.value)
-          .slice(0, 10);
-        setAggregatedChartData(aggregatedArray);
-
-      } catch (error) {
-        console.error("Error fetching or aggregating chart data:", error);
-        setAggregatedChartData([]);
-      } finally {
-        setIsChartLoading(false);
-      }
-    };
-
-    // Debounce and trigger
-    const timerId = setTimeout(() => {
-       if (status === 'idle' && !isChartLoading) { 
-         fetchAndAggregateData();
-       }
-    }, 300);
-    return () => clearTimeout(timerId);
-
-  }, [indexUiState, chartAttribute, totalHits, status, hasFilters, isChartLoading]);
 
 
   const getCurrentUrl = () => window.location.href;
@@ -467,7 +344,7 @@ function SearchControls() {
             
             {/* --- Conditional View Rendering --- */}
             {viewMode === 'table' ? (
-                <ResultsTable />
+                <ResultsTable onDataUpdate={setTableData} />
             ) : (
               <Hits hitComponent={HitCard}/> 
             )}

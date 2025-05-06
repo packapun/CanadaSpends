@@ -13,10 +13,18 @@ import {
   TableRow,
 } from "@/components/table";
 import { Button } from "@/components/button";
+import { useEffect } from 'react';
 
 // --- ResultsTable Component --- 
-export function ResultsTable() {
+export function ResultsTable({ onDataUpdate }: { onDataUpdate?: (data: SearchResult[]) => void }) {
   const { hits } = useHits<SearchResult>();
+
+    // Notify parent component of the hits data
+    useEffect(() => {
+      if (onDataUpdate) {
+        onDataUpdate(hits);
+      }
+    }, [hits, onDataUpdate]);
 
   return (
     <div className="border rounded-md overflow-hidden mb-8">
