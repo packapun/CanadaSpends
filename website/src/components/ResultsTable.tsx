@@ -28,6 +28,7 @@ export function ResultsTable({ onDataUpdate }: { onDataUpdate?: (data: SearchRes
 
   return (
     <div className="border rounded-md overflow-hidden mb-8">
+      <div className="max-h-[400px] overflow-y-auto">
       <Table>
         <TableHeader>
           <TableRow className="bg-gray-50">
@@ -38,7 +39,8 @@ export function ResultsTable({ onDataUpdate }: { onDataUpdate?: (data: SearchRes
             <TableHead className="w-[15%] text-center px-2 pr-4 sm:pr-6">Action</TableHead>
           </TableRow>
         </TableHeader>
-        <TableBody>
+        
+        <TableBody className="max-h-[400px] overflow-y-auto overflow-x-hidden">
           {hits.map((hit) => {
             const typeSlug = hit.type?.split('/')[1] ?? 'unknown';
             const href = `/search/${typeSlug}/${hit.key || hit.objectID}`;
@@ -71,7 +73,9 @@ export function ResultsTable({ onDataUpdate }: { onDataUpdate?: (data: SearchRes
             );
           })}
         </TableBody>
+        
       </Table>
+      </div>
     </div>
   );
 } 

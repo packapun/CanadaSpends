@@ -2,6 +2,7 @@
 import {
   InstantSearch,
   SearchBox,
+  Configure,
   Hits,
   ToggleRefinement, Pagination, RangeInput, useInstantSearch,
   CurrentRefinements,
@@ -102,6 +103,7 @@ function SearchControls() {
       .sort((a, b) => b.value - a.value)
       .slice(0, 10); // Limit to top 10
   }, [tableData, chartAttribute]);
+    
   const hasFilters = useMemo(() => currentRefinements.length > 0, [currentRefinements]);
   const totalHits = results?.nbHits ?? 0;
   const router = useRouter();
@@ -413,11 +415,12 @@ export default function Search() {
     <InstantSearch
       searchClient={searchClient} 
       indexName={mainIndexName}
-                     routing={true}
-                     future={{
-                       preserveSharedStateOnUnmount: true,
+      routing={true}
+      future={{
+        preserveSharedStateOnUnmount: true,
       }}
     >
+      <Configure hitsPerPage={200} />
       {/* Re-add hidden SortBy for state consistency */}
       <div style={{ display: 'none' }}>
         <SortBy items={sortItems} />
