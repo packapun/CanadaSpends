@@ -1,164 +1,62 @@
-# CanadaSpends: Interactive Government Spending Data Explorer
+# Canada Spends helps Canadians understand how their government spends their money
 
-*[Français](README.fr.md)*
 
-A powerful tool for exploring Canadian federal government spending data through natural language queries. Ask questions about government spending in plain English and get instant, AI-powered insights.
+## Ambition
 
-## Table of Contents
-- [Overview](#overview)
-- [Features](#features)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-- [Using the Chat Interface](#using-the-chat-interface)
-  - [Example Questions](#example-questions)
-  - [Available Commands](#available-commands)
-- [Architecture](#architecture)
-- [Development](#development)
-- [Troubleshooting](#troubleshooting)
+Canada Spends aims to be the easiest way for Canadians to understand how their government spends their money.
+A government cannot be held accountable if people don't understand what the government is doing. We aim to
+bring transparency to every level of government in Canada: federal, provincial, municipal and school boards.
 
-## Overview
+We bring this transparency in two ways:
 
-CanadaSpends makes government spending data accessible through four main components:
-- **Interactive Chat Interface:** Ask questions about spending data in natural language
-- **Slack Integration:** Query spending data directly from Slack
-- **Data Processing:** Automated parsing and cleaning of government data sources
-- **Vector Search:** Advanced semantic search powered by Weaviate and AI embeddings
+1) We parse, aggregate and visualize audited financial statements that governments publish so that everyone can
+   understand how their government spends their money and how it changes over time.
+2) We aggregate and normalize government spending databases to make the data fast to search and accessible.
 
-## Features
+### Roadmap
 
-- 💬 Natural language query interface
-- 🤖 AI-powered response generation
-- 📊 Real-time access to government spending data
-- 🔍 Semantic search capabilities
-- 🎨 Rich text formatting for better readability
-- 🔄 Persistent data storage
-- 🐳 Easy deployment with Docker
-- 💻 Slack integration for team collaboration
+By the end of 2025, we aim to have automated data ingestion pipelines for every province and territory and the largest 20 municipalities in Canada.
+
+- [ ] Alberta
+- [ ] British Columbia
+- [ ] Ontario
+- [ ] Quebec
+- [ ] Saskatchewan
+- [ ] Manitoba
+- [ ] Nova Scotia
+- [ ] New Brunswick
+- [ ] Prince Edward Island
+- [ ] Newfoundland and Labrador
+- [ ] Yukon
+- [ ] Northwest Territories
+- [ ] Nunavut
+
+- [ ] Toronto
+- [ ] Ottawa
+- [ ] Montreal
+- [ ] Vancouver #79
+- [ ] Calgary #81
+- [ ] Edmonton #82
+- [ ] Winnipeg #83
+- [ ] Hamilton
+- [ ] London
+- [ ] Mississauga
+- [ ] Brampton
+- [ ] Markham
+- [ ] Oakville
+- [ ] Halifax
+- [ ] Saint John
+- [ ] St. John's
+- [ ] Charlottetown
+- [ ] Surrey
+- [ ] Moncton
+- [ ] Quebec City
+- [ ] Victoria
+- [ ] Vaughan
+- [ ] Markham
+- [ ] Gatineau
+
 
 ## Getting Started
 
-### Prerequisites
-
-- Docker and Docker Compose
-- Cohere API key
-- Slack App credentials (for Slack integration)
-
-### Installation
-
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/yourusername/CanadaSpends.git
-   cd CanadaSpends
-   ```
-
-2. **Configure environment:**
-   Create a `.env` file in the root directory:
-   ```env
-   COHERE_API_KEY=your_cohere_api_key
-   WEAVIATE_HOST=weaviate
-   WEAVIATE_HTTP_PORT=8080
-   WEAVIATE_GRPC_PORT=50051
-   PYTHONPATH=/app
-   SLACK_BOT_TOKEN=your_slack_bot_token
-   SLACK_SIGNING_SECRET=your_slack_signing_secret
-   ```
-
-3. **Start the services:**
-   ```bash
-   cd query-engine
-   docker-compose up -d
-   docker-compose run --rm chat  # Optional: for CLI interface
-   ```
-
-This launches:
-- Weaviate vector database
-- API service
-- Interactive chat interface
-- Slackbot service
-
-## Using the Chat Interface
-
-The chat interface provides an intuitive way to explore government spending data. Simply type your questions in natural language and get detailed responses.
-
-### Example Questions
-
-- "What was the total spending in 2023?"
-- "Compare spending between different departments"
-- "What are the main categories of government spending?"
-- "Which department had the highest spending?"
-
-### Available Commands
-
-- Type your questions in natural language to query the spending data
-- `clear` - Clears the screen
-- `q`, `quit`, or `exit` - Exits the chat interface
-- Use Ctrl+C to exit at any time
-
-## Architecture
-
-The system consists of four main components:
-
-1. **Vector Database (Weaviate)**
-   - Stores and indexes spending data
-   - Enables semantic search capabilities
-   - Persists data between sessions
-
-2. **API Service**
-   - Handles data indexing
-   - Processes natural language queries
-   - Manages communication with AI models
-
-3. **Chat Interface**
-   - Provides interactive CLI
-   - Formats responses for readability
-   - Handles user commands
-
-4. **Slackbot Service**
-   - Handles Slack event subscriptions
-   - Processes mentions and messages
-   - Forwards queries to API service
-   - Returns formatted responses to Slack
-
-## Development
-
-The source code is organized in the following structure:
-
-```text
-CanadaSpends/
-├── query-engine/
-│   ├── src/
-│   │   ├── chat_interface.py  # Interactive CLI
-│   │   ├── query_engine.py    # Core query processing
-│   │   ├── indexer.py         # Data indexing
-│   │   └── main.py           # API service
-│   ├── slackbot/             # Slack integration
-│   │   └── src/
-│   │       └── index.ts      # Slackbot service
-│   ├── csv-data/             # Data directory
-│   └── docker-compose.yaml   # Service configuration
-```
-
-## Troubleshooting
-
-If you encounter issues:
-
-1. **Service Issues**
-   - Ensure all required API keys are correctly set in `.env`
-   - Verify CSV data is present in `query-engine/csv-data`
-   - Check service status: `docker-compose ps`
-   - View logs: `docker-compose logs`
-
-2. **Data Issues**
-   - Ensure CSV files are properly formatted
-   - Check file permissions
-   - Verify data path in configuration
-
-3. **API Issues**
-   - Confirm API keys are valid
-   - Check network connectivity
-   - Verify service dependencies are running
-
-4. **Support**
-    - For support, please open an issue on the [GitHub repository](https://github.com/yourusername/CanadaSpends/issues)
-    - Or if all else fails, contact [hi@canadaspends.com](mailto:hi@canadaspends.com)
+Canada Spends is a NextJS app. Currently 
