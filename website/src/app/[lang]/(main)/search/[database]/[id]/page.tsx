@@ -1,8 +1,6 @@
 import dynamic from 'next/dynamic'
 
-
 import { notFound } from 'next/navigation'
-import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
 import {DetailsPage} from "./DetailsPage";
 import {ContractsOver10k} from "./Contracts";
 
@@ -10,13 +8,6 @@ interface Props {
   id: string
   database: string
 }
-
-// Constants from typesenseAdapter config (ensure these are accessible or redefine here)
-const TYPESENSE_HOST = 'search.canadasbuilding.com';
-const TYPESENSE_PORT = 443;
-const TYPESENSE_PROTOCOL = 'https';
-const TYPESENSE_API_KEY = 'YpZamILESYThUVYZZ87dIBuJorHtRPfa'; // Search-only key
-const TYPESENSE_COLLECTION = 'records'; // Assumed collection name
 
 // Re-define BASE constant for other fetchers
 const BASE = 'https://api.canadasbuilding.com/canada-spends';
