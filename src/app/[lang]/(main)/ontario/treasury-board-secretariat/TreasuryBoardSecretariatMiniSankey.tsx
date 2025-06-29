@@ -4,29 +4,28 @@ import { SankeyChart } from "@/components/Sankey/SankeyChart";
 import { SankeyData } from "@/components/Sankey/SankeyChartD3";
 import { useLingui } from "@lingui/react/macro";
 import { useMemo } from "react";
+import ministryData from "@/data/ministries/treasury-board-secretariat";
 
 export function TreasuryBoardSecretariatMiniSankey() {
 	const { t } = useLingui()
 
 	const data = useMemo(() => {
-		// Actual Treasury Board Secretariat ministry data from Ontario2024CompactSankey.json
-		return JSON.parse(JSON.stringify({
-			"spending": 1.5, // Actual total from the Ontario data
-			"spending_data": {
-				"name": t`Ontario Treasury Board Secretariat`,
-				"children": [
-					{
-						"name": t`Treasury Board Secretariat Operations`,
-						"amount": 1.4202010929999993
-					},
-					{
-						"name": t`Other Programs`,
-						"amount": 0.08661784000000002
-					}
-				]
+		// Use actual Treasury Board Secretariat ministry data from TypeScript module
+		return {
+			total: ministryData.totalSpending,
+			spending: ministryData.totalSpending,
+			revenue: 0,
+			spending_data: {
+				name: t`Ontario Treasury Board Secretariat`,
+				amount: ministryData.totalSpending,
+				children: [...ministryData.spending_data.children]
 			},
-			revenue_data: {}
-		}))
+			revenue_data: {
+				name: t`Revenue`,
+				amount: 0,
+				children: []
+			}
+		};
 	}, [t])
 
 	return (

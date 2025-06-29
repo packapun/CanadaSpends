@@ -4,33 +4,28 @@ import { SankeyChart } from "@/components/Sankey/SankeyChart";
 import { SankeyData } from "@/components/Sankey/SankeyChartD3";
 import { useLingui } from "@lingui/react/macro";
 import { useMemo } from "react";
+import ministryData from "@/data/ministries/attorney-general";
 
 export function AttorneyGeneralMiniSankey() {
 	const { t } = useLingui()
 
 	const data = useMemo(() => {
-		// Actual Attorney General ministry data from Ontario2024CompactSankey.json
-		return JSON.parse(JSON.stringify({
-			"spending": 2.2, // Actual total from the Ontario data
-			"spending_data": {
-				"name": t`Ontario Attorney General`,
-				"children": [
-					{
-						"name": t`Attorney General Operations`,
-						"amount": 1.7779056889999998
-					},
-					{
-						"name": t`Legal Aid Ontario`,
-						"amount": 0.339743282
-					},
-					{
-						"name": t`Other Programs`,
-						"amount": 0.099971563
-					}
-				]
+		// Use actual Attorney General ministry data from TypeScript module
+		return {
+			total: ministryData.totalSpending,
+			spending: ministryData.totalSpending,
+			revenue: 0,
+			spending_data: {
+				name: t`Ontario Attorney General`,
+				amount: ministryData.totalSpending,
+				children: [...ministryData.spending_data.children]
 			},
-			revenue_data: {}
-		}))
+			revenue_data: {
+				name: t`Revenue`,
+				amount: 0,
+				children: []
+			}
+		};
 	}, [t])
 
 	return (

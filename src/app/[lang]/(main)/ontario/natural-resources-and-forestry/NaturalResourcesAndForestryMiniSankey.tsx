@@ -4,29 +4,28 @@ import { SankeyChart } from "@/components/Sankey/SankeyChart";
 import { SankeyData } from "@/components/Sankey/SankeyChartD3";
 import { useLingui } from "@lingui/react/macro";
 import { useMemo } from "react";
+import ministryData from "@/data/ministries/natural-resources-and-forestry";
 
 export function NaturalResourcesAndForestryMiniSankey() {
 	const { t } = useLingui()
 
 	const data = useMemo(() => {
-		// Actual Natural Resources and Forestry ministry data from Ontario2024CompactSankey.json
-		return JSON.parse(JSON.stringify({
-			"spending": 1.0, // Actual total from the Ontario data
-			"spending_data": {
-				"name": t`Ontario Natural Resources and Forestry`,
-				"children": [
-					{
-						"name": t`Natural Resources and Forestry Operations`,
-						"amount": 0.831504004
-					},
-					{
-						"name": t`Other Programs`,
-						"amount": 0.137268359
-					}
-				]
+		// Use actual Natural Resources and Forestry ministry data from TypeScript module
+		return {
+			total: ministryData.totalSpending,
+			spending: ministryData.totalSpending,
+			revenue: 0,
+			spending_data: {
+				name: t`Ontario Natural Resources and Forestry`,
+				amount: ministryData.totalSpending,
+				children: [...ministryData.spending_data.children]
 			},
-			revenue_data: {}
-		}))
+			revenue_data: {
+				name: t`Revenue`,
+				amount: 0,
+				children: []
+			}
+		};
 	}, [t])
 
 	return (

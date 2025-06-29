@@ -6,7 +6,7 @@ import { SankeyChart } from "./SankeyChart";
 import { SankeyData } from "./SankeyChartD3";
 
 // Import the Ontario data
-import ontarioData from "../../../OntarioData/Ontario2024CompactSankey.json";
+import ontarioData from "../../../OntarioData/Ontario2024CompressedSankey.json";
 
 export function OntarioSankey() {
 	const { t } = useLingui()
