@@ -1,0 +1,39 @@
+{
+  "name": "Office of the Assembly",
+  "slug": "office-of-the-assembly",
+  "totalSpending": 0.19565917200000002,
+  "totalSpendingFormatted": "$0.2B",
+  "percentage": 0.09752004279857213,
+  "percentageFormatted": "0.1%",
+  "categories": [
+    {
+      "name": "Operations",
+      "amount": 0.160535373
+    },
+    {
+      "name": "Operations",
+      "amount": 0.034785339
+    },
+    {
+      "name": "Other",
+      "amount": 0.00033846
+    }
+  ],
+  "spending_data": {
+    "name": "Office of the Assembly",
+    "children": [
+      {
+        "name": "Operations",
+        "amount": 0.160535373
+      },
+      {
+        "name": "Operations",
+        "amount": 0.034785339
+      },
+      {
+        "name": "Other",
+        "amount": 0.00033846
+      }
+    ]
+  }
+}
