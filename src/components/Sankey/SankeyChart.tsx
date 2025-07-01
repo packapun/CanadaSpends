@@ -4,7 +4,7 @@ import Select from 'react-select'
 import './SankeyChart.css'
 import { SankeyData } from './SankeyChartD3'
 import { SankeyChartSingle } from './SankeyChartSingle'
-import { formatNumber, sortNodesByAmount } from './utils'
+import { formatNumber, sortNodesByAmount, transformToIdBased } from './utils'
 
 type FlatDataNodes = ReturnType<typeof getFlatData>['nodes']
 type Node = FlatDataNodes[number] & {
@@ -33,18 +33,18 @@ const getFlatData = (data: SankeyData) => {
 		nodes: [
 			...revenueRoot.descendants().map(d => ({
 				...d.data,
-				parent: d.parent?.data.name,
+				parent: d.parent?.data.id,
 				value: d.value,
 				type: 'revenue'
 			})),
 			...spendingRoot.descendants().map(d => ({
 				...d.data,
-				parent: d.parent?.data.name,
+				parent: d.parent?.data.id,
 				value: d.value,
 				type: 'spending'
 			}))
 		].sort((a, b) => {
-			return (a.name || "").localeCompare(b.name || "");
+			return (a.displayName || a.name || "").localeCompare(b.displayName || b.name || "");
 		}),
 		revenueTotal: revenueRoot.value ?? 0,
 		spendingTotal: spendingRoot.value ?? 0
@@ -87,8 +87,15 @@ export function SankeyChart(props: SankeyChartProps) {
 	const [totalAmount, setTotalAmount] = useState(0)
 
 	useEffect(() => {
-		setChartData(props.data)
-		const { nodes, revenueTotal, spendingTotal } = getFlatData(props.data)
+		// Transform the data to use ID-based structure
+		const transformedData = {
+			...props.data,
+			revenue_data: transformToIdBased(props.data.revenue_data),
+			spending_data: transformToIdBased(props.data.spending_data)
+		}
+		
+		setChartData(transformedData)
+		const { nodes, revenueTotal, spendingTotal } = getFlatData(transformedData)
 
 		setFlatData(nodes)
 		setTotalAmount(Math.max(revenueTotal, spendingTotal))
@@ -101,11 +108,11 @@ export function SankeyChart(props: SankeyChartProps) {
 			return setSearchResult(null)
 		}
 
-		let node = flatData?.find(d => d.name === selected.value)
+		let node = flatData?.find(d => d.id === selected.value)
 
 		// If it's a leaf node, we need to find the parent node
 		if (!node?.children) {
-			node = flatData?.find(d => d.name === node?.parent)
+			node = flatData?.find(d => d.id === node?.parent)
 		}
 
 		setSearchResult(node ?? null)
@@ -131,9 +138,9 @@ export function SankeyChart(props: SankeyChartProps) {
 				<Select
 					value={searchedNode}
 					options={flatData?.map(d => ({
-						value: d.name,
-						label: d.name
-					}))}
+						value: d.id!,
+						label: d.displayName || d.name || 'Unknown'
+					})).filter(d => d.value && d.label)}
 					onChange={handleSearch}
 					isClearable={true}
 					placeholder='Search...'
@@ -159,7 +166,7 @@ export function SankeyChart(props: SankeyChartProps) {
 
 			{hoverNode && (
 				<div className='node-tooltip'>
-					<p className='node-tooltip-name'>{hoverNode.name}</p>
+					<p className='node-tooltip-name'>{hoverNode.displayName || hoverNode.name}</p>
 					<div className='node-tooltip-amount'>
 						<span>{formatNumber(hoverNode.realValue ?? 0, amountScalingFactor)}</span>
 						<span className='node-tooltip-amount-divider'>&#8226;</span>

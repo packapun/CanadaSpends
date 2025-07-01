@@ -6,7 +6,7 @@ import { SankeyChart } from "./SankeyChart";
 import { SankeyData } from "./SankeyChartD3";
 
 // Import the Ontario data
-import ontarioData from "../../../OntarioData/Ontario2024CompressedSankey.json";
+import ontarioData from "../../../OntarioData/Ontario2024CompactSankey.json";
 
 export function OntarioSankey() {
 	const { t } = useLingui()
@@ -20,11 +20,15 @@ export function OntarioSankey() {
 			revenue: ontarioData.revenue,
 			spending_data: {
 				...ontarioData.spending_data,
-				name: t`Spending`
+				name: t`Spending`,
+				id: 'spending_root',
+				displayName: t`Spending`
 			},
 			revenue_data: {
 				...ontarioData.revenue_data,
-				name: t`Revenue`
+				name: t`Revenue`,
+				id: 'revenue_root',
+				displayName: t`Revenue`
 			}
 		} as SankeyData;
 	}, [t])
