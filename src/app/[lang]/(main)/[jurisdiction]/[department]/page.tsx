@@ -1,6 +1,7 @@
 import {
   getDepartmentData,
   getDepartmentsForJurisdiction,
+  getExpandedDepartments,
   getJurisdictionData,
   getJurisdictionSlugs,
 } from "@/lib/jurisdictions";
@@ -29,11 +30,11 @@ import {
   PageContent,
   Section,
 } from "@/components/Layout";
-import { OntarioMinistryList } from "@/components/OntarioMinistryList";
 import { StatCard, StatCardContainer } from "@/components/StatCard";
 import { initLingui, type PageLangParam } from "@/initLingui";
 import { Trans } from "@lingui/react/macro";
 import { DepartmentMiniSankey } from "@/components/Sankey/DepartmentMiniSankey";
+import { JurisdictionDepartmentList } from "@/components/DepartmentList";
 
 export default async function DepartmentPage({
   params,
@@ -49,6 +50,7 @@ export default async function DepartmentPage({
   initLingui(lang);
 
   const { jurisdiction } = getJurisdictionData(jurisdictionSlug);
+  const departments = getExpandedDepartments(jurisdiction.slug);
 
   const department = getDepartmentData(jurisdictionSlug, departmentSlug);
 
@@ -68,17 +70,21 @@ export default async function DepartmentPage({
 
           <StatCardContainer>
             <StatCard
-              title={<Trans>`In FY ${jurisdiction.financialYear},`</Trans>}
+              title={
+                <Trans>In Financial Year {jurisdiction.financialYear},</Trans>
+              }
               value={department.totalSpendingFormatted}
-              subtitle={<Trans>`was spent by ${department.name}`</Trans>}
+              subtitle={<Trans>was spent by {department.name}</Trans>}
             />
             <StatCard
-              title={<Trans>`In FY ${jurisdiction.financialYear},`</Trans>}
+              title={
+                <Trans>In Financial Year {jurisdiction.financialYear},</Trans>
+              }
               value={department.percentageFormatted}
               subtitle={
                 <Trans>
-                  `of ${jurisdiction.name} provincial spending was by $
-                  {department.name}`
+                  of {jurisdiction.name} provincial spending was by{" "}
+                  {department.name}
                 </Trans>
               }
             />
@@ -86,10 +92,10 @@ export default async function DepartmentPage({
 
           <P>
             <Trans>
-              The {jurisdiction.name} {department.name} spent $
+              The {jurisdiction.name} {department.name} spent{" "}
               {department.totalSpendingFormatted} in fiscal year (FY){" "}
               {jurisdiction.financialYear}, representing{" "}
-              {department.percentageFormatted} of the $
+              {department.percentageFormatted} of the{" "}
               {jurisdiction.totalProvincialSpendingFormatted} in total
               provincial spending.
             </Trans>
@@ -121,9 +127,9 @@ export default async function DepartmentPage({
             </H3>
             <P>
               <Trans>
-                The Cabinet Office → Cabinet Office operates various programs
-                and services as part of Ontario's commitment to delivering
-                effective government services to residents.
+                The {department.name} operates various programs and services as
+                part of Ontario's commitment to delivering effective government
+                services to residents.
               </Trans>
             </P>
           </Section>
@@ -132,7 +138,12 @@ export default async function DepartmentPage({
             <H2>
               <Trans>Other Ontario Government Ministries</Trans>
             </H2>
-            <OntarioMinistryList current={departmentSlug} />
+            <JurisdictionDepartmentList
+              jurisdiction={jurisdiction}
+              lang={lang}
+              departments={departments}
+              current={department.slug}
+            />
           </Section>
         </Section>
       </PageContent>

@@ -77,7 +77,6 @@ export const JurisdictionDepartmentList = (props: {
   departments: Department[];
   current?: string;
 }) => {
-  console.log({ departments: props.departments });
   const BrowsableDepartment = props.departments
     .filter((d) => !!d.slug)
     .sort((a, b) => a.name.localeCompare(b.name));
@@ -85,7 +84,7 @@ export const JurisdictionDepartmentList = (props: {
   return (
     <div className="text-gray-600 leading-relaxed mb-4">
       {BrowsableDepartment.filter((d) => {
-        return d.name !== props.current || d.slug !== props.current;
+        return d.slug !== props.current;
       }).map((department) => (
         <JurisdictionDepartmentItem
           key={department.slug}

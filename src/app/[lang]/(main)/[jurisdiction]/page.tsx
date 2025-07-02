@@ -24,8 +24,6 @@ export function generateStaticParams() {
 
   const jurs = slugs.map((slug) => ({ jurisdiction: slug }));
 
-  console.log({ jurs });
-
   return jurs;
 }
 
