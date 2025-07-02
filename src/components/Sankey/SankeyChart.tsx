@@ -136,6 +136,8 @@ export function SankeyChart(props: SankeyChartProps) {
 		<>
 			<div className='search-container'>
 				<Select
+					instanceId="sankey-search"
+					inputId="sankey-search-input"
 					value={searchedNode}
 					options={flatData?.map(d => ({
 						value: d.id!,
