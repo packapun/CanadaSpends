@@ -8,7 +8,9 @@ import { hierarchy } from 'd3-hierarchy'
 import { formatNumber } from './utils'
 
 export type SankeyNode = {
-	name: string
+	id: string           // Unique identifier for internal operations
+	displayName: string  // User-facing name for display
+	name?: string        // Optional: for backward compatibility
 	amount: number
 	children?: SankeyNode[]
 }
@@ -201,7 +203,7 @@ export class SankeyChartD3 {
 			.selectAll('.block')
 			.data(
 				d => d.blocks,
-				d => d.name
+				d => d.id
 			)
 			.join('div')
 			.attr('class', 'block')
@@ -239,15 +241,15 @@ export class SankeyChartD3 {
 			.selectAll('.label')
 			.data(
 				d => [d].filter(d => !d.fake),
-				d => d.name
+				d => d.id
 			)
 			.join('p')
 			.attr('class', 'label')
 			.html(
 				d => `
 					<div class="label-amount">${this.getNumber(d.realValue)}</div>
-					<div class="label-name" title="${d.name}">
-						${d.link ? `<a href="${d.link}" target="_blank">${d.name}</a>` : d.name}
+					<div class="label-name" title="${d.displayName}">
+						${d.link ? `<a href="${d.link}" target="_blank">${d.displayName}</a>` : d.displayName}
 					</div>
 				`
 			)
@@ -491,7 +493,7 @@ export class SankeyChartD3 {
 
 			const bound = getRelativePosition(this, parent)
 			coords.push({
-				name: d.target.name,
+				id: d.target.id,
 				x: bound.x,
 				y: bound.y,
 				width: bound.width,
@@ -524,17 +526,17 @@ export class SankeyChartD3 {
 			return d[1].flatMap(d => d[1])
 		})
 
-		const coordsLookup = new Map(coordsGrouped.map(d => [d.name, d]))
+		const coordsLookup = new Map(coordsGrouped.map(d => [d.id, d]))
 		const isFlipped = this.params.direction === 'right-to-left'
 
 		const data = this.linksData.map(d => {
-			const source = coordsLookup.get(d.source.data.name)
-			const target = coordsLookup.get(d.target.data.name)
+			const source = coordsLookup.get(d.source.data.id)
+			const target = coordsLookup.get(d.target.data.id)
 
 			return {
-				id: `${d.source.data.name}->${d.target.data.name}`,
+				id: `${d.source.data.id}->${d.target.data.id}`,
 				source: {
-					name: d.source.data.name,
+					id: d.source.data.id,
 					x: source.x,
 					y: source.y,
 					width: source.width,
@@ -542,7 +544,7 @@ export class SankeyChartD3 {
 					cumulativeHeight: source.cumulativeHeight
 				},
 				target: {
-					name: d.target.data.name,
+					id: d.target.data.id,
 					x: target.x,
 					y: target.y,
 					width: target.width,
@@ -586,7 +588,7 @@ export class SankeyChartD3 {
 
 		// Create a lookup table for the values of the data
 		const valueLookup = new Map(
-			realSum.descendants().map(d => [d.data.name, d.value])
+			realSum.descendants().map(d => [d.data.id, d.value])
 		)
 
 		// Compute the sum of the data treating negatives as positives
@@ -603,16 +605,16 @@ export class SankeyChartD3 {
 			// Store visual value of the node
 			node.data.value = node.value
 			// Store the real value of the node
-			node.data.realValue = valueLookup.get(node.data.name)
+			node.data.realValue = valueLookup.get(node.data.id)
 
 			if (node.depth > 0) {
 				const pathToRoot = node.path(root)
-				node.data.pathToRoot = pathToRoot.map(d => d.data.name)
+				node.data.pathToRoot = pathToRoot.map(d => d.data.id)
 			} else {
 				node.data.pathToRoot = []
 			}
 
-			node.data.descendants = node.descendants().map(d => d.data.name)
+			node.data.descendants = node.descendants().map(d => d.data.id)
 
 			if (node.depth < maxDepth && !node.data.children) {
 				this.fillLink(node.data, node.depth, maxDepth)
@@ -635,7 +637,7 @@ export class SankeyChartD3 {
 				})
 			},
 			d => d.depth,
-			d => d.parent?.data?.name || 'Root'
+			d => d.parent?.data?.id || 'Root'
 		).map(([, _groups], columnIndex) => {
 			const groups = _groups.map(([, blocks], groupIndex) => {
 				return {
@@ -677,6 +679,8 @@ export class SankeyChartD3 {
 				amount: this.params.difference,
 				realValue: this.params.difference,
 				value: difference,
+				id: 'difference_block',
+				displayName: this.params.differenceLabel,
 				name: this.params.differenceLabel,
 				isDifference: true,
 				groupIndex: 0,
@@ -697,7 +701,12 @@ export class SankeyChartD3 {
 			return node
 		}
 		node.children = [
-			this.fillLink({ ...node, fake: true }, level + 1, maxLevel)
+			this.fillLink({ 
+				...node, 
+				fake: true,
+				id: `${node.id}_fake_${level}`,
+				displayName: node.displayName || node.name || 'Fake'
+			}, level + 1, maxLevel)
 		]
 		return node
 	}
