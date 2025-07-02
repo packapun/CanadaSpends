@@ -47,4 +47,4 @@ next-env.d.ts
 /scrapers/*/tmp/
 scrapers/*/data/**
 .idea/
-data
+scrapers/data
