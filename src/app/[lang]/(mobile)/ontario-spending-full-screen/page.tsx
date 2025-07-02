@@ -7,7 +7,7 @@ import { OntarioSankey } from "@/components/Sankey/OntarioSankey";
 export default function OntarioSpendingFullScreen() {
 	return (
 		<div className="min-h-screen bg-white">
-			<div className='sankey-chart-container relative overflow-hidden min-h-screen w-screen'>
+			<div className='sankey-chart-container relative overflow-hidden min-h-screen min-w-[1280px]'>
 				<NoSSR>
 					<OntarioSankey />
 				</NoSSR>
