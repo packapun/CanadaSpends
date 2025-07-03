@@ -128,15 +128,15 @@ export default async function DepartmentPage({
             <P>
               <Trans>
                 The {department.name} operates various programs and services as
-                part of Ontario's commitment to delivering effective government
-                services to residents.
+                part of {jurisdiction.name}'s commitment to delivering effective
+                government services to residents.
               </Trans>
             </P>
           </Section>
 
           <Section>
             <H2>
-              <Trans>Other Ontario Government Ministries</Trans>
+              <Trans>Other {jurisdiction.name} Government Ministries</Trans>
             </H2>
             <JurisdictionDepartmentList
               jurisdiction={jurisdiction}

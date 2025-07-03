@@ -8,6 +8,7 @@ export type Jurisdiction = {
   slug: string;
   name: string;
   financialYear: string;
+  totalEmployees: number;
   totalProvincialSpendingFormatted: string;
   totalProvincialSpending: number;
   total: number;
