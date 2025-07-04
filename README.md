@@ -59,4 +59,9 @@ By the end of 2025, we aim to have automated data ingestion pipelines for every 
 
 ## Getting Started
 
-Canada Spends is a NextJS app. Currently 
+Canada Spends is a NextJS app. To run it, run:
+
+```
+pnpm install
+pnpm run dev
+```
