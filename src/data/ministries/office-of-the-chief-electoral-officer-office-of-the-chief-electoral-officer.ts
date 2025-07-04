@@ -1,0 +1,26 @@
+// Auto-generated from office-of-the-chief-electoral-officer-office-of-the-chief-electoral-officer.json
+export const ministryData = {
+  "name": "Office of the Chief Electoral Officer → Office of the Chief Electoral Officer",
+  "slug": "office-of-the-chief-electoral-officer-office-of-the-chief-electoral-officer",
+  "totalSpending": 0.065673155,
+  "totalSpendingFormatted": "$0.1B",
+  "percentage": 0.03273267908093396,
+  "percentageFormatted": "0.0%",
+  "categories": [
+    {
+      "name": "Operations",
+      "amount": 0.065673155
+    }
+  ],
+  "spending_data": {
+    "name": "Office of the Chief Electoral Officer → Office of the Chief Electoral Officer",
+    "children": [
+      {
+        "name": "Operations",
+        "amount": 0.065673155
+      }
+    ]
+  }
+} as const;
+
+export default ministryData;
