@@ -21,6 +21,47 @@ msgstr " How did Health Canada spend its budget in FY24?"
 msgid "— Canada Spends Team"
 msgstr "— Canada Spends Team"
 
+#. placeholder {0}: department.name
+#: src/components/DepartmentList.tsx:68
+#: src/app/[lang]/(main)/[jurisdiction]/[department]/page.tsx:60
+msgid "{0}"
+msgstr "{0}"
+
+#. placeholder {0}: department.name
+#. placeholder {1}: department.percentageFormatted
+#. placeholder {2}: jurisdiction.name
+#. placeholder {3}: jurisdiction.financialYear
+#: src/app/[lang]/(main)/[jurisdiction]/[department]/page.tsx:99
+msgid "{0} accounted for {1} of all {2}provincial spending in FY {3}"
+msgstr "{0} accounted for {1} of all {2}provincial spending in FY {3}"
+
+#. placeholder {0}: jurisdiction.name
+#: src/app/[lang]/(main)/[jurisdiction]/page.tsx:93
+msgid "{0} Government Departments explained"
+msgstr "{0} Government Departments explained"
+
+#. placeholder {0}: jurisdiction.name
+#: src/app/[lang]/(main)/[jurisdiction]/page.tsx:47
+msgid "{0} Government Spending"
+msgstr "{0} Government Spending"
+
+#. placeholder {0}: jurisdiction.financialYear
+#: src/app/[lang]/(main)/[jurisdiction]/[department]/page.tsx:71
+#: src/app/[lang]/(main)/[jurisdiction]/[department]/page.tsx:76
+msgid "`In FY ${0},`"
+msgstr "`In FY ${0},`"
+
+#. placeholder {0}: jurisdiction.name
+#. placeholder {1}: department.name
+#: src/app/[lang]/(main)/[jurisdiction]/[department]/page.tsx:79
+msgid "`of ${0} provincial spending was by ${1}`"
+msgstr "`of ${0} provincial spending was by ${1}`"
+
+#. placeholder {0}: department.name
+#: src/app/[lang]/(main)/[jurisdiction]/[department]/page.tsx:73
+msgid "`was spent by ${0}`"
+msgstr "`was spent by ${0}`"
+
 #: src/components/MainLayout/Footer.tsx:113
 msgid "© 2025 Canada Spends. All rights reserved. A Project of <0>Build Canada</0>."
 msgstr "© 2025 Canada Spends. All rights reserved. A Project of <0>Build Canada</0>."
@@ -108,7 +149,8 @@ msgstr "A look at how Veterans Affairs Canada spends its budget"
 msgid "A significant portion of GAC's budget supports Canada's international development assistance, with key programs focused on climate adaptation, gender equality, and health initiatives in developing nations. The department also facilitates economic diplomacy and trade agreements that benefit Canadian businesses and secure investment opportunities abroad."
 msgstr "A significant portion of GAC's budget supports Canada's international development assistance, with key programs focused on climate adaptation, gender equality, and health initiatives in developing nations. The department also facilitates economic diplomacy and trade agreements that benefit Canadian businesses and secure investment opportunities abroad."
 
-#: src/components/MainLayout/index.tsx:49
+#: src/components/MainLayout/index.tsx:63
+#: src/components/MainLayout/index.tsx:94
 #: src/components/MainLayout/Footer.tsx:90
 msgid "About"
 msgstr "About"
@@ -141,7 +183,7 @@ msgstr "Acquisition of Lands, Buildings and Works"
 #: src/app/[lang]/(main)/spending/housing-infrastructure-communities/MiniSankey.tsx:53
 #: src/app/[lang]/(main)/spending/health-canada/MiniSankey.tsx:53
 #: src/app/[lang]/(main)/spending/global-affairs-canada/MiniSankey.tsx:53
-#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/MiniSankey.tsx:50
+#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/MiniSankey.tsx:47
 #: src/app/[lang]/(main)/spending/canada-revenue-agency/MiniSankey.tsx:49
 msgid "Acquisition of Machinery and Equipment"
 msgstr "Acquisition of Machinery and Equipment"
@@ -175,6 +217,7 @@ msgid "All data presented regarding government spending is sourced directly from
 msgstr "All data presented regarding government spending is sourced directly from official government databases. Unless otherwise noted, we have used <0>Public Accounts of Canada</0> data as the primary data source. While we strive to provide accurate, up-to-date information, we cannot guarantee the data's completeness, reliability, or timeliness. We assume no responsibility for any errors, omissions, or outcomes resulting from the use of this information. Please consult the original government sources for official and verified data."
 
 #: src/app/[lang]/(main)/spending/page.tsx:133
+#: src/app/[lang]/(main)/[jurisdiction]/page.tsx:106
 msgid "All government spending data is sourced from official databases, but due to the complexity of these systems, occasional errors may occur despite our best efforts. We aim to make this information more accessible and accurate, and we welcome feedback. If you notice any issues, please let us know <0>here</0> — we appreciate it and will work to address them promptly."
 msgstr "All government spending data is sourced from official databases, but due to the complexity of these systems, occasional errors may occur despite our best efforts. We aim to make this information more accessible and accurate, and we welcome feedback. If you notice any issues, please let us know <0>here</0> — we appreciate it and will work to address them promptly."
 
@@ -325,7 +368,8 @@ msgstr "Compensation per Employee"
 msgid "Connect with us"
 msgstr "Connect with us"
 
-#: src/components/MainLayout/index.tsx:52
+#: src/components/MainLayout/index.tsx:66
+#: src/components/MainLayout/index.tsx:97
 #: src/components/MainLayout/Footer.tsx:95
 msgid "Contact"
 msgstr "Contact"
@@ -534,7 +578,7 @@ msgstr "Environment and Climate Change"
 msgid "Equalization Payments to Provinces"
 msgstr "Equalization Payments to Provinces"
 
-#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/MiniSankey.tsx:19
+#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/MiniSankey.tsx:16
 msgid "ESDC"
 msgstr "ESDC"
 
@@ -582,6 +626,11 @@ msgstr "Excise Tax — Aviation Gasoline and Jet Fuel"
 msgid "Excise Tax — Gasoline"
 msgstr "Excise Tax — Gasoline"
 
+#. placeholder {0}: jurisdiction.name
+#: src/app/[lang]/(main)/[jurisdiction]/page.tsx:65
+msgid "Explore {0}'s revenue and spending categories or filter by ministry for deeper insights."
+msgstr "Explore {0}'s revenue and spending categories or filter by ministry for deeper insights."
+
 #: src/app/[lang]/(main)/page.tsx:52
 msgid "Explore data"
 msgstr "Explore data"
@@ -616,7 +665,7 @@ msgstr "Explore revenue and spending categories or filter by agency for deeper i
 #: src/app/[lang]/(main)/spending/immigration-refugees-and-citizenship/MiniSankey.tsx:70
 #: src/app/[lang]/(main)/spending/health-canada/MiniSankey.tsx:65
 #: src/app/[lang]/(main)/spending/global-affairs-canada/MiniSankey.tsx:69
-#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/MiniSankey.tsx:62
+#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/MiniSankey.tsx:59
 msgid "External Revenues"
 msgstr "External Revenues"
 
@@ -742,6 +791,12 @@ msgstr "Federal spending on public safety fluctuates based on evolving security 
 msgid "Finance Canada"
 msgstr "Finance Canada"
 
+#. placeholder {0}: jurisdiction.financialYear
+#. placeholder {1}: jurisdiction.name
+#: src/app/[lang]/(main)/[jurisdiction]/page.tsx:59
+msgid "Financial Year {0} {1} Government Revenue and Spending"
+msgstr "Financial Year {0} {1} Government Revenue and Spending"
+
 #: src/components/Sankey/index.tsx:615
 msgid "First Nations and Inuit Health Infrastructure Support"
 msgstr "First Nations and Inuit Health Infrastructure Support"
@@ -802,11 +857,17 @@ msgstr "GAC's expenditures are divided across five primary categories:"
 msgid "Gender Equality"
 msgstr "Gender Equality"
 
+#. placeholder {0}: jurisdiction.name
+#. placeholder {1}: jurisdiction.name
+#: src/app/[lang]/(main)/[jurisdiction]/page.tsx:50
+msgid "Get data-driven insights into how {0}'s provincial revenue and spending affect {1} residents and programs."
+msgstr "Get data-driven insights into how {0}'s provincial revenue and spending affect {1} residents and programs."
+
 #: src/app/[lang]/(main)/spending/page.tsx:42
 msgid "Get data-driven insights into how governmental revenue and spending affect Canadian lives and programs."
 msgstr "Get data-driven insights into how governmental revenue and spending affect Canadian lives and programs."
 
-#: src/app/[lang]/layout.tsx:18
+#: src/app/[lang]/layout.tsx:19
 #: src/app/[lang]/(main)/page.tsx:31
 msgid "Get The Facts About Government Spending"
 msgstr "Get The Facts About Government Spending"
@@ -856,6 +917,8 @@ msgstr "Government Departments explained"
 msgid "Government IT Operations"
 msgstr "Government IT Operations"
 
+#: src/components/MainLayout/index.tsx:57
+#: src/components/MainLayout/index.tsx:88
 #: src/app/[lang]/(main)/spending/page.tsx:40
 msgid "Government Spending"
 msgstr "Government Spending"
@@ -865,7 +928,7 @@ msgstr "Government Spending"
 msgid "facts-1"
 msgstr "Government spending shouldn’t be a black box. Every year, the federal government spends hundreds of billions of dollars but most Canadians have no clue where it all goes. The data is available, but it’s buried on obscure websites and impossible to navigate."
 
-#: src/app/[lang]/layout.tsx:19
+#: src/app/[lang]/layout.tsx:20
 msgid "Government spending shouldn't be a black box. We turn complex data into clear, non-partisan insights so every Canadian knows where their money goes."
 msgstr "Government spending shouldn't be a black box. We turn complex data into clear, non-partisan insights so every Canadian knows where their money goes."
 
@@ -1151,7 +1214,7 @@ msgstr "Individual Income Taxes"
 #: src/app/[lang]/(main)/spending/housing-infrastructure-communities/MiniSankey.tsx:29
 #: src/app/[lang]/(main)/spending/health-canada/MiniSankey.tsx:29
 #: src/app/[lang]/(main)/spending/global-affairs-canada/MiniSankey.tsx:29
-#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/MiniSankey.tsx:30
+#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/MiniSankey.tsx:27
 #: src/app/[lang]/(main)/spending/canada-revenue-agency/MiniSankey.tsx:29
 msgid "Information"
 msgstr "Information"
@@ -1194,7 +1257,7 @@ msgstr "Interim Housing Assistance"
 #: src/app/[lang]/(main)/spending/immigration-refugees-and-citizenship/MiniSankey.tsx:74
 #: src/app/[lang]/(main)/spending/health-canada/MiniSankey.tsx:69
 #: src/app/[lang]/(main)/spending/global-affairs-canada/MiniSankey.tsx:73
-#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/MiniSankey.tsx:66
+#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/MiniSankey.tsx:63
 #: src/app/[lang]/(main)/spending/canada-revenue-agency/MiniSankey.tsx:61
 msgid "Internal Revenues"
 msgstr "Internal Revenues"
@@ -1304,6 +1367,10 @@ msgstr "Major legislative changes, compliance trends, and digital tax services h
 msgid "Major policy shifts, unforeseen events such as natural disasters, and global security concerns can significantly impact the department's annual spending. The COVID-19 pandemic, for example, led to a sharp increase in federal emergency response funding in 2020."
 msgstr "Major policy shifts, unforeseen events such as natural disasters, and global security concerns can significantly impact the department's annual spending. The COVID-19 pandemic, for example, led to a sharp increase in federal emergency response funding in 2020."
 
+#: src/app/[lang]/(main)/[jurisdiction]/[department]/page.tsx:120
+msgid "Major Programs and Services"
+msgstr "Major Programs and Services"
+
 #: src/app/[lang]/(main)/about/page.tsx:15
 msgid "Making Government Spending Clear | About Us | Canada Spends"
 msgstr "Making Government Spending Clear | About Us | Canada Spends"
@@ -1324,7 +1391,8 @@ msgstr "Manitoba STP"
 msgid "Miscellaneous revenues"
 msgstr "Miscellaneous revenues"
 
-#: src/components/DepartmentList.tsx:36
+#: src/components/OntarioMinistryList.tsx:107
+#: src/components/DepartmentList.tsx:45
 msgid "More coming soon..."
 msgstr "More coming soon..."
 
@@ -1612,6 +1680,10 @@ msgstr "Other Natural Resources Management Support"
 msgid "Other Non-tax Revenue"
 msgstr "Other Non-tax Revenue"
 
+#: src/app/[lang]/(main)/[jurisdiction]/[department]/page.tsx:133
+msgid "Other Ontario Government Ministries"
+msgstr "Other Ontario Government Ministries"
+
 #: src/components/Sankey/index.tsx:278
 msgid "Other Public Safety Expenses"
 msgstr "Other Public Safety Expenses"
@@ -1639,7 +1711,7 @@ msgstr "Other Settlement Agreements"
 msgid "Other subsidies and payments"
 msgstr "Other subsidies and payments"
 
-#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/MiniSankey.tsx:58
+#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/MiniSankey.tsx:55
 msgid "Other Subsidies and Payments"
 msgstr "Other Subsidies and Payments"
 
@@ -1706,7 +1778,7 @@ msgstr "Percentage of federal budget dedicated to Indigenous Priorities, FYs 199
 #: src/app/[lang]/(main)/spending/housing-infrastructure-communities/MiniSankey.tsx:21
 #: src/app/[lang]/(main)/spending/health-canada/MiniSankey.tsx:21
 #: src/app/[lang]/(main)/spending/global-affairs-canada/MiniSankey.tsx:21
-#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/MiniSankey.tsx:22
+#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/MiniSankey.tsx:19
 #: src/app/[lang]/(main)/spending/canada-revenue-agency/MiniSankey.tsx:21
 msgid "Personnel"
 msgstr "Personnel"
@@ -1746,7 +1818,7 @@ msgid "Professional + Special Services"
 msgstr "Professional + Special Services"
 
 #: src/app/[lang]/(main)/spending/housing-infrastructure-communities/MiniSankey.tsx:33
-#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/MiniSankey.tsx:34
+#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/MiniSankey.tsx:31
 msgid "Professional and Special Services"
 msgstr "Professional and Special Services"
 
@@ -1855,7 +1927,7 @@ msgstr "Ready Forces"
 #: src/app/[lang]/(main)/spending/housing-infrastructure-communities/MiniSankey.tsx:37
 #: src/app/[lang]/(main)/spending/health-canada/MiniSankey.tsx:37
 #: src/app/[lang]/(main)/spending/global-affairs-canada/MiniSankey.tsx:37
-#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/MiniSankey.tsx:38
+#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/MiniSankey.tsx:35
 #: src/app/[lang]/(main)/spending/canada-revenue-agency/MiniSankey.tsx:37
 msgid "Rentals"
 msgstr "Rentals"
@@ -1875,7 +1947,7 @@ msgid "Repair + Maintenance"
 msgstr "Repair + Maintenance"
 
 #: src/app/[lang]/(main)/spending/housing-infrastructure-communities/MiniSankey.tsx:41
-#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/MiniSankey.tsx:42
+#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/MiniSankey.tsx:39
 msgid "Repair and Maintenance"
 msgstr "Repair and Maintenance"
 
@@ -1919,10 +1991,6 @@ msgstr "Saskatchewan HTP"
 msgid "Saskatchewan STP"
 msgstr "Saskatchewan STP"
 
-#: src/components/MainLayout/index.tsx:46
-msgid "Search"
-msgstr "Search"
-
 #: src/app/[lang]/(main)/spending/layout.tsx:14
 msgid "See how Canada's government spends tax dollars—track workforce data, spending trends, and federal debt with clear, non-partisan insights."
 msgstr "See how Canada's government spends tax dollars—track workforce data, spending trends, and federal debt with clear, non-partisan insights."
@@ -1963,7 +2031,12 @@ msgstr "Social Security"
 msgid "Social Transfer to Provinces"
 msgstr "Social Transfer to Provinces"
 
+#: src/app/[lang]/(main)/[jurisdiction]/page.tsx:79
+msgid "Source"
+msgstr "Source"
+
 #: src/app/[lang]/(main)/spending/page.tsx:132
+#: src/app/[lang]/(main)/[jurisdiction]/page.tsx:103
 msgid "Sources"
 msgstr "Sources"
 
@@ -1976,10 +2049,14 @@ msgid "Space"
 msgstr "Space"
 
 #: src/components/Sankey/index.tsx:18
-#: src/components/MainLayout/index.tsx:43
 #: src/components/MainLayout/Footer.tsx:85
 msgid "Spending"
 msgstr "Spending"
+
+#: src/components/MainLayout/index.tsx:60
+#: src/components/MainLayout/index.tsx:91
+msgid "Spending Database"
+msgstr "Spending Database"
 
 #: src/components/Sankey/index.tsx:48
 msgid "Standard of Living"
@@ -2041,6 +2118,21 @@ msgstr "Term"
 msgid "Thank you for subscribing!"
 msgstr "Thank you for subscribing!"
 
+#. placeholder {0}: jurisdiction.name
+#. placeholder {1}: department.name
+#. placeholder {2}: department.totalSpendingFormatted
+#. placeholder {3}: jurisdiction.financialYear
+#. placeholder {4}: department.percentageFormatted
+#. placeholder {5}: jurisdiction.totalProvincialSpendingFormatted
+#: src/app/[lang]/(main)/[jurisdiction]/[department]/page.tsx:88
+msgid "The {0} {1} spent ${2} in fiscal year (FY) {3}, representing {4} of the ${5} in total provincial spending."
+msgstr "The {0} {1} spent ${2} in fiscal year (FY) {3}, representing {4} of the ${5} in total provincial spending."
+
+#. placeholder {0}: department.name
+#: src/app/[lang]/(main)/[jurisdiction]/[department]/page.tsx:63
+msgid "The {0} manages critical provincial operations and services for Ontario residents."
+msgstr "The {0} manages critical provincial operations and services for Ontario residents."
+
 #: src/app/[lang]/(main)/spending/page.tsx:101
 msgid "The average employee is 43.3 years old"
 msgstr "The average employee is 43.3 years old"
@@ -2052,6 +2144,10 @@ msgstr "The average employee makes $136,345/yr"
 #: src/app/[lang]/(main)/about/faq.tsx:46
 msgid "The best way to support us is to engage with our content. Like, share, and comment on our posts on social media. Even better, share our work with a friend and encourage them to do the same. Together, we can expand the conversation and reach more people with these important facts."
 msgstr "The best way to support us is to engage with our content. Like, share, and comment on our posts on social media. Even better, share our work with a friend and encourage them to do the same. Together, we can expand the conversation and reach more people with these important facts."
+
+#: src/app/[lang]/(main)/[jurisdiction]/[department]/page.tsx:123
+msgid "The Cabinet Office → Cabinet Office operates various programs and services as part of Ontario's commitment to delivering effective government services to residents."
+msgstr "The Cabinet Office → Cabinet Office operates various programs and services as part of Ontario's commitment to delivering effective government services to residents."
 
 #: src/app/[lang]/(main)/spending/canada-revenue-agency/page.tsx:50
 msgid "The Canada Revenue Agency (CRA) is the federal institution responsible for administering tax laws, enforcing compliance, and delivering key benefit programs to individuals and businesses across Canada. Established in 1999 under the Canada Revenue Agency Act, the CRA operates with a workforce of approximately 59,155 employees (2024) and oversees tax revenues totaling $379 billion annually—which accounts for over 82% of federal revenues. It also administers over $46 billion in benefits and credits to Canadians, including the Canada Child Benefit and the GST/HST credit."
@@ -2204,6 +2300,11 @@ msgstr "The Public Services and Procurement Canada (PSPC) is the federal departm
 msgid "These Ministers are some of the <0>cabinet members</0> who serve at the Prime Minister's discretion. Their tenure typically ends when they resign, are replaced, or when a new Prime Minister takes office and appoints a new cabinet. Outgoing ministers remain in their roles until their successors are sworn in."
 msgstr "These Ministers are some of the <0>cabinet members</0> who serve at the Prime Minister's discretion. Their tenure typically ends when they resign, are replaced, or when a new Prime Minister takes office and appoints a new cabinet. Outgoing ministers remain in their roles until their successors are sworn in."
 
+#. placeholder {0}: jurisdiction.name
+#: src/app/[lang]/(main)/[jurisdiction]/[department]/page.tsx:107
+msgid "This ministry plays an important role in {0}'s government operations, delivering essential services and programs to residents across the province."
+msgstr "This ministry plays an important role in {0}'s government operations, delivering essential services and programs to residents across the province."
+
 #: src/app/[lang]/(main)/spending/health-canada/page.tsx:59
 msgid "Through the Public Health Agency of Canada (PHAC), Health Canada monitors public health risks, manages disease outbreaks, and promotes health initiatives. It also funds medical research via the Canadian Institutes of Health Research (CIHR) and oversees healthcare services for Indigenous communities."
 msgstr "Through the Public Health Agency of Canada (PHAC), Health Canada monitors public health risks, manages disease outbreaks, and promotes health initiatives. It also funds medical research via the Canadian Institutes of Health Research (CIHR) and oversees healthcare services for Indigenous communities."
@@ -2235,7 +2336,7 @@ msgstr "Trade and Investment: $380.3M"
 #: src/app/[lang]/(main)/spending/housing-infrastructure-communities/MiniSankey.tsx:57
 #: src/app/[lang]/(main)/spending/health-canada/MiniSankey.tsx:57
 #: src/app/[lang]/(main)/spending/global-affairs-canada/MiniSankey.tsx:57
-#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/MiniSankey.tsx:54
+#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/MiniSankey.tsx:51
 #: src/app/[lang]/(main)/spending/canada-revenue-agency/MiniSankey.tsx:53
 msgid "Transfer Payments"
 msgstr "Transfer Payments"
@@ -2284,7 +2385,7 @@ msgid "Transportation + Communication"
 msgstr "Transportation + Communication"
 
 #: src/app/[lang]/(main)/spending/housing-infrastructure-communities/MiniSankey.tsx:25
-#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/MiniSankey.tsx:26
+#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/MiniSankey.tsx:23
 msgid "Transportation and Communication"
 msgstr "Transportation and Communication"
 
@@ -2308,7 +2409,7 @@ msgstr "Type of Tenure"
 #: src/app/[lang]/(main)/spending/housing-infrastructure-communities/MiniSankey.tsx:45
 #: src/app/[lang]/(main)/spending/health-canada/MiniSankey.tsx:45
 #: src/app/[lang]/(main)/spending/global-affairs-canada/MiniSankey.tsx:45
-#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/MiniSankey.tsx:46
+#: src/app/[lang]/(main)/spending/employment-and-social-development-canada/MiniSankey.tsx:43
 #: src/app/[lang]/(main)/spending/canada-revenue-agency/MiniSankey.tsx:45
 msgid "Utilities, Materials and Supplies"
 msgstr "Utilities, Materials and Supplies"
@@ -2339,6 +2440,7 @@ msgid "Veterans Affairs Canada | Canada Spends"
 msgstr "Veterans Affairs Canada | Canada Spends"
 
 #: src/app/[lang]/(main)/spending/page.tsx:62
+#: src/app/[lang]/(main)/[jurisdiction]/page.tsx:87
 msgid "View this chart in full screen"
 msgstr "View this chart in full screen"
 
