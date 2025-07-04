@@ -11,6 +11,7 @@ import {
   Section,
 } from "@/components/Layout";
 import { JurisdictionSankey } from "@/components/Sankey/JurisdictionSankey";
+import { Tooltip } from "@/components/Tooltip";
 import { initLingui } from "@/initLingui";
 import {
   getExpandedDepartments,
@@ -18,6 +19,25 @@ import {
   getJurisdictionSlugs,
 } from "@/lib/jurisdictions";
 import { Trans } from "@lingui/react/macro";
+
+const HelpIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="ml-2 text-gray-500 cursor-pointer"
+  >
+    <circle cx="12" cy="12" r="10" />
+    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+    <path d="M12 17h.01" />
+  </svg>
+);
 
 export function generateStaticParams() {
   const slugs = getJurisdictionSlugs();
@@ -39,12 +59,12 @@ export default async function ProvinceIndex({
 
   const departments = getExpandedDepartments(jurisdiction.slug);
 
-  // Calculate total provincial revenue using sankey data
-  const totalProvincialRevenue = (sankey as any).revenue as number | undefined;
-  const totalProvincialRevenueFormatted =
-    typeof totalProvincialRevenue === "number"
-      ? `$${totalProvincialRevenue.toFixed(1)}B`
-      : "-";
+  // Financial position figures for Ontario FY 2023-24 (Public Accounts 2023-24)
+  const netDebt = 408.0; // in billions of dollars
+  const netDebtFormatted = `$${netDebt.toFixed(1)}B`;
+
+  const totalDebt = 552.1; // in billions of dollars
+  const totalDebtFormatted = `$${totalDebt.toFixed(1)}B`;
 
   return (
     <Page>
@@ -96,22 +116,40 @@ export default async function ProvinceIndex({
         </div>
         <Section>
           <H2>
-            <Trans>Total Provincial Revenue & Expenses</Trans>
+            <Trans>Financial Position {jurisdiction.financialYear}</Trans>
           </H2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <StatBox
-              title={<Trans>Total Provincial Revenue</Trans>}
-              value={totalProvincialRevenueFormatted}
+              title={
+                <div className="flex items-center">
+                  <Trans>Net Debt</Trans>
+                  <Tooltip text="Net Debt is what remains after subtracting financial assets (like cash and investments) from the Total Debt. It represents the debt that isn't immediately covered by liquid assets.">
+                    <HelpIcon />
+                  </Tooltip>
+                </div>
+              }
+              value={netDebtFormatted}
               description={
-                <Trans>Annual budget ${jurisdiction.financialYear}</Trans>
+                <Trans>
+                  As of fiscal year end {jurisdiction.financialYear}
+                </Trans>
               }
             />
 
             <StatBox
-              title={<Trans>Total Provincial Spending</Trans>}
-              value={jurisdiction.totalProvincialSpendingFormatted}
+              title={
+                <div className="flex items-center">
+                  <Trans>Total Debt</Trans>
+                  <Tooltip text="Total Debt is the government's complete outstanding debt. This is the figure on which interest payments are calculated.">
+                    <HelpIcon />
+                  </Tooltip>
+                </div>
+              }
+              value={totalDebtFormatted}
               description={
-                <Trans>Annual budget ${jurisdiction.financialYear}</Trans>
+                <Trans>
+                  As of fiscal year end {jurisdiction.financialYear}
+                </Trans>
               }
             />
           </div>
