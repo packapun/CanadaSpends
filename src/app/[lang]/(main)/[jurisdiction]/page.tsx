@@ -39,6 +39,13 @@ export default async function ProvinceIndex({
 
   const departments = getExpandedDepartments(jurisdiction.slug);
 
+  // Calculate total provincial revenue using sankey data
+  const totalProvincialRevenue = (sankey as any).revenue as number | undefined;
+  const totalProvincialRevenueFormatted =
+    typeof totalProvincialRevenue === "number"
+      ? `$${totalProvincialRevenue.toFixed(1)}B`
+      : "-";
+
   return (
     <Page>
       <PageContent>
@@ -89,9 +96,31 @@ export default async function ProvinceIndex({
         </div>
         <Section>
           <H2>
+            <Trans>Total Provincial Revenue & Expenses</Trans>
+          </H2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <StatBox
+              title={<Trans>Total Provincial Revenue</Trans>}
+              value={totalProvincialRevenueFormatted}
+              description={
+                <Trans>Annual budget ${jurisdiction.financialYear}</Trans>
+              }
+            />
+
+            <StatBox
+              title={<Trans>Total Provincial Spending</Trans>}
+              value={jurisdiction.totalProvincialSpendingFormatted}
+              description={
+                <Trans>Annual budget ${jurisdiction.financialYear}</Trans>
+              }
+            />
+          </div>
+        </Section>
+        <Section>
+          <H2>
             <Trans>{jurisdiction.name} Government Workforce</Trans>
           </H2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <StatBox
               title={<Trans>Public Service Employees</Trans>}
               value={jurisdiction.totalEmployees.toLocaleString("en-CA")}
@@ -103,24 +132,15 @@ export default async function ProvinceIndex({
               value={departments.length.toLocaleString("en-CA")}
               description={<Trans>Provincial organizations</Trans>}
             />
-
-            <StatBox
-              title={<Trans>Total Provincial Spending</Trans>}
-              value={jurisdiction.totalProvincialSpendingFormatted}
-              description={
-                <Trans>Annual budget ${jurisdiction.financialYear}</Trans>
-              }
-            />
-            <P className="text-sm">
-              <Trans>Sources:</Trans>{" "}
-              <ExternalLink href={jurisdiction.source}>
-                <Trans>
-                  Public Accounts of {jurisdiction.name} FY{" "}
-                  {jurisdiction.financialYear}
-                </Trans>
-              </ExternalLink>
-            </P>
           </div>
+          <P className="text-sm mt-4">
+            <Trans>Sources:</Trans>{" "}
+            <ExternalLink href={jurisdiction.source}>
+              <Trans>
+                Public Accounts of {jurisdiction.name} FY {jurisdiction.financialYear}
+              </Trans>
+            </ExternalLink>
+          </P>
         </Section>
         <Section>
           <H2>
