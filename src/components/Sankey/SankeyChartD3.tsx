@@ -338,7 +338,7 @@ export class SankeyChartD3 {
 		this.sankeySvg.selectAll('.link').classed('highlight', x => {
 			return (
 				path.some(d => d.id === x.id) ||
-				nodesToHighlight.includes(x.target.name)
+				nodesToHighlight.includes(x.target.id)
 			)
 		})
 
@@ -347,14 +347,15 @@ export class SankeyChartD3 {
 		this.sankeyDiv
 			.selectAll('.block:not(.fake)')
 			.classed('highlight', function (x) {
-				if (nodesToHighlight.includes(x.name)) {
+				if (nodesToHighlight.includes(x.id)) {
+					// @ts-ignore
 					highlightedNodeElements.push(this.querySelector('.label'))
 					return true
 				}
 				return false
 			})
 			.classed('current-node', x => {
-				return x.name === node.name
+				return x.id === node.id
 			})
 
 		this.drawHighlightedPath(
@@ -373,13 +374,13 @@ export class SankeyChartD3 {
 			clearTimeout(this.timerId)
 		}
 
-		if (this.autoScrolledFor === this.highlightedNode?.name) {
+		if (this.autoScrolledFor === this.highlightedNode?.id) {
 			return
 		}
 
 		this.timerId = setTimeout(() => {
 			// Auto scroll only once
-			this.autoScrolledFor = this.highlightedNode?.name
+			this.autoScrolledFor = this.highlightedNode?.id
 			const hiddenElements = highlightedNodeElements.reduce((acc, element) => {
 				// Check if element is fully visible in viewport
 				const rect = element.getBoundingClientRect()

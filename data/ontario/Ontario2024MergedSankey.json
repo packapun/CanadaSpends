@@ -1063,8 +1063,28 @@
             "name": "Finance → Treasury",
             "children": [
               {
-                "name": "Finance → Treasury → Operations",
-                "amount": 12.254678009
+                "name": "Finance → Treasury → Interest on Ontario Securities – For general purposes",
+                "amount": 14.26364952
+              },
+              {
+                "name": "Finance → Treasury → Interest on Debt payable to Ontario Electricity Financial Corporation",
+                "amount": 0.398836914
+              },
+              {
+                "name": "Finance → Treasury → Interest on Ontario Securities – Canada Pension Plan Investment Board",
+                "amount": 0.364692785
+              },
+              {
+                "name": "Finance → Treasury → Other Interest, Exchange Discount and Commission",
+                "amount": -0.010743157
+              },
+              {
+                "name": "Finance → Treasury → Interest Capitalized in Ministry Appropriations",
+                "amount": -0.160600425
+              },
+              {
+                "name": "Finance → Treasury → Interest on Investments",
+                "amount": -2.601157628
               }
             ]
           }
