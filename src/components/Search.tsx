@@ -3,23 +3,16 @@ import {
   InstantSearch,
   SearchBox,
   Hits,
-  ToggleRefinement, Pagination, RangeInput, useInstantSearch,
-  CurrentRefinements,
-  useClearRefinements,
-  useCurrentRefinements,
-  type CurrentRefinementsProps,
+  Pagination, useInstantSearch,
   SortBy
 } from 'react-instantsearch';
 import './search.css' // Make sure this path is correct
-import {Card, CardHeader, CardContent, CardTitle} from '@/components/ui/card' // Adjust path if necessary
 import TypesenseInstantSearchAdapter from 'typesense-instantsearch-adapter';
-import Link from "next/link";
-import { ReactNode, useEffect, useMemo, useState, useCallback } from "react"; // Ensure useCallback and useState are imported
-import {Badge} from "@/components/badge"; // Adjust path if necessary
-import { Download, Share } from "lucide-react" // Added Download and Share icons
+import { useMemo, useState, useCallback } from "react"; // Ensure useCallback and useState are imported
+import { Share } from "lucide-react" // Added Download and Share icons
 import { cn } from "@/lib/utils" // Adjust path if necessary
-import {Button, buttonVariants} from "@/components/button" // Adjust path if necessary
-import {H2, H3, P} from "@/components/Layout"; // Adjust path if necessary
+import {Button} from "@/components/button" // Adjust path if necessary
+import {H3} from "@/components/Layout"; // Adjust path if necessary
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -28,9 +21,7 @@ import {
 } from "@/components/dropdown-menu" // Import Dropdown components
 import { X, Linkedin, Facebook, Copy } from 'lucide-react'; // Import specific icons
 import { RefinementListCombobox } from './RefinementListCombobox';
-import { SearchResult /* RefinementListComboboxProps */ } from '../types/search';
 import { DownloadResultsButton } from './DownloadResultsButton';
-import { formatCurrency } from '../utils/csvUtils';
 import { HitCard } from './HitCard';
 import { ResultsTable } from './ResultsTable';
 import { IndividualRefinementChips } from './IndividualRefinementChips';
@@ -372,15 +363,5 @@ export default function Search() {
       </div>
       <SearchControls/>
     </InstantSearch>
-  );
-}
-
-// --- FacetGroup (Your existing code - keep if used elsewhere) ---
-function FacetGroup({ label, children }: { label: string; children: ReactNode }) {
-  return (
-    <div style={{ marginBottom: '1.5rem' }}>
-      <h4 style={{ margin: '0 0 0.5rem', fontSize: '1rem' }}>{label}</h4>
-      {children}
-    </div>
   );
 }

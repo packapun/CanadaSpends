@@ -9,7 +9,7 @@ export const size = {
 }
 export const contentType = 'image/png'
 
-export default async function Img({ params }: { params: { slug: string } }) {
+export default async function Img() {
 
   const logoData = await readFile(join(process.cwd(), 'public', 'logo.png'))
   const logoSrc = Uint8Array.from(logoData).buffer

@@ -1,5 +1,3 @@
-import dynamic from 'next/dynamic'
-
 import { notFound } from 'next/navigation'
 import {DetailsPage} from "./DetailsPage";
 import {ContractsOver10k} from "./Contracts";
@@ -38,21 +36,6 @@ export default async function Page({ params }: { params: { id: string, database:
   }
 
   return <Component id={id} database={database} />;
-}
-
-function KeyValueTable({ record }: { record: Record<string, unknown> }) {
-  return (
-    <table className="w-full border border-gray-300 text-sm">
-      <tbody>
-        {Object.entries(record).map(([key, value]) => (
-          <tr key={key} className="even:bg-gray-50">
-            <td className="border p-2 font-medium align-top whitespace-nowrap">{key}</td>
-            <td className="border p-2 break-all">{String(value)}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  )
 }
 
 async function NSERCGrants({ id, database }: Props & { database: string }) {
@@ -163,7 +146,7 @@ async function GlobalAffairsGrants({ id, database }: Props & { database: string 
       const parsed = JSON.parse(grant.DACSectors)
       dacSectors = Array.isArray(parsed) ? parsed : []
     }
-  } catch (e) {
+  } catch {
     dacSectors = grant.DACSectors ? [grant.DACSectors] : []
   }
 
@@ -174,7 +157,7 @@ async function GlobalAffairsGrants({ id, database }: Props & { database: string 
       const parsed = JSON.parse(grant.policyMarkers)
       policyMarkers = Array.isArray(parsed) ? parsed : []
     }
-  } catch (e) {
+  } catch {
     policyMarkers = grant.policyMarkers ? [grant.policyMarkers] : []
   }
 
@@ -258,12 +241,6 @@ async function Transfers({ id, database }: Props & { database: string }) {
     </>
   )
 }
-
-// Add formatCurrency helper if not imported/available
-const formatCurrency = (value: number | null | undefined): string => {
-  if (value == null) return '—';
-  return Number(value).toLocaleString('en-US', { style: 'currency', currency: 'CAD' });
-};
 
 function Detail({ label, value, className }: { label: string, value: unknown, className?: string }) {
   return (

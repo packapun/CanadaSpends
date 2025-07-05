@@ -1,4 +1,4 @@
-import {ExternalLink, H1, Intro, P, Page, PageContent, Section} from "@/components/Layout";
+import {H1, Intro, P, Page, PageContent, Section} from "@/components/Layout";
 import { Metadata } from "next";
 import Search from "@/components/Search";
 export const metadata: Metadata = {

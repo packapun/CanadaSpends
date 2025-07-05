@@ -27,7 +27,7 @@ const NavLink = memo(({ href, children, active = false }: { href: string, childr
 NavLink.displayName = 'NavLink'; // Add display name for better debugging
 
 export const MainLayout = ({ children }: { children: React.ReactNode }) => {
-	const { t, i18n } = useLingui();
+	const { i18n } = useLingui();
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const pathname = usePathname();
 

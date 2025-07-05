@@ -20,7 +20,6 @@ export async function generateStaticParams() {
 
 import {
   ChartContainer,
-  ExternalLink,
   H1,
   H2,
   H3,
@@ -31,7 +30,7 @@ import {
   Section,
 } from "@/components/Layout";
 import { StatCard, StatCardContainer } from "@/components/StatCard";
-import { initLingui, type PageLangParam } from "@/initLingui";
+import { initLingui } from "@/initLingui";
 import { Trans } from "@lingui/react/macro";
 import { DepartmentMiniSankey } from "@/components/Sankey/DepartmentMiniSankey";
 import { JurisdictionDepartmentList } from "@/components/DepartmentList";
