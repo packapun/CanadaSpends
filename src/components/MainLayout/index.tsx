@@ -6,7 +6,8 @@ import Link from "next/link";
 import logoFull from "./logo-full.svg";
 import logoGlyph from "./logo-glyph.svg";
 import { useState, memo } from "react";
-import { X, Menu } from "lucide-react";
+import { X, Menu, ChevronDown } from "lucide-react";
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { usePathname } from 'next/navigation';
 
 // Memoize NavLink
@@ -30,6 +31,7 @@ export const MainLayout = ({ children }: { children: React.ReactNode }) => {
 	const { t, i18n } = useLingui();
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const pathname = usePathname();
+	const spendingActive = pathname.startsWith(`/${i18n.locale}/spending`) || pathname.startsWith("/ontario");
 
 	return (
 		<>
@@ -53,9 +55,39 @@ export const MainLayout = ({ children }: { children: React.ReactNode }) => {
 						</Link>
 						{/* Desktop Navigation */}
 						<nav className="hidden md:flex items-center space-x-8">
-							<NavLink href={`/${i18n.locale}/spending`} active={pathname === `/${i18n.locale}/spending`}>
-								<Trans>Government Spending</Trans>
-							</NavLink>
+							<DropdownMenu.Root>
+								<DropdownMenu.Trigger asChild>
+									<button
+										className={`relative py-2 text-sm font-medium flex items-center gap-1 ${
+											spendingActive
+												? "text-black after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-black"
+												: "text-gray-600 hover:text-black"
+										}`}
+									>
+										<Trans>Government Spending</Trans>
+										<ChevronDown className="w-4 h-4" />
+									</button>
+								</DropdownMenu.Trigger>
+								<DropdownMenu.Portal>
+									<DropdownMenu.Content
+										className="bg-white rounded-md shadow-lg p-1 flex flex-col min-w-[150px] z-[200]"
+										sideOffset={4}
+									>
+										<Link
+											href={`/${i18n.locale}/spending`}
+											className="px-3 py-2 text-sm hover:bg-gray-100 rounded"
+										>
+											<Trans>Federal</Trans>
+										</Link>
+										<Link
+											href="/ontario"
+											className="px-3 py-2 text-sm hover:bg-gray-100 rounded"
+										>
+											<Trans>Ontario</Trans>
+										</Link>
+									</DropdownMenu.Content>
+								</DropdownMenu.Portal>
+							</DropdownMenu.Root>
 							<NavLink href={`/${i18n.locale}/search`} active={pathname === `/${i18n.locale}/search`}>
 								<Trans>Spending Database</Trans>
 							</NavLink>
@@ -84,8 +116,19 @@ export const MainLayout = ({ children }: { children: React.ReactNode }) => {
 			{isMenuOpen && (
 				<div className="md:hidden border-t border-gray-200">
 					<div className="px-2 pt-2 pb-3 space-y-1">
-						<MobileNavLink href={`/${i18n.locale}/spending`} active={pathname === `/${i18n.locale}/spending`}>
+						{/* Government Spending Submenu */}
+						<p className="px-3 pt-3 text-base font-medium text-gray-500">
 							<Trans>Government Spending</Trans>
+						</p>
+						<MobileNavLink href={`/${i18n.locale}/spending`} active={pathname.startsWith(`/${i18n.locale}/spending`)}>
+							<span className="pl-4 inline-block">
+								<Trans>Federal</Trans>
+							</span>
+						</MobileNavLink>
+						<MobileNavLink href="/ontario" active={pathname.startsWith("/ontario")}> 
+							<span className="pl-4 inline-block">
+								<Trans>Ontario</Trans>
+							</span>
 						</MobileNavLink>
 						<MobileNavLink href={`/${i18n.locale}/search`} active={pathname === `/${i18n.locale}/search`}>
 							<Trans>Spending Database</Trans>
