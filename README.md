@@ -65,3 +65,14 @@ Canada Spends is a NextJS app. To run it, run:
 pnpm install
 pnpm run dev
 ```
+
+## Linting
+
+This project uses ESLint with Next.js configuration. Run linting with:
+
+```bash
+pnpm lint          # Check for linting issues
+pnpm lint:fix      # Auto-fix auto-fixable issues
+```
+
+The linting configuration enforces TypeScript best practices, React rules, and Next.js optimizations while keeping most issues as warnings (temporarily) to avoid blocking development.
