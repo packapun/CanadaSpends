@@ -11,6 +11,7 @@ import {
   Section,
 } from "@/components/Layout";
 import { JurisdictionSankey } from "@/components/Sankey/JurisdictionSankey";
+import { Tooltip } from "@/components/Tooltip";
 import { initLingui } from "@/initLingui";
 import {
   getExpandedDepartments,
@@ -18,6 +19,25 @@ import {
   getJurisdictionSlugs,
 } from "@/lib/jurisdictions";
 import { Trans } from "@lingui/react/macro";
+
+const HelpIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="ml-2 text-gray-500 cursor-pointer"
+  >
+    <circle cx="12" cy="12" r="10" />
+    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+    <path d="M12 17h.01" />
+  </svg>
+);
 
 export function generateStaticParams() {
   const slugs = getJurisdictionSlugs();
@@ -38,6 +58,13 @@ export default async function ProvinceIndex({
   const { jurisdiction, sankey } = getJurisdictionData(slug);
 
   const departments = getExpandedDepartments(jurisdiction.slug);
+
+  // Financial position figures for Ontario FY 2023-24 (Public Accounts 2023-24)
+  const netDebt = 408.0; // in billions of dollars
+  const netDebtFormatted = `$${netDebt.toFixed(1)}B`;
+
+  const totalDebt = 552.1; // in billions of dollars
+  const totalDebtFormatted = `$${totalDebt.toFixed(1)}B`;
 
   return (
     <Page>
@@ -89,9 +116,49 @@ export default async function ProvinceIndex({
         </div>
         <Section>
           <H2>
+            <Trans>Financial Position {jurisdiction.financialYear}</Trans>
+          </H2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <StatBox
+              title={
+                <div className="flex items-center">
+                  <Trans>Net Debt</Trans>
+                  <Tooltip text="Net Debt is what remains after subtracting financial assets (like cash and investments) from the Total Debt. It represents the debt that isn't immediately covered by liquid assets.">
+                    <HelpIcon />
+                  </Tooltip>
+                </div>
+              }
+              value={netDebtFormatted}
+              description={
+                <Trans>
+                  As of fiscal year end {jurisdiction.financialYear}
+                </Trans>
+              }
+            />
+
+            <StatBox
+              title={
+                <div className="flex items-center">
+                  <Trans>Total Debt</Trans>
+                  <Tooltip text="Total Debt is the government's complete outstanding debt. This is the figure on which interest payments are calculated.">
+                    <HelpIcon />
+                  </Tooltip>
+                </div>
+              }
+              value={totalDebtFormatted}
+              description={
+                <Trans>
+                  As of fiscal year end {jurisdiction.financialYear}
+                </Trans>
+              }
+            />
+          </div>
+        </Section>
+        <Section>
+          <H2>
             <Trans>{jurisdiction.name} Government Workforce</Trans>
           </H2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <StatBox
               title={<Trans>Public Service Employees</Trans>}
               value={jurisdiction.totalEmployees.toLocaleString("en-CA")}
@@ -103,24 +170,15 @@ export default async function ProvinceIndex({
               value={departments.length.toLocaleString("en-CA")}
               description={<Trans>Provincial organizations</Trans>}
             />
-
-            <StatBox
-              title={<Trans>Total Provincial Spending</Trans>}
-              value={jurisdiction.totalProvincialSpendingFormatted}
-              description={
-                <Trans>Annual budget ${jurisdiction.financialYear}</Trans>
-              }
-            />
-            <P className="text-sm">
-              <Trans>Sources:</Trans>{" "}
-              <ExternalLink href={jurisdiction.source}>
-                <Trans>
-                  Public Accounts of {jurisdiction.name} FY{" "}
-                  {jurisdiction.financialYear}
-                </Trans>
-              </ExternalLink>
-            </P>
           </div>
+          <P className="text-sm mt-4">
+            <Trans>Sources:</Trans>{" "}
+            <ExternalLink href={jurisdiction.source}>
+              <Trans>
+                Public Accounts of {jurisdiction.name} FY {jurisdiction.financialYear}
+              </Trans>
+            </ExternalLink>
+          </P>
         </Section>
         <Section>
           <H2>
