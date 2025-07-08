@@ -345,7 +345,7 @@ export class SankeyChartD3 {
 			)
 		})
 
-		let highlightedNodeElements = []
+		const highlightedNodeElements = []
 
 		this.sankeyDiv
 			.selectAll('.block:not(.fake)')
