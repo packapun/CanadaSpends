@@ -60,6 +60,7 @@
     "usehooks-ts": "^3.1.1"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.1",
     "@lingui/cli": "^5.1.2",
     "@lingui/loader": "^5.1.2",
     "@lingui/swc-plugin": "^5.0.1",
