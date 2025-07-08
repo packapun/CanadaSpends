@@ -39,7 +39,6 @@ export default async function Department(props: PageLangParam) {
 	const lang = (await props.params).lang;
 	initLingui(lang);
 
-	const { t } = useLingui();
 	const department = useFindDepartment("national-defence");
 	return (
 		<Page>

@@ -77,7 +77,7 @@ export const useFormState = <T>(_initialState: T) => {
         ...state,
         [name]: value,
       }))
-
+      
       makeTouched && setTouchedItems((state) => state.add(name))
 
       if (makeDirty) {

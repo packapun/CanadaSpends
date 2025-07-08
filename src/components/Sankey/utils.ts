@@ -56,7 +56,7 @@ export function mergeDuplicateChildren(node: any): any {
 	// Merge duplicates and create new children array
 	const mergedChildren: any[] = [];
 
-	Object.entries(displayNameGroups).forEach(([displayName, children]) => {
+	Object.entries(displayNameGroups).forEach(([_displayName, children]) => {
 		if (children.length === 1) {
 			// No duplicates, recursively process child
 			mergedChildren.push(mergeDuplicateChildren(children[0]));
