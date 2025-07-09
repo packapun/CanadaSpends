@@ -66,6 +66,9 @@ export default async function ProvinceIndex({
   const totalDebt = 552.1; // in billions of dollars
   const totalDebtFormatted = `$${totalDebt.toFixed(1)}B`;
 
+  const interestOnDebt = 14.26; // in billions of dollars (Interest on Ontario Securities)
+  const interestOnDebtFormatted = `$${interestOnDebt.toFixed(1)}B`;
+
   return (
     <Page>
       <PageContent>
@@ -118,7 +121,7 @@ export default async function ProvinceIndex({
           <H2>
             <Trans>Financial Position {jurisdiction.financialYear}</Trans>
           </H2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <StatBox
               title={
                 <div className="flex items-center">
@@ -149,6 +152,23 @@ export default async function ProvinceIndex({
               description={
                 <Trans>
                   As of fiscal year end {jurisdiction.financialYear}
+                </Trans>
+              }
+            />
+
+            <StatBox
+              title={
+                <div className="flex items-center">
+                  <Trans>Interest on Debt</Trans>
+                  <Tooltip text="Annual interest payments on Ontario's outstanding debt. This represents the cost of servicing the province's debt obligations.">
+                    <HelpIcon />
+                  </Tooltip>
+                </div>
+              }
+              value={interestOnDebtFormatted}
+              description={
+                <Trans>
+                  Annual interest expense for {jurisdiction.financialYear}
                 </Trans>
               }
             />
