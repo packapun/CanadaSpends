@@ -39,12 +39,17 @@ const HelpIcon = () => (
   </svg>
 );
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
-  const slugs = getJurisdictionSlugs();
+  const jurisdictions = getJurisdictionSlugs();
+  const languages = ["en", "fr"]; // or import { locales } from '@/locales';
 
-  const jurs = slugs.map((slug) => ({ jurisdiction: slug }));
+  const all = languages.flatMap((lang) =>
+    jurisdictions.map((jurisdiction) => ({ lang, jurisdiction })),
+  );
 
-  return jurs;
+  return all;
 }
 
 export default async function ProvinceIndex({
@@ -195,7 +200,8 @@ export default async function ProvinceIndex({
             <Trans>Sources:</Trans>{" "}
             <ExternalLink href={jurisdiction.source}>
               <Trans>
-                Public Accounts of {jurisdiction.name} FY {jurisdiction.financialYear}
+                Public Accounts of {jurisdiction.name} FY{" "}
+                {jurisdiction.financialYear}
               </Trans>
             </ExternalLink>
           </P>

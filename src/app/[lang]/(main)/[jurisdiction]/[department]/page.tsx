@@ -10,11 +10,19 @@ export const dynamicParams = false;
 
 export async function generateStaticParams() {
   const jurisdictions = getJurisdictionSlugs();
+  const languages = ["en", "fr"]; // or import from your locales
 
-  const all = jurisdictions.flatMap((jurisdiction) => {
-    const departments = getDepartmentsForJurisdiction(jurisdiction);
-    return departments.map((department) => ({ jurisdiction, department }));
-  });
+  const all = languages.flatMap((lang) =>
+    jurisdictions.flatMap((jurisdiction) => {
+      const departments = getDepartmentsForJurisdiction(jurisdiction);
+      return departments.map((department) => ({
+        lang,
+        jurisdiction,
+        department,
+      }));
+    }),
+  );
+
   return all;
 }
 
