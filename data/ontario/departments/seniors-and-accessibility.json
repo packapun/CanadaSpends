@@ -1,71 +1,86 @@
 {
   "name": "Seniors and Accessibility",
-  "slug": "seniors-and-accessibility",
-  "totalSpending": 0.171375024,
-  "totalSpendingFormatted": "$0.2B",
-  "percentage": 0.08541638761042249,
+  "totalSpendingFormatted": "$171M",
+  "percentage": 0.08295666750456608,
   "percentageFormatted": "0.1%",
   "categories": [
     {
-      "name": "Ontario Seniors Care at Home Tax Credit",
-      "amount": 0.108369997
-    },
-    {
-      "name": "Seniors Affairs Transfer Payment",
-      "amount": 0.023844549
-    },
-    {
-      "name": "Home and Vehicle Modification Program",
-      "amount": 0.015628097
-    },
-    {
-      "name": "Operations",
-      "amount": 0.007997495
-    },
-    {
-      "name": "Operations",
+      "name": "Seniors and Accessibility → Accessibility for Ontarians with Disabilities → Operations",
       "amount": 0.007041695000000001
     },
     {
-      "name": "Operations",
+      "name": "Seniors and Accessibility → Ministry Administration → Operations",
       "amount": 0.006994403999999999
     },
     {
-      "name": "Accessibility Transfer Payment Program",
+      "name": "Seniors and Accessibility → Policy,, and Strategic Partnerships → Operations",
+      "amount": 0.007997495
+    },
+    {
+      "name": "Seniors and Accessibility → Policy,, and Strategic Partnerships → Seniors Affairs Transfer Payment",
+      "amount": 0.023844549
+    },
+    {
+      "name": "Seniors and Accessibility → Policy,, and Strategic Partnerships → Accessibility Transfer Payment Program",
       "amount": 0.001498787
+    },
+    {
+      "name": "Seniors and Accessibility → Policy,, and Strategic Partnerships → Home and Vehicle Modification Program",
+      "amount": 0.015628097
+    },
+    {
+      "name": "Seniors and Accessibility → Policy,, and Strategic Partnerships → Ontario Seniors Care at Home Tax Credit",
+      "amount": 0.108369997
     }
   ],
   "spending_data": {
     "name": "Seniors and Accessibility",
+    "amount": 0.171375024,
     "children": [
       {
-        "name": "Ontario Seniors Care at Home Tax Credit",
-        "amount": 0.108369997
+        "name": "Seniors and Accessibility → Accessibility for Ontarians with Disabilities",
+        "children": [
+          {
+            "name": "Seniors and Accessibility → Accessibility for Ontarians with Disabilities → Operations",
+            "amount": 0.007041695000000001
+          }
+        ]
       },
       {
-        "name": "Seniors Affairs Transfer Payment",
-        "amount": 0.023844549
+        "name": "Seniors and Accessibility → Ministry Administration",
+        "children": [
+          {
+            "name": "Seniors and Accessibility → Ministry Administration → Operations",
+            "amount": 0.006994403999999999
+          }
+        ]
       },
       {
-        "name": "Home and Vehicle Modification Program",
-        "amount": 0.015628097
-      },
-      {
-        "name": "Operations",
-        "amount": 0.007997495
-      },
-      {
-        "name": "Operations",
-        "amount": 0.007041695000000001
-      },
-      {
-        "name": "Operations",
-        "amount": 0.006994403999999999
-      },
-      {
-        "name": "Accessibility Transfer Payment Program",
-        "amount": 0.001498787
+        "name": "Seniors and Accessibility → Policy,, and Strategic Partnerships",
+        "children": [
+          {
+            "name": "Seniors and Accessibility → Policy,, and Strategic Partnerships → Operations",
+            "amount": 0.007997495
+          },
+          {
+            "name": "Seniors and Accessibility → Policy,, and Strategic Partnerships → Seniors Affairs Transfer Payment",
+            "amount": 0.023844549
+          },
+          {
+            "name": "Seniors and Accessibility → Policy,, and Strategic Partnerships → Accessibility Transfer Payment Program",
+            "amount": 0.001498787
+          },
+          {
+            "name": "Seniors and Accessibility → Policy,, and Strategic Partnerships → Home and Vehicle Modification Program",
+            "amount": 0.015628097
+          },
+          {
+            "name": "Seniors and Accessibility → Policy,, and Strategic Partnerships → Ontario Seniors Care at Home Tax Credit",
+            "amount": 0.108369997
+          }
+        ]
       }
     ]
-  }
+  },
+  "generatedAt": "2025-07-09T21:53:36.589Z"
 }

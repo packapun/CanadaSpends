@@ -1,95 +1,168 @@
 {
   "name": "Finance",
-  "slug": "finance",
-  "totalSpending": 13.559998414999999,
-  "totalSpendingFormatted": "$13.6B",
-  "percentage": 6.758546569845292,
-  "percentageFormatted": "6.8%",
+  "totalSpendingFormatted": "$13.3B",
+  "percentage": 6.428384479529747,
+  "percentageFormatted": "6.4%",
   "categories": [
     {
-      "name": "Operations",
-      "amount": 12.254678009
-    },
-    {
-      "name": "Ontario Municipal Partnership Fund",
-      "amount": 0.501438575
-    },
-    {
-      "name": "Operations",
-      "amount": 0.3084532930000001
-    },
-    {
-      "name": "Guaranteed Annual Income System",
-      "amount": 0.284104472
-    },
-    {
-      "name": "Operations",
-      "amount": 0.07257548899999999
-    },
-    {
-      "name": "Operations",
+      "name": "Finance → Economic, Fiscal, and Financial Policy → Operations",
       "amount": 0.053409922
     },
     {
-      "name": "Transitional Mitigation Payment",
-      "amount": 0.0516656
+      "name": "Finance → Ministry Administration → Operations",
+      "amount": 0.07257548899999999
     },
     {
-      "name": "Operations",
+      "name": "Finance → Regulatory Policy and Agency Relations → Operations",
       "amount": 0.016978584999999994
     },
     {
-      "name": "Special Payments to Municipalities",
+      "name": "Finance → Tax, Benefits and Local  Program → Operations",
+      "amount": 0.3084532930000001
+    },
+    {
+      "name": "Finance → Tax, Benefits and Local  Program → Guaranteed Annual Income System",
+      "amount": 0.284104472
+    },
+    {
+      "name": "Finance → Tax, Benefits and Local  Program → Ontario Municipal Partnership Fund",
+      "amount": 0.501438575
+    },
+    {
+      "name": "Finance → Tax, Benefits and Local  Program → Special Payments to Municipalities",
       "amount": 0.016692996
     },
     {
-      "name": "Other",
+      "name": "Finance → Tax, Benefits and Local  Program → Transitional Mitigation Payment",
+      "amount": 0.0516656
+    },
+    {
+      "name": "Finance → Tax, Benefits and Local  Program → Other",
       "amount": 0.000001474
+    },
+    {
+      "name": "Finance → Treasury → Interest on Debt – Ontario Securities",
+      "amount": 14.26364952
+    },
+    {
+      "name": "Finance → Treasury → Interest on Debt payable to Ontario Electricity Financial Corporation",
+      "amount": 0.398836914
+    },
+    {
+      "name": "Finance → Treasury → Interest on Ontario Securities – Canada Pension Plan Investment Board",
+      "amount": 0.364692785
+    },
+    {
+      "name": "Finance → Treasury → Other Interest, Exchange Discount and Commission",
+      "amount": -0.010743157
+    },
+    {
+      "name": "Finance → Treasury → Interest Capitalized in Ministry Appropriations",
+      "amount": -0.160600425
+    },
+    {
+      "name": "Finance → Treasury → Interest on Investments",
+      "amount": -2.601157628
+    },
+    {
+      "name": "Finance → Unreported",
+      "amount": -0.27999841499999967
     }
   ],
   "spending_data": {
     "name": "Finance",
+    "amount": 13.280000000000003,
     "children": [
       {
-        "name": "Operations",
-        "amount": 12.254678009
+        "name": "Finance → Economic, Fiscal, and Financial Policy",
+        "children": [
+          {
+            "name": "Finance → Economic, Fiscal, and Financial Policy → Operations",
+            "amount": 0.053409922
+          }
+        ]
       },
       {
-        "name": "Ontario Municipal Partnership Fund",
-        "amount": 0.501438575
+        "name": "Finance → Ministry Administration",
+        "children": [
+          {
+            "name": "Finance → Ministry Administration → Operations",
+            "amount": 0.07257548899999999
+          }
+        ]
       },
       {
-        "name": "Operations",
-        "amount": 0.3084532930000001
+        "name": "Finance → Regulatory Policy and Agency Relations",
+        "children": [
+          {
+            "name": "Finance → Regulatory Policy and Agency Relations → Operations",
+            "amount": 0.016978584999999994
+          }
+        ]
       },
       {
-        "name": "Guaranteed Annual Income System",
-        "amount": 0.284104472
+        "name": "Finance → Tax, Benefits and Local  Program",
+        "children": [
+          {
+            "name": "Finance → Tax, Benefits and Local  Program → Operations",
+            "amount": 0.3084532930000001
+          },
+          {
+            "name": "Finance → Tax, Benefits and Local  Program → Guaranteed Annual Income System",
+            "amount": 0.284104472
+          },
+          {
+            "name": "Finance → Tax, Benefits and Local  Program → Ontario Municipal Partnership Fund",
+            "amount": 0.501438575
+          },
+          {
+            "name": "Finance → Tax, Benefits and Local  Program → Special Payments to Municipalities",
+            "amount": 0.016692996
+          },
+          {
+            "name": "Finance → Tax, Benefits and Local  Program → Transitional Mitigation Payment",
+            "amount": 0.0516656
+          },
+          {
+            "name": "Finance → Tax, Benefits and Local  Program → Other",
+            "amount": 0.000001474
+          }
+        ]
       },
       {
-        "name": "Operations",
-        "amount": 0.07257548899999999
+        "name": "Finance → Treasury",
+        "children": [
+          {
+            "name": "Finance → Treasury → Interest on Debt – Ontario Securities",
+            "amount": 14.26364952
+          },
+          {
+            "name": "Finance → Treasury → Interest on Debt payable to Ontario Electricity Financial Corporation",
+            "amount": 0.398836914
+          },
+          {
+            "name": "Finance → Treasury → Interest on Ontario Securities – Canada Pension Plan Investment Board",
+            "amount": 0.364692785
+          },
+          {
+            "name": "Finance → Treasury → Other Interest, Exchange Discount and Commission",
+            "amount": -0.010743157
+          },
+          {
+            "name": "Finance → Treasury → Interest Capitalized in Ministry Appropriations",
+            "amount": -0.160600425
+          },
+          {
+            "name": "Finance → Treasury → Interest on Investments",
+            "amount": -2.601157628
+          }
+        ]
       },
       {
-        "name": "Operations",
-        "amount": 0.053409922
-      },
-      {
-        "name": "Transitional Mitigation Payment",
-        "amount": 0.0516656
-      },
-      {
-        "name": "Operations",
-        "amount": 0.016978584999999994
-      },
-      {
-        "name": "Special Payments to Municipalities",
-        "amount": 0.016692996
-      },
-      {
-        "name": "Other",
-        "amount": 0.000001474
+        "name": "Finance → Unreported",
+        "amount": -0.27999841499999967
       }
     ]
-  }
+  },
+  "generatedAt": "2025-07-09T21:53:36.586Z"
 }

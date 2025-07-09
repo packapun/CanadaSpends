@@ -1,255 +1,303 @@
 {
   "name": "Transportation",
-  "slug": "transportation",
-  "totalSpending": 12.073573912999997,
-  "totalSpendingFormatted": "$12.1B",
-  "percentage": 6.017685921350437,
-  "percentageFormatted": "6.0%",
+  "totalSpendingFormatted": "$7.4B",
+  "percentage": 3.597571796074176,
+  "percentageFormatted": "3.6%",
   "categories": [
     {
-      "name": "Metrolinx",
-      "amount": 6.580035232
-    },
-    {
-      "name": "Operations",
-      "amount": 1.290519797
-    },
-    {
-      "name": "Metrolinx Operating Subsidies",
-      "amount": 1.221041938
-    },
-    {
-      "name": "Operations",
-      "amount": 0.717104283
-    },
-    {
-      "name": "Municipal Transit",
-      "amount": 0.598928827
-    },
-    {
-      "name": "Municipal Public Transportation Funding",
-      "amount": 0.379402392
-    },
-    {
-      "name": "Municipal Public Transportation Funding, the Dedicated Funding for Public Transportation Act",
-      "amount": 0.374432931
-    },
-    {
-      "name": "Municipal Transit",
-      "amount": 0.3
-    },
-    {
-      "name": "Highways and Land Transfers",
-      "amount": 0.1975
-    },
-    {
-      "name": "Operations",
-      "amount": 0.17497806400000002
-    },
-    {
-      "name": "Operations",
-      "amount": 0.149904395
-    },
-    {
-      "name": "Ontario Northland Transportation Commission",
-      "amount": 0.102675795
-    },
-    {
-      "name": "Operations",
-      "amount": 0.069078694
-    },
-    {
-      "name": "Operations",
-      "amount": 0.061872892000000006
-    },
-    {
-      "name": "Ontario Northland Transportation Commission",
-      "amount": 0.059582375
-    },
-    {
-      "name": "Operations",
+      "name": "Transportation → Integrated Policy and Planning → Operations",
       "amount": 0.02702053
     },
     {
-      "name": "Connecting Links",
-      "amount": 0.026752308
-    },
-    {
-      "name": "Payments in lieu of Municipal Taxation",
-      "amount": 0.012267598
-    },
-    {
-      "name": "Owen Sound Transportation Company",
-      "amount": 0.011505195
-    },
-    {
-      "name": "Transition Fund",
-      "amount": 0.01
-    },
-    {
-      "name": "Third Party Operating Highway Works",
-      "amount": 0.0069
-    },
-    {
-      "name": "Municipal Ferries",
-      "amount": 0.006517099
-    },
-    {
-      "name": "Owen Sound Transportation Company",
-      "amount": 0.005907097
-    },
-    {
-      "name": "First Nations",
-      "amount": 0.005704395
-    },
-    {
-      "name": "Community Transportation Grant Program",
-      "amount": 0.004807227
-    },
-    {
-      "name": "Ontario Seniors Public Transit Tax Credit",
-      "amount": 0.0045843
-    },
-    {
-      "name": "Other",
-      "amount": 0.000770331
-    },
-    {
-      "name": "Other",
+      "name": "Transportation → Integrated Policy and Planning → Other",
       "amount": 0.000506626
     },
     {
-      "name": "Other",
+      "name": "Transportation → Labour and  Cluster Program → Operations",
+      "amount": 0.069078694
+    },
+    {
+      "name": "Transportation → Ministry Administration → Operations",
+      "amount": 0.061872892000000006
+    },
+    {
+      "name": "Transportation → Operations → Operations",
+      "amount": 0.717104283
+    },
+    {
+      "name": "Transportation → Operations → Municipal Ferries",
+      "amount": 0.006517099
+    },
+    {
+      "name": "Transportation → Operations → Third Party Operating Highway Works",
+      "amount": 0.0069
+    },
+    {
+      "name": "Transportation → Operations → Connecting Links",
+      "amount": 0.026752308
+    },
+    {
+      "name": "Transportation → Operations → First Nations",
+      "amount": 0.005704395
+    },
+    {
+      "name": "Transportation → Operations → Transition Fund",
+      "amount": 0.01
+    },
+    {
+      "name": "Transportation → Operations → Other",
+      "amount": 0.000770331
+    },
+    {
+      "name": "Transportation → Oversight and Agency Governance → Operations",
+      "amount": 0.17497806400000002
+    },
+    {
+      "name": "Transportation → Transit → Operations",
+      "amount": -0.327112138
+    },
+    {
+      "name": "Transportation → Transit → Metrolinx Operating Subsidies",
+      "amount": 1.221041938
+    },
+    {
+      "name": "Transportation → Transit → Municipal Transit",
+      "amount": 0.3
+    },
+    {
+      "name": "Transportation → Transit → Ontario Northland Transportation Commission",
+      "amount": 0.059582375
+    },
+    {
+      "name": "Transportation → Transit → Owen Sound Transportation Company",
+      "amount": 0.005907097
+    },
+    {
+      "name": "Transportation → Transit → Municipal Public Transportation Funding",
+      "amount": 0.379402392
+    },
+    {
+      "name": "Transportation → Transit → Community Transportation Grant Program",
+      "amount": 0.004807227
+    },
+    {
+      "name": "Transportation → Transit → Ontario Seniors Public Transit Tax Credit",
+      "amount": 0.0045843
+    },
+    {
+      "name": "Transportation → Transit → Municipal Public Transportation Funding, the Dedicated Funding for Public Transportation Act",
+      "amount": 0.374432931
+    },
+    {
+      "name": "Transportation → Transit → Metrolinx",
+      "amount": 6.580035232
+    },
+    {
+      "name": "Transportation → Transit → Municipal Transit",
+      "amount": 0.598928827
+    },
+    {
+      "name": "Transportation → Transit → Ontario Northland Transportation Commission",
+      "amount": 0.102675795
+    },
+    {
+      "name": "Transportation → Transit → Owen Sound Transportation Company",
+      "amount": 0.011505195
+    },
+    {
+      "name": "Transportation → Infrastructure Management Program → Operations",
+      "amount": 1.290519797
+    },
+    {
+      "name": "Transportation → Infrastructure Management Program → Payments in lieu of Municipal Taxation",
+      "amount": 0.012267598
+    },
+    {
+      "name": "Transportation → Infrastructure Management Program → Highways and Land Transfers",
+      "amount": 0.1975
+    },
+    {
+      "name": "Transportation → Safety Program → Operations",
+      "amount": 0.149904395
+    },
+    {
+      "name": "Transportation → Safety Program → Other",
       "amount": 0.00038573000000000004
     },
     {
-      "name": "Operations",
-      "amount": -0.327112138
+      "name": "Transportation → Unreported",
+      "amount": -4.641573912999998
     }
   ],
   "spending_data": {
     "name": "Transportation",
+    "amount": 7.431999999999999,
     "children": [
       {
-        "name": "Metrolinx",
-        "amount": 6.580035232
+        "name": "Transportation → Integrated Policy and Planning",
+        "children": [
+          {
+            "name": "Transportation → Integrated Policy and Planning → Operations",
+            "amount": 0.02702053
+          },
+          {
+            "name": "Transportation → Integrated Policy and Planning → Other",
+            "amount": 0.000506626
+          }
+        ]
       },
       {
-        "name": "Operations",
-        "amount": 1.290519797
+        "name": "Transportation → Labour and  Cluster Program",
+        "children": [
+          {
+            "name": "Transportation → Labour and  Cluster Program → Operations",
+            "amount": 0.069078694
+          }
+        ]
       },
       {
-        "name": "Metrolinx Operating Subsidies",
-        "amount": 1.221041938
+        "name": "Transportation → Ministry Administration",
+        "children": [
+          {
+            "name": "Transportation → Ministry Administration → Operations",
+            "amount": 0.061872892000000006
+          }
+        ]
       },
       {
-        "name": "Operations",
-        "amount": 0.717104283
+        "name": "Transportation → Operations",
+        "children": [
+          {
+            "name": "Transportation → Operations → Operations",
+            "amount": 0.717104283
+          },
+          {
+            "name": "Transportation → Operations → Municipal Ferries",
+            "amount": 0.006517099
+          },
+          {
+            "name": "Transportation → Operations → Third Party Operating Highway Works",
+            "amount": 0.0069
+          },
+          {
+            "name": "Transportation → Operations → Connecting Links",
+            "amount": 0.026752308
+          },
+          {
+            "name": "Transportation → Operations → First Nations",
+            "amount": 0.005704395
+          },
+          {
+            "name": "Transportation → Operations → Transition Fund",
+            "amount": 0.01
+          },
+          {
+            "name": "Transportation → Operations → Other",
+            "amount": 0.000770331
+          }
+        ]
       },
       {
-        "name": "Municipal Transit",
-        "amount": 0.598928827
+        "name": "Transportation → Oversight and Agency Governance",
+        "children": [
+          {
+            "name": "Transportation → Oversight and Agency Governance → Operations",
+            "amount": 0.17497806400000002
+          }
+        ]
       },
       {
-        "name": "Municipal Public Transportation Funding",
-        "amount": 0.379402392
+        "name": "Transportation → Transit",
+        "children": [
+          {
+            "name": "Transportation → Transit → Operations",
+            "amount": -0.327112138
+          },
+          {
+            "name": "Transportation → Transit → Metrolinx Operating Subsidies",
+            "amount": 1.221041938
+          },
+          {
+            "name": "Transportation → Transit → Municipal Transit",
+            "amount": 0.3
+          },
+          {
+            "name": "Transportation → Transit → Ontario Northland Transportation Commission",
+            "amount": 0.059582375
+          },
+          {
+            "name": "Transportation → Transit → Owen Sound Transportation Company",
+            "amount": 0.005907097
+          },
+          {
+            "name": "Transportation → Transit → Municipal Public Transportation Funding",
+            "amount": 0.379402392
+          },
+          {
+            "name": "Transportation → Transit → Community Transportation Grant Program",
+            "amount": 0.004807227
+          },
+          {
+            "name": "Transportation → Transit → Ontario Seniors Public Transit Tax Credit",
+            "amount": 0.0045843
+          },
+          {
+            "name": "Transportation → Transit → Municipal Public Transportation Funding, the Dedicated Funding for Public Transportation Act",
+            "amount": 0.374432931
+          },
+          {
+            "name": "Transportation → Transit → Metrolinx",
+            "amount": 6.580035232
+          },
+          {
+            "name": "Transportation → Transit → Municipal Transit",
+            "amount": 0.598928827
+          },
+          {
+            "name": "Transportation → Transit → Ontario Northland Transportation Commission",
+            "amount": 0.102675795
+          },
+          {
+            "name": "Transportation → Transit → Owen Sound Transportation Company",
+            "amount": 0.011505195
+          }
+        ]
       },
       {
-        "name": "Municipal Public Transportation Funding, the Dedicated Funding for Public Transportation Act",
-        "amount": 0.374432931
+        "name": "Transportation → Infrastructure Management Program",
+        "children": [
+          {
+            "name": "Transportation → Infrastructure Management Program → Operations",
+            "amount": 1.290519797
+          },
+          {
+            "name": "Transportation → Infrastructure Management Program → Payments in lieu of Municipal Taxation",
+            "amount": 0.012267598
+          },
+          {
+            "name": "Transportation → Infrastructure Management Program → Highways and Land Transfers",
+            "amount": 0.1975
+          }
+        ]
       },
       {
-        "name": "Municipal Transit",
-        "amount": 0.3
+        "name": "Transportation → Safety Program",
+        "children": [
+          {
+            "name": "Transportation → Safety Program → Operations",
+            "amount": 0.149904395
+          },
+          {
+            "name": "Transportation → Safety Program → Other",
+            "amount": 0.00038573000000000004
+          }
+        ]
       },
       {
-        "name": "Highways and Land Transfers",
-        "amount": 0.1975
-      },
-      {
-        "name": "Operations",
-        "amount": 0.17497806400000002
-      },
-      {
-        "name": "Operations",
-        "amount": 0.149904395
-      },
-      {
-        "name": "Ontario Northland Transportation Commission",
-        "amount": 0.102675795
-      },
-      {
-        "name": "Operations",
-        "amount": 0.069078694
-      },
-      {
-        "name": "Operations",
-        "amount": 0.061872892000000006
-      },
-      {
-        "name": "Ontario Northland Transportation Commission",
-        "amount": 0.059582375
-      },
-      {
-        "name": "Operations",
-        "amount": 0.02702053
-      },
-      {
-        "name": "Connecting Links",
-        "amount": 0.026752308
-      },
-      {
-        "name": "Payments in lieu of Municipal Taxation",
-        "amount": 0.012267598
-      },
-      {
-        "name": "Owen Sound Transportation Company",
-        "amount": 0.011505195
-      },
-      {
-        "name": "Transition Fund",
-        "amount": 0.01
-      },
-      {
-        "name": "Third Party Operating Highway Works",
-        "amount": 0.0069
-      },
-      {
-        "name": "Municipal Ferries",
-        "amount": 0.006517099
-      },
-      {
-        "name": "Owen Sound Transportation Company",
-        "amount": 0.005907097
-      },
-      {
-        "name": "First Nations",
-        "amount": 0.005704395
-      },
-      {
-        "name": "Community Transportation Grant Program",
-        "amount": 0.004807227
-      },
-      {
-        "name": "Ontario Seniors Public Transit Tax Credit",
-        "amount": 0.0045843
-      },
-      {
-        "name": "Other",
-        "amount": 0.000770331
-      },
-      {
-        "name": "Other",
-        "amount": 0.000506626
-      },
-      {
-        "name": "Other",
-        "amount": 0.00038573000000000004
-      },
-      {
-        "name": "Operations",
-        "amount": -0.327112138
+        "name": "Transportation → Unreported",
+        "amount": -4.641573912999998
       }
     ]
-  }
+  },
+  "generatedAt": "2025-07-09T21:53:36.590Z"
 }

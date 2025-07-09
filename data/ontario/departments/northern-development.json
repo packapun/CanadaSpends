@@ -1,87 +1,105 @@
 {
   "name": "Northern Development",
-  "slug": "northern-development",
-  "totalSpending": 0.691513744,
-  "totalSpendingFormatted": "$0.7B",
-  "percentage": 0.3446628605311733,
+  "totalSpendingFormatted": "$704M",
+  "percentage": 0.3407818278304925,
   "percentageFormatted": "0.3%",
   "categories": [
     {
-      "name": "Operations",
-      "amount": 0.43297691299999996
-    },
-    {
-      "name": "Northern Energy Advantage Program",
-      "amount": 0.125065166
-    },
-    {
-      "name": "Northern Ontario Heritage Fund",
-      "amount": 0.05
-    },
-    {
-      "name": "Northern Ontario Heritage Fund",
-      "amount": 0.05
-    },
-    {
-      "name": "Northern Ontario Resource Development Support Fund",
-      "amount": 0.014664807
-    },
-    {
-      "name": "Winter Roads",
-      "amount": 0.00913603
-    },
-    {
-      "name": "Operations",
+      "name": "Northern Development → Ministry Administration → Operations",
       "amount": 0.006335210999999999
     },
     {
-      "name": "Other",
+      "name": "Northern Development → Northern Development → Operations",
+      "amount": 0.43297691299999996
+    },
+    {
+      "name": "Northern Development → Northern Development → Northern Energy Advantage Program",
+      "amount": 0.125065166
+    },
+    {
+      "name": "Northern Development → Northern Development → Northern Ontario Heritage Fund",
+      "amount": 0.05
+    },
+    {
+      "name": "Northern Development → Northern Development → Winter Roads",
+      "amount": 0.00913603
+    },
+    {
+      "name": "Northern Development → Northern Development → Northern Ontario Heritage Fund",
+      "amount": 0.05
+    },
+    {
+      "name": "Northern Development → Northern Development → Northern Ontario Resource Development Support Fund",
+      "amount": 0.014664807
+    },
+    {
+      "name": "Northern Development → Northern Development → Railway Infrastructure Renewal",
+      "amount": 0.001285748
+    },
+    {
+      "name": "Northern Development → Northern Development → Other",
       "amount": 0.002049869
     },
     {
-      "name": "Railway Infrastructure Renewal",
-      "amount": 0.001285748
+      "name": "Northern Development → Unreported",
+      "amount": 0.012486255999999862
     }
   ],
   "spending_data": {
     "name": "Northern Development",
+    "amount": 0.7039999999999998,
     "children": [
       {
-        "name": "Operations",
-        "amount": 0.43297691299999996
+        "name": "Northern Development → Ministry Administration",
+        "children": [
+          {
+            "name": "Northern Development → Ministry Administration → Operations",
+            "amount": 0.006335210999999999
+          }
+        ]
       },
       {
-        "name": "Northern Energy Advantage Program",
-        "amount": 0.125065166
+        "name": "Northern Development → Northern Development",
+        "children": [
+          {
+            "name": "Northern Development → Northern Development → Operations",
+            "amount": 0.43297691299999996
+          },
+          {
+            "name": "Northern Development → Northern Development → Northern Energy Advantage Program",
+            "amount": 0.125065166
+          },
+          {
+            "name": "Northern Development → Northern Development → Northern Ontario Heritage Fund",
+            "amount": 0.05
+          },
+          {
+            "name": "Northern Development → Northern Development → Winter Roads",
+            "amount": 0.00913603
+          },
+          {
+            "name": "Northern Development → Northern Development → Northern Ontario Heritage Fund",
+            "amount": 0.05
+          },
+          {
+            "name": "Northern Development → Northern Development → Northern Ontario Resource Development Support Fund",
+            "amount": 0.014664807
+          },
+          {
+            "name": "Northern Development → Northern Development → Railway Infrastructure Renewal",
+            "amount": 0.001285748
+          },
+          {
+            "name": "Northern Development → Northern Development → Other",
+            "amount": 0.002049869
+          }
+        ]
       },
       {
-        "name": "Northern Ontario Heritage Fund",
-        "amount": 0.05
-      },
-      {
-        "name": "Northern Ontario Heritage Fund",
-        "amount": 0.05
-      },
-      {
-        "name": "Northern Ontario Resource Development Support Fund",
-        "amount": 0.014664807
-      },
-      {
-        "name": "Winter Roads",
-        "amount": 0.00913603
-      },
-      {
-        "name": "Operations",
-        "amount": 0.006335210999999999
-      },
-      {
-        "name": "Other",
-        "amount": 0.002049869
-      },
-      {
-        "name": "Railway Infrastructure Renewal",
-        "amount": 0.001285748
+        "name": "Northern Development → Unreported",
+        "amount": 0.012486255999999862
       }
     ]
-  }
+  },
+  "generatedAt": "2025-07-09T21:53:36.589Z"
 }

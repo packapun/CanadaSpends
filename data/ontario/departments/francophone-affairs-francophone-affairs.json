@@ -1,39 +1,39 @@
 {
   "name": "Francophone Affairs → Francophone Affairs",
-  "slug": "francophone-affairs-francophone-affairs",
-  "totalSpending": 0.008025964,
-  "totalSpendingFormatted": "$0.0B",
-  "percentage": 0.004000284498698579,
+  "totalSpendingFormatted": "$8M",
+  "percentage": 0.0038850890369626864,
   "percentageFormatted": "0.0%",
   "categories": [
     {
-      "name": "Operations",
+      "name": "Francophone Affairs → Francophone Affairs → Operations",
       "amount": 0.004959844999999999
     },
     {
-      "name": "Francophone Community Grants",
+      "name": "Francophone Affairs → Francophone Affairs → Francophone Community Grants",
       "amount": 0.002000239
     },
     {
-      "name": "Other",
+      "name": "Francophone Affairs → Francophone Affairs → Other",
       "amount": 0.00106588
     }
   ],
   "spending_data": {
     "name": "Francophone Affairs → Francophone Affairs",
+    "amount": 0.008025964,
     "children": [
       {
-        "name": "Operations",
+        "name": "Francophone Affairs → Francophone Affairs → Operations",
         "amount": 0.004959844999999999
       },
       {
-        "name": "Francophone Community Grants",
+        "name": "Francophone Affairs → Francophone Affairs → Francophone Community Grants",
         "amount": 0.002000239
       },
       {
-        "name": "Other",
+        "name": "Francophone Affairs → Francophone Affairs → Other",
         "amount": 0.00106588
       }
     ]
-  }
+  },
+  "generatedAt": "2025-07-09T21:53:36.586Z"
 }

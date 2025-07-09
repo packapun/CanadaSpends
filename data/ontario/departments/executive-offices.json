@@ -1,0 +1,62 @@
+{
+  "name": "Executive Offices",
+  "totalSpendingFormatted": "$67M",
+  "percentage": 0.03243236145545881,
+  "percentageFormatted": "0.0%",
+  "categories": [
+    {
+      "name": "Cabinet Office → Cabinet Office → Operations",
+      "amount": 0.0638
+    },
+    {
+      "name": "Office of the Premier → Office of the Premier → Operations",
+      "amount": 0.0024
+    },
+    {
+      "name": "Office of the Lieutenant Governor → Office of the Lieutenant Governor → Operations",
+      "amount": 0.0022999999999999995
+    },
+    {
+      "name": "Executive Offices → Unreported",
+      "amount": -0.0014999999999999875
+    }
+  ],
+  "spending_data": {
+    "name": "Executive Offices",
+    "amount": 0.067,
+    "children": [
+      {
+        "name": "Cabinet Office → Cabinet Office",
+        "children": [
+          {
+            "name": "Cabinet Office → Cabinet Office → Operations",
+            "amount": 0.0638
+          }
+        ]
+      },
+      {
+        "name": "Office of the Premier → Office of the Premier",
+        "children": [
+          {
+            "name": "Office of the Premier → Office of the Premier → Operations",
+            "amount": 0.0024
+          }
+        ]
+      },
+      {
+        "name": "Office of the Lieutenant Governor → Office of the Lieutenant Governor",
+        "children": [
+          {
+            "name": "Office of the Lieutenant Governor → Office of the Lieutenant Governor → Operations",
+            "amount": 0.0022999999999999995
+          }
+        ]
+      },
+      {
+        "name": "Executive Offices → Unreported",
+        "amount": -0.0014999999999999875
+      }
+    ]
+  },
+  "generatedAt": "2025-07-09T21:53:36.586Z"
+}

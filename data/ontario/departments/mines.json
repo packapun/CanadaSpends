@@ -1,87 +1,105 @@
 {
   "name": "Mines",
-  "slug": "mines",
-  "totalSpending": 0.5552162800000001,
-  "totalSpendingFormatted": "$0.6B",
-  "percentage": 0.27672975835788577,
+  "totalSpendingFormatted": "$549M",
+  "percentage": 0.2657517378962222,
   "percentageFormatted": "0.3%",
   "categories": [
     {
-      "name": "Operations",
+      "name": "Mines → and Minerals Program → Operations",
       "amount": 0.41937610000000003
     },
     {
-      "name": "Resource Revenue Sharing for Mining",
-      "amount": 0.0420702
-    },
-    {
-      "name": "Indigenous Economic Development",
+      "name": "Mines → and Minerals Program → Indigenous Economic Development",
       "amount": 0.04176066
     },
     {
-      "name": "Focused Flow-Through Share Tax Credit",
+      "name": "Mines → and Minerals Program → Focused Flow-Through Share Tax Credit",
       "amount": 0.023025155
     },
     {
-      "name": "Ontario Junior Exploration Program",
+      "name": "Mines → and Minerals Program → Ontario Junior Exploration Program",
       "amount": 0.011930446
     },
     {
-      "name": "Operations",
-      "amount": 0.007481365999999999
-    },
-    {
-      "name": "Matawa Broadband",
-      "amount": 0.005146015
-    },
-    {
-      "name": "Critical Minerals Innovation Fund",
+      "name": "Mines → and Minerals Program → Critical Minerals Innovation Fund",
       "amount": 0.004242324
     },
     {
-      "name": "Other",
+      "name": "Mines → and Minerals Program → Resource Revenue Sharing for Mining",
+      "amount": 0.0420702
+    },
+    {
+      "name": "Mines → and Minerals Program → Matawa Broadband",
+      "amount": 0.005146015
+    },
+    {
+      "name": "Mines → and Minerals Program → Other",
       "amount": 0.00018401399999999998
+    },
+    {
+      "name": "Mines → Ministry Administration → Operations",
+      "amount": 0.007481365999999999
+    },
+    {
+      "name": "Mines → Unreported",
+      "amount": -0.006216280000000074
     }
   ],
   "spending_data": {
     "name": "Mines",
+    "amount": 0.549,
     "children": [
       {
-        "name": "Operations",
-        "amount": 0.41937610000000003
+        "name": "Mines → and Minerals Program",
+        "children": [
+          {
+            "name": "Mines → and Minerals Program → Operations",
+            "amount": 0.41937610000000003
+          },
+          {
+            "name": "Mines → and Minerals Program → Indigenous Economic Development",
+            "amount": 0.04176066
+          },
+          {
+            "name": "Mines → and Minerals Program → Focused Flow-Through Share Tax Credit",
+            "amount": 0.023025155
+          },
+          {
+            "name": "Mines → and Minerals Program → Ontario Junior Exploration Program",
+            "amount": 0.011930446
+          },
+          {
+            "name": "Mines → and Minerals Program → Critical Minerals Innovation Fund",
+            "amount": 0.004242324
+          },
+          {
+            "name": "Mines → and Minerals Program → Resource Revenue Sharing for Mining",
+            "amount": 0.0420702
+          },
+          {
+            "name": "Mines → and Minerals Program → Matawa Broadband",
+            "amount": 0.005146015
+          },
+          {
+            "name": "Mines → and Minerals Program → Other",
+            "amount": 0.00018401399999999998
+          }
+        ]
       },
       {
-        "name": "Resource Revenue Sharing for Mining",
-        "amount": 0.0420702
+        "name": "Mines → Ministry Administration",
+        "children": [
+          {
+            "name": "Mines → Ministry Administration → Operations",
+            "amount": 0.007481365999999999
+          }
+        ]
       },
       {
-        "name": "Indigenous Economic Development",
-        "amount": 0.04176066
-      },
-      {
-        "name": "Focused Flow-Through Share Tax Credit",
-        "amount": 0.023025155
-      },
-      {
-        "name": "Ontario Junior Exploration Program",
-        "amount": 0.011930446
-      },
-      {
-        "name": "Operations",
-        "amount": 0.007481365999999999
-      },
-      {
-        "name": "Matawa Broadband",
-        "amount": 0.005146015
-      },
-      {
-        "name": "Critical Minerals Innovation Fund",
-        "amount": 0.004242324
-      },
-      {
-        "name": "Other",
-        "amount": 0.00018401399999999998
+        "name": "Mines → Unreported",
+        "amount": -0.006216280000000074
       }
     ]
-  }
+  },
+  "generatedAt": "2025-07-09T21:53:36.588Z"
 }

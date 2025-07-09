@@ -1,103 +1,126 @@
 {
   "name": "Energy",
-  "slug": "energy",
-  "totalSpending": 6.035839838,
-  "totalSpendingFormatted": "$6.0B",
-  "percentage": 3.008370899816987,
-  "percentageFormatted": "3.0%",
+  "totalSpendingFormatted": "$6.3B",
+  "percentage": 3.0568710834510804,
+  "percentageFormatted": "3.1%",
   "categories": [
     {
-      "name": "Comprehensive Electricity Plan",
-      "amount": 3.208576224
-    },
-    {
-      "name": "Ontario Electricity Rebate",
-      "amount": 1.875270466
-    },
-    {
-      "name": "Distribution Rate Protection",
-      "amount": 0.374438079
-    },
-    {
-      "name": "Rural or Remote Rate Protection Program",
-      "amount": 0.25225015
-    },
-    {
-      "name": "Ontario Electricity Support Program",
+      "name": "Energy → Electricity Price Mitigation → Ontario Electricity Support Program",
       "amount": 0.164740417
     },
     {
-      "name": "Fair Hydro Trust Financing Costs",
-      "amount": 0.063712218
+      "name": "Energy → Electricity Price Mitigation → Distribution Rate Protection",
+      "amount": 0.374438079
     },
     {
-      "name": "Northern Ontario Energy Credit",
+      "name": "Energy → Electricity Price Mitigation → Rural or Remote Rate Protection Program",
+      "amount": 0.25225015
+    },
+    {
+      "name": "Energy → Electricity Price Mitigation → Northern Ontario Energy Credit",
       "amount": 0.0291004
     },
     {
-      "name": "On-Reserve First Nations Delivery Credit",
+      "name": "Energy → Electricity Price Mitigation → Ontario Electricity Rebate",
+      "amount": 1.875270466
+    },
+    {
+      "name": "Energy → Electricity Price Mitigation → Comprehensive Electricity Plan",
+      "amount": 3.208576224
+    },
+    {
+      "name": "Energy → Electricity Price Mitigation → Fair Hydro Trust Financing Costs",
+      "amount": 0.063712218
+    },
+    {
+      "name": "Energy → Electricity Price Mitigation → On-Reserve First Nations Delivery Credit",
       "amount": 0.02836866
     },
     {
-      "name": "Operations",
+      "name": "Energy → Development and Management Program → Operations",
       "amount": 0.019876805
     },
     {
-      "name": "Operations",
+      "name": "Energy → Development and Management Program → Energy Support, Engagement and Indigenous Partnership Programs",
+      "amount": 0.006083347
+    },
+    {
+      "name": "Energy → Ministry Administration → Operations",
       "amount": 0.013423071999999998
     },
     {
-      "name": "Energy Support, Engagement and Indigenous Partnership Programs",
-      "amount": 0.006083347
+      "name": "Energy → Unreported",
+      "amount": 0.27916016200000016
     }
   ],
   "spending_data": {
     "name": "Energy",
+    "amount": 6.315,
     "children": [
       {
-        "name": "Comprehensive Electricity Plan",
-        "amount": 3.208576224
+        "name": "Energy → Electricity Price Mitigation",
+        "children": [
+          {
+            "name": "Energy → Electricity Price Mitigation → Ontario Electricity Support Program",
+            "amount": 0.164740417
+          },
+          {
+            "name": "Energy → Electricity Price Mitigation → Distribution Rate Protection",
+            "amount": 0.374438079
+          },
+          {
+            "name": "Energy → Electricity Price Mitigation → Rural or Remote Rate Protection Program",
+            "amount": 0.25225015
+          },
+          {
+            "name": "Energy → Electricity Price Mitigation → Northern Ontario Energy Credit",
+            "amount": 0.0291004
+          },
+          {
+            "name": "Energy → Electricity Price Mitigation → Ontario Electricity Rebate",
+            "amount": 1.875270466
+          },
+          {
+            "name": "Energy → Electricity Price Mitigation → Comprehensive Electricity Plan",
+            "amount": 3.208576224
+          },
+          {
+            "name": "Energy → Electricity Price Mitigation → Fair Hydro Trust Financing Costs",
+            "amount": 0.063712218
+          },
+          {
+            "name": "Energy → Electricity Price Mitigation → On-Reserve First Nations Delivery Credit",
+            "amount": 0.02836866
+          }
+        ]
       },
       {
-        "name": "Ontario Electricity Rebate",
-        "amount": 1.875270466
+        "name": "Energy → Development and Management Program",
+        "children": [
+          {
+            "name": "Energy → Development and Management Program → Operations",
+            "amount": 0.019876805
+          },
+          {
+            "name": "Energy → Development and Management Program → Energy Support, Engagement and Indigenous Partnership Programs",
+            "amount": 0.006083347
+          }
+        ]
       },
       {
-        "name": "Distribution Rate Protection",
-        "amount": 0.374438079
+        "name": "Energy → Ministry Administration",
+        "children": [
+          {
+            "name": "Energy → Ministry Administration → Operations",
+            "amount": 0.013423071999999998
+          }
+        ]
       },
       {
-        "name": "Rural or Remote Rate Protection Program",
-        "amount": 0.25225015
-      },
-      {
-        "name": "Ontario Electricity Support Program",
-        "amount": 0.164740417
-      },
-      {
-        "name": "Fair Hydro Trust Financing Costs",
-        "amount": 0.063712218
-      },
-      {
-        "name": "Northern Ontario Energy Credit",
-        "amount": 0.0291004
-      },
-      {
-        "name": "On-Reserve First Nations Delivery Credit",
-        "amount": 0.02836866
-      },
-      {
-        "name": "Operations",
-        "amount": 0.019876805
-      },
-      {
-        "name": "Operations",
-        "amount": 0.013423071999999998
-      },
-      {
-        "name": "Energy Support, Engagement and Indigenous Partnership Programs",
-        "amount": 0.006083347
+        "name": "Energy → Unreported",
+        "amount": 0.27916016200000016
       }
     ]
-  }
+  },
+  "generatedAt": "2025-07-09T21:53:36.585Z"
 }

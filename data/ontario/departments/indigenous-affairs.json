@@ -1,111 +1,119 @@
 {
   "name": "Indigenous Affairs",
-  "slug": "indigenous-affairs",
-  "totalSpending": 0.14656269400000002,
-  "totalSpendingFormatted": "$0.1B",
-  "percentage": 0.07304947703424827,
+  "totalSpendingFormatted": "$145M",
+  "percentage": 0.07018943897076906,
   "percentageFormatted": "0.1%",
   "categories": [
     {
-      "name": "Operations",
+      "name": "Indigenous Affairs → Operations",
       "amount": 0.04098142200000001
     },
     {
-      "name": "Support for Indian Residential School Burial Sites",
-      "amount": 0.031388447
-    },
-    {
-      "name": "Land Claim Settlements",
-      "amount": 0.017150381
-    },
-    {
-      "name": "Support for Community Negotiations Fund",
-      "amount": 0.012345701
-    },
-    {
-      "name": "New Relationship Fund",
-      "amount": 0.0118745
-    },
-    {
-      "name": "Indigenous Economic Development Fund",
-      "amount": 0.011685164
-    },
-    {
-      "name": "Policy Development Engagement Fund",
-      "amount": 0.007332113
-    },
-    {
-      "name": "Participation Fund",
-      "amount": 0.00509149
-    },
-    {
-      "name": "Indigenous Community Capital Grants Program",
-      "amount": 0.004856111
-    },
-    {
-      "name": "Mercury Disability Fund – Trustee, English and Wabigoon River Systems Mercury Contamination Settlement Agreement Act, 1986",
-      "amount": 0.0018855
-    },
-    {
-      "name": "Ontario Indigenous Representative Organization Fund",
+      "name": "Indigenous Affairs → Ontario Indigenous Representative Organization Fund",
       "amount": 0.0018749
     },
     {
-      "name": "Other",
+      "name": "Indigenous Affairs → Indigenous Economic Development Fund",
+      "amount": 0.011685164
+    },
+    {
+      "name": "Indigenous Affairs → Participation Fund",
+      "amount": 0.00509149
+    },
+    {
+      "name": "Indigenous Affairs → Support for Community Negotiations Fund",
+      "amount": 0.012345701
+    },
+    {
+      "name": "Indigenous Affairs → Policy Development Engagement Fund",
+      "amount": 0.007332113
+    },
+    {
+      "name": "Indigenous Affairs → New Relationship Fund",
+      "amount": 0.0118745
+    },
+    {
+      "name": "Indigenous Affairs → Support for Indian Residential School Burial Sites",
+      "amount": 0.031388447
+    },
+    {
+      "name": "Indigenous Affairs → Land Claim Settlements",
+      "amount": 0.017150381
+    },
+    {
+      "name": "Indigenous Affairs → Mercury Disability Fund – Trustee, English and Wabigoon River Systems Mercury Contamination Settlement Agreement Act, 1986",
+      "amount": 0.0018855
+    },
+    {
+      "name": "Indigenous Affairs → Indigenous Community Capital Grants Program",
+      "amount": 0.004856111
+    },
+    {
+      "name": "Indigenous Affairs → Other",
       "amount": 0.000096965
+    },
+    {
+      "name": "Indigenous Affairs → Unreported",
+      "amount": -0.0015626940000000311
     }
   ],
   "spending_data": {
     "name": "Indigenous Affairs",
+    "amount": 0.145,
     "children": [
       {
-        "name": "Operations",
+        "name": "Indigenous Affairs → Operations",
         "amount": 0.04098142200000001
       },
       {
-        "name": "Support for Indian Residential School Burial Sites",
-        "amount": 0.031388447
-      },
-      {
-        "name": "Land Claim Settlements",
-        "amount": 0.017150381
-      },
-      {
-        "name": "Support for Community Negotiations Fund",
-        "amount": 0.012345701
-      },
-      {
-        "name": "New Relationship Fund",
-        "amount": 0.0118745
-      },
-      {
-        "name": "Indigenous Economic Development Fund",
-        "amount": 0.011685164
-      },
-      {
-        "name": "Policy Development Engagement Fund",
-        "amount": 0.007332113
-      },
-      {
-        "name": "Participation Fund",
-        "amount": 0.00509149
-      },
-      {
-        "name": "Indigenous Community Capital Grants Program",
-        "amount": 0.004856111
-      },
-      {
-        "name": "Mercury Disability Fund – Trustee, English and Wabigoon River Systems Mercury Contamination Settlement Agreement Act, 1986",
-        "amount": 0.0018855
-      },
-      {
-        "name": "Ontario Indigenous Representative Organization Fund",
+        "name": "Indigenous Affairs → Ontario Indigenous Representative Organization Fund",
         "amount": 0.0018749
       },
       {
-        "name": "Other",
+        "name": "Indigenous Affairs → Indigenous Economic Development Fund",
+        "amount": 0.011685164
+      },
+      {
+        "name": "Indigenous Affairs → Participation Fund",
+        "amount": 0.00509149
+      },
+      {
+        "name": "Indigenous Affairs → Support for Community Negotiations Fund",
+        "amount": 0.012345701
+      },
+      {
+        "name": "Indigenous Affairs → Policy Development Engagement Fund",
+        "amount": 0.007332113
+      },
+      {
+        "name": "Indigenous Affairs → New Relationship Fund",
+        "amount": 0.0118745
+      },
+      {
+        "name": "Indigenous Affairs → Support for Indian Residential School Burial Sites",
+        "amount": 0.031388447
+      },
+      {
+        "name": "Indigenous Affairs → Land Claim Settlements",
+        "amount": 0.017150381
+      },
+      {
+        "name": "Indigenous Affairs → Mercury Disability Fund – Trustee, English and Wabigoon River Systems Mercury Contamination Settlement Agreement Act, 1986",
+        "amount": 0.0018855
+      },
+      {
+        "name": "Indigenous Affairs → Indigenous Community Capital Grants Program",
+        "amount": 0.004856111
+      },
+      {
+        "name": "Indigenous Affairs → Other",
         "amount": 0.000096965
+      },
+      {
+        "name": "Indigenous Affairs → Unreported",
+        "amount": -0.0015626940000000311
       }
     ]
-  }
+  },
+  "generatedAt": "2025-07-09T21:53:36.587Z"
 }
