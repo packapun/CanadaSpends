@@ -66,7 +66,7 @@ export default async function ProvinceIndex({
   const totalDebt = 552.1; // in billions of dollars
   const totalDebtFormatted = `$${totalDebt.toFixed(1)}B`;
 
-  const interestOnDebt = 14.26; // in billions of dollars (Interest on Ontario Securities)
+  const interestOnDebt = 11.376; // in billions of dollars (Interest on Ontario Securities)
   const interestOnDebtFormatted = `$${interestOnDebt.toFixed(1)}B`;
 
   return (
