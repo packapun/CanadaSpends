@@ -1,135 +1,158 @@
 {
   "name": "Colleges and Universities",
-  "slug": "colleges-and-universities",
-  "totalSpending": 7.115984565000001,
-  "totalSpendingFormatted": "$7.1B",
-  "percentage": 3.5467344169931305,
-  "percentageFormatted": "3.5%",
+  "totalSpendingFormatted": "$13.2B",
+  "percentage": 6.406601550193989,
+  "percentageFormatted": "6.4%",
   "categories": [
     {
-      "name": "Grants for University Operating Costs",
-      "amount": 3.804397352
-    },
-    {
-      "name": "Grants for College Operating Costs",
-      "amount": 1.344474492
-    },
-    {
-      "name": "Student Financial Assistance Programs",
-      "amount": 1.316184242
-    },
-    {
-      "name": "Grants for Research Operating Costs",
-      "amount": 0.172613407
-    },
-    {
-      "name": "Capital Grants - Universities",
-      "amount": 0.111071512
-    },
-    {
-      "name": "Ontario Research Fund - Research Infrastructure",
-      "amount": 0.0995991
-    },
-    {
-      "name": "Capital Grants - Colleges",
-      "amount": 0.095892516
-    },
-    {
-      "name": "Operations",
-      "amount": 0.08697249800000001
-    },
-    {
-      "name": "Grants for Indigenous Institute Operating Costs",
-      "amount": 0.033828767
-    },
-    {
-      "name": "Operations",
+      "name": "Colleges and Universities → Ministry Administration → Operations",
       "amount": 0.015886521000000004
     },
     {
-      "name": "Postsecondary Transformation",
+      "name": "Colleges and Universities → Postsecondary Education → Operations",
+      "amount": 0.08697249800000001
+    },
+    {
+      "name": "Colleges and Universities → Postsecondary Education → Grants for Indigenous Institute Operating Costs",
+      "amount": 0.033828767
+    },
+    {
+      "name": "Colleges and Universities → Postsecondary Education → Grants for College Operating Costs",
+      "amount": 1.344474492
+    },
+    {
+      "name": "Colleges and Universities → Postsecondary Education → Grants for University Operating Costs",
+      "amount": 3.804397352
+    },
+    {
+      "name": "Colleges and Universities → Postsecondary Education → Postsecondary Transformation",
       "amount": 0.0136
     },
     {
-      "name": "Operations",
-      "amount": 0.00827326
+      "name": "Colleges and Universities → Postsecondary Education → Student Financial Assistance Programs",
+      "amount": 1.316184242
     },
     {
-      "name": "Intellectual Property Ontario",
-      "amount": 0.0076823
+      "name": "Colleges and Universities → Postsecondary Education → Capital Grants - Colleges",
+      "amount": 0.095892516
     },
     {
-      "name": "Capital Grants – Indigenous Institutes",
+      "name": "Colleges and Universities → Postsecondary Education → Capital Grants - Universities",
+      "amount": 0.111071512
+    },
+    {
+      "name": "Colleges and Universities → Postsecondary Education → Capital Grants – Indigenous Institutes",
       "amount": 0.0046999
     },
     {
-      "name": "Other",
+      "name": "Colleges and Universities → Postsecondary Education → Other",
       "amount": 0.000808698
+    },
+    {
+      "name": "Colleges and Universities → Research → Operations",
+      "amount": 0.00827326
+    },
+    {
+      "name": "Colleges and Universities → Research → Intellectual Property Ontario",
+      "amount": 0.0076823
+    },
+    {
+      "name": "Colleges and Universities → Research → Grants for Research Operating Costs",
+      "amount": 0.172613407
+    },
+    {
+      "name": "Colleges and Universities → Research → Ontario Research Fund - Research Infrastructure",
+      "amount": 0.0995991
+    },
+    {
+      "name": "Colleges and Universities → Unreported",
+      "amount": 6.119015434999999
     }
   ],
   "spending_data": {
     "name": "Colleges and Universities",
+    "amount": 13.235,
     "children": [
       {
-        "name": "Grants for University Operating Costs",
-        "amount": 3.804397352
+        "name": "Colleges and Universities → Ministry Administration",
+        "children": [
+          {
+            "name": "Colleges and Universities → Ministry Administration → Operations",
+            "amount": 0.015886521000000004
+          }
+        ]
       },
       {
-        "name": "Grants for College Operating Costs",
-        "amount": 1.344474492
+        "name": "Colleges and Universities → Postsecondary Education",
+        "children": [
+          {
+            "name": "Colleges and Universities → Postsecondary Education → Operations",
+            "amount": 0.08697249800000001
+          },
+          {
+            "name": "Colleges and Universities → Postsecondary Education → Grants for Indigenous Institute Operating Costs",
+            "amount": 0.033828767
+          },
+          {
+            "name": "Colleges and Universities → Postsecondary Education → Grants for College Operating Costs",
+            "amount": 1.344474492
+          },
+          {
+            "name": "Colleges and Universities → Postsecondary Education → Grants for University Operating Costs",
+            "amount": 3.804397352
+          },
+          {
+            "name": "Colleges and Universities → Postsecondary Education → Postsecondary Transformation",
+            "amount": 0.0136
+          },
+          {
+            "name": "Colleges and Universities → Postsecondary Education → Student Financial Assistance Programs",
+            "amount": 1.316184242
+          },
+          {
+            "name": "Colleges and Universities → Postsecondary Education → Capital Grants - Colleges",
+            "amount": 0.095892516
+          },
+          {
+            "name": "Colleges and Universities → Postsecondary Education → Capital Grants - Universities",
+            "amount": 0.111071512
+          },
+          {
+            "name": "Colleges and Universities → Postsecondary Education → Capital Grants – Indigenous Institutes",
+            "amount": 0.0046999
+          },
+          {
+            "name": "Colleges and Universities → Postsecondary Education → Other",
+            "amount": 0.000808698
+          }
+        ]
       },
       {
-        "name": "Student Financial Assistance Programs",
-        "amount": 1.316184242
+        "name": "Colleges and Universities → Research",
+        "children": [
+          {
+            "name": "Colleges and Universities → Research → Operations",
+            "amount": 0.00827326
+          },
+          {
+            "name": "Colleges and Universities → Research → Intellectual Property Ontario",
+            "amount": 0.0076823
+          },
+          {
+            "name": "Colleges and Universities → Research → Grants for Research Operating Costs",
+            "amount": 0.172613407
+          },
+          {
+            "name": "Colleges and Universities → Research → Ontario Research Fund - Research Infrastructure",
+            "amount": 0.0995991
+          }
+        ]
       },
       {
-        "name": "Grants for Research Operating Costs",
-        "amount": 0.172613407
-      },
-      {
-        "name": "Capital Grants - Universities",
-        "amount": 0.111071512
-      },
-      {
-        "name": "Ontario Research Fund - Research Infrastructure",
-        "amount": 0.0995991
-      },
-      {
-        "name": "Capital Grants - Colleges",
-        "amount": 0.095892516
-      },
-      {
-        "name": "Operations",
-        "amount": 0.08697249800000001
-      },
-      {
-        "name": "Grants for Indigenous Institute Operating Costs",
-        "amount": 0.033828767
-      },
-      {
-        "name": "Operations",
-        "amount": 0.015886521000000004
-      },
-      {
-        "name": "Postsecondary Transformation",
-        "amount": 0.0136
-      },
-      {
-        "name": "Operations",
-        "amount": 0.00827326
-      },
-      {
-        "name": "Intellectual Property Ontario",
-        "amount": 0.0076823
-      },
-      {
-        "name": "Capital Grants – Indigenous Institutes",
-        "amount": 0.0046999
-      },
-      {
-        "name": "Other",
-        "amount": 0.000808698
+        "name": "Colleges and Universities → Unreported",
+        "amount": 6.119015434999999
       }
     ]
-  }
+  },
+  "generatedAt": "2025-07-09T21:53:36.584Z"
 }

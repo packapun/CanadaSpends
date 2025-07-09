@@ -1,47 +1,65 @@
 {
   "name": "Long-Term Care",
-  "slug": "long-term-care",
-  "totalSpending": 7.892942800999999,
-  "totalSpendingFormatted": "$7.9B",
-  "percentage": 3.9339843458000607,
-  "percentageFormatted": "3.9%",
+  "totalSpendingFormatted": "$2.6B",
+  "percentage": 1.2406588419453868,
+  "percentageFormatted": "1.2%",
   "categories": [
     {
-      "name": "Long-Term Care Homes – Operations",
-      "amount": 7.774612836
-    },
-    {
-      "name": "Operations",
+      "name": "Long-Term Care → Homes Program → Operations",
       "amount": 0.080617971
     },
     {
-      "name": "Long-Term Care Homes - Capital",
+      "name": "Long-Term Care → Homes Program → Long-Term Care Homes – Operations",
+      "amount": 7.774612836
+    },
+    {
+      "name": "Long-Term Care → Homes Program → Long-Term Care Homes - Capital",
       "amount": 0.0289977
     },
     {
-      "name": "Operations",
+      "name": "Long-Term Care → Ministry Administration → Operations",
       "amount": 0.008714294
+    },
+    {
+      "name": "Long-Term Care → Unreported",
+      "amount": -5.329942801
     }
   ],
   "spending_data": {
     "name": "Long-Term Care",
+    "amount": 2.5629999999999997,
     "children": [
       {
-        "name": "Long-Term Care Homes – Operations",
-        "amount": 7.774612836
+        "name": "Long-Term Care → Homes Program",
+        "children": [
+          {
+            "name": "Long-Term Care → Homes Program → Operations",
+            "amount": 0.080617971
+          },
+          {
+            "name": "Long-Term Care → Homes Program → Long-Term Care Homes – Operations",
+            "amount": 7.774612836
+          },
+          {
+            "name": "Long-Term Care → Homes Program → Long-Term Care Homes - Capital",
+            "amount": 0.0289977
+          }
+        ]
       },
       {
-        "name": "Operations",
-        "amount": 0.080617971
+        "name": "Long-Term Care → Ministry Administration",
+        "children": [
+          {
+            "name": "Long-Term Care → Ministry Administration → Operations",
+            "amount": 0.008714294
+          }
+        ]
       },
       {
-        "name": "Long-Term Care Homes - Capital",
-        "amount": 0.0289977
-      },
-      {
-        "name": "Operations",
-        "amount": 0.008714294
+        "name": "Long-Term Care → Unreported",
+        "amount": -5.329942801
       }
     ]
-  }
+  },
+  "generatedAt": "2025-07-09T21:53:36.588Z"
 }

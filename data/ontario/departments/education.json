@@ -1,207 +1,235 @@
 {
   "name": "Education",
-  "slug": "education",
-  "totalSpending": 39.73311054599999,
-  "totalSpendingFormatted": "$39.7B",
-  "percentage": 19.803695381918086,
-  "percentageFormatted": "19.8%",
+  "totalSpendingFormatted": "$38.8B",
+  "percentage": 18.786566389348597,
+  "percentageFormatted": "18.8%",
   "categories": [
     {
-      "name": "School Board Operating Grants",
-      "amount": 23.137217931
-    },
-    {
-      "name": "Education Property Tax Non-Cash Expense",
-      "amount": 7.172141101
-    },
-    {
-      "name": "Child Care and Early Years",
-      "amount": 3.880562481
-    },
-    {
-      "name": "School Board Capital Grants",
-      "amount": 2.050308328
-    },
-    {
-      "name": "Government Costs, the Teachers' Pension Act",
-      "amount": 1.652368862
-    },
-    {
-      "name": "Priorities and Partnerships Funding - School Boards",
-      "amount": 0.603415442
-    },
-    {
-      "name": "Childcare Access and Relief from Expenses Tax Credit",
-      "amount": 0.345602453
-    },
-    {
-      "name": "Operations",
-      "amount": 0.198498889
-    },
-    {
-      "name": "Priorities and Partnerships Funding - Third Parties",
-      "amount": 0.115410121
-    },
-    {
-      "name": "Child Care and Early Years Capital",
-      "amount": 0.109250671
-    },
-    {
-      "name": "School Board – Capital funding for child care",
-      "amount": 0.094430731
-    },
-    {
-      "name": "Investing in Canada Infrastructure Program (ICIP)",
-      "amount": 0.070606027
-    },
-    {
-      "name": "Official Languages Projects",
-      "amount": 0.067968642
-    },
-    {
-      "name": "Operations",
-      "amount": 0.058106948000000005
-    },
-    {
-      "name": "Ontario Educational Communications Authority",
-      "amount": 0.0491068
-    },
-    {
-      "name": "Office des télécommunications éducatives de langue française de l'Ontario",
-      "amount": 0.0298397
-    },
-    {
-      "name": "Operations",
-      "amount": 0.028809048999999996
-    },
-    {
-      "name": "Operations",
+      "name": "Education → Child Care and Early Yearss → Operations",
       "amount": 0.0279356
     },
     {
-      "name": "Education Quality and Accountability Office",
+      "name": "Education → Child Care and Early Yearss → Childcare Access and Relief from Expenses Tax Credit",
+      "amount": 0.345602453
+    },
+    {
+      "name": "Education → Child Care and Early Yearss → Child Care and Early Years",
+      "amount": 3.880562481
+    },
+    {
+      "name": "Education → Child Care and Early Yearss → Child Care and Early Years Capital",
+      "amount": 0.109250671
+    },
+    {
+      "name": "Education → Community Services Information and Information Technology Cluster → Operations",
+      "amount": 0.058106948000000005
+    },
+    {
+      "name": "Education → Elementary and Secondary  Program → Operations",
+      "amount": 0.198498889
+    },
+    {
+      "name": "Education → Elementary and Secondary  Program → Priorities and Partnerships Funding - School Boards",
+      "amount": 0.603415442
+    },
+    {
+      "name": "Education → Elementary and Secondary  Program → Priorities and Partnerships Funding - Third Parties",
+      "amount": 0.115410121
+    },
+    {
+      "name": "Education → Elementary and Secondary  Program → School Board Operating Grants",
+      "amount": 23.137217931
+    },
+    {
+      "name": "Education → Elementary and Secondary  Program → Education Property Tax Non-Cash Expense",
+      "amount": 7.172141101
+    },
+    {
+      "name": "Education → Elementary and Secondary  Program → Official Languages Projects",
+      "amount": 0.067968642
+    },
+    {
+      "name": "Education → Elementary and Secondary  Program → Education Quality and Accountability Office",
       "amount": 0.026426164
     },
     {
-      "name": "Early Learning Program",
-      "amount": 0.009001254
-    },
-    {
-      "name": "Provincial Benefits Trust",
+      "name": "Education → Elementary and Secondary  Program → Provincial Benefits Trust",
       "amount": 0.0018
     },
     {
-      "name": "Partner Sustainability Grants",
+      "name": "Education → Elementary and Secondary  Program → Partner Sustainability Grants",
       "amount": 0.001658594
     },
     {
-      "name": "Ontario Education Communications Authority - Capital",
+      "name": "Education → Elementary and Secondary  Program → Office des télécommunications éducatives de langue française de l'Ontario",
+      "amount": 0.0298397
+    },
+    {
+      "name": "Education → Elementary and Secondary  Program → Ontario Educational Communications Authority",
+      "amount": 0.0491068
+    },
+    {
+      "name": "Education → Elementary and Secondary  Program → Investing in Canada Infrastructure Program (ICIP)",
+      "amount": 0.070606027
+    },
+    {
+      "name": "Education → Elementary and Secondary  Program → School Board Capital Grants",
+      "amount": 2.050308328
+    },
+    {
+      "name": "Education → Elementary and Secondary  Program → Early Learning Program",
+      "amount": 0.009001254
+    },
+    {
+      "name": "Education → Elementary and Secondary  Program → School Board – Capital funding for child care",
+      "amount": 0.094430731
+    },
+    {
+      "name": "Education → Elementary and Secondary  Program → Ontario Education Communications Authority - Capital",
       "amount": 0.001536
     },
     {
-      "name": "Other",
+      "name": "Education → Elementary and Secondary  Program → Government Costs, the Teachers' Pension Act",
+      "amount": 1.652368862
+    },
+    {
+      "name": "Education → Elementary and Secondary  Program → Other",
       "amount": 0.001108758
+    },
+    {
+      "name": "Education → Ministry Administration → Operations",
+      "amount": 0.028809048999999996
+    },
+    {
+      "name": "Education → Unreported",
+      "amount": -0.9231105460000038
     }
   ],
   "spending_data": {
     "name": "Education",
+    "amount": 38.80999999999999,
     "children": [
       {
-        "name": "School Board Operating Grants",
-        "amount": 23.137217931
+        "name": "Education → Child Care and Early Yearss",
+        "children": [
+          {
+            "name": "Education → Child Care and Early Yearss → Operations",
+            "amount": 0.0279356
+          },
+          {
+            "name": "Education → Child Care and Early Yearss → Childcare Access and Relief from Expenses Tax Credit",
+            "amount": 0.345602453
+          },
+          {
+            "name": "Education → Child Care and Early Yearss → Child Care and Early Years",
+            "amount": 3.880562481
+          },
+          {
+            "name": "Education → Child Care and Early Yearss → Child Care and Early Years Capital",
+            "amount": 0.109250671
+          }
+        ]
       },
       {
-        "name": "Education Property Tax Non-Cash Expense",
-        "amount": 7.172141101
+        "name": "Education → Community Services Information and Information Technology Cluster",
+        "children": [
+          {
+            "name": "Education → Community Services Information and Information Technology Cluster → Operations",
+            "amount": 0.058106948000000005
+          }
+        ]
       },
       {
-        "name": "Child Care and Early Years",
-        "amount": 3.880562481
+        "name": "Education → Elementary and Secondary  Program",
+        "children": [
+          {
+            "name": "Education → Elementary and Secondary  Program → Operations",
+            "amount": 0.198498889
+          },
+          {
+            "name": "Education → Elementary and Secondary  Program → Priorities and Partnerships Funding - School Boards",
+            "amount": 0.603415442
+          },
+          {
+            "name": "Education → Elementary and Secondary  Program → Priorities and Partnerships Funding - Third Parties",
+            "amount": 0.115410121
+          },
+          {
+            "name": "Education → Elementary and Secondary  Program → School Board Operating Grants",
+            "amount": 23.137217931
+          },
+          {
+            "name": "Education → Elementary and Secondary  Program → Education Property Tax Non-Cash Expense",
+            "amount": 7.172141101
+          },
+          {
+            "name": "Education → Elementary and Secondary  Program → Official Languages Projects",
+            "amount": 0.067968642
+          },
+          {
+            "name": "Education → Elementary and Secondary  Program → Education Quality and Accountability Office",
+            "amount": 0.026426164
+          },
+          {
+            "name": "Education → Elementary and Secondary  Program → Provincial Benefits Trust",
+            "amount": 0.0018
+          },
+          {
+            "name": "Education → Elementary and Secondary  Program → Partner Sustainability Grants",
+            "amount": 0.001658594
+          },
+          {
+            "name": "Education → Elementary and Secondary  Program → Office des télécommunications éducatives de langue française de l'Ontario",
+            "amount": 0.0298397
+          },
+          {
+            "name": "Education → Elementary and Secondary  Program → Ontario Educational Communications Authority",
+            "amount": 0.0491068
+          },
+          {
+            "name": "Education → Elementary and Secondary  Program → Investing in Canada Infrastructure Program (ICIP)",
+            "amount": 0.070606027
+          },
+          {
+            "name": "Education → Elementary and Secondary  Program → School Board Capital Grants",
+            "amount": 2.050308328
+          },
+          {
+            "name": "Education → Elementary and Secondary  Program → Early Learning Program",
+            "amount": 0.009001254
+          },
+          {
+            "name": "Education → Elementary and Secondary  Program → School Board – Capital funding for child care",
+            "amount": 0.094430731
+          },
+          {
+            "name": "Education → Elementary and Secondary  Program → Ontario Education Communications Authority - Capital",
+            "amount": 0.001536
+          },
+          {
+            "name": "Education → Elementary and Secondary  Program → Government Costs, the Teachers' Pension Act",
+            "amount": 1.652368862
+          },
+          {
+            "name": "Education → Elementary and Secondary  Program → Other",
+            "amount": 0.001108758
+          }
+        ]
       },
       {
-        "name": "School Board Capital Grants",
-        "amount": 2.050308328
+        "name": "Education → Ministry Administration",
+        "children": [
+          {
+            "name": "Education → Ministry Administration → Operations",
+            "amount": 0.028809048999999996
+          }
+        ]
       },
       {
-        "name": "Government Costs, the Teachers' Pension Act",
-        "amount": 1.652368862
-      },
-      {
-        "name": "Priorities and Partnerships Funding - School Boards",
-        "amount": 0.603415442
-      },
-      {
-        "name": "Childcare Access and Relief from Expenses Tax Credit",
-        "amount": 0.345602453
-      },
-      {
-        "name": "Operations",
-        "amount": 0.198498889
-      },
-      {
-        "name": "Priorities and Partnerships Funding - Third Parties",
-        "amount": 0.115410121
-      },
-      {
-        "name": "Child Care and Early Years Capital",
-        "amount": 0.109250671
-      },
-      {
-        "name": "School Board – Capital funding for child care",
-        "amount": 0.094430731
-      },
-      {
-        "name": "Investing in Canada Infrastructure Program (ICIP)",
-        "amount": 0.070606027
-      },
-      {
-        "name": "Official Languages Projects",
-        "amount": 0.067968642
-      },
-      {
-        "name": "Operations",
-        "amount": 0.058106948000000005
-      },
-      {
-        "name": "Ontario Educational Communications Authority",
-        "amount": 0.0491068
-      },
-      {
-        "name": "Office des télécommunications éducatives de langue française de l'Ontario",
-        "amount": 0.0298397
-      },
-      {
-        "name": "Operations",
-        "amount": 0.028809048999999996
-      },
-      {
-        "name": "Operations",
-        "amount": 0.0279356
-      },
-      {
-        "name": "Education Quality and Accountability Office",
-        "amount": 0.026426164
-      },
-      {
-        "name": "Early Learning Program",
-        "amount": 0.009001254
-      },
-      {
-        "name": "Provincial Benefits Trust",
-        "amount": 0.0018
-      },
-      {
-        "name": "Partner Sustainability Grants",
-        "amount": 0.001658594
-      },
-      {
-        "name": "Ontario Education Communications Authority - Capital",
-        "amount": 0.001536
-      },
-      {
-        "name": "Other",
-        "amount": 0.001108758
+        "name": "Education → Unreported",
+        "amount": -0.9231105460000038
       }
     ]
-  }
+  },
+  "generatedAt": "2025-07-09T21:53:36.585Z"
 }

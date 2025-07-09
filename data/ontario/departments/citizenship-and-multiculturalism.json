@@ -1,71 +1,86 @@
 {
   "name": "Citizenship and Multiculturalism",
-  "slug": "citizenship-and-multiculturalism",
-  "totalSpending": 0.08238444499999999,
-  "totalSpendingFormatted": "$0.1B",
-  "percentage": 0.041061885932628855,
+  "totalSpendingFormatted": "$82M",
+  "percentage": 0.0398794343066771,
   "percentageFormatted": "0.0%",
   "categories": [
     {
-      "name": "Anti-Racism Initiatives",
-      "amount": 0.03264428
-    },
-    {
-      "name": "Youth Action Plan",
-      "amount": 0.020394808
-    },
-    {
-      "name": "Operations",
-      "amount": 0.011674129
-    },
-    {
-      "name": "Operations",
+      "name": "Citizenship and Multiculturalism → Anti-racism Directorate → Operations",
       "amount": 0.008511185000000001
     },
     {
-      "name": "Operations",
-      "amount": 0.004187038
+      "name": "Citizenship and Multiculturalism → Anti-racism Directorate → Anti-Racism Initiatives",
+      "amount": 0.03264428
     },
     {
-      "name": "Ontario Heritage Trust",
+      "name": "Citizenship and Multiculturalism → Citizenship, Inclusion and Heritage → Operations",
+      "amount": 0.011674129
+    },
+    {
+      "name": "Citizenship and Multiculturalism → Citizenship, Inclusion and Heritage → Youth Action Plan",
+      "amount": 0.020394808
+    },
+    {
+      "name": "Citizenship and Multiculturalism → Citizenship, Inclusion and Heritage → Ontario Heritage Trust",
       "amount": 0.0038293
     },
     {
-      "name": "Heritage Sector Support",
+      "name": "Citizenship and Multiculturalism → Citizenship, Inclusion and Heritage → Heritage Sector Support",
       "amount": 0.001143705
+    },
+    {
+      "name": "Citizenship and Multiculturalism → Ministry Administration → Operations",
+      "amount": 0.004187038
     }
   ],
   "spending_data": {
     "name": "Citizenship and Multiculturalism",
+    "amount": 0.08238444499999999,
     "children": [
       {
-        "name": "Anti-Racism Initiatives",
-        "amount": 0.03264428
+        "name": "Citizenship and Multiculturalism → Anti-racism Directorate",
+        "children": [
+          {
+            "name": "Citizenship and Multiculturalism → Anti-racism Directorate → Operations",
+            "amount": 0.008511185000000001
+          },
+          {
+            "name": "Citizenship and Multiculturalism → Anti-racism Directorate → Anti-Racism Initiatives",
+            "amount": 0.03264428
+          }
+        ]
       },
       {
-        "name": "Youth Action Plan",
-        "amount": 0.020394808
+        "name": "Citizenship and Multiculturalism → Citizenship, Inclusion and Heritage",
+        "children": [
+          {
+            "name": "Citizenship and Multiculturalism → Citizenship, Inclusion and Heritage → Operations",
+            "amount": 0.011674129
+          },
+          {
+            "name": "Citizenship and Multiculturalism → Citizenship, Inclusion and Heritage → Youth Action Plan",
+            "amount": 0.020394808
+          },
+          {
+            "name": "Citizenship and Multiculturalism → Citizenship, Inclusion and Heritage → Ontario Heritage Trust",
+            "amount": 0.0038293
+          },
+          {
+            "name": "Citizenship and Multiculturalism → Citizenship, Inclusion and Heritage → Heritage Sector Support",
+            "amount": 0.001143705
+          }
+        ]
       },
       {
-        "name": "Operations",
-        "amount": 0.011674129
-      },
-      {
-        "name": "Operations",
-        "amount": 0.008511185000000001
-      },
-      {
-        "name": "Operations",
-        "amount": 0.004187038
-      },
-      {
-        "name": "Ontario Heritage Trust",
-        "amount": 0.0038293
-      },
-      {
-        "name": "Heritage Sector Support",
-        "amount": 0.001143705
+        "name": "Citizenship and Multiculturalism → Ministry Administration",
+        "children": [
+          {
+            "name": "Citizenship and Multiculturalism → Ministry Administration → Operations",
+            "amount": 0.004187038
+          }
+        ]
       }
     ]
-  }
+  },
+  "generatedAt": "2025-07-09T21:53:36.584Z"
 }

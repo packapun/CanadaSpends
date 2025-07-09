@@ -1,0 +1,91 @@
+{
+  "name": "Board of Internal Economy",
+  "totalSpendingFormatted": "$299M",
+  "percentage": 0.1447354638086893,
+  "percentageFormatted": "0.1%",
+  "categories": [
+    {
+      "name": "Office of the Assembly → Commission(er)'s",
+      "amount": 0.03479259762123495
+    },
+    {
+      "name": "Office of the Assembly → Office of the Assembly",
+      "amount": 0.16090740237876505
+    },
+    {
+      "name": "Office of the Chief Electoral Officer → Office of the Chief Electoral Officer → Operations",
+      "amount": 0.0657
+    },
+    {
+      "name": "Ombudsman Ontario → Ombudsman Ontario → Operations",
+      "amount": 0.0282
+    },
+    {
+      "name": "Office of the Auditor General → Office of the Auditor General → Operations",
+      "amount": 0.02668798591382143
+    },
+    {
+      "name": "Office of the Auditor General → Office of the Auditor General → Other",
+      "amount": 0.000012014086178570042
+    },
+    {
+      "name": "Board of Internal Economy → Unreported",
+      "amount": -0.017299999999999982
+    }
+  ],
+  "spending_data": {
+    "name": "Board of Internal Economy",
+    "amount": 0.299,
+    "children": [
+      {
+        "name": "Office of the Assembly",
+        "children": [
+          {
+            "name": "Office of the Assembly → Commission(er)'s",
+            "amount": 0.03479259762123495
+          },
+          {
+            "name": "Office of the Assembly → Office of the Assembly",
+            "amount": 0.16090740237876505
+          }
+        ]
+      },
+      {
+        "name": "Office of the Chief Electoral Officer → Office of the Chief Electoral Officer",
+        "children": [
+          {
+            "name": "Office of the Chief Electoral Officer → Office of the Chief Electoral Officer → Operations",
+            "amount": 0.0657
+          }
+        ]
+      },
+      {
+        "name": "Ombudsman Ontario → Ombudsman Ontario",
+        "children": [
+          {
+            "name": "Ombudsman Ontario → Ombudsman Ontario → Operations",
+            "amount": 0.0282
+          }
+        ]
+      },
+      {
+        "name": "Office of the Auditor General → Office of the Auditor General",
+        "children": [
+          {
+            "name": "Office of the Auditor General → Office of the Auditor General → Operations",
+            "amount": 0.02668798591382143
+          },
+          {
+            "name": "Office of the Auditor General → Office of the Auditor General → Other",
+            "amount": 0.000012014086178570042
+          }
+        ]
+      },
+      {
+        "name": "Board of Internal Economy → Unreported",
+        "amount": -0.017299999999999982
+      }
+    ]
+  },
+  "generatedAt": "2025-07-09T21:53:36.580Z"
+}
