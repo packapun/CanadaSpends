@@ -101,6 +101,12 @@ export const MainLayout = ({ children }: { children: React.ReactNode }) => {
                 </DropdownMenu.Portal>
               </DropdownMenu.Root>
               <NavLink
+                href={`/${i18n.locale}/tax-calculator`}
+                active={pathname === `/${i18n.locale}/tax-calculator`}
+              >
+                <Trans>Tax Calculator</Trans>
+              </NavLink>
+              <NavLink
                 href={`/${i18n.locale}/search`}
                 active={pathname === `/${i18n.locale}/search`}
               >
@@ -162,6 +168,12 @@ export const MainLayout = ({ children }: { children: React.ReactNode }) => {
               <span className="pl-4 inline-block">
                 <Trans>Ontario</Trans>
               </span>
+            </MobileNavLink>
+            <MobileNavLink
+              href={`/${i18n.locale}/tax-calculator`}
+              active={pathname === `/${i18n.locale}/tax-calculator`}
+            >
+              <Trans>Tax Calculator</Trans>
             </MobileNavLink>
             <MobileNavLink
               href={`/${i18n.locale}/search`}
