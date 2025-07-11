@@ -99,7 +99,7 @@ interface SpendingVisualizationProps {
 function SpendingVisualization({ spendingData, title }: SpendingVisualizationProps) {
   const chartData = spendingData.map(category => ({
     name: category.name,
-    value: category.amount,
+    Amount: category.amount,
     percentage: category.percentage,
     formattedValue: category.formattedAmount
   }));
@@ -109,11 +109,13 @@ function SpendingVisualization({ spendingData, title }: SpendingVisualizationPro
       <H2>{title}</H2>
       <div className="mt-6">
         <BarChart
+          className="h-64"
           data={chartData}
-          xAxisDataKey="name"
-          yAxisDataKey="value"
-          tooltipFormatter={(value: number) => [`$${value.toLocaleString()}`, "Amount"]}
+          index="name"
+          categories={["Amount"]}
+          valueFormatter={(value: number) => `$${value.toLocaleString()}`}
           showLegend={false}
+          showGridLines={true}
         />
       </div>
       
