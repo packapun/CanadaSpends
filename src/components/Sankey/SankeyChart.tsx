@@ -141,8 +141,9 @@ export function SankeyChart(props: SankeyChartProps) {
 	}, [])
 
 	return (
-		<>
-			<div className='search-container'>
+		<div className='sankey-chart-wrapper'>
+			<div className='sankey-chart-header'>
+				<div className='search-container'>
 				<Select
 					instanceId="sankey-search"
 					inputId="sankey-search-input"
@@ -172,9 +173,11 @@ export function SankeyChart(props: SankeyChartProps) {
 						})
 					}}
 				/>
+				</div>
 			</div>
 
-			{hoverNode && (
+			<div className='sankey-chart-content'>
+				{hoverNode && (
 				<div 
 					className='node-tooltip'
 					style={{
@@ -241,7 +244,8 @@ export function SankeyChart(props: SankeyChartProps) {
 					/>
 				</div>
 			)}
-		</>
+			</div>
+		</div>
 	)
 }
 
