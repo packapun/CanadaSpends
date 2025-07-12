@@ -30,7 +30,13 @@ const FEDERAL_SPENDING_CATEGORIES = [
   { name: 'Environment Protection', percentage: 3.2 },
   { name: 'Recreation and Culture', percentage: 2.8 },
   { name: 'Transportation', percentage: 2.4 },
-  { name: 'Other', percentage: 5.4 }
+  { name: 'Agriculture and Rural Development', percentage: 1.8 },
+  { name: 'International Affairs', percentage: 1.2 },
+  { name: 'Immigration and Citizenship', percentage: 0.9 },
+  { name: 'Natural Resources', percentage: 0.7 },
+  { name: 'Justice and Legal Affairs', percentage: 0.6 },
+  { name: 'Veterans Affairs', percentage: 0.5 },
+  { name: 'Other', percentage: 1.4 }
 ];
 
 // Ontario spending categories with percentages (from Ontario summary data)
@@ -45,7 +51,18 @@ const ONTARIO_SPENDING_CATEGORIES = [
   { name: 'Energy', percentage: 3.0 },
   { name: 'Solicitor General', percentage: 2.1 },
   { name: 'Attorney General', percentage: 1.1 },
-  { name: 'Other', percentage: 7.4 }
+  { name: 'Labour and Skills Development', percentage: 1.0 },
+  { name: 'Municipal Affairs and Housing', percentage: 0.9 },
+  { name: 'Infrastructure', percentage: 0.8 },
+  { name: 'Treasury Board Secretariat', percentage: 0.8 },
+  { name: 'Tourism, Culture, and Sport', percentage: 0.7 },
+  { name: 'Economic Development and Trade', percentage: 0.6 },
+  { name: 'Public and Business Services', percentage: 0.5 },
+  { name: 'Natural Resources and Forestry', percentage: 0.5 },
+  { name: 'Northern Development', percentage: 0.3 },
+  { name: 'Agriculture and Rural Affairs', percentage: 0.3 },
+  { name: 'Environment and Parks', percentage: 0.2 },
+  { name: 'Other', percentage: 1.7 }
 ];
 
 function formatCurrency(amount: number): string {
@@ -80,37 +97,32 @@ function calculateSpendingByCategory(
 }
 
 function groupSmallAmounts(categories: SpendingCategory[], threshold: number = 20): SpendingCategory[] {
-  const largeCategories = categories.filter(cat => cat.amount >= threshold);
-  const smallCategories = categories.filter(cat => cat.amount < threshold);
+  const largeCategories = categories.filter(cat => cat.amount >= threshold && cat.name !== 'Other');
+  const smallCategories = categories.filter(cat => cat.amount < threshold && cat.name !== 'Other');
+  const existingOther = categories.find(cat => cat.name === 'Other');
   
-  if (smallCategories.length === 0) {
-    return largeCategories;
-  }
+  // Sort large categories by amount (descending)
+  const sortedLargeCategories = largeCategories.sort((a, b) => b.amount - a.amount);
   
-  const otherCategory: SpendingCategory = {
-    name: 'Other',
-    amount: smallCategories.reduce((sum, cat) => sum + cat.amount, 0),
-    percentage: smallCategories.reduce((sum, cat) => sum + cat.percentage, 0),
-    formattedAmount: '',
-    formattedPercentage: '',
-    level: smallCategories[0].level
-  };
-  
-  otherCategory.formattedAmount = formatCurrency(otherCategory.amount);
-  otherCategory.formattedPercentage = formatPercentage(otherCategory.percentage);
-  
-  // Remove existing "Other" category if it exists and merge
-  const filteredLargeCategories = largeCategories.filter(cat => cat.name !== 'Other');
-  const existingOther = largeCategories.find(cat => cat.name === 'Other');
-  
-  if (existingOther) {
-    otherCategory.amount += existingOther.amount;
-    otherCategory.percentage += existingOther.percentage;
+  // If there are small categories or an existing "Other", create/update the Other category
+  if (smallCategories.length > 0 || existingOther) {
+    const otherCategory: SpendingCategory = {
+      name: 'Other',
+      amount: smallCategories.reduce((sum, cat) => sum + cat.amount, 0) + (existingOther?.amount || 0),
+      percentage: smallCategories.reduce((sum, cat) => sum + cat.percentage, 0) + (existingOther?.percentage || 0),
+      formattedAmount: '',
+      formattedPercentage: '',
+      level: existingOther?.level || smallCategories[0]?.level || 'federal'
+    };
+    
     otherCategory.formattedAmount = formatCurrency(otherCategory.amount);
     otherCategory.formattedPercentage = formatPercentage(otherCategory.percentage);
+    
+    // Return large categories first, then "Other" at the end
+    return [...sortedLargeCategories, otherCategory];
   }
   
-  return [...filteredLargeCategories, otherCategory].sort((a, b) => b.amount - a.amount);
+  return sortedLargeCategories;
 }
 
 function combineFederalAndProvincial(

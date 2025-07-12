@@ -4,7 +4,7 @@ import { useState, useMemo } from "react";
 import { useLingui } from "@lingui/react/macro";
 import { H1, H2, PageContent, Section } from "@/components/Layout";
 import { StatCard } from "@/components/StatCard";
-import { BarChart } from "@/components/BarChart";
+import { HorizontalSpendingChart } from "@/components/HorizontalSpendingChart";
 import { calculateTotalTax } from "@/lib/taxCalculator";
 import { calculatePersonalTaxBreakdown, SpendingCategory } from "@/lib/personalTaxBreakdown";
 
@@ -99,38 +99,19 @@ interface SpendingVisualizationProps {
 function SpendingVisualization({ spendingData, title }: SpendingVisualizationProps) {
   const chartData = spendingData.map(category => ({
     name: category.name,
-    Amount: category.amount,
-    percentage: category.percentage,
-    formattedValue: category.formattedAmount
+    amount: category.amount,
+    formattedAmount: category.formattedAmount,
+    percentage: category.percentage
   }));
 
+  const totalAmount = spendingData.reduce((sum, cat) => sum + cat.amount, 0);
+
   return (
-    <div className="bg-white p-6 rounded-lg shadow-sm border">
-      <H2>{title}</H2>
-      <div className="mt-6">
-        <BarChart
-          className="h-64"
-          data={chartData}
-          index="name"
-          categories={["Amount"]}
-          valueFormatter={(value: number) => `$${value.toLocaleString()}`}
-          showLegend={false}
-          showGridLines={true}
-        />
-      </div>
-      
-      <div className="mt-6 space-y-2">
-        {spendingData.map((category, index) => (
-          <div key={index} className="flex justify-between items-center py-2 border-b border-gray-100">
-            <span className="text-sm font-medium text-gray-700">{category.name}</span>
-            <div className="text-right">
-              <span className="text-sm font-semibold text-gray-900">{category.formattedAmount}</span>
-              <span className="text-xs text-gray-500 ml-2">({category.formattedPercentage})</span>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
+    <HorizontalSpendingChart
+      data={chartData}
+      title={title}
+      totalAmount={totalAmount}
+    />
   );
 }
 
