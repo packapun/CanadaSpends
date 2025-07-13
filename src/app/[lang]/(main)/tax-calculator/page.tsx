@@ -4,9 +4,9 @@ import { useState, useMemo } from "react";
 import { useLingui } from "@lingui/react/macro";
 import { H1, H2, PageContent, Section } from "@/components/Layout";
 import { StatCard } from "@/components/StatCard";
-import { HorizontalSpendingChart } from "@/components/HorizontalSpendingChart";
+import { CombinedSpendingChart } from "@/components/CombinedSpendingChart";
 import { calculateTotalTax } from "@/lib/taxCalculator";
-import { calculatePersonalTaxBreakdown, SpendingCategory } from "@/lib/personalTaxBreakdown";
+import { calculatePersonalTaxBreakdown } from "@/lib/personalTaxBreakdown";
 
 interface TaxCalculatorFormProps {
   income: number;
@@ -91,29 +91,7 @@ function TaxSummary({ taxCalculation }: TaxSummaryProps) {
   );
 }
 
-interface SpendingVisualizationProps {
-  spendingData: SpendingCategory[];
-  title: string;
-}
-
-function SpendingVisualization({ spendingData, title }: SpendingVisualizationProps) {
-  const chartData = spendingData.map(category => ({
-    name: category.name,
-    amount: category.amount,
-    formattedAmount: category.formattedAmount,
-    percentage: category.percentage
-  }));
-
-  const totalAmount = spendingData.reduce((sum, cat) => sum + cat.amount, 0);
-
-  return (
-    <HorizontalSpendingChart
-      data={chartData}
-      title={title}
-      totalAmount={totalAmount}
-    />
-  );
-}
+// Remove the old SpendingVisualization component since we're using the combined chart
 
 export default function TaxCalculatorPage() {
   const { t } = useLingui();
@@ -153,23 +131,12 @@ export default function TaxCalculatorPage() {
               <TaxSummary taxCalculation={taxCalculation} />
             </div>
 
-            <div className="mt-12 space-y-8">
-              <SpendingVisualization
-                spendingData={breakdown.combinedSpending}
+            <div className="mt-12">
+              <CombinedSpendingChart
+                data={breakdown.combinedChartData}
                 title={t`Where Your Tax Dollars Go`}
+                totalAmount={breakdown.taxCalculation.totalTax}
               />
-              
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <SpendingVisualization
-                  spendingData={breakdown.federalSpending}
-                  title={t`Federal Tax Contribution ($${breakdown.taxCalculation.federalTax.toLocaleString()})`}
-                />
-                
-                <SpendingVisualization
-                  spendingData={breakdown.provincialSpending}
-                  title={t`Provincial Tax Contribution ($${breakdown.taxCalculation.provincialTax.toLocaleString()})`}
-                />
-              </div>
             </div>
 
             <div className="mt-12 bg-blue-50 p-6 rounded-lg">

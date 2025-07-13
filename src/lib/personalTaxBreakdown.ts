@@ -14,6 +14,7 @@ export interface PersonalTaxBreakdown {
   federalSpending: SpendingCategory[];
   provincialSpending: SpendingCategory[];
   combinedSpending: SpendingCategory[];
+  combinedChartData: CombinedSpendingItem[];
 }
 
 // Federal spending categories with percentages (from existing Sankey data)
@@ -125,6 +126,53 @@ function groupSmallAmounts(categories: SpendingCategory[], threshold: number = 2
   return sortedLargeCategories;
 }
 
+export interface CombinedSpendingItem {
+  name: string;
+  federalAmount: number;
+  provincialAmount: number;
+  totalAmount: number;
+  formattedTotal: string;
+}
+
+function combineFederalAndProvincialForChart(
+  federalSpending: SpendingCategory[],
+  provincialSpending: SpendingCategory[]
+): CombinedSpendingItem[] {
+  const combined: { [key: string]: { federal: number; provincial: number } } = {};
+  
+  // Add federal spending
+  federalSpending.forEach(category => {
+    if (!combined[category.name]) {
+      combined[category.name] = { federal: 0, provincial: 0 };
+    }
+    combined[category.name].federal = category.amount;
+  });
+  
+  // Add provincial spending
+  provincialSpending.forEach(category => {
+    if (!combined[category.name]) {
+      combined[category.name] = { federal: 0, provincial: 0 };
+    }
+    combined[category.name].provincial = category.amount;
+  });
+  
+  // Convert to array format
+  const result = Object.entries(combined).map(([name, amounts]) => ({
+    name,
+    federalAmount: amounts.federal,
+    provincialAmount: amounts.provincial,
+    totalAmount: amounts.federal + amounts.provincial,
+    formattedTotal: formatCurrency(amounts.federal + amounts.provincial)
+  }));
+  
+  // Sort by total amount (descending) and ensure "Other" is last
+  return result.sort((a, b) => {
+    if (a.name === 'Other') return 1;
+    if (b.name === 'Other') return -1;
+    return b.totalAmount - a.totalAmount;
+  });
+}
+
 function combineFederalAndProvincial(
   federalSpending: SpendingCategory[],
   provincialSpending: SpendingCategory[]
@@ -194,10 +242,17 @@ export function calculatePersonalTaxBreakdown(taxCalculation: TaxCalculation): P
     combineFederalAndProvincial(federalSpending, provincialSpending)
   );
   
+  // Create combined chart data for stacked bars
+  const combinedChartData = combineFederalAndProvincialForChart(
+    federalSpendingGrouped,
+    provincialSpendingGrouped
+  );
+  
   return {
     taxCalculation,
     federalSpending: federalSpendingGrouped,
     provincialSpending: provincialSpendingGrouped,
-    combinedSpending
+    combinedSpending,
+    combinedChartData
   };
 }
