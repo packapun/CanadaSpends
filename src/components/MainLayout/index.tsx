@@ -104,7 +104,7 @@ export const MainLayout = ({ children }: { children: React.ReactNode }) => {
                 href={`/${i18n.locale}/tax-calculator`}
                 active={pathname === `/${i18n.locale}/tax-calculator`}
               >
-                <Trans>Tax Calculator</Trans>
+                <Trans>Tax Visualizer</Trans>
               </NavLink>
               <NavLink
                 href={`/${i18n.locale}/search`}
