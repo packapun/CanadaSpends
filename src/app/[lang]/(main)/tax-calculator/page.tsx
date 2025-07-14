@@ -28,11 +28,17 @@ function TaxCalculatorForm({ income, setIncome, province, setProvince }: TaxCalc
             {t`Annual Income (CAD)`}
           </label>
           <input
-            type="number"
+            type="text"
             id="income"
-            value={income || ""}
-            onChange={(e) => setIncome(Number(e.target.value))}
-            placeholder="100000"
+            value={income ? income.toLocaleString() : ""}
+            onChange={(e) => {
+              const value = e.target.value.replace(/,/g, '');
+              const numericValue = Number(value);
+              if (!isNaN(numericValue) || value === '') {
+                setIncome(numericValue);
+              }
+            }}
+            placeholder="100,000"
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
