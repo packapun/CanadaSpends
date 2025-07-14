@@ -75,7 +75,7 @@ export function HorizontalSpendingChart({
         <div className="mt-6 pt-4 border-t border-gray-200">
           <div className="flex justify-between items-center">
             <div className="text-base font-semibold text-gray-900">
-              Your total tax assessed:
+              Your total tax contribution:
             </div>
             <div className="text-base font-bold text-gray-900">
               ${totalAmount.toLocaleString()}

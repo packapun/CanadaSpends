@@ -91,6 +91,83 @@ function TaxSummary({ taxCalculation }: TaxSummaryProps) {
   );
 }
 
+function TaxBracketsTable() {
+  return (
+    <div className="mt-16">
+      <h2 className="text-2xl font-bold text-center mb-2">Ontario Provincial and Federal tax brackets</h2>
+      <p className="text-center text-gray-600 mb-8">Your taxable income is taxed at the following rates.</p>
+      <div className="flex flex-col md:flex-row gap-8 justify-center">
+        {/* Federal Tax Brackets */}
+        <div className="bg-white rounded-lg shadow-sm border p-6 flex-1 min-w-[320px] max-w-md">
+          <table className="w-full text-left">
+            <thead>
+              <tr>
+                <th className="pb-2 font-bold">Federal tax bracket</th>
+                <th className="pb-2 font-bold text-right">Federal tax rate</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-700 text-base">
+              <tr>
+                <td className="py-2">First $57,375</td>
+                <td className="py-2 text-right">15%</td>
+              </tr>
+              <tr>
+                <td className="py-2">$57,375 - $114,750</td>
+                <td className="py-2 text-right">20.5%</td>
+              </tr>
+              <tr>
+                <td className="py-2">$114,750 - $177,882</td>
+                <td className="py-2 text-right">26%</td>
+              </tr>
+              <tr>
+                <td className="py-2">$177,882 - $253,414</td>
+                <td className="py-2 text-right">29%</td>
+              </tr>
+              <tr>
+                <td className="py-2">More than $253,414</td>
+                <td className="py-2 text-right">33%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        {/* Ontario Tax Brackets */}
+        <div className="bg-white rounded-lg shadow-sm border p-6 flex-1 min-w-[320px] max-w-md">
+          <table className="w-full text-left">
+            <thead>
+              <tr>
+                <th className="pb-2 font-bold">Ontario tax bracket</th>
+                <th className="pb-2 font-bold text-right">Ontario tax rate</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-700 text-base">
+              <tr>
+                <td className="py-2">First $52,886</td>
+                <td className="py-2 text-right">5.05%</td>
+              </tr>
+              <tr>
+                <td className="py-2">$52,886 - $105,775</td>
+                <td className="py-2 text-right">9.15%</td>
+              </tr>
+              <tr>
+                <td className="py-2">$105,775 - $150,000</td>
+                <td className="py-2 text-right">11.16%</td>
+              </tr>
+              <tr>
+                <td className="py-2">$150,000 - $220,000</td>
+                <td className="py-2 text-right">12.16%</td>
+              </tr>
+              <tr>
+                <td className="py-2">More than $220,000</td>
+                <td className="py-2 text-right">13.16%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // Remove the old SpendingVisualization component since we're using the combined chart
 
 export default function TaxCalculatorPage() {
@@ -112,9 +189,9 @@ export default function TaxCalculatorPage() {
     <PageContent>
       <Section>
         <div className="text-center mb-8">
-          <H1>{t`Personal Income Tax Visualizer`}</H1>
+          <H1>{t`Where Your Tax Dollars Go`}</H1>
           <p className="text-lg text-gray-600 mt-4 max-w-3xl mx-auto">
-            {t`Discover where your tax dollars go. Enter your income to see a personalized breakdown of how much you contribute to different government services and programs.`}
+            {t`Enter your income to see a personalized breakdown of how much you contribute to different government services and programs.`}
           </p>
         </div>
 
@@ -146,16 +223,18 @@ export default function TaxCalculatorPage() {
                   {t`This visualization shows how your income tax contributions are allocated across different government programs and services based on current government spending patterns.`}
                 </p>
                 <p>
-                  {t`Federal taxes support national programs like healthcare transfers, employment insurance, and national defence. Provincial taxes fund education, healthcare delivery, and social services.`}
+                  {t`Your tax contributions are based off of employment income. Other sources of income, such as self-employment, investment income, and capital gains, are not included in the calculations. Deductions such as RRSP contributions are also not included.`}
                 </p>
                 <p>
-                  {t`Tax calculations are based on 2024 federal and Ontario tax brackets. Amounts under $20 are grouped into "Other" for clarity.`}
+                  {t`Tax calculations are based on 2025 federal and provincial tax brackets. Amounts under $20 are grouped into "Other" for conciseness.`}
                 </p>
               </div>
             </div>
           </>
         )}
       </Section>
+      {/* Add tax brackets table at the bottom of the page */}
+      <TaxBracketsTable />
     </PageContent>
   );
 }
