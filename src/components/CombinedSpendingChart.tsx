@@ -1,6 +1,7 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
+import { formatCurrency } from "@/lib/taxCalculator";
 
 export interface CombinedSpendingItem {
   name: string;
@@ -25,6 +26,7 @@ export function CombinedSpendingChart({
   totalAmount 
 }: CombinedSpendingChartProps) {
   const maxAmount = Math.max(...data.map(item => item.totalAmount));
+  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   
   return (
     <div className="bg-white p-6 rounded-lg shadow-sm border">
@@ -69,7 +71,11 @@ export function CombinedSpendingChart({
               </div>
               
               {/* Stacked Bar */}
-              <div className="w-full bg-gray-100 rounded-sm h-4 relative">
+              <div 
+                className="w-full bg-gray-100 rounded-sm h-4 relative group cursor-pointer"
+                onMouseEnter={() => setHoveredItem(item.name)}
+                onMouseLeave={() => setHoveredItem(null)}
+              >
                 {/* Federal portion (blue) */}
                 {item.federalAmount > 0 && (
                   <div
@@ -93,6 +99,28 @@ export function CombinedSpendingChart({
                       borderRadius: item.federalAmount > 0 ? '0 2px 2px 0' : '2px',
                     }}
                   />
+                )}
+                
+                {/* Tooltip */}
+                {hoveredItem === item.name && (
+                  <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white text-xs rounded py-2 px-3 whitespace-nowrap z-10 shadow-lg">
+                    <div className="space-y-1">
+                      {item.federalAmount > 0 && (
+                        <div className="flex items-center gap-2">
+                          <div className="w-3 h-3 rounded-sm" style={{ backgroundColor: FEDERAL_COLOR }} />
+                          <span>Federal: {formatCurrency(item.federalAmount)}</span>
+                        </div>
+                      )}
+                      {item.provincialAmount > 0 && (
+                        <div className="flex items-center gap-2">
+                          <div className="w-3 h-3 rounded-sm" style={{ backgroundColor: PROVINCIAL_COLOR }} />
+                          <span>Provincial: {formatCurrency(item.provincialAmount)}</span>
+                        </div>
+                      )}
+                    </div>
+                    {/* Arrow */}
+                    <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900" />
+                  </div>
                 )}
               </div>
             </div>
