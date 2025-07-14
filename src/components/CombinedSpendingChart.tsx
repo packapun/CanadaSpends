@@ -73,10 +73,11 @@ export function CombinedSpendingChart({
                 {/* Federal portion (blue) */}
                 {item.federalAmount > 0 && (
                   <div
-                    className="h-4 rounded-l-sm absolute left-0 top-0"
+                    className="h-4 absolute left-0 top-0"
                     style={{
                       width: `${federalWidth}%`,
                       backgroundColor: FEDERAL_COLOR,
+                      borderRadius: item.provincialAmount > 0 ? '2px 0 0 2px' : '2px',
                     }}
                   />
                 )}
