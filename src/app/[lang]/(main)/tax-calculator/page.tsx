@@ -5,7 +5,7 @@ import { useLingui } from "@lingui/react/macro";
 import { H1, H2, PageContent, Section } from "@/components/Layout";
 import { StatCard } from "@/components/StatCard";
 import { CombinedSpendingChart } from "@/components/CombinedSpendingChart";
-import { calculateTotalTax } from "@/lib/taxCalculator";
+import { calculateTotalTax, formatCurrency } from "@/lib/taxCalculator";
 import { calculatePersonalTaxBreakdown } from "@/lib/personalTaxBreakdown";
 
 interface TaxCalculatorFormProps {
@@ -69,17 +69,17 @@ function TaxSummary({ taxCalculation }: TaxSummaryProps) {
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
       <StatCard
         title={t`Federal Tax`}
-        value={`$${taxCalculation.federalTax.toLocaleString()}`}
+        value={formatCurrency(taxCalculation.federalTax)}
         description={t`Income tax paid to federal government`}
       />
       <StatCard
         title={t`Provincial Tax`}
-        value={`$${taxCalculation.provincialTax.toLocaleString()}`}
+        value={formatCurrency(taxCalculation.provincialTax)}
         description={t`Income tax paid to provincial government`}
       />
       <StatCard
         title={t`Total Tax`}
-        value={`$${taxCalculation.totalTax.toLocaleString()}`}
+        value={formatCurrency(taxCalculation.totalTax)}
         description={t`Combined federal and provincial tax`}
       />
       <StatCard
