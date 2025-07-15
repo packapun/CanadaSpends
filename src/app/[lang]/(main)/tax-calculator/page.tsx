@@ -229,7 +229,7 @@ export default function TaxCalculatorPage() {
                   {t`This visualization shows how your income tax contributions are allocated across different government programs and services based on current government spending patterns.`}
                 </p>
                 <p>
-                  {t`Your tax contributions are based off of employment income. Other sources of income, such as self-employment, investment income, and capital gains, are not included in the calculations. Deductions such as RRSP contributions are also not included.`}
+                  {t`Your tax contributions are approximated based on employment income. Deductions such as basic personal amount are estimated and included. Other sources of income, such as self-employment, investment income, and capital gains, are not included in the calculations. Deductions such as RRSP and FHSA contributions are also not included.`}
                 </p>
                 <p>
                   {t`Tax calculations are based on 2025 federal and provincial tax brackets. Amounts under $20 are grouped into "Other" for conciseness.`}

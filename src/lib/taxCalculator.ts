@@ -17,7 +17,7 @@ export interface TaxCalculation {
 export const FEDERAL_BASIC_PERSONAL_AMOUNT = 15705;
 
 // 2025 Ontario basic personal amount
-export const ONTARIO_BASIC_PERSONAL_AMOUNT = 12977;
+export const ONTARIO_BASIC_PERSONAL_AMOUNT = 12399;
 
 // 2025 Federal tax brackets
 export const FEDERAL_TAX_BRACKETS: TaxBracket[] = [
@@ -57,13 +57,25 @@ export function calculateTaxFromBrackets(income: number, brackets: TaxBracket[])
 }
 
 export function calculateFederalTax(income: number): number {
-  const taxableIncome = Math.max(0, income - FEDERAL_BASIC_PERSONAL_AMOUNT);
-  return calculateTaxFromBrackets(taxableIncome, FEDERAL_TAX_BRACKETS);
+  // Step 1: Calculate tax on full income using progressive brackets
+  const taxOnFullIncome = calculateTaxFromBrackets(income, FEDERAL_TAX_BRACKETS);
+
+  // Step 2: Apply BPA as a credit (15% of BPA)
+  const bpaCredit = FEDERAL_BASIC_PERSONAL_AMOUNT * 0.15;
+
+  // Step 3: Subtract the credit from the calculated tax
+  return Math.max(0, taxOnFullIncome - bpaCredit);
 }
 
 export function calculateOntarioTax(income: number): number {
-  const taxableIncome = Math.max(0, income - ONTARIO_BASIC_PERSONAL_AMOUNT);
-  return calculateTaxFromBrackets(taxableIncome, ONTARIO_TAX_BRACKETS);
+  // Step 1: Calculate tax on full income using progressive brackets
+  const taxOnFullIncome = calculateTaxFromBrackets(income, ONTARIO_TAX_BRACKETS);
+
+  // Step 2: Apply BPA as a credit (5.05% of BPA - lowest provincial rate)
+  const bpaCredit = ONTARIO_BASIC_PERSONAL_AMOUNT * 0.0505;
+
+  // Step 3: Subtract the credit from the calculated tax
+  return Math.max(0, taxOnFullIncome - bpaCredit);
 }
 
 export function calculateTotalTax(income: number, province: string = 'ontario'): TaxCalculation {
