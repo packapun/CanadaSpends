@@ -42,7 +42,7 @@ const FEDERAL_SPENDING_CATEGORIES = [
 // Ontario spending categories with percentages (from Sankey data)
 const ONTARIO_SPENDING_CATEGORIES = [
   { name: 'Health', percentage: 40.1 },
-  { name: 'Education', percentage: 18.8 },
+  { name: 'K-12 Education', percentage: 18.8 },
   { name: 'Children, Community and Social Services', percentage: 9.4 },
   { name: 'Interest on Debt', percentage: 5.5 },
   { name: 'Colleges and Universities', percentage: 6.4 },
