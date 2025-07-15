@@ -227,13 +227,13 @@ export default function TaxCalculatorPage() {
               <H2>{t`Understanding Your Tax Contribution`}</H2>
               <div className="mt-4 space-y-3 text-sm text-gray-700">
                 <p>
-                  {t`This visualization shows how your income tax contributions are allocated across different government programs and services based on current government spending patterns.`}
+                  {t`This visualization shows how your income tax contributions are allocated across different government programs and services based on current government spending patterns. Amounts under $20 are grouped into "Other" for conciseness.`}
                 </p>
                 <p>
-                  {t`Your tax contributions are approximated based on employment income. Deductions such as basic personal amount are estimated and included. Other sources of income, such as self-employment, investment income, and capital gains, are not included in the calculations. Deductions such as RRSP and FHSA contributions are also not included.`}
+                  {t`Your tax contributions are approximated based on employment income. Deductions such as basic personal amount are estimated and included. Other sources of income, such as self-employment, investment income, and capital gains, are not included in the calculations. Deductions such as RRSP and FHSA contributions are also not included. Tax calculations are based on 2024 federal and provincial tax brackets.`}
                 </p>
                 <p>
-                  {t`Tax calculations are based on 2024 federal and provincial tax brackets. Amounts under $20 are grouped into "Other" for conciseness.`}
+                  {t`Government spending is based on 2023-2024 fiscal spending. Attempts have been made to merge similar categories across federal and provincial spending. Transfer to Provinces are assumed to go entirely to Ontario for simplicity.`}
                 </p>
               </div>
             </div>
