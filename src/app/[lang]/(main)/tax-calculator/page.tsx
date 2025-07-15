@@ -76,22 +76,22 @@ function TaxSummary({ taxCalculation }: TaxSummaryProps) {
       <StatCard
         title={t`Federal Tax`}
         value={formatCurrency(taxCalculation.federalTax)}
-        description={t`Income tax paid to federal government`}
+        subtitle={t`Estimated income tax paid to federal government`}
       />
       <StatCard
         title={t`Provincial Tax`}
         value={formatCurrency(taxCalculation.provincialTax)}
-        description={t`Income tax paid to provincial government`}
+        subtitle={t`Estimated income tax paid to provincial government`}
       />
       <StatCard
         title={t`Total Tax`}
         value={formatCurrency(taxCalculation.totalTax)}
-        description={t`Combined federal and provincial tax`}
+        subtitle={t`Estimated combined tax`}
       />
       <StatCard
         title={t`Effective Rate`}
         value={`${taxCalculation.effectiveTaxRate.toFixed(1)}%`}
-        description={t`Your effective tax rate`}
+        subtitle={t`Effective tax rate`}
       />
     </div>
   );

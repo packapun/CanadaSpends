@@ -28,11 +28,11 @@ const FEDERAL_SPENDING_CATEGORIES = [
   { name: 'International Affairs', percentage: 3.7 },
   { name: 'Standard of Living', percentage: 12.0 },
   { name: 'Health', percentage: 2.7 },
-  { name: 'Innovation and Research', percentage: 1.0 },
-  { name: 'Transportation', percentage: 1.8 },
-  { name: 'Infrastructure and Investments', percentage: 1.8 },
-  { name: 'Fisheries and Agriculture', percentage: 1.7 },
+  { name: 'Innovation and Research', percentage: 1.8 },
+  { name: 'Infrastructure Investments', percentage: 1.8 },
+  { name: 'Transportation', percentage: 1.0 },
   { name: 'Natural Resources', percentage: 1.0 },
+  { name: 'Fisheries and Agriculture', percentage: 1.7 },
   { name: 'Environment', percentage: 0.8 },
   { name: 'Other', percentage: 2.0 }
 ];
