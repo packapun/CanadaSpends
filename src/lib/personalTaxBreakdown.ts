@@ -19,22 +19,24 @@ export interface PersonalTaxBreakdown {
 
 // Federal spending categories with percentages (from existing Sankey data)
 const FEDERAL_SPENDING_CATEGORIES = [
-  { name: 'Social Security', percentage: 23.4 },
+  { name: 'Retirement Benefits', percentage: 14.8 },
+  { name: 'Children, Community and Social Services', percentage: 5.1 },
+  { name: 'Employment Insurance', percentage: 4.5 },
   { name: 'Transfer to Provinces', percentage: 19.5 },
   { name: 'Interest on Debt', percentage: 9.2 },
   { name: 'Indigenous Priorities', percentage: 8.3 },
   { name: 'Defence', percentage: 6.7 },
-  { name: 'Safety', percentage: 4.4 },
+  { name: 'Public Safety', percentage: 4.4 },
   { name: 'International Affairs', percentage: 3.7 },
-  { name: 'Standard of Living', percentage: 12.0 },
+  { name: 'Standard of Living, including training, carbon tax rebate, and other supports', percentage: 12.0 },
   { name: 'Health', percentage: 2.7 },
   { name: 'Innovation and Research', percentage: 1.8 },
-  { name: 'Infrastructure Investments', percentage: 1.8 },
+  { name: 'Infrastructure', percentage: 1.8 },
   { name: 'Transportation', percentage: 1.0 },
   { name: 'Natural Resources', percentage: 1.0 },
   { name: 'Fisheries and Agriculture', percentage: 1.7 },
   { name: 'Environment', percentage: 0.8 },
-  { name: 'Other', percentage: 2.0 }
+  { name: 'Other', percentage: 1.0 }
 ];
 
 // Ontario spending categories with percentages (from Sankey data)
@@ -46,10 +48,9 @@ const ONTARIO_SPENDING_CATEGORIES = [
   { name: 'Colleges and Universities', percentage: 6.4 },
   { name: 'Transportation', percentage: 3.6 },
   { name: 'Energy', percentage: 3.1 },
-  { name: 'Solicitor General', percentage: 1.9 },
+  { name: 'Attorney and Solicitor General', percentage: 2.9 },
   { name: 'Infrastructure', percentage: 1.3 },
   { name: 'Long-Term Care', percentage: 1.2 },
-  { name: 'Attorney General', percentage: 1.0 },
   { name: 'Finance', percentage: 0.9 },
   { name: 'Tourism, Culture, and Sport', percentage: 0.9 },
   { name: 'Municipal Affairs and Housing', percentage: 0.9 },
