@@ -114,23 +114,23 @@ function TaxBracketsTable() {
             </thead>
             <tbody className="text-gray-700 text-base">
               <tr>
-                <td className="py-2">First $57,375</td>
+                <td className="py-2">First $55,867</td>
                 <td className="py-2 text-right">15%</td>
               </tr>
               <tr>
-                <td className="py-2">$57,375 - $114,750</td>
+                <td className="py-2">$55,867 - $111,733</td>
                 <td className="py-2 text-right">20.5%</td>
               </tr>
               <tr>
-                <td className="py-2">$114,750 - $177,882</td>
+                <td className="py-2">$111,733 - $173,205</td>
                 <td className="py-2 text-right">26%</td>
               </tr>
               <tr>
-                <td className="py-2">$177,882 - $253,414</td>
+                <td className="py-2">$173,205 - $246,752</td>
                 <td className="py-2 text-right">29%</td>
               </tr>
               <tr>
-                <td className="py-2">More than $253,414</td>
+                <td className="py-2">More than $246,752</td>
                 <td className="py-2 text-right">33%</td>
               </tr>
             </tbody>
@@ -147,15 +147,15 @@ function TaxBracketsTable() {
             </thead>
             <tbody className="text-gray-700 text-base">
               <tr>
-                <td className="py-2">First $52,886</td>
+                <td className="py-2">First $51,446</td>
                 <td className="py-2 text-right">5.05%</td>
               </tr>
               <tr>
-                <td className="py-2">$52,886 - $105,775</td>
+                <td className="py-2">$51,446 - $102,894</td>
                 <td className="py-2 text-right">9.15%</td>
               </tr>
               <tr>
-                <td className="py-2">$105,775 - $150,000</td>
+                <td className="py-2">$102,894 - $150,000</td>
                 <td className="py-2 text-right">11.16%</td>
               </tr>
               <tr>
@@ -170,6 +170,7 @@ function TaxBracketsTable() {
           </table>
         </div>
       </div>
+      <p className="text-center text-xs text-gray-600 mt-8">Basic personal amount of $15,705 for federal and $12,399 for Ontario have been deducted.</p>
     </div>
   );
 }
@@ -232,7 +233,7 @@ export default function TaxCalculatorPage() {
                   {t`Your tax contributions are approximated based on employment income. Deductions such as basic personal amount are estimated and included. Other sources of income, such as self-employment, investment income, and capital gains, are not included in the calculations. Deductions such as RRSP and FHSA contributions are also not included.`}
                 </p>
                 <p>
-                  {t`Tax calculations are based on 2025 federal and provincial tax brackets. Amounts under $20 are grouped into "Other" for conciseness.`}
+                  {t`Tax calculations are based on 2024 federal and provincial tax brackets. Amounts under $20 are grouped into "Other" for conciseness.`}
                 </p>
               </div>
             </div>

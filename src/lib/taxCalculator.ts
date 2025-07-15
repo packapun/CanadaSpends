@@ -13,26 +13,26 @@ export interface TaxCalculation {
   effectiveTaxRate: number;
 }
 
-// 2025 Federal basic personal amount (tax-free threshold)
+// 2024 Federal basic personal amount (tax-free threshold)
 export const FEDERAL_BASIC_PERSONAL_AMOUNT = 15705;
 
-// 2025 Ontario basic personal amount
+// 2024 Ontario basic personal amount
 export const ONTARIO_BASIC_PERSONAL_AMOUNT = 12399;
 
-// 2025 Federal tax brackets
+// 2024 Federal tax brackets
 export const FEDERAL_TAX_BRACKETS: TaxBracket[] = [
-  { min: 0, max: 57375, rate: 0.15 },
-  { min: 57375, max: 114750, rate: 0.205 },
-  { min: 114750, max: 177882, rate: 0.26 },
-  { min: 177882, max: 253414, rate: 0.29 },
-  { min: 253414, max: null, rate: 0.33 }
+  { min: 0, max: 55867, rate: 0.15 },
+  { min: 55867, max: 111733, rate: 0.205 },
+  { min: 111733, max: 173205, rate: 0.26 },
+  { min: 173205, max: 246752, rate: 0.29 },
+  { min: 246752, max: null, rate: 0.33 }
 ];
 
-// 2025 Ontario provincial tax brackets
+// 2024 Ontario provincial tax brackets
 export const ONTARIO_TAX_BRACKETS: TaxBracket[] = [
-  { min: 0, max: 52886, rate: 0.0505 },
-  { min: 52886, max: 105775, rate: 0.0915 },
-  { min: 105775, max: 150000, rate: 0.1116 },
+  { min: 0, max: 51446, rate: 0.0505 },
+  { min: 51446, max: 102894, rate: 0.0915 },
+  { min: 102894, max: 150000, rate: 0.1116 },
   { min: 150000, max: 220000, rate: 0.1216 },
   { min: 220000, max: null, rate: 0.1316 }
 ];
