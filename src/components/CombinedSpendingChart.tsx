@@ -135,7 +135,7 @@ export function CombinedSpendingChart({
               Your total tax contribution:
             </div>
             <div className="text-base font-bold text-gray-900">
-              ${totalAmount.toLocaleString()}
+              {formatCurrency(totalAmount)}
             </div>
           </div>
         </div>
