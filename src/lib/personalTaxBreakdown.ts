@@ -140,12 +140,14 @@ function combineFederalAndProvincialForChart(
 ): CombinedSpendingItem[] {
   const combined: { [key: string]: { federal: number; provincial: number } } = {};
   
-  // Add federal spending
+  // Add federal spending (excluding transfers)
   federalSpending.forEach(category => {
-    if (!combined[category.name]) {
-      combined[category.name] = { federal: 0, provincial: 0 };
+    if (category.name !== 'Transfer to Provinces') {
+      if (!combined[category.name]) {
+        combined[category.name] = { federal: 0, provincial: 0 };
+      }
+      combined[category.name].federal = category.amount;
     }
-    combined[category.name].federal = category.amount;
   });
   
   // Add provincial spending
@@ -179,12 +181,14 @@ function combineFederalAndProvincial(
 ): SpendingCategory[] {
   const combined: { [key: string]: SpendingCategory } = {};
   
-  // Add federal spending
+  // Add federal spending (excluding transfers)
   federalSpending.forEach(category => {
-    combined[category.name] = {
-      ...category,
-      level: 'federal' as const
-    };
+    if (category.name !== 'Transfer to Provinces') {
+      combined[category.name] = {
+        ...category,
+        level: 'federal' as const
+      };
+    }
   });
   
   // Add or merge provincial spending
@@ -226,9 +230,14 @@ export function calculatePersonalTaxBreakdown(taxCalculation: TaxCalculation): P
     'federal'
   );
   
-  // Calculate provincial spending breakdown
+  // Find the transfer amount
+  const transferCategory = federalSpending.find(cat => cat.name === 'Transfer to Provinces');
+  const transferAmount = transferCategory ? transferCategory.amount : 0;
+
+  // Calculate provincial spending breakdown (including transferred federal funds)
+  const totalProvincialFunds = taxCalculation.provincialTax + transferAmount;
   const provincialSpending = calculateSpendingByCategory(
-    taxCalculation.provincialTax,
+    totalProvincialFunds,
     ONTARIO_SPENDING_CATEGORIES,
     'provincial'
   );
