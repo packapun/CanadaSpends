@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { useLingui } from "@lingui/react/macro";
+import { useLingui, Trans } from "@lingui/react/macro";
 import { H1, H2, PageContent, Section } from "@/components/Layout";
 import { StatCard } from "@/components/StatCard";
 import { CombinedSpendingChart } from "@/components/CombinedSpendingChart";
@@ -234,6 +234,11 @@ export default function TaxCalculatorPage() {
                 </p>
                 <p>
                   {t`Government spending is based on 2023-2024 fiscal spending. Attempts have been made to merge similar categories across federal and provincial spending. Transfer to Provinces are assumed to go entirely to Ontario for simplicity.`}
+                </p>
+                <p>
+                  <Trans>
+                    For further breakdowns of spending, see <a href="/spending">Federal</a> and <a href="/ontario">Provincial</a> spending pages.
+                  </Trans>
                 </p>
               </div>
             </div>
