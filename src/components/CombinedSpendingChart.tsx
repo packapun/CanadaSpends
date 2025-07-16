@@ -56,7 +56,7 @@ export function CombinedSpendingChart({
           const totalBarWidth = (item.totalAmount / maxAmount) * 100;
           const federalWidth = item.totalAmount > 0 ? (item.federalAmount / item.totalAmount) * totalBarWidth : 0;
           const provincialWidth = item.totalAmount > 0 ? (item.provincialAmount / item.totalAmount) * totalBarWidth : 0;
-          const percentageOfTotalTax = (item.totalAmount / totalAmount) * 100
+          const percentageOfTotalTax = totalAmount > 0 ? (item.totalAmount / totalAmount) * 100 : 0;
           return (
             <div key={item.name} className="space-y-2">
               {/* Category name and amount row */}
