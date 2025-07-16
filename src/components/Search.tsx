@@ -38,7 +38,7 @@ import { useRouter } from "next/navigation";
 // Define adapter, client, and index name outside components and export needed constants
 const typesenseAdapter = new TypesenseInstantSearchAdapter({
   server: {
-    apiKey: "YpZamILESYThUVYZZ87dIBuJorHtRPfa",
+    apiKey: process.env.NEXT_PUBLIC_TYPESENSE_API_KEY || "",
     nodes: [
       { host: "search.canadasbuilding.com", port: 443, protocol: "https" },
     ],
