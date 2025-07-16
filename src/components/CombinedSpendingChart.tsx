@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import { formatCurrency } from "@/lib/taxCalculator";
-
 export interface CombinedSpendingItem {
   name: string;
   federalAmount: number;
@@ -14,7 +13,7 @@ export interface CombinedSpendingItem {
 interface CombinedSpendingChartProps {
   data: CombinedSpendingItem[];
   title?: string;
-  totalAmount?: number;
+  totalAmount: number;
 }
 
 const FEDERAL_COLOR = "#2563eb"; // Blue
@@ -57,7 +56,7 @@ export function CombinedSpendingChart({
           const totalBarWidth = (item.totalAmount / maxAmount) * 100;
           const federalWidth = item.totalAmount > 0 ? (item.federalAmount / item.totalAmount) * totalBarWidth : 0;
           const provincialWidth = item.totalAmount > 0 ? (item.provincialAmount / item.totalAmount) * totalBarWidth : 0;
-          
+          const percentageOfTotalTax = (item.totalAmount / totalAmount) * 100
           return (
             <div key={item.name} className="space-y-2">
               {/* Category name and amount row */}
@@ -66,7 +65,7 @@ export function CombinedSpendingChart({
                   {item.name}
                 </div>
                 <div className="text-sm font-semibold text-gray-900 whitespace-nowrap">
-                  {item.formattedTotal}
+                  {item.formattedTotal} | {percentageOfTotalTax.toFixed(1)}%
                 </div>
               </div>
               
