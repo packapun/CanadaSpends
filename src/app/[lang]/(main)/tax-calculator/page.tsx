@@ -237,7 +237,7 @@ export default function TaxCalculatorPage() {
                 </p>
                 <p>
                   <Trans>
-                    For further breakdowns of spending, see <a href="/spending">Federal</a> and <a href="/ontario">Provincial</a> spending pages.
+                    For further breakdowns of spending, see <a href="/spending" className="underline">Federal</a> and <a href="/ontario" className="underline">Provincial</a> spending pages.
                   </Trans>
                 </p>
               </div>
@@ -245,8 +245,11 @@ export default function TaxCalculatorPage() {
           </>
         )}
       </Section>
-      {/* Add tax brackets table at the bottom of the page */}
       <TaxBracketsTable />
+      <Section>
+        <hr></hr>
+        <p className="mt-6 text-center text-sm text-gray-600">Built by <a href="https://www.linkedin.com/in/ruchishshah/" target="_blank" className="underline">Ru</a></p>
+      </Section>
     </PageContent>
   );
 }
