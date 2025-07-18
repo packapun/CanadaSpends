@@ -65,7 +65,7 @@ export function CombinedSpendingChart({
                   {item.name}
                 </div>
                 <div className="text-sm font-semibold text-gray-900 whitespace-nowrap">
-                  {item.formattedTotal} | {percentageOfTotalTax.toFixed(1)}%
+                  {item.formattedTotal} ({percentageOfTotalTax.toFixed(1)}%)
                 </div>
               </div>
               
