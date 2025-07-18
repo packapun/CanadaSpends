@@ -217,7 +217,7 @@ msgstr "Toutes les informations que nous utilisons proviennent des bases de donn
 msgid "All the information comes from public databases and reports by the Government of Canada. We show our sources, so you know exactly where it comes from."
 msgstr "Toutes les informations proviennent des bases de données publiques et des rapports du gouvernement du Canada. Nous indiquons nos sources pour que vous sachiez exactement d'où elles proviennent."
 
-#: src/app/[lang]/(main)/tax-calculator/page.tsx:28
+#: src/app/[lang]/(main)/tax-visualizer/page.tsx:28
 msgid "Annual Income (CAD)"
 msgstr ""
 
@@ -268,7 +268,7 @@ msgstr "TCS Colombie-Britannique"
 msgid "British Columbia STP"
 msgstr "TCS Colombie-Britannique"
 
-#: src/app/[lang]/(main)/tax-calculator/page.tsx:23
+#: src/app/[lang]/(main)/tax-visualizer/page.tsx:23
 msgid "Calculate Your Tax Contribution"
 msgstr ""
 
@@ -350,7 +350,7 @@ msgstr "Règlements des revendications"
 msgid "Coastguard Operations"
 msgstr "Opérations de la Garde côtière"
 
-#: src/app/[lang]/(main)/tax-calculator/page.tsx:83
+#: src/app/[lang]/(main)/tax-visualizer/page.tsx:83
 msgid "Combined federal and provincial tax"
 msgstr ""
 
@@ -429,7 +429,7 @@ msgstr "Relations Couronne-Autochtones"
 msgid "CSIS"
 msgstr "SCRS"
 
-#: src/app/[lang]/(main)/tax-calculator/page.tsx:53
+#: src/app/[lang]/(main)/tax-visualizer/page.tsx:53
 msgid "Currently supports Ontario only. More provinces coming soon."
 msgstr ""
 
@@ -545,7 +545,7 @@ msgstr "Économie + Infrastructure"
 msgid "Economy and Standard of Living"
 msgstr "Économie et niveau de vie"
 
-#: src/app/[lang]/(main)/tax-calculator/page.tsx:86
+#: src/app/[lang]/(main)/tax-visualizer/page.tsx:86
 msgid "Effective Rate"
 msgstr ""
 
@@ -589,7 +589,7 @@ msgstr "Taxes sur l'énergie"
 msgid "Enter your email"
 msgstr "Entrez votre courriel"
 
-#: src/app/[lang]/(main)/tax-calculator/page.tsx:194
+#: src/app/[lang]/(main)/tax-visualizer/page.tsx:194
 msgid "Enter your income to see a personalized breakdown of how much you contribute to different government services and programs."
 msgstr ""
 
@@ -819,7 +819,7 @@ msgstr "Les dépenses fédérales consacrées aux priorités autochtones peuvent
 msgid "Federal spending on public safety fluctuates based on evolving security threats, emergency events, and changes in government policy. Since 2005 shortly after it was established, Public Safety Canada's expenditures have increased by 69.6%, reflecting heightened investments in counterterrorism, cyber defence, and disaster response capabilities. The department's share of the federal budget has remained relatively flat from 2.6% in 2005 to 2.7% in 2024."
 msgstr "Les dépenses fédérales en matière de sécurité publique fluctuent en fonction de l'évolution des menaces pour la sécurité, des événements d'urgence et des changements dans la politique gouvernementale. Depuis 2005, peu après sa création, les dépenses de Sécurité publique Canada ont augmenté de 69,6 %, reflétant des investissements accrus dans les capacités de lutte contre le terrorisme, de cyberdéfense et d'intervention en cas de catastrophe. La part du ministère dans le budget fédéral est restée relativement stable, passant de 2,6 % en 2005 à 2,7 % en 2024."
 
-#: src/app/[lang]/(main)/tax-calculator/page.tsx:71
+#: src/app/[lang]/(main)/tax-visualizer/page.tsx:71
 msgid "Federal Tax"
 msgstr ""
 
@@ -1222,11 +1222,11 @@ msgstr "Au cours de l'exercice 2024, Transports Canada représentait 1 % des dé
 msgid "In FY 2024, VAC reported total expenditures of $6.07 billion across two entities:"
 msgstr "Au cours de l'exercice 2024, ACC a déclaré des dépenses totales de 6,07 milliards de dollars réparties entre deux entités :"
 
-#: src/app/[lang]/(main)/tax-calculator/page.tsx:73
+#: src/app/[lang]/(main)/tax-visualizer/page.tsx:73
 msgid "Income tax paid to federal government"
 msgstr ""
 
-#: src/app/[lang]/(main)/tax-calculator/page.tsx:78
+#: src/app/[lang]/(main)/tax-visualizer/page.tsx:78
 msgid "Income tax paid to provincial government"
 msgstr ""
 
@@ -1689,7 +1689,7 @@ msgstr "Soutien du revenu dans les réserves du Yukon"
 
 #: src/components/MainLayout/index.tsx:98
 #: src/components/MainLayout/index.tsx:169
-#: src/app/[lang]/(main)/tax-calculator/page.tsx:50
+#: src/app/[lang]/(main)/tax-visualizer/page.tsx:50
 msgid "Ontario"
 msgstr ""
 
@@ -1901,7 +1901,7 @@ msgstr "Services professionnels + spéciaux"
 msgid "Professional and Special Services"
 msgstr "Services professionnels et spéciaux"
 
-#: src/app/[lang]/(main)/tax-calculator/page.tsx:42
+#: src/app/[lang]/(main)/tax-visualizer/page.tsx:42
 msgid "Province/Territory"
 msgstr ""
 
@@ -1909,7 +1909,7 @@ msgstr ""
 msgid "Provincial organizations"
 msgstr ""
 
-#: src/app/[lang]/(main)/tax-calculator/page.tsx:76
+#: src/app/[lang]/(main)/tax-visualizer/page.tsx:76
 msgid "Provincial Tax"
 msgstr ""
 
@@ -2212,7 +2212,7 @@ msgstr "Soutien aux anciens combattants"
 msgid "Sustainable Bases, IT Systems, Infrastructure"
 msgstr "Bases durables, systèmes TI, infrastructure"
 
-#: src/app/[lang]/(main)/tax-calculator/page.tsx:229
+#: src/app/[lang]/(main)/tax-visualizer/page.tsx:229
 msgid "Tax calculations are based on 2025 federal and provincial tax brackets. Amounts under $20 are grouped into \"Other\" for conciseness."
 msgstr ""
 
@@ -2418,7 +2418,7 @@ msgstr "Ces ministres sont parmi les <0>membres du cabinet</0> qui servent à la
 msgid "This ministry plays an important role in {0}'s government operations, delivering essential services and programs to residents across the province."
 msgstr ""
 
-#: src/app/[lang]/(main)/tax-calculator/page.tsx:223
+#: src/app/[lang]/(main)/tax-visualizer/page.tsx:223
 msgid "This visualization shows how your income tax contributions are allocated across different government programs and services based on current government spending patterns."
 msgstr ""
 
@@ -2434,7 +2434,7 @@ msgstr ""
 msgid "Total full-time equivalents"
 msgstr "Équivalents temps plein totaux"
 
-#: src/app/[lang]/(main)/tax-calculator/page.tsx:81
+#: src/app/[lang]/(main)/tax-visualizer/page.tsx:81
 msgid "Total Tax"
 msgstr ""
 
@@ -2523,7 +2523,7 @@ msgstr "Conseil du Trésor"
 msgid "Type of Tenure"
 msgstr "Type d'emploi"
 
-#: src/app/[lang]/(main)/tax-calculator/page.tsx:220
+#: src/app/[lang]/(main)/tax-visualizer/page.tsx:220
 msgid "Understanding Your Tax Contribution"
 msgstr ""
 
@@ -2706,8 +2706,8 @@ msgstr "Lorsque LGIC a été fondé au cours de l'exercice 2005 en tant que Bure
 msgid "Where do you get the data on your website?"
 msgstr "D'où proviennent les données sur votre site web?"
 
-#: src/app/[lang]/(main)/tax-calculator/page.tsx:192
-#: src/app/[lang]/(main)/tax-calculator/page.tsx:214
+#: src/app/[lang]/(main)/tax-visualizer/page.tsx:192
+#: src/app/[lang]/(main)/tax-visualizer/page.tsx:214
 msgid "Where Your Tax Dollars Go"
 msgstr ""
 
@@ -2775,11 +2775,11 @@ msgstr "Pourquoi avez-vous commencé ce projet?"
 msgid "You deserve the facts"
 msgstr "Vous méritez les faits"
 
-#: src/app/[lang]/(main)/tax-calculator/page.tsx:88
+#: src/app/[lang]/(main)/tax-visualizer/page.tsx:88
 msgid "Your effective tax rate"
 msgstr ""
 
-#: src/app/[lang]/(main)/tax-calculator/page.tsx:226
+#: src/app/[lang]/(main)/tax-visualizer/page.tsx:226
 msgid "Your tax contributions are based off of employment income. Other sources of income, such as self-employment, investment income, and capital gains, are not included in the calculations. Deductions such as RRSP contributions are also not included."
 msgstr ""
 
