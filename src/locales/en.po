@@ -217,7 +217,7 @@ msgstr "All of the information we use comes from publicly available databases an
 msgid "All the information comes from public databases and reports by the Government of Canada. We show our sources, so you know exactly where it comes from."
 msgstr "All the information comes from public databases and reports by the Government of Canada. We show our sources, so you know exactly where it comes from."
 
-#: src/app/[lang]/(main)/tax-calculator/page.tsx:28
+#: src/app/[lang]/(main)/tax-visualizer/page.tsx:28
 msgid "Annual Income (CAD)"
 msgstr "Annual Income (CAD)"
 
@@ -268,7 +268,7 @@ msgstr "British Columbia HTP"
 msgid "British Columbia STP"
 msgstr "British Columbia STP"
 
-#: src/app/[lang]/(main)/tax-calculator/page.tsx:23
+#: src/app/[lang]/(main)/tax-visualizer/page.tsx:23
 msgid "Calculate Your Tax Contribution"
 msgstr "Calculate Your Tax Contribution"
 
@@ -350,7 +350,7 @@ msgstr "Claims Settlements"
 msgid "Coastguard Operations"
 msgstr "Coastguard Operations"
 
-#: src/app/[lang]/(main)/tax-calculator/page.tsx:83
+#: src/app/[lang]/(main)/tax-visualizer/page.tsx:83
 msgid "Combined federal and provincial tax"
 msgstr "Combined federal and provincial tax"
 
@@ -429,7 +429,7 @@ msgstr "Crown-Indigenous Relations"
 msgid "CSIS"
 msgstr "CSIS"
 
-#: src/app/[lang]/(main)/tax-calculator/page.tsx:53
+#: src/app/[lang]/(main)/tax-visualizer/page.tsx:53
 msgid "Currently supports Ontario only. More provinces coming soon."
 msgstr "Currently supports Ontario only. More provinces coming soon."
 
@@ -545,7 +545,7 @@ msgstr "Economy + Infrastructure"
 msgid "Economy and Standard of Living"
 msgstr "Economy and Standard of Living"
 
-#: src/app/[lang]/(main)/tax-calculator/page.tsx:86
+#: src/app/[lang]/(main)/tax-visualizer/page.tsx:86
 msgid "Effective Rate"
 msgstr "Effective Rate"
 
@@ -589,7 +589,7 @@ msgstr "Energy Taxes"
 msgid "Enter your email"
 msgstr "Enter your email"
 
-#: src/app/[lang]/(main)/tax-calculator/page.tsx:194
+#: src/app/[lang]/(main)/tax-visualizer/page.tsx:194
 msgid "Enter your income to see a personalized breakdown of how much you contribute to different government services and programs."
 msgstr "Enter your income to see a personalized breakdown of how much you contribute to different government services and programs."
 
@@ -819,7 +819,7 @@ msgstr "Federal spending on Indigenous priorities may fluctuate over time due to
 msgid "Federal spending on public safety fluctuates based on evolving security threats, emergency events, and changes in government policy. Since 2005 shortly after it was established, Public Safety Canada's expenditures have increased by 69.6%, reflecting heightened investments in counterterrorism, cyber defence, and disaster response capabilities. The department's share of the federal budget has remained relatively flat from 2.6% in 2005 to 2.7% in 2024."
 msgstr "Federal spending on public safety fluctuates based on evolving security threats, emergency events, and changes in government policy. Since 2005 shortly after it was established, Public Safety Canada's expenditures have increased by 69.6%, reflecting heightened investments in counterterrorism, cyber defence, and disaster response capabilities. The department's share of the federal budget has remained relatively flat from 2.6% in 2005 to 2.7% in 2024."
 
-#: src/app/[lang]/(main)/tax-calculator/page.tsx:71
+#: src/app/[lang]/(main)/tax-visualizer/page.tsx:71
 msgid "Federal Tax"
 msgstr "Federal Tax"
 
@@ -1222,11 +1222,11 @@ msgstr "In FY 2024, Transport Canada accounted for 1% of all federal spending, 0
 msgid "In FY 2024, VAC reported total expenditures of $6.07 billion across two entities:"
 msgstr "In FY 2024, VAC reported total expenditures of $6.07 billion across two entities:"
 
-#: src/app/[lang]/(main)/tax-calculator/page.tsx:73
+#: src/app/[lang]/(main)/tax-visualizer/page.tsx:73
 msgid "Income tax paid to federal government"
 msgstr "Income tax paid to federal government"
 
-#: src/app/[lang]/(main)/tax-calculator/page.tsx:78
+#: src/app/[lang]/(main)/tax-visualizer/page.tsx:78
 msgid "Income tax paid to provincial government"
 msgstr "Income tax paid to provincial government"
 
@@ -1689,7 +1689,7 @@ msgstr "On-reserve Income Support in Yukon Territory"
 
 #: src/components/MainLayout/index.tsx:98
 #: src/components/MainLayout/index.tsx:169
-#: src/app/[lang]/(main)/tax-calculator/page.tsx:50
+#: src/app/[lang]/(main)/tax-visualizer/page.tsx:50
 msgid "Ontario"
 msgstr "Ontario"
 
@@ -1901,7 +1901,7 @@ msgstr "Professional + Special Services"
 msgid "Professional and Special Services"
 msgstr "Professional and Special Services"
 
-#: src/app/[lang]/(main)/tax-calculator/page.tsx:42
+#: src/app/[lang]/(main)/tax-visualizer/page.tsx:42
 msgid "Province/Territory"
 msgstr "Province/Territory"
 
@@ -1909,7 +1909,7 @@ msgstr "Province/Territory"
 msgid "Provincial organizations"
 msgstr "Provincial organizations"
 
-#: src/app/[lang]/(main)/tax-calculator/page.tsx:76
+#: src/app/[lang]/(main)/tax-visualizer/page.tsx:76
 msgid "Provincial Tax"
 msgstr "Provincial Tax"
 
@@ -2212,7 +2212,7 @@ msgstr "Support for Veterans"
 msgid "Sustainable Bases, IT Systems, Infrastructure"
 msgstr "Sustainable Bases, IT Systems, Infrastructure"
 
-#: src/app/[lang]/(main)/tax-calculator/page.tsx:229
+#: src/app/[lang]/(main)/tax-visualizer/page.tsx:229
 msgid "Tax calculations are based on 2025 federal and provincial tax brackets. Amounts under $20 are grouped into \"Other\" for conciseness."
 msgstr "Tax calculations are based on 2025 federal and provincial tax brackets. Amounts under $20 are grouped into \"Other\" for conciseness."
 
@@ -2418,7 +2418,7 @@ msgstr "These Ministers are some of the <0>cabinet members</0> who serve at the 
 msgid "This ministry plays an important role in {0}'s government operations, delivering essential services and programs to residents across the province."
 msgstr "This ministry plays an important role in {0}'s government operations, delivering essential services and programs to residents across the province."
 
-#: src/app/[lang]/(main)/tax-calculator/page.tsx:223
+#: src/app/[lang]/(main)/tax-visualizer/page.tsx:223
 msgid "This visualization shows how your income tax contributions are allocated across different government programs and services based on current government spending patterns."
 msgstr "This visualization shows how your income tax contributions are allocated across different government programs and services based on current government spending patterns."
 
@@ -2434,7 +2434,7 @@ msgstr "Total Debt"
 msgid "Total full-time equivalents"
 msgstr "Total full-time equivalents"
 
-#: src/app/[lang]/(main)/tax-calculator/page.tsx:81
+#: src/app/[lang]/(main)/tax-visualizer/page.tsx:81
 msgid "Total Tax"
 msgstr "Total Tax"
 
@@ -2523,7 +2523,7 @@ msgstr "Treasury Board"
 msgid "Type of Tenure"
 msgstr "Type of Tenure"
 
-#: src/app/[lang]/(main)/tax-calculator/page.tsx:220
+#: src/app/[lang]/(main)/tax-visualizer/page.tsx:220
 msgid "Understanding Your Tax Contribution"
 msgstr "Understanding Your Tax Contribution"
 
@@ -2706,8 +2706,8 @@ msgstr "When HICC was founded in FY 2005 as the Office of Infrastructure Canada,
 msgid "Where do you get the data on your website?"
 msgstr "Where do you get the data on your website?"
 
-#: src/app/[lang]/(main)/tax-calculator/page.tsx:192
-#: src/app/[lang]/(main)/tax-calculator/page.tsx:214
+#: src/app/[lang]/(main)/tax-visualizer/page.tsx:192
+#: src/app/[lang]/(main)/tax-visualizer/page.tsx:214
 msgid "Where Your Tax Dollars Go"
 msgstr "Where Your Tax Dollars Go"
 
@@ -2775,11 +2775,11 @@ msgstr "Why did you start this project?"
 msgid "You deserve the facts"
 msgstr "You deserve the facts"
 
-#: src/app/[lang]/(main)/tax-calculator/page.tsx:88
+#: src/app/[lang]/(main)/tax-visualizer/page.tsx:88
 msgid "Your effective tax rate"
 msgstr "Your effective tax rate"
 
-#: src/app/[lang]/(main)/tax-calculator/page.tsx:226
+#: src/app/[lang]/(main)/tax-visualizer/page.tsx:226
 msgid "Your tax contributions are based off of employment income. Other sources of income, such as self-employment, investment income, and capital gains, are not included in the calculations. Deductions such as RRSP contributions are also not included."
 msgstr "Your tax contributions are based off of employment income. Other sources of income, such as self-employment, investment income, and capital gains, are not included in the calculations. Deductions such as RRSP contributions are also not included."
 
